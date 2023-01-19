@@ -11,7 +11,7 @@ const Asia = () => {
       <NavBar />
       <HeroImage heroClass={'asia'}/>
         <div className="container">
-          <Header headingText={"Welcome to the Asian Continent!"} btnText={'View all Asia Posts'} />
+          <Header headingText={"Welcome to the Asian Continent!"} btnText={'View all Asia Posts'} showBtn />
           <div className="row g-3">
             <PreviewCard />
             <PreviewCard />

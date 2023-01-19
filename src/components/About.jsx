@@ -11,7 +11,7 @@ const About = () => {
       <NavBar />
       <HeroImage heroClass={'about'} />
         <div className="container">
-          <Header headingText={"So you wanna know more???"} btnText={'Learn More'} />
+          <Header headingText={"So you wanna know more???"} btnText={'Learn More'} showBtn/>
           <div className="row g-3">
           </div>
         </div>
