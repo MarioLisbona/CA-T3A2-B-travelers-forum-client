@@ -15,7 +15,7 @@ const NavBar = () => {
                             <a className="nav-link text-success-emphasis" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="/view/all">Browse all Destinations</a>
+                            <a className="nav-link text-white" href="../view/all">Browse all Destinations</a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
