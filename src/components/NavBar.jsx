@@ -3,44 +3,44 @@ import React from 'react'
 const NavBar = () => {
 	return (
 		<>
-		<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">Traveler's Forum</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+		<nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
+            <div className="container-fluid">
+                <a className="navbar-brand text-white" href="/">Traveler's Forum</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link text-success-emphasis" href="#">Home</a>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                            <a className="nav-link text-success-emphasis" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Browse all Destinations</a>
+                        <li className="nav-item">
+                            <a className="nav-link text-white" href="/view/all">Browse all Destinations</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Browse By Continent
                             </a>
-                            <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-white" href="#">Asia</a>
-                            <a class="dropdown-item text-white" href="#">Africa</a>
-                            <a class="dropdown-item text-white" href="#">North America</a>
-                            <a class="dropdown-item text-white" href="#">South America</a>
-                            <a class="dropdown-item text-white" href="#">Antarctica</a>
-                            <a class="dropdown-item text-white" href="#">Europe</a>
-                            <a class="dropdown-item text-white" href="#">Australia</a>
+                            <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                            <a className="dropdown-item text-white" href="/view/continent/asia">Asia</a>
+                            <a className="dropdown-item text-white" href="/view/continent/africa">Africa</a>
+                            <a className="dropdown-item text-white" href="/view/continent/nth-america">North America</a>
+                            <a className="dropdown-item text-white" href="/view/continent/sth-america">South America</a>
+                            <a className="dropdown-item text-white" href="/view/continent/antarctica">Antarctica</a>
+                            <a className="dropdown-item text-white" href="/view/continent/europe">Europe</a>
+                            <a className="dropdown-item text-white" href="/view/continent/australia">Australia</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">About</a>
+                        <li className="nav-item">
+                            <a className="nav-link text-white" href="/about">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Contact</a>
+                        <li className="nav-item">
+                            <a className="nav-link text-white" href="/contact">Contact</a>
                         </li>
                     </ul>
-                    <div class="navbar-nav ms-auto">              	
-                        <a href="#" class="nav-item nav-link text-white">Login</a>
-                        <a href="#" class="nav-item nav-link text-white">Register</a>
+                    <div className="navbar-nav ms-auto">              	
+                        <a href="/login" className="nav-item nav-link text-white">Login</a>
+                        <a href="/register" className="nav-item nav-link text-white">Register</a>
                     </div>
                 </div>
             </div>

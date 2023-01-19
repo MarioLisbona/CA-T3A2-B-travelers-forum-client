@@ -2,15 +2,16 @@ import React from 'react'
 import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
+import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 
-const Login = () => {
+const Privacy = () => {
   return (
     <>
     <NavBar />
     <HeroImage  />
       <div className="container">
-        <Header headingText={"Login for more features"} />
+        <Header headingText={"View our privacy policies"} />
         <div className="row g-3">
         </div>
       </div>
@@ -19,4 +20,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Privacy
