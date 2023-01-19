@@ -9,7 +9,7 @@
 }
 
 .landing-page {
-    background: url(../src/assets/hero-img-landing.jpg) no-repeat center left -900px;
+    background: url(../src/assets/hero-img-landing.jpg) no-repeat center -900px;
 }
 
 .view-all {
