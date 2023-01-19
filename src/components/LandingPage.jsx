@@ -8,7 +8,7 @@ import Footer from './Footer'
 const LandingPage = () => {
 	return (
 		<>
-      <NavBar />
+      <NavBar textColor={"text-success-emphasis"} showHomeBtn showHomeBrowseAll />
       <HeroImage heroClass={'landing-page'} />
         <div className="container">
           <Header headingText={"Welcome to the Traveler's Forum"} btnText={'Register'} showBtn/>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NavBarButton from './NavBarButton'
 
 
-const NavBar = () => {
+const NavBar = ({ textColor, activePage, showHomeBtn, showHomeBrowseAll  }) => {
 	return (
 		<>
 		<nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
@@ -15,16 +16,18 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
+                        <NavBarButton btnText={"Home"} toPage={"/"} textColor={textColor} activePage showBtn={showHomeBtn} />
+                        {/* <li className="nav-item active">
                             <Link className="nav-link text-success-emphasis" to="/">
                                 Home
                             </Link>
-                        </li>
-                        <li className="nav-item">
+                        </li> */}
+                        <NavBarButton btnText={"Browse all Destinations"} toPage={"../view/all"} textColor={textColor} activePage showBtn={showHomeBrowseAll} />
+                        {/* <li className="nav-item">
                             <Link className="nav-link text-white" to="../view/all">
                                 Browse all Destinations
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle text-white" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Browse By Continent

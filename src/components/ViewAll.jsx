@@ -8,7 +8,7 @@ import Footer from './Footer'
 const ViewAll = () => {
   return (
     <>
-    <NavBar />
+    <NavBar textColor={"text-success-emphasis"} btnText={"Home"} toPage={"/"} />
     <HeroImage  heroClass={'view-all'}/>
       <div className="container">
         <Header headingText={"Browse the entire Forum"} btnText={'View all Posts'} showBtn />
