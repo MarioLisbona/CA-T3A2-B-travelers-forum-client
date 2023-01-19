@@ -8,7 +8,7 @@
 }
 
 .landing-page {
-    background: "url(../src/assets/hero-img-landing.jpg) no-repeat center";
+    background: url(../src/assets/hero-img-landing.jpg) no-repeat center;
 }
 
 .view-all {
@@ -45,4 +45,12 @@
 
 .about {
     background: url(../public/alaska-2-min.JPG);
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    height: 50vw;
+    max-height: 400px;
 }
