@@ -4,8 +4,8 @@ import './HeroImage.css'
 const HeroImage = () => {
 	return (
 		<>
-			<section class="hero-container">
-        <span class="background-image" role="img" aria-label="Mountain range in Austria"></span>
+			<section className="hero-image">
+        <span className="background-image" role="img" aria-label="Mountain range in Austria"></span>
       </section>
 		</>
 	)

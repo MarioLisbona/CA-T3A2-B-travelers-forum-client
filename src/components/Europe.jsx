@@ -5,17 +5,14 @@ import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 
-const LandingPage = () => {
-	return (
-		<>
+const Europe = () => {
+  return (
+    <>
       <NavBar />
-      <HeroImage />
+      <HeroImage  />
         <div className="container">
-          <Header headingText={"Welcome to the Traveler's Forum"} />
+          <Header headingText={"Welcome to the Europe!"} />
           <div className="row g-3">
-            <PreviewCard />
-            <PreviewCard />
-            <PreviewCard />
             <PreviewCard />
             <PreviewCard />
             <PreviewCard />
@@ -25,8 +22,8 @@ const LandingPage = () => {
           </div>
         </div>
         <Footer />
-		</>
-	)
+    </>
+  )
 }
 
-export default LandingPage
+export default Europe
