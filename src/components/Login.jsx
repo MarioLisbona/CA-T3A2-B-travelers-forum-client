@@ -10,7 +10,7 @@ const Login = () => {
     <NavBar />
     <HeroImage heroClass={'login'} />
       <div className="container">
-        <Header headingText={"Login for more features"} />
+        <Header headingText={"Login for more features"} btnText={'Login'} />
         <div className="row g-3">
         </div>
       </div>

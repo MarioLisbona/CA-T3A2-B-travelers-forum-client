@@ -10,7 +10,7 @@ const Register = () => {
     <NavBar />
     <HeroImage heroClass={'register'} />
       <div className="container">
-        <Header headingText={"Register to become a member"} />
+        <Header headingText={"Register to become a member"} btnText={'Register'} />
         <div className="row g-3">
         </div>
       </div>

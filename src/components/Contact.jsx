@@ -11,7 +11,7 @@ const Contact = () => {
       <NavBar />
       <HeroImage heroClass={'contact'} />
         <div className="container">
-          <Header headingText={"Connect with us at the links below"} />
+          <Header headingText={"Connect with us at the links below"} btnText={'View all Contact Information'} />
           <div className="row g-3">
           </div>
         </div>

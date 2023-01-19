@@ -11,7 +11,7 @@ const ViewContinent = () => {
     <NavBar />
     <HeroImage  />
       <div className="container">
-        <Header headingText={"Browse the by Continent"} />
+        <Header headingText={"Browse the by Continent"} btnText={'View all South America Posts'} />
         <div className="row g-3">
           <PreviewCard />
           <PreviewCard />

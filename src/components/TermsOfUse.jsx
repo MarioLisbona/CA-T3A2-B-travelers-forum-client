@@ -11,7 +11,7 @@ const TermsOfUse = () => {
     <NavBar />
     <HeroImage  />
       <div className="container">
-        <Header headingText={"Terms of use and Conditions"} />
+        <Header headingText={"Terms of use and Conditions"} btnText={'View our terms'}  />
         <div className="row g-3">
         </div>
       </div>

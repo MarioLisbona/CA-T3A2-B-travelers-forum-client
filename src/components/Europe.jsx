@@ -11,7 +11,7 @@ const Europe = () => {
       <NavBar />
       <HeroImage heroClass={'europe'} />
         <div className="container">
-          <Header headingText={"Welcome to the Europe!"} />
+          <Header headingText={"Welcome to the Europe!"} btnText={'View all Europe Posts'} />
           <div className="row g-3">
             <PreviewCard />
             <PreviewCard />

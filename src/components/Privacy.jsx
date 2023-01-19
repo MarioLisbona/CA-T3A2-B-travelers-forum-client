@@ -11,7 +11,7 @@ const Privacy = () => {
     <NavBar />
     <HeroImage  />
       <div className="container">
-        <Header headingText={"View our privacy policies"} />
+        <Header headingText={"View our privacy policies"} btnText={'View all Privacy info'} />
         <div className="row g-3">
         </div>
       </div>

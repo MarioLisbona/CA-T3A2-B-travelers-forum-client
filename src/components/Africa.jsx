@@ -11,7 +11,7 @@ const Africa = () => {
       <NavBar />
       <HeroImage heroClass={'acirfa'}/>
         <div className="container">
-          <Header headingText={"Welcome to the African Continent!"} />
+          <Header headingText={"Welcome to the African Continent!"} btnText={'View all Africa Posts'} />
           <div className="row g-3">
             <PreviewCard />
           </div>
