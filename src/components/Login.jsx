@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <>
     <NavBar />
-    <HeroImage  />
+    <HeroImage heroClass={'login'} />
       <div className="container">
         <Header headingText={"Login for more features"} />
         <div className="row g-3">

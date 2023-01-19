@@ -8,7 +8,7 @@ const Register = () => {
   return (
     <>
     <NavBar />
-    <HeroImage  />
+    <HeroImage heroClass={'register'} />
       <div className="container">
         <Header headingText={"Register to become a member"} />
         <div className="row g-3">

@@ -1,5 +1,6 @@
 .landing-page, .view-all, .asia, .australia,
-.n-am, .s-am, .acirfa, .europe, .antarctica, .about {
+.n-am, .s-am, .acirfa, .europe, .antarctica, .about,
+.contact, .register, .login {
     display: flex;
     flex-direction: column;
     background-size: cover;
@@ -8,7 +9,7 @@
 }
 
 .landing-page {
-    background: url(../src/assets/hero-img-landing.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-landing.jpg) no-repeat center left -900px;
 }
 
 .view-all {
@@ -16,41 +17,53 @@
 }
 
 .asia {
-    background: url(../src/assets/hero-img-asia.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-asia.jpg) no-repeat center -360px;
 }
 
 .australia {
-    background: url(../src/assets/hero-img-australia.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-australia.jpg) no-repeat center -400px;
 }
 
 .n-am {
-    background: url(../src/assets/hero-img-nth-america.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-nth-america.jpg) no-repeat center -210px;
 }
 
 .s-am {
-    background: url(../src/assets/hero-img-sth-america.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-sth-america.jpg) no-repeat center -100px;
 }
 
 .acirfa {
-    background: url(../src/assets/hero-img-africa.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-africa.jpg) no-repeat center -360px ;
 }
 
 .europe {
-    background: url(../src/assets/hero-img-europe.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-europe.jpg) no-repeat center -550px;
 }
 
 .antarctica {
-    background: url(../src/assets/hero-img-antarctica.jpg) no-repeat center;
+    background: url(../src/assets/hero-img-antarctica.jpg) no-repeat center -700px;
 }
 
 .about {
-    background: url(../public/alaska-2-min.JPG);
+    background: url(../src/assets/hero-img-about.jpg) no-repeat center top;
 }
 
-.test {
+.contact {
+    background: url(../src/assets/hero-img-contact.jpg) no-repeat center -350px;
+}
+
+.login {
+    background: url(../src/assets/hero-img-login.jpg) no-repeat center -250px;
+}
+
+.register {
+    background: url(../src/assets/hero-img-register.jpg) no-repeat center -600px;
+}
+
+/* .test {
     display: flex;
     flex-direction: column;
     background-size: cover;
     height: 50vw;
     max-height: 400px;
-}
+} */

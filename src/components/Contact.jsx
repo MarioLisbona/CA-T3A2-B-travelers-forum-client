@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <>
       <NavBar />
-      <HeroImage />
+      <HeroImage heroClass={'contact'} />
         <div className="container">
           <Header headingText={"Connect with us at the links below"} />
           <div className="row g-3">
