@@ -9,7 +9,7 @@ const Australia = () => {
   return (
     <>
       <NavBar />
-      <HeroImage  />
+      <HeroImage heroClass={'australia'} />
         <div className="container">
           <Header headingText={"Welcome to the Australia!"} />
           <div className="row g-3">

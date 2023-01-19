@@ -9,7 +9,7 @@ const LandingPage = () => {
 	return (
 		<>
       <NavBar />
-      <HeroImage />
+      <HeroImage heroClass={'landing-page'}/>
         <div className="container">
           <Header headingText={"Welcome to the Traveler's Forum"} />
           <div className="row g-3">

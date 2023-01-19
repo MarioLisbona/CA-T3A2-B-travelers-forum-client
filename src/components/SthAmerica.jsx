@@ -9,9 +9,9 @@ const SthAmerica = () => {
   return (
     <>
     <NavBar />
-    <HeroImage  />
+    <HeroImage heroClass={'s-am'} />
       <div className="container">
-        <Header headingText={"Browse the entire Forum"} />
+        <Header headingText={"Welcome to South America"} />
         <div className="row g-3">
           <PreviewCard />
           <PreviewCard />

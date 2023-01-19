@@ -9,7 +9,7 @@ const Antarctica = () => {
   return (
     <>
       <NavBar />
-      <HeroImage />
+      <HeroImage heroClass={'antarctica'} />
         <div className="container">
           <Header headingText={"Welcome to the Antarctica!"} />
           <div className="row g-3">

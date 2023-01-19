@@ -9,7 +9,7 @@ const NthAmerica = () => {
   return (
     <>
       <NavBar />
-      <HeroImage  />
+      <HeroImage heroClass={'n-am'} />
         <div className="container">
           <Header headingText={"Welcome to the North America!"} />
           <div className="row g-3">

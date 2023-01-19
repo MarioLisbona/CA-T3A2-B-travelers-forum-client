@@ -9,7 +9,7 @@ const Asia = () => {
   return (
     <>
       <NavBar />
-      <HeroImage  />
+      <HeroImage heroClass={'asia'}/>
         <div className="container">
           <Header headingText={"Welcome to the Asian Continent!"} />
           <div className="row g-3">

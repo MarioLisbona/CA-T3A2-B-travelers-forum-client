@@ -9,7 +9,7 @@ const Africa = () => {
   return (
     <>
       <NavBar />
-      <HeroImage />
+      <HeroImage heroClass={'acirfa'}/>
         <div className="container">
           <Header headingText={"Welcome to the African Continent!"} />
           <div className="row g-3">

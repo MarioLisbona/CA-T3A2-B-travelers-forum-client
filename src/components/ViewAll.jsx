@@ -9,7 +9,7 @@ const ViewAll = () => {
   return (
     <>
     <NavBar />
-    <HeroImage  />
+    <HeroImage  heroClass={'view-all'}/>
       <div className="container">
         <Header headingText={"Browse the entire Forum"} />
         <div className="row g-3">
