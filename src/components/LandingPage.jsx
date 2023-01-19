@@ -11,7 +11,7 @@ const LandingPage = () => {
       <NavBar />
       <HeroImage heroClass={'landing-page'} />
         <div className="container">
-          <Header headingText={"Welcome to the Traveler's Forum"} btnText={'View all Posts'} showBtn/>
+          <Header headingText={"Welcome to the Traveler's Forum"} btnText={'Register'} showBtn/>
           <div className="row g-3">
             <PreviewCard />
             <PreviewCard />
