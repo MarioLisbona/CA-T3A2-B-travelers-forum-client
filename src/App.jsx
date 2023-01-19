@@ -17,6 +17,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import TermsOfUse from './components/TermsOfUse'
 import Privacy from './components/Privacy'
+import './HeroImage.css'
 
 const App = () => {
   return (
