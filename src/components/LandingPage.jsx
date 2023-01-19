@@ -8,6 +8,7 @@ import Footer from './Footer'
 const LandingPage = () => {
 	return (
 		<>
+      <NavBar />
       <HeroImage />
         <div class="container">
           <Header />
@@ -23,6 +24,7 @@ const LandingPage = () => {
             <PreviewCard />
           </div>
         </div>
+        <Footer />
 		</>
 	)
 }
