@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const PreviewCard = () => {
 	return (
@@ -8,7 +10,9 @@ const PreviewCard = () => {
 						<div className="card-body">
 								<h5 className="card-title">South America</h5>
 								<p className="card-text">A story about adventures traveling through south america</p>
-								<a href="#" className="btn btn-primary">View</a>
+								<Link href="https://instagram.com" className="btn btn-primary">
+									View
+								</Link>
 						</div>
 				</div>
 			</div>
