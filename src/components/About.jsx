@@ -9,7 +9,7 @@ const About = () => {
   return (
     <>
       <NavBar />
-      <HeroImage />
+      <HeroImage heroClass={'about'} />
         <div className="container">
           <Header headingText={"So you wanna know more???"} />
           <div className="row g-3">

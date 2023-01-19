@@ -1,10 +1,10 @@
 .landing-page, .view-all, .asia, .australia,
-.n-am, .s-am, .acirfa, .europe, .antarctica {
+.n-am, .s-am, .acirfa, .europe, .antarctica, .about {
     display: flex;
     flex-direction: column;
     background-size: cover;
     height: 50vw;
-    max-height: 300px;
+    max-height: 400px;
 }
 
 .landing-page {
@@ -41,4 +41,8 @@
 
 .antarctica {
     background: url(../src/assets/hero-img-antarctica.jpg) no-repeat center;
+}
+
+.about {
+    background: url(../public/alaska-2-min.JPG);
 }
