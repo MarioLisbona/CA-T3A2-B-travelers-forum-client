@@ -1,0 +1,8 @@
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    background: url(../src/assets/alaska-2-min.JPG) no-repeat center;
+    background-size: cover;
+    height: 50vw;
+    max-height: 300px;
+}
