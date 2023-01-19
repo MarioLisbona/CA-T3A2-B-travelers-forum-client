@@ -11,7 +11,7 @@ const Antarctica = () => {
       <NavBar />
       <HeroImage heroClass={'antarctica'} />
         <div className="container">
-          <Header headingText={"Welcome to the Antarctica!"} btnText={'View all Antarctica Posts'} />
+          <Header headingText={"Welcome to the Antarctica!"} btnText={'View all Antarctica Posts'} showBtn />
           <div className="row g-3">
             <PreviewCard />
             <PreviewCard />

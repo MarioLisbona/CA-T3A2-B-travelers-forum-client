@@ -11,7 +11,7 @@ const ViewAll = () => {
     <NavBar />
     <HeroImage  heroClass={'view-all'}/>
       <div className="container">
-        <Header headingText={"Browse the entire Forum"} btnText={'View all Posts'} />
+        <Header headingText={"Browse the entire Forum"} btnText={'View all Posts'} showBtn />
         <div className="row g-3">
           <PreviewCard />
           <PreviewCard />
