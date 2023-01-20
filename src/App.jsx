@@ -20,25 +20,28 @@ import Privacy from './components/Privacy'
 import './HeroImage.css'
 
 const App = () => {
+
+  const forumMember = false
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/view/all" element={<ViewAll />} />
-          <Route path="/view/continent/asia" element={<Asia />} />
-          <Route path="/view/continent/africa" element={<Africa />} />
-          <Route path="/view/continent/nth-america" element={<NthAmerica />} />
-          <Route path="/view/continent/sth-america" element={<SthAmerica />} />
-          <Route path="/view/continent/antarctica" element={<Antarctica />} />
-          <Route path="/view/continent/europe" element={<Europe />} />
-          <Route path="/view/continent/australia" element={<Australia />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/terms" element={<TermsOfUse />} />
-          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember}/>} />
+          <Route path="/login" element={<Login forumMember={forumMember}/>} />
+          <Route path="/register" element={<Register forumMember={forumMember}/>} />
+          <Route path="/view/all" element={<ViewAll forumMember={forumMember} />} />
+          <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} />} />
+          <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} />} />
+          <Route path="/view/continent/nth-america" element={<NthAmerica forumMember={forumMember} />} />
+          <Route path="/view/continent/sth-america" element={<SthAmerica forumMember={forumMember} />} />
+          <Route path="/view/continent/antarctica" element={<Antarctica forumMember={forumMember} />} />
+          <Route path="/view/continent/europe" element={<Europe forumMember={forumMember} />} />
+          <Route path="/view/continent/australia" element={<Australia forumMember={forumMember} />} />
+          <Route path="/about" element={<About forumMember={forumMember}/>} />
+          <Route path="/contact" element={<Contact forumMember={forumMember}/>} />
+          <Route path="/terms" element={<TermsOfUse forumMember={forumMember}/>} />
+          <Route path="/privacy" element={<Privacy forumMember={forumMember}/>} />
           <Route path='*' element={<h4>404 Error: Page not found</h4>} />
         </Routes>
       </BrowserRouter>

@@ -4,11 +4,13 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
 
-const ViewContinent = () => {
+
+const ViewContinent = ({ forumMember }) => {
   return (
     <>
-    <NavBar />
+    {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage  />
       <div className="container">
         <Header headingText={"Browse the by Continent"} btnText={'View all South America Posts'} />

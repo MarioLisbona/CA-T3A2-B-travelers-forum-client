@@ -4,11 +4,13 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
 
-const SthAmerica = () => {
+
+const SthAmerica = ({ forumMember }) => {
   return (
     <>
-    <NavBar />
+    {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage heroClass={'s-am'} />
       <div className="container">
         <Header headingText={"Welcome to South America"} btnText={'View all South America Posts'} showBtn />

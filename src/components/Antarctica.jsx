@@ -4,11 +4,13 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
 
-const Antarctica = () => {
+
+const Antarctica = ({ forumMember }) => {
   return (
     <>
-      <NavBar />
+      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'antarctica'} />
         <div className="container">
           <Header headingText={"Welcome to the Antarctica!"} btnText={'View all Antarctica Posts'} showBtn />

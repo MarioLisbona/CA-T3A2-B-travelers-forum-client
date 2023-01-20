@@ -3,11 +3,13 @@ import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
 
-const Login = () => {
+
+const Login = ({ forumMember }) => {
   return (
     <>
-    <NavBar />
+    {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage heroClass={'login'} />
       <div className="container">
         <Header headingText={"Login for more features"} btnText={'Login'} showBtn />

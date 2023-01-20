@@ -4,11 +4,13 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
 
-const Privacy = () => {
+
+const Privacy = ({ forumMember }) => {
   return (
     <>
-    <NavBar />
+   {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage  />
       <div className="container">
         <Header headingText={"View our privacy policies"} btnText={'View all Privacy info'} />

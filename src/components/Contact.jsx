@@ -4,11 +4,13 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
 
-const Contact = () => {
+
+const Contact = ({ forumMember }) => {
   return (
     <>
-      <NavBar />
+      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'contact'} />
         <div className="container">
           <Header headingText={"Connect with us at the links below"} btnText={'View all Contact Information'} />

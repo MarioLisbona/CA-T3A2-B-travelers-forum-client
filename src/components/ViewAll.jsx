@@ -4,11 +4,13 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
 
-const ViewAll = () => {
+
+const ViewAll = ({ forumMember }) => {
   return (
     <>
-    <NavBar />
+    {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage  heroClass={'view-all'}/>
       <div className="container">
         <Header headingText={"Browse the entire Forum"} btnText={'View all Posts'} showBtn />
