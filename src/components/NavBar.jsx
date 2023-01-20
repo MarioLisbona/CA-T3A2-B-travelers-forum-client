@@ -21,7 +21,7 @@ const NavBar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-white" to="../view/all">
+                            <Link className="nav-link text-white" to="/view/all">
                                 Browse all Destinations
                             </Link>
                         </li>
