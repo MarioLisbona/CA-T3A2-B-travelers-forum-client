@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
 	return (
 		<>
+			<hr></hr>
 			<footer>
 				<div className="row m-1">
 					<div className="col-md-6">
@@ -17,7 +18,11 @@ const Footer = () => {
 							<span className="text-muted mx-2">|</span>
 							<Link to="/privacy" className="text-dark">
 								Privacy Policy
-								</Link>
+							</Link>
+							<span className="text-muted mx-2">|</span>
+							<Link to="/socials" className="text-dark">
+								Social Media
+							</Link>
 					</div>
 				</div>
       </footer>
