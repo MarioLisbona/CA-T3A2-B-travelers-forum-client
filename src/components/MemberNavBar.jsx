@@ -29,37 +29,60 @@ const MemberNavBar = () => {
                           Browse By Continent
                           </a>
                           <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                          <Link className="dropdown-item text-white" to="/view/continent/asia">
-                              Asia
-                          </Link>
-                          <Link className="dropdown-item text-white" to="/view/continent/africa">
-                              Africa
-                              </Link>
-                          <Link className="dropdown-item text-white" to="/view/continent/nth-america">
-                              North America
-                          </Link>
-                          <Link className="dropdown-item text-white" to="/view/continent/sth-america">
-                              South America
-                          </Link>
-                          <Link className="dropdown-item text-white" to="/view/continent/antarctica">
-                              Antarctica
-                          </Link>
-                          <Link className="dropdown-item text-white" to="/view/continent/europe">
-                              Europe
-                          </Link>
-                          <Link className="dropdown-item text-white" to="/view/continent/australia">
-                              Australia
-                          </Link>
+                            <Link className="dropdown-item text-white" to="/view/continent/asia">
+                                Asia
+                            </Link>
+                            <Link className="dropdown-item text-white" to="/view/continent/africa">
+                                Africa
+                                </Link>
+                            <Link className="dropdown-item text-white" to="/view/continent/nth-america">
+                                North America
+                            </Link>
+                            <Link className="dropdown-item text-white" to="/view/continent/sth-america">
+                                South America
+                            </Link>
+                            <Link className="dropdown-item text-white" to="/view/continent/antarctica">
+                                Antarctica
+                            </Link>
+                            <Link className="dropdown-item text-white" to="/view/continent/europe">
+                                Europe
+                            </Link>
+                            <Link className="dropdown-item text-white" to="/view/continent/australia">
+                                Australia
+                            </Link>
                           </div>
                       </li>
                   </ul>
-                  <div className="navbar-nav ms-auto">              	
+                  {/* <div className="navbar-nav ms-auto">              	
                       <Link to="#" className="nav-item nav-link text-white">
                           My Posts
                       </Link>
                       <Link to="#" className="nav-item nav-link text-white">
                           Create a Post
                       </Link>
+                  </div> */}
+                  <div className="navbar-nav ms-auto">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item dropdown me-4">
+                        <a className="nav-link dropdown-toggle text-white" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          My Account
+                          </a>
+                          <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                                <Link className="dropdown-item text-white" to="/posts">
+                                    My Posts
+                                </Link>
+                                <Link className="dropdown-item text-white" to="/posts/create">
+                                    Create a Post
+                                    </Link>
+                                <Link className="dropdown-item text-white" to="/about">
+                                    About
+                                </Link>
+                                <Link className="dropdown-item text-white" to="/contact">
+                                    Contact
+                                </Link>
+                            </div>
+                        </li>
+                    </ul>
                   </div>
               </div>
           </div>
