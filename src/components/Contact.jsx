@@ -5,6 +5,7 @@ import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
+import SocialMedia from './SocialMedia'
 
 
 const Contact = ({ forumMember }) => {
@@ -14,8 +15,7 @@ const Contact = ({ forumMember }) => {
       <HeroImage heroClass={'contact'} />
         <div className="container">
           <Header headingText={"Connect with us at the links below"} btnText={'View all Contact Information'} />
-          <div className="row g-3">
-          </div>
+          <SocialMedia />
         </div>
         <Footer />
     </>

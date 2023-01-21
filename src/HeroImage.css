@@ -63,11 +63,3 @@
 .create {
     background: url(../src/assets/hero-img-create-a-post.jpg) no-repeat center -600px;
 }
-
-/* .test {
-    display: flex;
-    flex-direction: column;
-    background-size: cover;
-    height: 50vw;
-    max-height: 400px;
-} */
