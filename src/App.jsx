@@ -48,8 +48,7 @@ const App = () => {
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} />} />
           <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
-          <Route path='*' element={<PageNotFound />} />
-          {/* <Route path='*' element={<h4>404 Error: Page not found</h4>} /> */}
+          <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
       </BrowserRouter>
       
