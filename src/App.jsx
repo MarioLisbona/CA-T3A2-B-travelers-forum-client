@@ -21,7 +21,7 @@ import './HeroImage.css'
 
 const App = () => {
 
-  const forumMember = false
+  const forumMember = true
 
   return (
     <>
