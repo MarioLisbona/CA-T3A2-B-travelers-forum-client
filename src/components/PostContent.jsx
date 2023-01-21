@@ -2,7 +2,7 @@ import React from 'react'
 
 const PostContent = () => {
   return (
-    <div className="p-5 my-4 bg-light rounded-3">
+    <div className="p-5 mt-5 bg-light rounded-3">
 				<h1 class="mb-3">Post Title</h1>
         <div class="row">
             <div class="col-md-4">

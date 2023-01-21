@@ -12,11 +12,11 @@ const FullPagePost = ({ forumMember }) => {
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
-      <HeroImage heroClass={'antarctica'}/>
+      {/* <HeroImage heroClass={'antarctica'}/> */}
         <div className="container">
           {/* <Header headingText={"Post Title"} /> */}
           <PostContent />
-          <h1>Comments</h1>
+          <h1 class="mb-3">Comments</h1>
           <CommentContent />
           <CommentContent />
           <CommentContent />
