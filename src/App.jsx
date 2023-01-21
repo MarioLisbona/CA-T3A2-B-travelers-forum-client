@@ -21,6 +21,7 @@ import './HeroImage.css'
 import MyPosts from './components/MyPosts'
 import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
+import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
@@ -47,7 +48,7 @@ const App = () => {
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} />} />
           <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
-          <Route path='*' element={<FullPagePost />} />
+          <Route path='*' element={<PageNotFound />} />
           {/* <Route path='*' element={<h4>404 Error: Page not found</h4>} /> */}
         </Routes>
       </BrowserRouter>
