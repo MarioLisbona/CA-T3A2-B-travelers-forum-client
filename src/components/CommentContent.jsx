@@ -11,7 +11,7 @@ const CommentContent = () => {
                       <div>Member:</div>
                     </div>
                     <div class="col-md-6">
-                      <div class="demo-content bg-alt">Username</div>
+                      <div class="bg-alt">Username</div>
                     </div>
                   </div>
                 </div>
@@ -21,13 +21,13 @@ const CommentContent = () => {
                       <div>Posted:</div>
                     </div>
                     <div class="col-md-6 mb-3">
-                      <div class="demo-content bg-alt">4-July-2023</div>
+                      <div class="bg-alt">4-July-2023</div>
                     </div>
                   </div>
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="demo-content bg-alt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi quia laboriosam illo inventore officiis id, at suscipit velit exercitationem iste voluptas! Minima veniam voluptates repellat.</div>
+                <div class="bg-alt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi quia laboriosam illo inventore officiis id, at suscipit velit exercitationem iste voluptas! Minima veniam voluptates repellat.</div>
             </div>
         </div>
     </div>
