@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
 	return (
 		<>
-			<hr></hr>
 			<footer>
+			<hr></hr>
 				<div className="row m-1">
 					<div className="col-md-6">
 							<p>Copyright © 2023 Traveler's Forum</p>
