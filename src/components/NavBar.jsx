@@ -60,7 +60,7 @@ const NavBar = () => {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link text-white" to="/contact">
-                                Contact
+                                Contact Us
                             </Link>
                         </li>
                     </ul>

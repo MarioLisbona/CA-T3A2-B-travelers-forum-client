@@ -20,8 +20,8 @@ const Footer = () => {
 								Privacy Policy
 							</Link>
 							<span className="text-muted mx-2">|</span>
-							<Link to="/socials" className="text-dark">
-								Social Media
+							<Link to="/contact" className="text-dark">
+								Contact Us
 							</Link>
 					</div>
 				</div>

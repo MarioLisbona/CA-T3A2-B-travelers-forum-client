@@ -70,7 +70,7 @@ const MemberNavBar = () => {
                                     About
                                 </Link>
                                 <Link className="dropdown-item text-white" to="/contact">
-                                    Contact
+                                    Contact Us
                                 </Link>
                             </div>
                         </li>

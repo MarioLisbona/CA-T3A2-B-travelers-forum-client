@@ -18,6 +18,8 @@ import Contact from './components/Contact'
 import TermsOfUse from './components/TermsOfUse'
 import Privacy from './components/Privacy'
 import './HeroImage.css'
+import MyPosts from './components/MyPosts'
+import CreateAPost from './components/CreateAPost'
 
 const App = () => {
 
@@ -27,9 +29,9 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember}/>} />
-          <Route path="/login" element={<Login forumMember={forumMember}/>} />
-          <Route path="/register" element={<Register forumMember={forumMember}/>} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} />} />
+          <Route path="/login" element={<Login forumMember={forumMember} />} />
+          <Route path="/register" element={<Register forumMember={forumMember} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} />} />
           <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} />} />
@@ -38,10 +40,12 @@ const App = () => {
           <Route path="/view/continent/antarctica" element={<Antarctica forumMember={forumMember} />} />
           <Route path="/view/continent/europe" element={<Europe forumMember={forumMember} />} />
           <Route path="/view/continent/australia" element={<Australia forumMember={forumMember} />} />
-          <Route path="/about" element={<About forumMember={forumMember}/>} />
-          <Route path="/contact" element={<Contact forumMember={forumMember}/>} />
-          <Route path="/terms" element={<TermsOfUse forumMember={forumMember}/>} />
-          <Route path="/privacy" element={<Privacy forumMember={forumMember}/>} />
+          <Route path="/about" element={<About forumMember={forumMember} />} />
+          <Route path="/contact" element={<Contact forumMember={forumMember} />} />
+          <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
+          <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
+          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} />} />
+          <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
           <Route path='*' element={<h4>404 Error: Page not found</h4>} />
         </Routes>
       </BrowserRouter>

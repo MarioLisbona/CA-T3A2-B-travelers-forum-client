@@ -1,6 +1,6 @@
 .landing-page, .view-all, .asia, .australia,
 .n-am, .s-am, .acirfa, .europe, .antarctica, .about,
-.contact, .register, .login {
+.contact, .register, .login, .create {
     display: flex;
     flex-direction: column;
     background-size: cover;
@@ -58,6 +58,10 @@
 
 .register {
     background: url(../src/assets/hero-img-register.jpg) no-repeat center -600px;
+}
+
+.create {
+    background: url(../src/assets/hero-img-create-a-post.jpg) no-repeat center -600px;
 }
 
 /* .test {
