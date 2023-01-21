@@ -63,7 +63,7 @@ const MemberNavBar = () => {
                   </div> */}
                   <div className="navbar-nav ms-auto">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item dropdown">
+                        <li className="nav-item dropdown me-4">
                         <a className="nav-link dropdown-toggle text-white" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           My Account
                           </a>
