@@ -53,14 +53,6 @@ const MemberNavBar = () => {
                           </div>
                       </li>
                   </ul>
-                  {/* <div className="navbar-nav ms-auto">              	
-                      <Link to="#" className="nav-item nav-link text-white">
-                          My Posts
-                      </Link>
-                      <Link to="#" className="nav-item nav-link text-white">
-                          Create a Post
-                      </Link>
-                  </div> */}
                   <div className="navbar-nav ms-auto">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item dropdown me-4">
