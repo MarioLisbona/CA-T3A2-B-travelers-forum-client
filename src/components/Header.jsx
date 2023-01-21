@@ -5,7 +5,7 @@ import CtaButton from './CtaButton'
 
 const Header = ({ headingText, btnText, showBtn}) => {
 
-	console.log(Boolean(showBtn))
+	console.log()
 	return (
 		<div className="p-5 my-4 bg-light rounded-3">
 				<h1>{headingText}</h1>
