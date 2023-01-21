@@ -10,7 +10,7 @@ const PreviewCard = () => {
 						<div className="card-body">
 								<h5 className="card-title">South America</h5>
 								<p className="card-text">A story about adventures traveling through south america</p>
-								<Link href="https://instagram.com" className="btn btn-primary">
+								<Link to="#" className="btn btn-primary">
 									View
 								</Link>
 						</div>
