@@ -48,6 +48,7 @@ const App = () => {
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} />} />
           <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
+          <Route path={"/sample-post"} element={<FullPagePost forumMember={forumMember} />} />
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
       </BrowserRouter>
