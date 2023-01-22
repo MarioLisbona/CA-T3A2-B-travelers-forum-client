@@ -7,7 +7,7 @@ import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
 
-const Asia = ({ forumMember }) => {
+const Asia = ({ forumMember, asiaPosts }) => {
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
@@ -15,10 +15,9 @@ const Asia = ({ forumMember }) => {
         <div className="container">
           <Header headingText={"Welcome to the Asian Continent!"} btnText={'View all Asia Posts'} showBtn />
           <div className="row g-3">
-            <PreviewCard />
-            <PreviewCard />
-            <PreviewCard />
-            <PreviewCard />
+            {asiaPosts.map((post, idx) => (
+              <PreviewCard post={post} toPage={`/posts/${post._id}`} />
+            ))}
           </div>
         </div>
         <Footer />

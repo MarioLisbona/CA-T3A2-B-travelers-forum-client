@@ -6,7 +6,7 @@ import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
-const Africa = ({ forumMember }) => {
+const Africa = ({ forumMember, africaPosts }) => {
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
@@ -14,7 +14,9 @@ const Africa = ({ forumMember }) => {
         <div className="container">
           <Header headingText={"Welcome to the African Continent!"} btnText={'View all Africa Posts'} showBtn  />
           <div className="row g-3">
-            <PreviewCard />
+            {africaPosts.map((post, idx) => (
+              <PreviewCard post={post} toPage={`/posts/${post._id}`} />
+            ))}
           </div>
         </div>
         <Footer />

@@ -7,7 +7,8 @@ import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
 
-const ViewAll = ({ forumMember }) => {
+const ViewAll = ({ forumMember, allPosts }) => {
+
   return (
     <>
     {forumMember ? <MemberNavBar /> : <NavBar />}
@@ -15,17 +16,9 @@ const ViewAll = ({ forumMember }) => {
       <div className="container">
         <Header headingText={"Browse the entire Forum"} btnText={'View all Posts'} showBtn />
         <div className="row g-3">
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
-          <PreviewCard />
+          {allPosts.map((post, idx) => (
+              <PreviewCard post={post} toPage={`/posts/${post._id}`} />
+          ))}
         </div>
       </div>
       <Footer />
