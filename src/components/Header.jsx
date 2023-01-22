@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import CtaButton from './CtaButton'
 
 
-const Header = ({ headingText, btnText, showBtn}) => {
+const Header = ({ headingText, btn1Text, showBtn1} ) => {
 
-	console.log()
+	console.log(showBtn1)
+
 	return (
 		<div className="p-5 my-4 bg-light rounded-3">
 				<h1>{headingText}</h1>
@@ -16,7 +17,7 @@ const Header = ({ headingText, btnText, showBtn}) => {
 					{/* <Link to="https://www.google.com" target="_blank" className="btn btn-success btn-lg">
 					{btnText}
 					</Link> */}
-					{showBtn ? <CtaButton btnText={btnText}/> : ''}
+					{showBtn1 ? <CtaButton showBtn1 btn1Text={btn1Text}/> : ''}
 
 				</p>
 		</div>
