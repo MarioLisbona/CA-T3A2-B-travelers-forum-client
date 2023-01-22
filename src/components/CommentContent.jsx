@@ -7,21 +7,21 @@ const CommentContent = () => {
             <div class="col-md-4">
                 <div>
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div>Member:</div>
                     </div>
                     <div class="col-md-6">
-                      <div class="bg-alt">Username</div>
+                      <div class="bg-alt mb-2">Username</div>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div>Posted:</div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                      <div class="bg-alt">4-July-2023</div>
+                    <div class="col-md-7 mb-4">
+                      <div class="bg-alt mb-2">4-July-2023</div>
                     </div>
                   </div>
                 </div>

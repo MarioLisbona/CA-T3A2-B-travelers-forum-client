@@ -5,24 +5,24 @@ const PostContent = () => {
     <div className="p-5 mt-5 bg-light rounded-3">
 				<h1 class="mb-3">Post Title</h1>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="">Member:</div>
                     </div>
                     <div class="col-md-6">
-                      <div class="bg-alt">Username</div>
+                      <div class="bg-alt mb-2">Username</div>
                     </div>
                   </div>
                 </div>
                 <div class="">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="">Posted:</div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                      <div class="bg-alt">4-July-2023</div>
+                    <div class="col-md-6 mb-4">
+                      <div class="bg-alt mb-2">4-July-2023</div>
                     </div>
                   </div>
                 </div>
