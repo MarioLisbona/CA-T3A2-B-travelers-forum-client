@@ -10,7 +10,7 @@ const SocialMedia = () => {
             <a id="instagram" href="https://www.instagram.com" class="text-reset text-decoration-none" target="_blank">
               <div class="p-2 d-flex flex-row justify-content-start">
                 <div class="me-3">
-                  <img src="/src/assets/icons8-instagram-30.png"></img>
+                  <img src="../src/assets/icons8-instagram-30.png"></img>
                 </div>
                 <div>
                   <p>Instagram</p>
@@ -20,7 +20,7 @@ const SocialMedia = () => {
             <a href="https://www.twitter.com" class="text-reset text-decoration-none" target="_blank">
               <div class="p-2 d-flex flex-row justify-content-start">
                 <div class="me-3">
-                <img src="/src/assets/icons8-twitter-30.png"></img>
+                <img src="../src/assets/icons8-twitter-30.png"></img>
                 </div>
                 <div>
                   <p>Twitter</p>
@@ -30,7 +30,7 @@ const SocialMedia = () => {
             <a href="https://www.instagram.com" class="text-reset text-decoration-none" target="_blank">
               <div class="p-2 d-flex flex-row justify-content-start">
                 <div class="me-3">
-                <img src="/src/assets/icons8-mail-30.png"></img>
+                <img src="../src/assets/icons8-mail-30.png"></img>
                 </div>
                 <div>
                   <p class="external-link">Email</p>
