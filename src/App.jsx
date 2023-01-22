@@ -209,7 +209,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={member4.name} />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={member1.name} />} />
           <Route path="/login" element={<Login forumMember={forumMember} />} />
           <Route path="/register" element={<Register forumMember={forumMember} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
