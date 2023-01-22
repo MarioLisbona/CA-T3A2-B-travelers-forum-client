@@ -1,7 +1,8 @@
 import React from 'react'
 import instagramIcon from "../assets/icons8-instagram-30.png"
-import mailIcon from "../assets/icons8-mail-30.png"
+import facebookIcon from "../assets/icons8-facebook-30.png"
 import twitterIcon from "../assets/icons8-twitter-30.png"
+import pinterestIcon from "../assets/icons8-pinterest-30.png"
 
 
 const SocialMedia = () => {
@@ -20,23 +21,33 @@ const SocialMedia = () => {
                 </div>
               </div>
             </a>
+            <a href="https://www.facebook.com" class="text-reset text-decoration-none" target="_blank">
+              <div class="p-2 d-flex flex-row justify-content-start">
+                <div class="me-3">
+                <img src={facebookIcon}></img>
+                </div>
+                <div>
+                  <p>Facebook</p>
+                </div>
+              </div>
+            </a>
             <a href="https://www.twitter.com" class="text-reset text-decoration-none" target="_blank">
               <div class="p-2 d-flex flex-row justify-content-start">
                 <div class="me-3">
                 <img src={twitterIcon}></img>
                 </div>
                 <div>
-                  <p>Twitter</p>
+                  <p class="external-link">Twitter</p>
                 </div>
               </div>
             </a>
-            <a href="https://www.instagram.com" class="text-reset text-decoration-none" target="_blank">
+            <a href="https://www.pinterest.com" class="text-reset text-decoration-none" target="_blank">
               <div class="p-2 d-flex flex-row justify-content-start">
                 <div class="me-3">
-                <img src={mailIcon}></img>
+                <img src={pinterestIcon}></img>
                 </div>
                 <div>
-                  <p class="external-link">Email</p>
+                  <p class="external-link">Pinterest</p>
                 </div>
               </div>
             </a>
