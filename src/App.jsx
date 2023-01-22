@@ -27,16 +27,31 @@ const App = () => {
 
   const forumMember = true
 
-  const member = {
+  const member1 = {
     name: 'Mario',
     age: 43
+  }
+
+  const member2 = {
+    name: 'Ali',
+    age: 32
+  }
+
+  const member3 = {
+    name: 'Coda',
+    age: 3
+  }
+
+  const member4 = {
+    name: 'Someone Else',
+    age: 44
   }
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={member.name} />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={member4.name} />} />
           <Route path="/login" element={<Login forumMember={forumMember} />} />
           <Route path="/register" element={<Register forumMember={forumMember} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} />} />

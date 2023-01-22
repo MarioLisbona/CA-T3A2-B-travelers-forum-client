@@ -13,10 +13,12 @@ const MemberHeader = ( { headingText, showBtn1, showBtn2, btn1Text, btn2Text} ) 
       {/* <Link to="https://www.google.com" target="_blank" className="btn btn-success btn-lg">
       {btnText}
       </Link> */}
-      {showBtn1 ? <CtaButton showBtn1 btn1Text={btn1Text}/> : ''} {showBtn2 ? <CtaButton showBtn2 btn2Text={btn2Text}/> : ''}
+      {showBtn1 ? <CtaButton showBtn1 btn1Text={btn1Text} btn1ToPage={"/posts"} /> : ''} {showBtn2 ? <CtaButton showBtn2 btn2Text={btn2Text} btn2ToPage={"/posts/create"} /> : ''}
     </p>
 </div>
   )
 }
 
 export default MemberHeader
+
+"/posts/create"
