@@ -9,7 +9,7 @@ import MemberNavBar from './MemberNavBar'
 const PostForm = () => {
   return (
     <>
-      <form>
+      <form class="p-5 bg-light rounded-3">
         <div class="row mb-3">
           <label for="inputPostTitle" class="col-sm-2 col-form-label">Post Title</label>
           <div class="col-sm-10">
