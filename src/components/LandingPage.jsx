@@ -5,15 +5,18 @@ import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
+import MemberHeader from './MemberHeader'
 
-const LandingPage = ({ forumMember }) => {
+const LandingPage = ({ forumMember, memberName }) => {
 
 	return (
 		<>
       {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'landing-page'} />
         <div className="container">
-          <Header headingText={"Welcome to the Traveler's Forum"} btnText={'Register'} showBtn/>
+          {forumMember 
+            ? <MemberHeader headingText={`Hi ${memberName} Welcome to the forum`} btn1Text={'My Posts'} showBtn1 btn2Text={'Create a Post'} showBtn2 />
+            : <Header headingText={"Welcome to the Traveler's Forum"} btn1Text={'Register'} showBtn1 /> }
           <div className="row g-3">
             <PreviewCard />
             <PreviewCard />
