@@ -17,7 +17,7 @@ const ViewAll = ({ forumMember, allPosts }) => {
         <Header headingText={"Browse the entire Forum"} btnText={'View all Posts'} showBtn />
         <div className="row g-3">
           {allPosts.map((post, idx) => (
-              <PreviewCard post={post} toPage={`/posts/${post._id}`} />
+              <PreviewCard post={post}  />
           ))}
         </div>
       </div>

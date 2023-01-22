@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const PreviewCard = ({ post, toPage }) => {
+const PreviewCard = ({ post }) => {
 
 
 	return (
@@ -13,7 +13,7 @@ const PreviewCard = ({ post, toPage }) => {
 								<h5 className="card-title">{post.title}</h5>
 								<h6>{`Author: ${post.author}`}</h6>
 								<p className="card-text">{`${post.content.substring(0, 150)}......`}</p>
-								<Link to={toPage} className="btn btn-primary">
+								<Link to={`/posts/${post._id}`} className="btn btn-primary">
 									Read more
 								</Link>
 						</div>

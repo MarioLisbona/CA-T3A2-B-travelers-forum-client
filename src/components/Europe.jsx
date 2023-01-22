@@ -18,7 +18,7 @@ const Europe = ({ forumMember, europePosts }) => {
           <Header headingText={"Welcome to the Europe!"} btnText={'View all Europe Posts'}  showBtn />
           <div className="row g-3">
             {europePosts.map((post, idx) => (
-              <PreviewCard post={post} toPage={`/posts/${post._id}`} />
+              <PreviewCard post={post} />
             ))}
           </div>
         </div>

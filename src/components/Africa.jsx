@@ -32,7 +32,7 @@ const Africa = ({ forumMember, africaPosts }) => {
           <Header headingText={"Welcome to the African Continent!"} btnText={'View all Africa Posts'} showBtn  />
           <div className="row g-3">
             {africaPosts.map((post, idx) => (
-              <PreviewCard post={post} toPage={`/posts/${post._id}`} />
+              <PreviewCard post={post}  />
             ))}
           </div>
         </div>
