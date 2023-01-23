@@ -18,6 +18,7 @@ const LandingPage = ({ forumMember, memberName }) => {
             ? <MemberHeader headingText={`Hi ${memberName}, welcome to the forum`} btn1Text={'My Posts'} showBtn1 btn2Text={'Create a Post'} showBtn2 />
             : <Header headingText={"Welcome to the Traveler's Forum"} btn1Text={'Register'} showBtn1 /> }
           <div className="row g-3">
+            {/* <PreviewCard />
             <PreviewCard />
             <PreviewCard />
             <PreviewCard />
@@ -25,8 +26,7 @@ const LandingPage = ({ forumMember, memberName }) => {
             <PreviewCard />
             <PreviewCard />
             <PreviewCard />
-            <PreviewCard />
-            <PreviewCard />
+            <PreviewCard /> */}
           </div>
         </div>
         <Footer />

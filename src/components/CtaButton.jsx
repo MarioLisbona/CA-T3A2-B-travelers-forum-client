@@ -10,8 +10,8 @@ const CtaButton = ({ showBtn1, showBtn2, btn1Text, btn2Text, btn1ToPage, btn2ToP
 				{btn1Text}
 			</Link> */}
 
-      {showBtn1 ? <Link to={btn1ToPage} className="btn btn-success btn-lg">{btn1Text}</Link> : ''}
-      {showBtn2 ? <Link to={btn2ToPage} className="btn btn-success btn-lg">{btn2Text}</Link> : ''}
+      {showBtn1 ? <Link to={btn1ToPage} className="btn btn-success btn-lg my-1">{btn1Text}</Link> : ''}
+      {showBtn2 ? <Link to={btn2ToPage} className="btn btn-success btn-lg my-1">{btn2Text}</Link> : ''}
     </>
   )
 }
