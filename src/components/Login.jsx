@@ -4,7 +4,7 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
-import LoginRegisterForm from './LoginRegisterForm'
+import LoginForm from './LoginForm'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // Login component
@@ -28,9 +28,7 @@ const Login = ({ forumMember }) => {
     <HeroImage heroClass={'login'} />
       <div className="container">
         <Header headingText={"Login for more features"} btnText={'Login'} showBtn />
-        <div className="row g-3">
-          <LoginRegisterForm />
-        </div>
+        <LoginForm />
       </div>
       <Footer />
   </>

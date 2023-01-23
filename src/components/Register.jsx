@@ -4,7 +4,7 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
-import LoginRegisterForm from './LoginRegisterForm'
+import RegisterForm from './RegisterForm'
 
 
 
@@ -22,14 +22,14 @@ import LoginRegisterForm from './LoginRegisterForm'
 //       - footer
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const Register = ({ forumMember }) => {
+const Register = ({ forumMember, addUser }) => {
   return (
     <>
     {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage heroClass={'register'} />
       <div className="container">
         <Header headingText={"Register to become a member"} btnText={'Register'} />
-        <LoginRegisterForm showUsername />
+        <RegisterForm addUser={addUser} />
       </div>
       <Footer />
   </>

@@ -27,6 +27,44 @@ const App = () => {
 
   const forumMember = false
 
+  const users = [
+    {
+      email: 'mario.lisbona@gmail.com',
+      username: 'Mario',
+      password: 'password123'
+    },
+    {
+      email: 'ali.lisbona@gmail.com',
+      username: 'Mario',
+      password: 'Alisha999999'
+    },
+    {
+      email: 'amtaubner@gmail.com',
+      username: 'Aligirl90',
+      password: 'ali123'
+    },
+    {
+      email: 'coda@cat.com',
+      username: 'Coda',
+      password: 'coda123'
+    },
+  ]
+
+  function AddUser(email, username, password) {
+    const newUser = {
+      email: email,
+      username: username,
+      password: password
+    }
+
+    console.log(users)
+
+    users.push(newUser)
+
+    console.log(users)
+  }
+
+
 //   const seedPosts = [
 //     {
 //         "_id": "63cd13d890ac0093883f03c2",
@@ -211,7 +249,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} memberName={member1.name} />} />
           <Route path="/login" element={<Login forumMember={forumMember} />} />
-          <Route path="/register" element={<Register forumMember={forumMember} />} />
+          <Route path="/register" element={<Register forumMember={forumMember} addUser={AddUser} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
           <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
