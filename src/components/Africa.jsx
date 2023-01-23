@@ -31,9 +31,15 @@ const Africa = ({ forumMember, africaPosts }) => {
         <div className="container">
           <Header headingText={"Welcome to the African Continent!"} btnText={'View all Africa Posts'} showBtn  />
           <div className="row g-3">
-            {africaPosts.map((post, idx) => (
+            {africaPosts.length > 0
+              ? africaPosts.map((post, idx) => (
+                <PreviewCard post={post}  />
+              ))
+              : <h1>There are not posts in this forum</h1>
+            }
+            {/* {africaPosts.map((post, idx) => (
               <PreviewCard post={post}  />
-            ))}
+            ))} */}
           </div>
         </div>
         <Footer />
