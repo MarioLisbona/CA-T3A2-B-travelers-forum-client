@@ -32,7 +32,7 @@ const PostForm = () => {
           <label for="input-continent-select" class="col-sm-2 col-form-label">Choose a Continent</label>
           <div class="col-sm-10">
             <select class="form-select" id="inputPostContinent">
-              <option selected>What continent did you travel to ?</option>
+              <option selected></option>
               <option value="Asia">Asia</option>
               <option value="Africa">Africa</option>
               <option value="North America">North America</option>
