@@ -1,6 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// CommentContent component
+// Use - A card to display a posts preview information and a button to link the full post
+//
+// props: 
+//       - post - a post object
+//       - 
+//
+// components used:
+//       - Bootstrap rows and columns with classes applied
+//       - Link
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const PreviewCard = ({ post }) => {
 

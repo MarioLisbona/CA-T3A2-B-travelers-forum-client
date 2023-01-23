@@ -8,11 +8,26 @@ import MemberNavBar from './MemberNavBar'
 import PostContent from './PostContent'
 import CommentContent from './CommentContent'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// FullPagePost component
+// Use - Display's a full post, with comments 
+//
+// props: 
+//       - forumMember - used to conditionally render guest or member navbar
+//
+// components used:
+//       - MemberNavBar and NavBar
+//       - Hero image with correct class for images
+//       - PostContent component
+//       - mapping over comments object and rendering CommentContent for each object
+//       - footer
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 const FullPagePost = ({ forumMember }) => {
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
-      {/* <HeroImage heroClass={'antarctica'}/> */}
         <div className="container">
           {/* <Header headingText={"Post Title"} /> */}
           <PostContent />

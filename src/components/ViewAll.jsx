@@ -6,6 +6,22 @@ import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// ViewAll component
+// Use - Displays all the posts on the forum from every category
+//
+// props: 
+//       - forumMember - used to conditionally render guest or member navbar
+//       - allPosts - an array of posts fetched from the database
+//
+// components used:
+//       - MemberNavBar and NavBar
+//       - Hero image with correct class for images
+//       - Header, CTA button to view all posts for this category
+//       - Map over allPosts array and render a preview card for each post
+//       - footer
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const ViewAll = ({ forumMember, allPosts }) => {
 

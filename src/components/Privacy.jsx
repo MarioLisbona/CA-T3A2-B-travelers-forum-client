@@ -6,6 +6,19 @@ import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// Privacy component
+// Use - Displays information about the privacy policy for the forum
+//
+// props: 
+//       - forumMember - used to conditionally render guest or member navbar
+//
+// components used:
+//       - MemberNavBar and NavBar
+//       - Hero image with correct class for images
+//       - Header, no CTA button
+//       - footer
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Privacy = ({ forumMember }) => {
   return (

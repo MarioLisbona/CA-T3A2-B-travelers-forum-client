@@ -1,5 +1,17 @@
 import React from 'react'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// PostContent component
+// Use - A container to display post details and content
+//
+// props: 
+//       - 
+//       - 
+//
+// components used:
+//       - Bootstrap rows and columns with classes applied
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 const PostContent = () => {
   return (
     <div className="p-5 mt-5 bg-light rounded-3">

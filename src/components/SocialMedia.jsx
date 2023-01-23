@@ -4,6 +4,16 @@ import facebookIcon from "../assets/icons8-facebook-30.png"
 import twitterIcon from "../assets/icons8-twitter-30.png"
 import pinterestIcon from "../assets/icons8-pinterest-30.png"
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// SocialMedia component
+// Use - container for social media icons and links
+//
+// props: 
+//       - 
+//
+// components used:
+//       - Bootstrap elements and styles
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const SocialMedia = () => {
   return (

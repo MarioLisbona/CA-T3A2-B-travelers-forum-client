@@ -1,5 +1,17 @@
 import React from 'react'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// CommentContent component
+// Use - A container to display comment details and the comment
+//
+// props: 
+//       - 
+//       - 
+//
+// components used:
+//       - Bootstrap rows and columns with classes applied
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 const CommentContent = () => {
   return (
     <div className="p-5 my-2 bg-light rounded-3">

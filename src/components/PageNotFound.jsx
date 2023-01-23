@@ -6,6 +6,19 @@ import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// PageNotFound component
+// Use - Displays a page with an error messasge when a page is not found
+//
+// props: 
+//       - forumMember - used to conditionally render guest or member navbar
+//
+// components used:
+//       - MemberNavBar and NavBar
+//       - Hero image with correct class for images
+//       - Header, no CTA button
+//       - footer
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const PageNotFound = ({ forumMember }) => {
   return (

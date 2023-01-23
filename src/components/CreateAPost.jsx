@@ -7,6 +7,21 @@ import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 import PostForm from './PostForm'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// CreateAPost component
+// Use - Displays a page with a form to create a new post
+//
+// props: 
+//       - forumMember - used to conditionally render guest or member navbar
+//
+// components used:
+//       - MemberNavBar and NavBar
+//       - Hero image with correct class for images
+//       - Header, no CTA button
+//       - PostForm component
+//       - footer
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 const CreateAPost = ({ forumMember }) => {
   return (
     <>

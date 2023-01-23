@@ -6,6 +6,19 @@ import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// TermsOfUse component
+// Use - Displays information about the terms for using the forum
+//
+// props: 
+//       - forumMember - used to conditionally render guest or member navbar
+//
+// components used:
+//       - MemberNavBar and NavBar
+//       - Hero image with correct class for images
+//       - Header, no CTA button
+//       - footer
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const TermsOfUse = ({ forumMember }) => {
   return (

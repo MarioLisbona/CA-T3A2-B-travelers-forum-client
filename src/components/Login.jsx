@@ -5,6 +5,20 @@ import Header from './Header'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// Login component
+// Use - Displays login form
+//
+// props: 
+//       - forumMember - used to conditionally render guest or member navbar
+//
+// components used:
+//       - MemberNavBar and NavBar
+//       - Hero image with correct class for images
+//       - Header, CTA button to view all posts for this category
+//       - Login form
+//       - footer
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Login = ({ forumMember }) => {
   return (

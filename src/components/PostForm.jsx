@@ -6,6 +6,18 @@ import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// PostForm component
+// Use - A form to create a new post
+//
+// props: 
+//       - 
+//       - 
+//
+// components used:
+//       - Bootstrap rows and columns with classes applied
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 const PostForm = () => {
   return (
     <>
