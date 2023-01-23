@@ -64,6 +64,10 @@ const App = () => {
     console.log(users)
   }
 
+  function loginDetails(email, password) {
+    console.log(`User attempting to login\n ${email}: ${password}`)
+  }
+
 
 //   const seedPosts = [
 //     {
@@ -248,7 +252,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} memberName={member1.name} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} />} />
+          <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />
           <Route path="/register" element={<Register forumMember={forumMember} addUser={AddUser} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />

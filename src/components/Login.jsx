@@ -21,14 +21,14 @@ import LoginForm from './LoginForm'
 //       - footer
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const Login = ({ forumMember }) => {
+const Login = ({ forumMember, loginDetails }) => {
   return (
     <>
     {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage heroClass={'login'} />
       <div className="container">
         <Header headingText={"Login for more features"} btnText={'Login'} showBtn />
-        <LoginForm />
+        <LoginForm loginDetails={loginDetails} />
       </div>
       <Footer />
   </>

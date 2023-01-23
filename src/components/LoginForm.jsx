@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const LoginForm = () => {
+const LoginForm = ({ loginDetails }) => {
 
   const [email, setEmail] = useState()
   const [username, setUsername] = useState()
@@ -13,15 +13,15 @@ const LoginForm = () => {
     AddUser(email, username, password)
   }
 
-  function submitFormLogin(event) {
+  function submitForm(event) {
     event.preventDefault()
-    console.log({email: email, username: username, password: password})
 
+    loginDetails(email, password)
   }
 
   return (
     <>
-      <form class="p-5 bg-light rounded-3">
+      <form onSubmit={submitForm} class="p-5 bg-light rounded-3">
         <div class="row mb-3">
           <label for="inputPostTitle" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-4">
