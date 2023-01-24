@@ -25,16 +25,30 @@ import MemberNavBar from './MemberNavBar'
 
 const ViewAll = ({ forumMember, allPosts }) => {
 
+  const emptyPostsArray = []
+
   return (
     <>
     {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage  heroClass={'view-all'}/>
       <div className="container">
-        <Header headingText={"Browse the entire Forum"} btnText={'View all Posts'} showBtn />
+        <Header headingText={"Browse the entire Forum"} bodyText={"This is a little blurb about being able to view all the forum posts...r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}/>
         <div className="row g-3">
-          {allPosts.map((post, idx) => (
+        {allPosts.length > 0
+              ? allPosts.map((post, idx) => (
+                <PreviewCard post={post}  />
+              ))
+              : forumMember
+                  ? <Header headingText={"Much empty..."} 
+                    bodyText={"The Europe travel forum currently has no posts, Click below to be the first"} 
+                    showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
+                  : <Header headingText={"Much empty..."} 
+                  bodyText={"The Europe travel forum currently has no posts, register today to be the first to contribute."}
+                    showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
+            }
+          {/* {allPosts.map((post, idx) => (
               <PreviewCard post={post}  />
-          ))}
+          ))} */}
         </div>
       </div>
       <Footer />
