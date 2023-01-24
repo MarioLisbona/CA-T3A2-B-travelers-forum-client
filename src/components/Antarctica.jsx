@@ -33,7 +33,7 @@ const Antarctica = ({ forumMember, antarcticaPosts }) => {
       <HeroImage heroClass={'antarctica'} />
         <div className="container">
           <Header headingText={"Welcome to the Antarctica!"}
-            bodyText={"This is a little blurb about Antarctica."} />
+            bodyText={"This is a little blurb about Antarctica. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "} />
           <div className="row g-3">
             {emptyPostsArray.length > 0
                 ? antarcticaPosts.map((post, idx) => (

@@ -32,7 +32,9 @@ const Australia = ({ forumMember, australiaPosts }) => {
      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'australia'} />
         <div className="container">
-          <Header headingText={"Welcome to the Australia!"} btnText={'View all Australia Posts'} showBtn />
+          <Header headingText={"Welcome to the Australia!"}
+            bodyText={"This is a little blurb about Australia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+          />
           <div className="row g-3">
             {australiaPosts.length > 0
               ? australiaPosts.map((post, idx) => (

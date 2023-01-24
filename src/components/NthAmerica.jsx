@@ -32,7 +32,9 @@ const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
       {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'n-am'} />
         <div className="container">
-          <Header headingText={"Welcome to the North America!"} btnText={'View all North America Posts'} showBtn />
+          <Header headingText={"Welcome to the North America!"}
+            bodyText={"This is a little blurb about North America. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "} 
+          />
           <div className="row g-3">
             {emptyPostsArray.length > 0
               ? nthAmericaPosts.map((post, idx) => (
