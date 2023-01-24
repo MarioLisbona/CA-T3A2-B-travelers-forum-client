@@ -36,7 +36,7 @@ const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
           <div className="row g-3">
             {nthAmericaPosts.length > 0
               ? nthAmericaPosts.map((post, idx) => (
-                <PreviewCard post={post}  />
+                <PreviewCard key ={idx} post={post}  />
               ))
               : forumMember
                   ? <Header headingText={"Much empty..."} 

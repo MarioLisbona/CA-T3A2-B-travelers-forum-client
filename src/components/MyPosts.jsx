@@ -36,7 +36,7 @@ const MyPosts = ({ forumMember, latestPosts }) => {
       <div className="row g-3">
         {latestPosts.length > 0
           ? latestPosts.map((post, idx) => (
-              <PreviewCard post={post}  />
+              <PreviewCard key ={idx} post={post}  />
             ))
           : <MemberHeader headingText={"You havn't made any posts yet."}
               bodyText={"Click the Create a Post button above to make your first post to the forum."} 

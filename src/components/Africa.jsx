@@ -41,7 +41,7 @@ const Africa = ({ forumMember, africaPosts }) => {
           and pass in the post object */}
           {africaPosts.length > 0
             ? africaPosts.map((post, idx) => (
-              <PreviewCard post={post}  />
+              <PreviewCard key ={idx} post={post}  />
             ))
             // If africaPosts is an empty array then render a header for guest and one for member
             : forumMember
