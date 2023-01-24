@@ -92,7 +92,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={members[0]} />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={members[0]} latestPosts={posts} />} />
           <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />
           <Route path="/register" element={<Register forumMember={forumMember} addUser={AddUser} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
