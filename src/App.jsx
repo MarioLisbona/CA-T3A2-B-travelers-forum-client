@@ -92,7 +92,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={members[0]} latestPosts={posts} />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} />} />
 
           {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
           <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />    
@@ -111,7 +111,7 @@ const App = () => {
           <Route path="/contact" element={<Contact forumMember={forumMember} />} />
           <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
-          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} memberName={members[0]} />} />
+          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} />} />
           <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
 
           {/* <Route path={"/posts/:id"} element={<FullPagePost forumMember={forumMember} />} /> */}

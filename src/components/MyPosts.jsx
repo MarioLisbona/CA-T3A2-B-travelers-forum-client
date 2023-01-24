@@ -18,7 +18,7 @@ import MemberHeader from './MemberHeader'
 //       - 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const MyPosts = ({ forumMember, latestPosts, memberName }) => {
+const MyPosts = ({ forumMember, latestPosts }) => {
 
   const emptyPostsArray = []
 
@@ -27,7 +27,7 @@ const MyPosts = ({ forumMember, latestPosts, memberName }) => {
       {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'landing-page'}/>
       <div className="container">
-      <MemberHeader headingText={`Hi ${memberName.username}, welcome to the forum`}
+      <MemberHeader headingText={`Hi SOME PERSONS NAME, welcome to the forum`}
         bodyText={"All your latest posts are displayed below"} 
         btn1Text={'View All My Posts'}
         btn2Text={'Create a Post'}
