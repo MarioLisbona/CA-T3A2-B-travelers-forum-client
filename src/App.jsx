@@ -72,7 +72,6 @@ const App = () => {
   const ShowPostWrapper = () =>{
     const { id } = useParams()
     const post = posts.filter(post => post._id == id)
-    console.log(post)
     return post ? <FullPagePost post={post} /> : <h1>That post does not exist</h1>
   }
 

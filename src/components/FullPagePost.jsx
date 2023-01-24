@@ -31,7 +31,7 @@ const FullPagePost = ({ forumMember, post }) => {
         <div className="container">
           {/* <Header headingText={"Post Title"} /> */}
           <PostContent post={post} />
-          <h1 class="mb-3">Comments</h1>
+          <h1 className="mb-3">Comments</h1>
           <CommentContent />
           <CommentContent />
           <CommentContent />
