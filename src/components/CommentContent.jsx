@@ -14,7 +14,7 @@ import React from 'react'
 
 const CommentContent = ({ comment }) => {
   return (
-    <div className="p-5 my-2 bg-light rounded-3">
+    <div className="ps-5 py-2 my-2 bg-light rounded-3 border border-success">
         <div className="row">
             <div className="col-md-4">
                 <div>

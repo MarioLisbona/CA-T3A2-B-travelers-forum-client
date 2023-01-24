@@ -19,7 +19,7 @@ import CtaButton from './CtaButton'
 const Header = ({ headingText, bodyText, btn1Text, showBtn1, btn1ToPage} ) => {
 
 	return (
-		<div className="p-5 my-4 bg-light rounded-3">
+		<div className="p-5 my-4 bg-light rounded-3 border border-success">
 				<h1>{headingText}</h1>
 				<p className="lead">{bodyText}</p>
 				<p>

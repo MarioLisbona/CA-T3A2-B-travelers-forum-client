@@ -21,7 +21,7 @@ const LoginRegisterForm = ({ registerUser }) => {
 
   return (
     <>
-      <form onSubmit={submitFormRegister} class="p-5 bg-light rounded-3">
+      <form onSubmit={submitFormRegister} class="p-5 bg-light rounded-3 border border-success">
         <div class="row mb-3">
           <label for="inputPostTitle" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-4">

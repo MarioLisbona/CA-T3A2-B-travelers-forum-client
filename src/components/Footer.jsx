@@ -17,7 +17,7 @@ const Footer = () => {
 	return (
 		<>
 			<footer>
-			<hr></hr>
+			<hr className="border border-success"></hr>
 				<div className="row m-1">
 					<div className="col-md-6">
 							<p>Copyright © 2023 Traveler's Forum</p>

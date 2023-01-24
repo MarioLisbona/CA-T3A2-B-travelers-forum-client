@@ -17,7 +17,7 @@ import pinterestIcon from "../assets/icons8-pinterest-30.png"
 
 const SocialMedia = () => {
   return (
-      <div id="social-media" class="d-flex flex-column mb-3 p-5 my-4 bg-light rounded-3">
+      <div id="social-media" class="d-flex flex-column mb-3 p-5 my-4 bg-light rounded-3 border border-success">
         <h1 class="mb-3">Social Media</h1>
         <div className="row">
           <div className="col-md-2">

@@ -37,7 +37,7 @@ const FullPagePost = ({ forumMember, post }) => {
       {forumMember ? <MemberNavBar /> : <NavBar />}
         <div className="container">
           <PostContent post={post} />
-          <h1 className="mb-3">Comments</h1>
+          <h1 className="ps-5 my-3">Comments</h1>
           {comments.length > 0
             ? comments.map((comment, idx) => (
             <CommentContent key={idx} comment={comment}/>

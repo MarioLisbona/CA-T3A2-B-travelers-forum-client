@@ -19,7 +19,7 @@ const PreviewCard = ({ post }) => {
 	return (
 		<>
 			<div className="col-md-6 col-lg-4 col-xl-3">
-				<div className="card mx-auto m-1 bg-secondary text-white">
+				<div className="card mx-auto m-1 bg-secondary text-white border border-success">
 						<div className="card-body">
 								<h5 className="card-title">{post.title.substring(0, 100)}</h5>
 								<h6>{`Author: ${post.author.username}`}</h6>

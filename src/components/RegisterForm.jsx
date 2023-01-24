@@ -23,7 +23,7 @@ const RegisterForm = ({ addUser }) => {
 
   return (
     <>
-      <form onSubmit={submitForm} class="p-5 bg-light rounded-3">
+      <form onSubmit={submitForm} class="p-5 bg-light rounded-3 border border-success">
         <div class="row mb-3">
           <label for="inputPostTitle" class="col-sm-2 col-form-label">Username</label>
           <div class="col-sm-4">
