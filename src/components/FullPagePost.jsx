@@ -45,7 +45,7 @@ const FullPagePost = ({ forumMember, post }) => {
             : forumMember
             // Will end up rendering the comment box here for members
             ? <Header headingText={"Much empty..."} 
-              bodyText={"The Australia travel forum currently has no posts, Click below to be the first"} 
+              bodyText={"This post currently has no comments. Click below to be the first"} 
               showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
             : <Header headingText={"Much empty..."} 
             bodyText={"This post currently has no comments. Register today to be the first to comment."}
