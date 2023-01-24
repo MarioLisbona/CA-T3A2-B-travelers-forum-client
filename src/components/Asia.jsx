@@ -46,9 +46,6 @@ const Asia = ({ forumMember, asiaPosts }) => {
                   bodyText={"The Antarctica travel forum currently has no posts, register today to be the first to contribute."}
                     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
             }
-            {/* {asiaPosts.map((post, idx) => (
-              <PreviewCard post={post}  />
-            ))} */}
           </div>
         </div>
         <Footer />
