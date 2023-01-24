@@ -24,13 +24,15 @@ import MemberHeader from './MemberHeader'
 
 const LandingPage = ({ forumMember, memberName }) => {
 
+  console.log(memberName)
+
 	return (
 		<>
       {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'landing-page'} />
         <div className="container">
           {forumMember 
-            ? <MemberHeader headingText={`Hi ${memberName}, welcome to the forum`} btn1Text={'My Posts'} showBtn1 btn2Text={'Create a Post'} showBtn2 />
+            ? <MemberHeader headingText={`Hi ${memberName[0].username}, welcome to the forum`} btn1Text={'My Posts'} showBtn1 btn2Text={'Create a Post'} showBtn2 />
             : <Header headingText={"Welcome to the Traveler's Forum"} btn1Text={'Register'} showBtn1 /> }
           <div className="row g-3">
           </div>

@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  const forumMember = false
+  const forumMember = true
 
   const users = [
     {
@@ -90,6 +90,7 @@ const App = () => {
 
 
   const [posts, setPosts] = useState([])
+  const [members, setMembers] = useState([])
 
   useEffect(() => {
     async function fetchPosts() {
@@ -99,6 +100,16 @@ const App = () => {
     }
 
     fetchPosts()
+  }, [])
+
+  useEffect(() => {
+    async function fetchMembers() {
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/members")
+      const data = await result.json()
+      setMembers(data)
+    }
+
+    fetchMembers()
   }, [])
 
 
@@ -116,7 +127,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={member1.name} />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={members} />} />
           <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />
           <Route path="/register" element={<Register forumMember={forumMember} addUser={AddUser} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
