@@ -89,17 +89,17 @@ const App = () => {
   }
 
 
-  const [posts, setPosts] = useState(seedPosts)
+  const [posts, setPosts] = useState([])
 
-  // useEffect(() => {
-  //   async function fetchPosts() {
-  //     const result = await fetch("https://indigo-stocking-production.up.railway.app/posts")
-  //     const data = await result.json()
-  //     setPosts(data)
-  //   }
+  useEffect(() => {
+    async function fetchPosts() {
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts")
+      const data = await result.json()
+      setPosts(data)
+    }
 
-  //   fetchPosts()
-  // }, [])
+    fetchPosts()
+  }, [])
 
 
 
