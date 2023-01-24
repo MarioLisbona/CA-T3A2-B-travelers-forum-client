@@ -84,6 +84,9 @@ const MemberNavBar = () => {
                                 <Link className="dropdown-item text-white" to="/contact">
                                     Contact Us
                                 </Link>
+                                <Link className="dropdown-item text-white" to="/">
+                                    Log out
+                                </Link>
                             </div>
                         </li>
                     </ul>
