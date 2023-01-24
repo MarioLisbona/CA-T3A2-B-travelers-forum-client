@@ -48,9 +48,6 @@ const Antarctica = ({ forumMember, antarcticaPosts }) => {
                       showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
 
               }
-            {/* {antarcticaPosts.map((post, idx) => (
-              <PreviewCard post={post}  />
-            ))} */}
           </div>
         </div>
         <Footer />

@@ -46,7 +46,6 @@ const Africa = ({ forumMember, africaPosts }) => {
                   : <Header headingText={"Much empty..."} 
                   bodyText={"The Africa travel forum currently has no posts, register today to be the first to contribute."}
                     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
-
             }
           </div>
         </div>
