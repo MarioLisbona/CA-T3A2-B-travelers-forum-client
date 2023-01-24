@@ -24,7 +24,6 @@ import MemberHeader from './MemberHeader'
 
 const LandingPage = ({ forumMember, memberName, latestPosts }) => {
 
-  const emptyPostsArray = []
 
 	return (
 		<>
@@ -46,7 +45,7 @@ const LandingPage = ({ forumMember, memberName, latestPosts }) => {
           }
           <div className="row g-3">
             <h1>See the latest Posts</h1>
-            {emptyPostsArray.length > 0
+            {latestPosts.length > 0
               ? latestPosts.map((post, idx) => (
                 <PreviewCard post={post}  />
               ))

@@ -1,4 +1,11 @@
 import React from 'react'
+import NavBar from './NavBar'
+import HeroImage from './HeroImage'
+import Header from './Header'
+import PreviewCard from './PreviewCard'
+import Footer from './Footer'
+import MemberNavBar from './MemberNavBar'
+import MemberHeader from './MemberHeader'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // MyPosts component
@@ -11,9 +18,34 @@ import React from 'react'
 //       - 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const MyPosts = () => {
+const MyPosts = ({ forumMember, latestPosts, memberName }) => {
+
+  const emptyPostsArray = []
+
   return (
-    <div>MyPosts</div>
+    <>
+      {forumMember ? <MemberNavBar /> : <NavBar />}
+      <HeroImage heroClass={'landing-page'}/>
+      <div className="container">
+      <MemberHeader headingText={`Hi ${memberName.username}, welcome to the forum`}
+        bodyText={"All your latest posts are displayed below"} 
+        btn1Text={'View All My Posts'}
+        btn2Text={'Create a Post'}
+        showBtn1  showBtn2
+      />
+      <div className="row g-3">
+        {latestPosts.length > 0
+          ? latestPosts.map((post, idx) => (
+              <PreviewCard post={post}  />
+            ))
+          : <MemberHeader headingText={"You havn't made any posts yet."}
+              bodyText={"Click the Create a Post button above to make your first post to the forum."} 
+            />
+        }
+      </div>
+          
+      </div>
+    </>
   )
 }
 

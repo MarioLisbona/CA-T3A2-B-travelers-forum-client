@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  const forumMember = false
+  const forumMember = true
 
   function AddUser(email, username, password) {
     const newUser = {
@@ -93,8 +93,12 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} memberName={members[0]} latestPosts={posts} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />
+
+          {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
+          <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />    
           <Route path="/register" element={<Register forumMember={forumMember} addUser={AddUser} />} />
+          {/* ////////////////////////////////////////////////////////////////////////////////////// */}
+
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
           <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
@@ -107,7 +111,7 @@ const App = () => {
           <Route path="/contact" element={<Contact forumMember={forumMember} />} />
           <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
-          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} />} />
+          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} memberName={members[0]} />} />
           <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
 
           {/* <Route path={"/posts/:id"} element={<FullPagePost forumMember={forumMember} />} /> */}

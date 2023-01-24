@@ -16,7 +16,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const PreviewCard = ({ post }) => {
 
-	console.log(post.title.length)
 	return (
 		<>
 			<div className="col-md-6 col-lg-4 col-xl-3">
