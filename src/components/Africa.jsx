@@ -27,28 +27,34 @@ const Africa = ({ forumMember, africaPosts }) => {
 
   return (
     <>
+      {/* conditionally render navbar for guest and member */}
       {forumMember ? <MemberNavBar /> : <NavBar />}
+      {/* Heroimage */}
       <HeroImage heroClass={'acirfa'}/>
-        <div className="container">
-          <Header headingText={"Welcome to the African Continent!"} 
-            bodyText={"This is a little blurb about the african content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
-          />
-          <div className="row g-3">
-            {africaPosts.length > 0
-              ? africaPosts.map((post, idx) => (
-                <PreviewCard post={post}  />
-              ))
-              : forumMember
-                  ? <Header headingText={"Much empty..."} 
-                    bodyText={"The Africa travel forum currently has no posts, Click below to be the first"} 
-                    showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
-                  : <Header headingText={"Much empty..."} 
-                  bodyText={"The Africa travel forum currently has no posts, register today to be the first to contribute."}
-                    showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
-            }
-          </div>
+      {/* container for main body of the page */}
+      <div className="container">
+        <Header headingText={"Welcome to the African Continent!"} 
+          bodyText={"This is a little blurb about the african content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+        />
+        <div className="row g-3">
+          {/* If africaPosts has objects then map over the array and render a preview card for each post
+          and pass in the post object */}
+          {africaPosts.length > 0
+            ? africaPosts.map((post, idx) => (
+              <PreviewCard post={post}  />
+            ))
+            // If africaPosts is an empty array then render a header for guest and one for member
+            : forumMember
+                ? <Header headingText={"Much empty..."} 
+                  bodyText={"The Africa travel forum currently has no posts, Click below to be the first"} 
+                  showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
+                : <Header headingText={"Much empty..."} 
+                bodyText={"The Africa travel forum currently has no posts, register today to be the first to contribute."}
+                  showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
+          }
         </div>
-        <Footer />
+      </div>
+      <Footer />
     </>
   )
 }

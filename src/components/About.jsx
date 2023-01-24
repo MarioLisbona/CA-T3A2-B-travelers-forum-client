@@ -5,6 +5,7 @@ import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
+import AboutInfo from './AboutInfo'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // About component
@@ -16,21 +17,25 @@ import MemberNavBar from './MemberNavBar'
 // components used:
 //       - MemberNavBar and NavBar
 //       - Hero image with correct class for images
-//       - Header, no CTA button
+//       - Header, no CTA button, About Info component
 //       - footer
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 const About = ({ forumMember }) => {
   return (
     <>
+      {/* conditionally render navbar for guest and member */}
       {forumMember ? <MemberNavBar /> : <NavBar />}
+      {/* Heroimage */}
       <HeroImage heroClass={'about'} />
-        <div className="container">
-          <Header headingText={"So you wanna know more???"} btnText={'Learn More'} />
-          <div className="row g-3">
-          </div>
-        </div>
-        <Footer />
+      {/* container for main body of the page */}
+      <div className="container">
+        <Header 
+          headingText={"So you wanna know more???"}
+          bodyText={<AboutInfo />}
+          btnText={'Learn More'} />
+      </div>
+      <Footer />
     </>
   )
 }
