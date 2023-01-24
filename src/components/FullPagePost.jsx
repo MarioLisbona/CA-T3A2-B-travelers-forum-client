@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentDidMount } from 'react';
 import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
@@ -7,6 +7,7 @@ import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 import PostContent from './PostContent'
 import CommentContent from './CommentContent'
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // FullPagePost component
@@ -27,10 +28,12 @@ import CommentContent from './CommentContent'
 const FullPagePost = ({ forumMember, post }) => {
 
   const comments = post[0].comments.map(comment => (
-      { username: comment.author.username, content: comment.content}
+      { username: comment.author.username, date: comment.date_posted.substring(0, 10), content: comment.content}
   ))
 
   const commentsEmpty = false
+  
+  window.scroll(0, 0)
 
   return (
     <>

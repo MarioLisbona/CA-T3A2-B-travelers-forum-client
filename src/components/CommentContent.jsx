@@ -33,7 +33,7 @@ const CommentContent = ({ comment }) => {
                       <div>Posted:</div>
                     </div>
                     <div className="col-md-7 mb-4">
-                      <div className="bg-alt mb-2">4-July-2023</div>
+                      <div className="bg-alt mb-2">{comment.date}</div>
                     </div>
                   </div>
                 </div>
