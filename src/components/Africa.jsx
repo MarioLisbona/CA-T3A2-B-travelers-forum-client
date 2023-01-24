@@ -31,9 +31,11 @@ const Africa = ({ forumMember, africaPosts }) => {
       {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'acirfa'}/>
         <div className="container">
-          <Header headingText={"Welcome to the African Continent!"} bodyText={"This is a little blurb about the african content."} />
+          <Header headingText={"Welcome to the African Continent!"} 
+            bodyText={"This is a little blurb about the african content."}
+          />
           <div className="row g-3">
-            {emptyPostsArray.length > 0 && forumMember
+            {emptyPostsArray.length
               ? africaPosts.map((post, idx) => (
                 <PreviewCard post={post}  />
               ))
@@ -44,7 +46,7 @@ const Africa = ({ forumMember, africaPosts }) => {
                   : <Header headingText={"Much empty..."} 
                   bodyText={"The Africa travel forum currently has no posts, register today to be the first to contribute."}
                     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
-              
+
             }
           </div>
         </div>
