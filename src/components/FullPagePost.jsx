@@ -24,13 +24,13 @@ import CommentContent from './CommentContent'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const FullPagePost = ({ forumMember }) => {
+const FullPagePost = ({ forumMember, post }) => {
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
         <div className="container">
           {/* <Header headingText={"Post Title"} /> */}
-          <PostContent />
+          <PostContent post={post} />
           <h1 class="mb-3">Comments</h1>
           <CommentContent />
           <CommentContent />

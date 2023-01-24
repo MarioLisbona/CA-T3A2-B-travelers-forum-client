@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import Register from './components/Register'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 import ViewAll from './components/ViewAll'
 import Asia from './components/Asia'
 import Africa from './components/Africa'
@@ -68,26 +68,6 @@ const App = () => {
     console.log(`User attempting to login\n ${email}: ${password}`)
   }
 
-  const member1 = {
-    name: 'Mario',
-    age: 43
-  }
-
-  const member2 = {
-    name: 'Ali',
-    age: 32
-  }
-
-  const member3 = {
-    name: 'Coda',
-    age: 3
-  }
-
-  const member4 = {
-    name: 'Someone Else',
-    age: 44
-  }
-
 
   const [posts, setPosts] = useState([])
   const [members, setMembers] = useState([])
@@ -111,6 +91,14 @@ const App = () => {
 
     fetchMembers()
   }, [])
+
+  const ShowPostWrapper = () =>{
+    const { id } = useParams()
+    const post = posts.filter(post => post._id == id)
+    console.log(post)
+    return post ? <FullPagePost post={post} /> : <h1>That post does not exist</h1>
+  }
+
 
 
 
@@ -144,7 +132,10 @@ const App = () => {
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} />} />
           <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
-          <Route path={"/sample-post"} element={<FullPagePost forumMember={forumMember} />} />
+
+          {/* <Route path={"/posts/:id"} element={<FullPagePost forumMember={forumMember} />} /> */}
+          <Route path={"/posts/:id"} element={<ShowPostWrapper />} />
+
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
       </BrowserRouter>
