@@ -25,30 +25,7 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  const forumMember = true
-
-  const users = [
-    {
-      email: 'mario.lisbona@gmail.com',
-      username: 'Mario',
-      password: 'password123'
-    },
-    {
-      email: 'ali.lisbona@gmail.com',
-      username: 'Mario',
-      password: 'Alisha999999'
-    },
-    {
-      email: 'amtaubner@gmail.com',
-      username: 'Aligirl90',
-      password: 'ali123'
-    },
-    {
-      email: 'coda@cat.com',
-      username: 'Coda',
-      password: 'coda123'
-    },
-  ]
+  const forumMember = false
 
   function AddUser(email, username, password) {
     const newUser = {
@@ -115,7 +92,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={members} />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} memberName={members[0]} />} />
           <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />
           <Route path="/register" element={<Register forumMember={forumMember} addUser={AddUser} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
