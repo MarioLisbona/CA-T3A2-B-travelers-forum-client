@@ -34,7 +34,7 @@ const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
             bodyText={"This is a little blurb about North America. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "} 
           />
           <div className="row g-3">
-            {emptyPostsArray.length > 0
+            {nthAmericaPosts.length > 0
               ? nthAmericaPosts.map((post, idx) => (
                 <PreviewCard post={post}  />
               ))

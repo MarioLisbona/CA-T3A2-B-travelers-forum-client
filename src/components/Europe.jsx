@@ -34,7 +34,7 @@ const Europe = ({ forumMember, europePosts }) => {
             bodyText={"This is a little blurb about Europe. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "} 
           />
           <div className="row g-3">
-            {emptyPostsArray.length > 0
+            {europePosts.length > 0
               ? europePosts.map((post, idx) => (
                 <PreviewCard post={post}  />
               ))
