@@ -24,8 +24,6 @@ import MemberNavBar from './MemberNavBar'
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
-  
-  const emptyPostsArray = []
 
   return (
     <>

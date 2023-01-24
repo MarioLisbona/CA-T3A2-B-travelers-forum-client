@@ -25,8 +25,6 @@ import MemberNavBar from './MemberNavBar'
 
 const Antarctica = ({ forumMember, antarcticaPosts }) => {
 
-  const emptyPostsArray = []
-
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}

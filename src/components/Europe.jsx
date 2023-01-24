@@ -25,8 +25,6 @@ import MemberNavBar from './MemberNavBar'
 
 const Europe = ({ forumMember, europePosts }) => {
 
-  const emptyPostsArray = []
-
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
