@@ -24,16 +24,30 @@ import MemberNavBar from './MemberNavBar'
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Australia = ({ forumMember, australiaPosts }) => {
+
+  const emptyPostsArray = []
+
   return (
     <>
      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'australia'} />
         <div className="container">
-          <Header headingText={"Welcome to the Australia!"} btnText={'View all Australia Posts'} showBtn />
+          <Header headingText={"Welcome to the Australia!"}
+            bodyText={"This is a little blurb about Australia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+          />
           <div className="row g-3">
-            {australiaPosts.map((post, idx) => (
-              <PreviewCard post={post}  />
-            ))}
+            {australiaPosts.length > 0
+              ? australiaPosts.map((post, idx) => (
+                <PreviewCard post={post}  />
+              ))
+              : forumMember
+                  ? <Header headingText={"Much empty..."} 
+                    bodyText={"The Australia travel forum currently has no posts, Click below to be the first"} 
+                    showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
+                  : <Header headingText={"Much empty..."} 
+                  bodyText={"The Australia travel forum currently has no posts, register today to be the first to contribute."}
+                    showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
+            }
           </div>
         </div>
         <Footer />

@@ -24,22 +24,30 @@ import MemberNavBar from './MemberNavBar'
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Africa = ({ forumMember, africaPosts }) => {
+
+  const emptyPostsArray = []
+
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'acirfa'}/>
         <div className="container">
-          <Header headingText={"Welcome to the African Continent!"} btnText={'View all Africa Posts'} showBtn  />
+          <Header headingText={"Welcome to the African Continent!"} 
+            bodyText={"This is a little blurb about the african content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+          />
           <div className="row g-3">
             {africaPosts.length > 0
               ? africaPosts.map((post, idx) => (
                 <PreviewCard post={post}  />
               ))
-              : <h1>There are not posts in this forum</h1>
+              : forumMember
+                  ? <Header headingText={"Much empty..."} 
+                    bodyText={"The Africa travel forum currently has no posts, Click below to be the first"} 
+                    showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
+                  : <Header headingText={"Much empty..."} 
+                  bodyText={"The Africa travel forum currently has no posts, register today to be the first to contribute."}
+                    showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
             }
-            {/* {africaPosts.map((post, idx) => (
-              <PreviewCard post={post}  />
-            ))} */}
           </div>
         </div>
         <Footer />
