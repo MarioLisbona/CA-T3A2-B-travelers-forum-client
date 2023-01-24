@@ -22,9 +22,9 @@ import MemberHeader from './MemberHeader'
 //       - footer
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const LandingPage = ({ forumMember, memberName }) => {
+const LandingPage = ({ forumMember, memberName, latestPosts }) => {
 
-  console.log(memberName)
+  const emptyPostsArray = []
 
 	return (
 		<>
@@ -45,6 +45,19 @@ const LandingPage = ({ forumMember, memberName }) => {
               />
           }
           <div className="row g-3">
+            <h1>See the latest Posts</h1>
+            {emptyPostsArray.length > 0
+              ? latestPosts.map((post, idx) => (
+                <PreviewCard post={post}  />
+              ))
+              : forumMember
+                  ? <Header headingText={"Much empty..."} 
+                      bodyText={"The travel forum currently has no posts. Click the Create a Post button above to be the first to contribute."} 
+                    />
+                  : <Header headingText={"Much empty..."} 
+                      bodyText={"The travel forum currently has no posts. Click the Register button above to become a member and be the first to contribute."}
+                     />
+              }
           </div>
         </div>
         <Footer />
