@@ -26,6 +26,7 @@ import MemberNavBar from './MemberNavBar'
 const Africa = ({ forumMember, africaPosts }) => {
 
   const emptyPostsArray = []
+
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
@@ -35,7 +36,7 @@ const Africa = ({ forumMember, africaPosts }) => {
             bodyText={"This is a little blurb about the african content."}
           />
           <div className="row g-3">
-            {emptyPostsArray.length
+            {africaPosts.length > 0
               ? africaPosts.map((post, idx) => (
                 <PreviewCard post={post}  />
               ))

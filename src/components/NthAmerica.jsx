@@ -24,6 +24,9 @@ import MemberNavBar from './MemberNavBar'
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
+  
+  const emptyPostsArray = []
+
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
@@ -31,9 +34,18 @@ const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
         <div className="container">
           <Header headingText={"Welcome to the North America!"} btnText={'View all North America Posts'} showBtn />
           <div className="row g-3">
-            {nthAmericaPosts.map((post, idx) => (
-              <PreviewCard post={post} />
-            ))}
+            {emptyPostsArray.length > 0
+              ? nthAmericaPosts.map((post, idx) => (
+                <PreviewCard post={post}  />
+              ))
+              : forumMember
+                  ? <Header headingText={"Much empty..."} 
+                    bodyText={"The North American travel forum currently has no posts, Click below to be the first"} 
+                    showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
+                  : <Header headingText={"Much empty..."} 
+                  bodyText={"The North American travel forum currently has no posts, register today to be the first to contribute."}
+                    showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
+            }
           </div>
         </div>
         <Footer />

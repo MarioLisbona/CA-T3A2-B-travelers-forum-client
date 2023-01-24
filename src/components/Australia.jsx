@@ -40,15 +40,12 @@ const Australia = ({ forumMember, australiaPosts }) => {
               ))
               : forumMember
                   ? <Header headingText={"Much empty..."} 
-                    bodyText={"The Antarctica travel forum currently has no posts, Click below to be the first"} 
+                    bodyText={"The Australia travel forum currently has no posts, Click below to be the first"} 
                     showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
                   : <Header headingText={"Much empty..."} 
-                  bodyText={"The Antarctica travel forum currently has no posts, register today to be the first to contribute."}
+                  bodyText={"The Australia travel forum currently has no posts, register today to be the first to contribute."}
                     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
             }
-            {/* {australiaPosts.map((post, idx) => (
-              <PreviewCard post={post}  />
-            ))} */}
           </div>
         </div>
         <Footer />
