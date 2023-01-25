@@ -79,7 +79,7 @@ const App = () => {
     }
 
     // testing
-    console.log(newMember)
+    console.log('newMember object', newMember)
     
     // post the new member to the API and assign the return object to returnedMember
     const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
@@ -92,7 +92,7 @@ const App = () => {
     })
 
     // testting
-    console.log(returnedMember)
+    console.log('returnedMember object sent from db', returnedMember)
 
   }
 
