@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  const forumMember = false
+  const forumMember = true
 
   function loginDetails(email, password) {
     console.log(`User attempting to login\n ${email}: ${password}`)
@@ -70,6 +70,7 @@ const App = () => {
     }
 
     console.log({ user: user, password: pwd })
+  
 
     // post the new member to the API
     const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
@@ -80,6 +81,35 @@ const App = () => {
       },
       'body': JSON.stringify(newMember)
     })
+
+    console.log(returnedMember)
+
+  }
+
+  const submitPost =  async (title, continent, postContent) => {
+
+    // create object to receive Register form data
+    const newPost = {
+      title: title,
+      continent: continent,
+      content: postContent
+    }
+
+    console.log({ title: title, continent: continent, content: postContent })
+
+
+    // post the new member to the API
+    const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(newPost)
+    })
+
+    console.log(returnedPost)
+
   }
 
 
@@ -118,7 +148,7 @@ const App = () => {
           <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} />} />
-          <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} />} />
+          <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
 
           {/* <Route path={"/posts/:id"} element={<FullPagePost forumMember={forumMember} />} /> */}
           <Route path={"/posts/:id"} element={<ShowPostWrapper />} />
