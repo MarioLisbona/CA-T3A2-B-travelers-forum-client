@@ -27,10 +27,6 @@ const App = () => {
 
   const forumMember = true
 
-  function loginDetails(email, password) {
-    console.log(`User attempting to login\n ${email}: ${password}`)
-  }
-
 
   const [posts, setPosts] = useState([])
   const [members, setMembers] = useState([])
@@ -157,7 +153,7 @@ const App = () => {
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} />} />
 
           {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
-          <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />    
+          <Route path="/login" element={<Login forumMember={forumMember} />} />    
           <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
           {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
