@@ -23,7 +23,7 @@ import RegisterFormValidation from './RegisterFormValidation'
 //       - footer
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const Register = ({ forumMember, addUser }) => {
+const Register = ({ forumMember, createMember }) => {
   return (
     <>
     {forumMember ? <MemberNavBar /> : <NavBar />}
@@ -31,7 +31,7 @@ const Register = ({ forumMember, addUser }) => {
       <div className="container">
         <Header headingText={"Register to become a member"} btnText={'Register'} />
         {/* <RegisterForm addUser={addUser} /> */}
-        <RegisterFormValidation />
+        <RegisterFormValidation createMember={createMember} />
       </div>
       <Footer />
   </>

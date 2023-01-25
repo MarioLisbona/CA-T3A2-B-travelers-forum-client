@@ -8,7 +8,7 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
-const RegisterFormValidation = () => {
+const RegisterFormValidation = ({ createMember }) => {
 
   const userRef = useRef();
   const errRef = useRef();
@@ -47,7 +47,8 @@ const RegisterFormValidation = () => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log({ user: user, password: pwd })
+
+    createMember(user, pwd)
   }
 
 
@@ -55,7 +56,7 @@ const RegisterFormValidation = () => {
     <section>
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit} class="p-5 bg-light rounded-3 border border-success">
+      <form onSubmit={handleSubmit} className="p-5 bg-light rounded-3 border border-success">
       <label htmlFor="username">
           Username:
           <span className={validName ? "valid" : "hide"}>
@@ -66,7 +67,7 @@ const RegisterFormValidation = () => {
           </span>
       </label>
       <input
-        class="form-control"
+        className="form-control"
         type="text"
         id="username"
         ref={userRef}
@@ -97,7 +98,7 @@ const RegisterFormValidation = () => {
         </span>
         </label>
         <input
-          class="form-control"
+          className="form-control"
           type="password"
           id="password"
           onChange={(e) => setPwd(e.target.value)}
@@ -126,7 +127,7 @@ const RegisterFormValidation = () => {
           </span>
         </label>
         <input
-          class="form-control"
+          className="form-control"
           type="password"
           id="confirm_pwd"
           onChange={(e) => setMatchPwd(e.target.value)}
