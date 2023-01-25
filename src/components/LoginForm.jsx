@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
-const LoginForm = ({ loginDetails }) => {
+const LoginForm = ({ loginMember }) => {
 
-  const [email, setEmail] = useState()
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
 
@@ -15,21 +14,21 @@ const LoginForm = ({ loginDetails }) => {
 
   function submitForm(event) {
     event.preventDefault()
-
-    loginDetails(email, password)
+    
+    loginMember(username, password)
   }
 
   return (
     <>
       <form onSubmit={submitForm} class="p-5 bg-light rounded-3 border border-success">
         <div class="row mb-3">
-          <label for="inputPostTitle" class="col-sm-2 col-form-label">Email</label>
+          <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
           <div class="col-sm-4">
-            <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} class="form-control" id="inputEmail"></input>
+            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="form-control" id="inputUsername"></input>
           </div>
         </div>
         <div class="row mb-3">
-          <label for="inputPostTitle" class="col-sm-2 col-form-label">Password</label>
+          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-4">
             <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} class="form-control" id="inputPassword"></input>
           </div>

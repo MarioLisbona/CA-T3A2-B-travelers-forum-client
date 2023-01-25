@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import Register from './components/Register'
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import ViewAll from './components/ViewAll'
 import Asia from './components/Asia'
 import Africa from './components/Africa'
@@ -25,18 +25,21 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  // boolean used for testing conditional rendering of guest and member elements
-  const forumMember = true
+  const nav = useNavigate()
+
 
   // state variables for posts and members
+  // boolean used  with forumMember for testing conditional rendering of guest and member elements
   const [posts, setPosts] = useState([])
-  const [members, setMembers] = useState([])
+  // const [members, setMembers] = useState([])
+  const [forumMember, setForumMember] = useState(false)
+  const [loggedInMember, setLoggedInMember] = useState({})
 
   // fetch all the posts from the API on component on mount only and assign to state variable
   // may need to change this to trigger and track the posts state
   useEffect(() => {
     async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/latest")
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
       const data = await result.json()
       setPosts(data)
     }
@@ -96,6 +99,54 @@ const App = () => {
       const returnedObject = await returnedMember.json()
       // loging returned object from API
       console.log('returned Object', returnedObject)
+    }
+    catch (err){
+      console.log(err.message)
+    }
+  }
+
+  // async function - is called when the register form is submitted
+  // passed the data from the register form and creates a new member object with user and pwd
+  const loginMember =  async (username, password) => {
+
+    try {
+      // create object to receive Register form data
+      const memberToLogin = {
+        username: username,
+        password: password
+      }
+
+      // testing
+      console.log('newMember object', memberToLogin)
+      
+      // post the new member to the API and assign the return object to returnedMember
+      const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/login', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        'body': JSON.stringify(memberToLogin)
+      })
+
+
+      const returnedObject = await returnedMember.json()
+      // loging returned object from API
+      console.log('returned Object', returnedObject)
+
+      // sessionStorage.setItem("username", returnedObject.username)
+      // sessionStorage.setItem("id", returnedObject.id)
+      // sessionStorage.setItem("token", returnedObject.token)
+
+      setForumMember(true)
+
+      setLoggedInMember({
+        username: returnedObject.username,
+        id: returnedObject.id,
+        token: returnedObject.token
+      })
+
+      nav('/')
     }
     catch (err){
       console.log(err.message)
@@ -179,12 +230,12 @@ const App = () => {
   return (
     <>
     {/* Browser router paths */}
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} />} />
+          <Route path="/" element={<LandingPage forumMember={forumMember} loggedInMember={loggedInMember} latestPosts={posts} />} />
 
           {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
-          <Route path="/login" element={<Login forumMember={forumMember} />} />    
+          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
           <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
           {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
@@ -208,7 +259,7 @@ const App = () => {
 
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
       
 
     </>
