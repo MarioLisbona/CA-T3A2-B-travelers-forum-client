@@ -98,7 +98,7 @@ const App = () => {
 
 
     // post the new member to the API
-    const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts', {
+    const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts/new', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
