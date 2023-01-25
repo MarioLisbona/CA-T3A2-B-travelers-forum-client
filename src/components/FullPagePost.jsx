@@ -88,23 +88,3 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
 }
 
 export default FullPagePost
-
-// {comments.length > 0
-//   ? comments.map((comment, idx) => (
-//   <CommentContent key={idx} comment={comment}/>
-//   ))
-//   : forumMember
-//   // Will end up rendering the comment box here for members
-//   ? <Header headingText={"Much empty..."} 
-//     bodyText={"This post currently has no comments. Click below to be the first"} 
-//     showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
-//   : <Header headingText={"Much empty..."} 
-//   bodyText={"This post currently has no comments. Register today to be the first to comment."}
-//     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
-// }
-// <CommentForm post={post} submitComment={submitComment} />
-
-
-
-
-

@@ -25,12 +25,15 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
+  // boolean used for testing conditional rendering of guest and member elements
   const forumMember = true
 
-
+  // state variables for posts and members
   const [posts, setPosts] = useState([])
   const [members, setMembers] = useState([])
 
+  // fetch all the posts from the API on component on mount only and assign to state variable
+  // may need to change this to trigger and track the posts state
   useEffect(() => {
     async function fetchPosts() {
       const result = await fetch("https://indigo-stocking-production.up.railway.app/posts")
@@ -41,6 +44,8 @@ const App = () => {
     fetchPosts()
   }, [])
 
+  // fetch all the members from the API on component on mount only and assign to members variable
+  // may need to change this to trigger and track the members state
   useEffect(() => {
     async function fetchMembers() {
       const result = await fetch("https://indigo-stocking-production.up.railway.app/members")
@@ -51,12 +56,20 @@ const App = () => {
     fetchMembers()
   }, [])
 
+  // Higher Order Function to display a full page post from the link in the preview cards
+  // uses id param passed in from preview card button to filter posts array to find the correct post object
+  // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
+  // and submitComment is the function to post the data from the comment form to the API
   const ShowPostWrapper = () =>{
     const { id } = useParams()
     const post = posts.filter(post => post._id == id)
-    return post ? <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} /> : <h1>That post does not exist</h1>
+    return post
+      ? <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} />
+      : <PageNotFound />
   }
 
+  // async function - is called when the register form is submitted
+  // passed the data from the register form and creates a new member object with user and pwd
   const createMember =  async (user, pwd) => {
 
     // create object to receive Register form data
@@ -65,9 +78,10 @@ const App = () => {
       password: pwd
     }
 
+    // testing
     console.log(newMember)
     
-    // post the new member to the API
+    // post the new member to the API and assign the return object to returnedMember
     const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
       method: 'POST',
       headers: {
@@ -77,10 +91,13 @@ const App = () => {
       'body': JSON.stringify(newMember)
     })
 
+    // testting
     console.log(returnedMember)
 
   }
 
+  // async function - is called when the create a post form is submitted
+  // passed the data from the create a post form and creates a new post object with itle, continent, postContent
   const submitPost =  async (title, continent, postContent) => {
 
     // create object to receive Register form data
@@ -90,10 +107,12 @@ const App = () => {
       content: postContent
     }
 
+    // testing
     console.log(newPost)
 
 
-    // post the new member to the API
+    
+    // post the new post to the API and assign the return object to returnedPost
     const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts/new', {
       method: 'POST',
       headers: {
@@ -103,10 +122,13 @@ const App = () => {
       'body': JSON.stringify(newPost)
     })
 
+    // testing
     console.log(returnedPost)
 
   }
 
+  // async function - is called when the comment form is submitted
+  // passed the data from the comment form and creates a new comment object with postId, title, continent, comment
   const submitComment =  async (postId, title, continent, comment) => {
 
     // create object to receive Register form data
@@ -117,26 +139,25 @@ const App = () => {
       comment: comment
     }
 
+    // testing
     console.log(newComment)
 
 
+    // post the new comment to the API and assign the return object to returnedComment
+    const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(newComment)
+    })
 
-    // Wait till register post route is up and running on sever
-
-    // // post the new member to the API
-    // const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   'body': JSON.stringify(newComment)
-    // })
-
-    // console.log(returnedComment)
-
+    // testing
+    console.log(returnedComment)
   }
 
+    // fitlering the posts array returned by the feth into seperate arrays for each category
     const europePosts = posts.filter(post => post.category == 'Europe')
     const australiaPosts = posts.filter(post => post.category == 'Australia')
     const asiaPosts = posts.filter(post => post.category == 'Asia')
@@ -145,9 +166,9 @@ const App = () => {
     const sthAmericaPosts = posts.filter(post => post.category == 'South America')
     const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
 
-
   return (
     <>
+    {/* Browser router paths */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} />} />
