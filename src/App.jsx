@@ -92,8 +92,10 @@ const App = () => {
         'body': JSON.stringify(newMember)
       })
 
-      // testting
-      console.log('returnedMember object sent from db', returnedMember)
+
+      const returnedObject = await returnedMember.json()
+      // loging returned object from API
+      console.log('returned Object', returnedObject)
     }
     catch (err){
       console.log(err.message)
@@ -128,8 +130,9 @@ const App = () => {
       'body': JSON.stringify(newPost)
     })
 
+    const returnedObject = await returnedPost.json()
     // testing
-    console.log(returnedPost)
+    console.log('returned Object', returnedObject)
 
   }
 
@@ -159,8 +162,9 @@ const App = () => {
       'body': JSON.stringify(newComment)
     })
 
+    const returnedObject = await returnedComment.json()
     // testing
-    console.log(returnedComment)
+    console.log('returned Object', returnedObject)
   }
 
     // fitlering the posts array returned by the feth into seperate arrays for each category
