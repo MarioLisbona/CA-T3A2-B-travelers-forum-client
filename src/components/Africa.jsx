@@ -25,6 +25,7 @@ import MemberNavBar from './MemberNavBar'
 
 const Africa = ({ forumMember, africaPosts }) => {
 
+  const emptyPostsArray = []
   return (
     <>
       {/* conditionally render navbar for guest and member */}
@@ -39,18 +40,31 @@ const Africa = ({ forumMember, africaPosts }) => {
         <div className="row g-3">
           {/* If africaPosts has objects then map over the array and render a preview card for each post
           and pass in the post object */}
-          {africaPosts.length > 0
+          {emptyPostsArray.length > 0
             ? africaPosts.map((post, idx) => (
               <PreviewCard key ={idx} post={post}  />
             ))
-            // If africaPosts is an empty array then render a header for guest and one for member
-            : forumMember
-                ? <Header headingText={"Much empty..."} 
-                  bodyText={"The Africa travel forum currently has no posts, Click below to be the first"} 
-                  showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
-                : <Header headingText={"Much empty..."} 
-                bodyText={"The Africa travel forum currently has no posts, register today to be the first to contribute."}
-                  showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
+            // If africaPosts is an empty array then render a message for guest and one for member
+            // guest message will prompt to register to make a post with CTA button
+            // member message will prompt to make a post with CTA button
+            : <Header headingText={"Much empty..."}
+                bodyText={
+                  forumMember
+                   ? "The Africa travel forum currently has no posts, Click below to be the first"
+                   : "The Africa travel forum currently has no posts, register today to be the first to contribute."
+                }
+                showBtn1
+                btn1Text={
+                  forumMember
+                    ? "Add a post"
+                    : "Register"
+                }
+                btn1ToPage={
+                  forumMember
+                    ? "/posts/create"
+                    : "/register"
+                }
+              />
           }
         </div>
       </div>
