@@ -72,27 +72,33 @@ const App = () => {
   // passed the data from the register form and creates a new member object with user and pwd
   const createMember =  async (user, pwd) => {
 
-    // create object to receive Register form data
-    const newMember = {
-      username: user,
-      password: pwd
+    try {
+      // create object to receive Register form data
+      const newMember = {
+        username: user,
+        password: pwd
+      }
+
+      // testing
+      console.log('newMember object', newMember)
+      
+      // post the new member to the API and assign the return object to returnedMember
+      const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        'body': JSON.stringify(newMember)
+      })
+
+      // testting
+      console.log('returnedMember object sent from db', returnedMember)
     }
-
-    // testing
-    console.log('newMember object', newMember)
+    catch (err){
+      console.log(err.message)
+    }
     
-    // post the new member to the API and assign the return object to returnedMember
-    const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      'body': JSON.stringify(newMember)
-    })
-
-    // testting
-    console.log('returnedMember object sent from db', returnedMember)
 
   }
 
