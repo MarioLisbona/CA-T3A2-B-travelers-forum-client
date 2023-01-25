@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  const forumMember = true
+  const forumMember = false
 
   function loginDetails(email, password) {
     console.log(`User attempting to login\n ${email}: ${password}`)
@@ -58,7 +58,7 @@ const App = () => {
   const ShowPostWrapper = () =>{
     const { id } = useParams()
     const post = posts.filter(post => post._id == id)
-    return post ? <FullPagePost post={post} forumMember={forumMember} /> : <h1>That post does not exist</h1>
+    return post ? <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} /> : <h1>That post does not exist</h1>
   }
 
   const createMember =  async (user, pwd) => {
@@ -69,20 +69,21 @@ const App = () => {
       password: pwd
     }
 
-    console.log({ user: user, password: pwd })
+    console.log(newMember)
   
+    // Wait till register post route is up and running on sever
+    
+    // // post the new member to the API
+    // const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   'body': JSON.stringify(newMember)
+    // })
 
-    // post the new member to the API
-    const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      'body': JSON.stringify(newMember)
-    })
-
-    console.log(returnedMember)
+    // console.log(returnedMember)
 
   }
 
@@ -95,25 +96,54 @@ const App = () => {
       content: postContent
     }
 
-    console.log({ title: title, continent: continent, content: postContent })
+    console.log(newPost)
 
+    
+    // Wait till register post route is up and running on sever
 
-    // post the new member to the API
-    const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      'body': JSON.stringify(newPost)
-    })
+    // // post the new member to the API
+    // const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   'body': JSON.stringify(newPost)
+    // })
 
-    console.log(returnedPost)
+    // console.log(returnedPost)
 
   }
 
+  const submitComment =  async (postId, title, continent, comment) => {
+
+    // create object to receive Register form data
+    const newComment = {
+      post_id: postId,
+      title: title,
+      continent: continent,
+      comment: comment
+    }
+
+    console.log(newComment)
 
 
+
+    // Wait till register post route is up and running on sever
+
+    // // post the new member to the API
+    // const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   'body': JSON.stringify(newComment)
+    // })
+
+    // console.log(returnedComment)
+
+  }
 
     const europePosts = posts.filter(post => post.category == 'Europe')
     const australiaPosts = posts.filter(post => post.category == 'Australia')
