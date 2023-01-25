@@ -90,7 +90,7 @@ const App = () => {
     // create object to receive Register form data
     const newPost = {
       title: title,
-      continent: continent,
+      category: continent,
       content: postContent
     }
 
