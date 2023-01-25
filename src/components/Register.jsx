@@ -5,7 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 import RegisterForm from './RegisterForm'
-import RegisterFormValidation from '../RegisterFormValidation'
+import RegisterFormValidation from './RegisterFormValidation'
 
 
 
