@@ -26,7 +26,7 @@ import PageNotFound from './components/PageNotFound'
 const App = () => {
 
   // boolean used for testing conditional rendering of guest and member elements
-  const forumMember = true
+  const forumMember = false
 
   // state variables for posts and members
   const [posts, setPosts] = useState([])

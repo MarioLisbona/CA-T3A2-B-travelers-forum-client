@@ -25,7 +25,6 @@ import MemberNavBar from './MemberNavBar'
 
 const Africa = ({ forumMember, africaPosts }) => {
 
-  const emptyPostsArray = []
   return (
     <>
       {/* conditionally render navbar for guest and member */}
@@ -40,7 +39,7 @@ const Africa = ({ forumMember, africaPosts }) => {
         <div className="row g-3">
           {/* If africaPosts has objects then map over the array and render a preview card for each post
           and pass in the post object */}
-          {emptyPostsArray.length > 0
+          {africaPosts.length > 0
             ? africaPosts.map((post, idx) => (
               <PreviewCard key ={idx} post={post}  />
             ))
