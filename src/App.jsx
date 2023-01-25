@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  const forumMember = true
+  const forumMember = false
 
   function loginDetails(email, password) {
     console.log(`User attempting to login\n ${email}: ${password}`)
