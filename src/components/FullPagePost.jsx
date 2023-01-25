@@ -39,50 +39,50 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
-        <div className="container">
-          <PostContent post={post} />
-          <h3 className="ps-5 my-3">Comments</h3>
-          {comments.length > 0
-            ? comments.map((comment, idx) => (
-                <CommentContent key={idx} comment={comment}/>
-              ))
-            : <Header headingText={"Much empty..."}
-                bodyText={
-                  forumMember
-                    ? "This post currently has no comments. Comment Below below to be the first"
-                    : "This post currently has no comments. Register today to be the first to comment."
-                }
-                btn1Text={
-                  forumMember
-                    ? ""
-                    : "Register"
-                }
-                showBtn1={
-                  forumMember
-                    ? false
-                    : true
-                }
-                btn1ToPage={
-                  forumMember
-                  ? "/posts/create"
-                  : "/register" }
+      <div className="container min-vh-100">
+        <PostContent post={post} />
+        <h3 className="ps-5 my-3">Comments</h3>
+        {comments.length > 0
+          ? comments.map((comment, idx) => (
+              <CommentContent key={idx} comment={comment}/>
+            ))
+          : <Header headingText={"Much empty..."}
+              bodyText={
+                forumMember
+                  ? "This post currently has no comments. Comment Below below to be the first"
+                  : "This post currently has no comments. Register today to be the first to comment."
+              }
+              btn1Text={
+                forumMember
+                  ? ""
+                  : "Register"
+              }
+              showBtn1={
+                forumMember
+                  ? false
+                  : true
+              }
+              btn1ToPage={
+                forumMember
+                ? "/posts/create"
+                : "/register" }
+            />
+        }
+        {comments.length > 0 ? <h3 className="ps-5 my-3">Post a Comment</h3> : ''}
+        {forumMember
+          ? <CommentForm post={post} submitComment={submitComment} />
+
+          : comments.length == 0 
+            ? ''
+            : <Header
+                bodyText={'Only Members can comment on a post. Register today to become a member'}
+                showBtn1 
+                btn1Text={"Register"}
+                btn1ToPage={"/register"}
               />
-          }
-          {comments.length > 0 ? <h3 className="ps-5 my-3">Post a Comment</h3> : ''}
-          {forumMember
-            ? <CommentForm post={post} submitComment={submitComment} />
- 
-            : comments.length == 0 
-              ? ''
-              : <Header
-                  bodyText={'Only Members can comment on a post. Register today to become a member'}
-                  showBtn1 
-                  btn1Text={"Register"}
-                  btn1ToPage={"/register"}
-                />
-          }
-        </div>
-        <Footer />
+        }
+      </div>
+      <Footer />
     </>
   )
 }
