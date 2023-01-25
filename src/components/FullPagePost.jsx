@@ -7,6 +7,7 @@ import Footer from './Footer'
 import MemberNavBar from './MemberNavBar'
 import PostContent from './PostContent'
 import CommentContent from './CommentContent'
+import CommentForm from './CommentForm';
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +26,7 @@ import CommentContent from './CommentContent'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const FullPagePost = ({ forumMember, post }) => {
+const FullPagePost = ({ forumMember, post, submitComment }) => {
 
   const comments = post[0].comments.map(comment => (
       { username: comment.author.username, date: comment.date_posted.substring(0, 10), content: comment.content}
@@ -54,7 +55,7 @@ const FullPagePost = ({ forumMember, post }) => {
             bodyText={"This post currently has no comments. Register today to be the first to comment."}
               showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
           }
-
+          <CommentForm post={post} submitComment={submitComment} />
         </div>
         <Footer />
     </>
