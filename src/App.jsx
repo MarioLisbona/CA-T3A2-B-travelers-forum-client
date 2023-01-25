@@ -27,20 +27,6 @@ const App = () => {
 
   const forumMember = false
 
-  function AddUser(email, username, password) {
-    const newUser = {
-      email: email,
-      username: username,
-      password: password
-    }
-
-    console.log(users)
-
-    users.push(newUser)
-
-    console.log(users)
-  }
-
   function loginDetails(email, password) {
     console.log(`User attempting to login\n ${email}: ${password}`)
   }
@@ -75,6 +61,27 @@ const App = () => {
     return post ? <FullPagePost post={post} forumMember={forumMember} /> : <h1>That post does not exist</h1>
   }
 
+  const createMember =  async (user, pwd) => {
+
+    // create object to receive Register form data
+    const newMember = {
+      username: user,
+      password: pwd
+    }
+
+    console.log({ user: user, password: pwd })
+
+    // post the new member to the API
+    const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(newMember)
+    })
+  }
+
 
 
 
@@ -95,7 +102,7 @@ const App = () => {
 
           {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
           <Route path="/login" element={<Login forumMember={forumMember} loginDetails={loginDetails}/>} />    
-          <Route path="/register" element={<Register forumMember={forumMember} addUser={AddUser} />} />
+          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
           {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
