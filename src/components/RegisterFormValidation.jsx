@@ -47,7 +47,7 @@ const RegisterFormValidation = () => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(user, pwd)
+    console.log({ user: user, password: pwd })
   }
 
 
