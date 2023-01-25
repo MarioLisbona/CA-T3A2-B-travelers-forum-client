@@ -40,7 +40,8 @@ const LandingPage = ({ forumMember, latestPosts }) => {
             : <Header headingText={"Welcome to the Traveler's Forum"}
                 bodyText={"A blurb about how cool the forum is etc and prompt the guest to register to receive member benefits"} 
                 btn1Text={'Register'}
-                showBtn1 
+                showBtn1
+                btn1ToPage={"/register"}
               />
           }
           <div className="row g-3">
