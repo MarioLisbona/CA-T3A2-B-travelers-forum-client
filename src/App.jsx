@@ -26,7 +26,7 @@ import PageNotFound from './components/PageNotFound'
 const App = () => {
 
   // boolean used for testing conditional rendering of guest and member elements
-  const forumMember = false
+  const forumMember = true
 
   // state variables for posts and members
   const [posts, setPosts] = useState([])
@@ -36,13 +36,13 @@ const App = () => {
   // may need to change this to trigger and track the posts state
   useEffect(() => {
     async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts")
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/latest")
       const data = await result.json()
       setPosts(data)
     }
 
     fetchPosts()
-  }, [])
+  }, [posts])
 
   // fetch all the members from the API on component on mount only and assign to members variable
   // may need to change this to trigger and track the members state
