@@ -70,20 +70,18 @@ const App = () => {
     }
 
     console.log(newMember)
-  
-    // Wait till register post route is up and running on sever
     
-    // // post the new member to the API
-    // const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   'body': JSON.stringify(newMember)
-    // })
+    // post the new member to the API
+    const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(newMember)
+    })
 
-    // console.log(returnedMember)
+    console.log(returnedMember)
 
   }
 
