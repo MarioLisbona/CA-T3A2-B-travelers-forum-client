@@ -22,14 +22,14 @@ import PostForm from './PostForm'
 //       - footer
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const CreateAPost = ({ forumMember }) => {
+const CreateAPost = ({ forumMember, submitPost }) => {
   return (
     <>
       {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'create'} />
       <div className="container">
         <Header headingText={"Create a post"} />
-        <PostForm />
+        <PostForm submitPost={submitPost}  />
       </div>
       <Footer />
     </>
