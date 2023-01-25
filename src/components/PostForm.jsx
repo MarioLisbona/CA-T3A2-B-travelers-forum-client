@@ -21,17 +21,17 @@ import MemberNavBar from './MemberNavBar'
 const PostForm = () => {
   return (
     <>
-      <form class="p-5 bg-light rounded-3 border border-success">
-        <div class="row mb-3">
-          <label for="inputPostTitle" class="col-sm-2 col-form-label">Post Title</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3"></input>
+      <form onSubmit={submitForm} className="p-5 bg-light rounded-3 border border-success">
+        <div className="row mb-3">
+          <label for="inputPostTitle" className="col-sm-2 col-form-label">Post Title</label>
+          <div className="col-sm-10">
+            <input type="email" className="form-control" id="inputEmail3"></input>
           </div>
         </div>
-        <div class="row mb-3">
-          <label for="input-continent-select" class="col-sm-2 col-form-label">Choose a Continent</label>
-          <div class="col-sm-10">
-            <select class="form-select" id="inputPostContinent">
+        <div className="row mb-3">
+          <label for="input-continent-select" className="col-sm-2 col-form-label">Choose a Continent</label>
+          <div className="col-sm-10">
+            <select className="form-select" id="inputPostContinent">
               <option selected></option>
               <option value="Asia">Asia</option>
               <option value="Africa">Africa</option>
@@ -43,16 +43,16 @@ const PostForm = () => {
             </select>
           </div>
         </div>
-        <fieldset class="row mb-3">
-          <legend class="col-form-label col-sm-2 pt-0">Tell us your story</legend>
-          <div class="col-sm-10">
-            <textarea class="form-control" rows="15"></textarea>
+        <fieldset className="row mb-3">
+          <legend className="col-form-label col-sm-2 pt-0">Tell us your story</legend>
+          <div className="col-sm-10">
+            <textarea className="form-control" rows="15"></textarea>
           </div>
         </fieldset>
-        <fieldset class="row mb-3">
-          <legend class="col-form-label col-sm-2 pt-0"></legend>
-          <div class="col-sm-10">
-            <button type="submit" class="btn btn-success">Submit</button>
+        <fieldset className="row mb-3">
+          <legend className="col-form-label col-sm-2 pt-0"></legend>
+          <div className="col-sm-10">
+            <button type="submit" className="btn btn-success">Submit</button>
           </div>
         </fieldset>
       </form>
