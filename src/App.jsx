@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 
 const App = () => {
 
-  const forumMember = false
+  const forumMember = true
 
   function loginDetails(email, password) {
     console.log(`User attempting to login\n ${email}: ${password}`)
@@ -96,20 +96,18 @@ const App = () => {
 
     console.log(newPost)
 
-    
-    // Wait till register post route is up and running on sever
 
-    // // post the new member to the API
-    // const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   'body': JSON.stringify(newPost)
-    // })
+    // post the new member to the API
+    const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(newPost)
+    })
 
-    // console.log(returnedPost)
+    console.log(returnedPost)
 
   }
 
