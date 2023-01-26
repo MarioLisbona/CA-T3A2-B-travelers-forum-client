@@ -254,7 +254,7 @@ const App = () => {
         <Route path="/view/continent/antarctica" element={<Antarctica forumMember={forumMember} antarcticaPosts={antarcticaPosts} />} />
         <Route path="/view/continent/europe" element={<Europe forumMember={forumMember} europePosts={europePosts} />} />
         <Route path="/view/continent/australia" element={<Australia forumMember={forumMember} australiaPosts={australiaPosts} />} />
-        <Route path="/about" element={<About forumMember={forumMember} logoutMember={logoutMember} />} />
+        <Route path="/about" element={<About forumMember={forumMember} />} />
         <Route path="/contact" element={<Contact forumMember={forumMember} />} />
         <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
         <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
