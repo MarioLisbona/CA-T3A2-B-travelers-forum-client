@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // Antarctica component
@@ -28,8 +27,6 @@ const Antarctica = ({ forumMember, antarcticaPosts }) => {
 
   return (
     <>
-      {/* conditionally render navbar for guest and member */}
-      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'antarctica'} />
       {/* container for main body of the page */}
         <div className="container">
