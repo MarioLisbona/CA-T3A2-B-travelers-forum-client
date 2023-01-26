@@ -208,7 +208,7 @@ const App = () => {
       'body': JSON.stringify(newComment)
     })
 
-    // nav(`/posts/${post._id}`)
+    nav(`/posts/${post[0]._id}`)
 
     const returnedObject = await returnedComment.json()
     // testing
