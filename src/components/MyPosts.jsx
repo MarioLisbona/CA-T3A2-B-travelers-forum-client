@@ -16,7 +16,7 @@ const MyPosts = ({ latestPosts, loggedInMember }) => {
         bodyText={"All your posts are displayed below"} 
         btn1Text={'Create a Post'}
         showBtn1
-        btn1ToPage={'/create'}
+        btn1ToPage={'/posts/create'}
       />
       <div className="row g-3">
         {myPosts.length > 0
