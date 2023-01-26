@@ -2,7 +2,6 @@ import React from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
-import Footer from './Footer'
 
 const Antarctica = ({ forumMember, antarcticaPosts }) => {
 
@@ -40,10 +39,9 @@ const Antarctica = ({ forumMember, antarcticaPosts }) => {
                         : "/register"
                     }
                   />
-            }
+              }
           </div>
         </div>
-        <Footer />
     </>
   )
 }

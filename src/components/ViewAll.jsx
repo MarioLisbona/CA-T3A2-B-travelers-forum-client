@@ -27,7 +27,6 @@ const ViewAll = ({ forumMember, allPosts }) => {
           }
         </div>
       </div>
-      <Footer />
     </>
   )
 }

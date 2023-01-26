@@ -29,7 +29,6 @@ const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
             }
           </div>
         </div>
-        <Footer />
     </>
   )
 }

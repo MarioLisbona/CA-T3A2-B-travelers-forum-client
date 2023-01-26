@@ -28,7 +28,6 @@ const Europe = ({ forumMember, europePosts }) => {
             }
           </div>
         </div>
-        <Footer />
     </>
   )
 }

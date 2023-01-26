@@ -13,7 +13,6 @@ const PageNotFound = () => {
           <div className="row g-3">
           </div>
         </div>
-        <Footer />
     </>
   )
 }

@@ -53,7 +53,6 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
               />
         }
       </div>
-      <Footer />
     </>
   )
 }
