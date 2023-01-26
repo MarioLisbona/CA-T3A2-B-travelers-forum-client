@@ -1,4 +1,4 @@
-import React, { ComponentDidMount } from 'react';
+import React, { useEffect } from 'react';
 import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
@@ -33,7 +33,10 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
 
   const commentsEmpty = false
   
-  window.scroll(0, 0)
+  useEffect(() => {
+    // window.scroll(0, 0)
+  }, [])
+
 
   return (
     <>
