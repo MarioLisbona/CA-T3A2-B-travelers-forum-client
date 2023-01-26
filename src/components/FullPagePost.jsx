@@ -30,6 +30,8 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
   const comments = post[0].comments.map(comment => (
       { username: comment.author.username, date: comment.date_posted.substring(0, 10), content: comment.content}
   ))
+
+  console.log(comments)
   
   useEffect(() => {
     // window.scroll(0, 0)
