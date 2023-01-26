@@ -200,7 +200,11 @@ const App = () => {
     }
 
     // testing
-    console.log(newComment)
+    console.log('post just commented on', post[0])
+    console.log('existing comments', post[0].comments)
+    console.log('new comment created', newComment)
+
+    post[0].comments.push(newComment)
 
 
     // post the new comment to the API and assign the return object to returnedComment
@@ -213,7 +217,7 @@ const App = () => {
       'body': JSON.stringify(newComment)
     })
 
-    nav(`/posts/${post[0]._id}`)
+    // nav(`/posts/${post[0]._id}`)
 
     const returnedObject = await returnedComment.json()
     // testing
