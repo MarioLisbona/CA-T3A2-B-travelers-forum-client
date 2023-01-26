@@ -1,19 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// Footer component
-// Use - Displays a footer at the bottom of every page
-//
-// props: 
-//       - 
-//
-// components used:
-//       - Bootstrap elements and styles
-//       - Link component
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 const Footer = () => {
+	
 	return (
 		<>
 			<footer>

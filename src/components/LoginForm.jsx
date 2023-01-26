@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import CtaButton from './CtaButton'
 
 const LoginForm = ({ loginMember }) => {
 

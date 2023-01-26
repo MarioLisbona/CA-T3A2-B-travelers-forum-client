@@ -1,19 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// MemberNavbar component
-// Use - Displays a member navbar
-//
-// props: 
-//       - 
-//
-// components used:
-//       - Bootstrap elements and styles
-//       - Link
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 const MemberNavBar = ({ logoutMember }) => {
+    
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">

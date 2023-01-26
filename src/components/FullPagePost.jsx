@@ -1,29 +1,9 @@
 import React, { useEffect } from 'react';
-import NavBar from './NavBar'
-import HeroImage from './HeroImage'
 import Header from './Header'
-import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import PostContent from './PostContent'
 import CommentContent from './CommentContent'
 import CommentForm from './CommentForm';
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-// FullPagePost component
-// Use - Display's a full post, with comments 
-//
-// props: 
-//       - forumMember - used to conditionally render guest or member navbar
-//
-// components used:
-//       - MemberNavBar and NavBar
-//       - Hero image with correct class for images
-//       - PostContent component
-//       - mapping over comments object and rendering CommentContent for each object
-//       - footer
-
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 const FullPagePost = ({ forumMember, post, submitComment }) => {
 
@@ -36,7 +16,6 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
   useEffect(() => {
     // window.scroll(0, 0)
   }, [])
-
 
   return (
     <>

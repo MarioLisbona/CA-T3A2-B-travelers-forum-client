@@ -51,7 +51,6 @@ const RegisterFormValidation = ({ createMember }) => {
     createMember(user, pwd)
   }
 
-
   return (
     <section>
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>

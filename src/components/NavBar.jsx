@@ -1,19 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// Navbar component
-// Use - Displays a guest navbar
-//
-// props: 
-//       - 
-//
-// components used:
-//       - Bootstrap elements and styles
-//       - Link
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 const NavBar = () => {
+    
 	return (
 		<>
 		<nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">

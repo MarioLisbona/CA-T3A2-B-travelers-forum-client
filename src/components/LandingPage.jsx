@@ -1,28 +1,11 @@
 import React from 'react'
-import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import MemberHeader from './MemberHeader'
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// LandingPage component
-// Use - Displays a landing page at the root directory
-//
-// props: 
-//       - forumMember - used to conditionally render guest or member navbar
-//
-// components used:
-//       - MemberNavBar and NavBar
-//       - Hero image with correct class for images
-//       - memberHeader, with 2 CTA buttons to view all users posts and create a post
-//       - Header, CTA button to view all posts for this category
-//       - footer
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
-
 
 	return (
 		<>

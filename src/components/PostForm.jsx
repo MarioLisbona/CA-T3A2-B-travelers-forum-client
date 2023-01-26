@@ -1,23 +1,4 @@
 import React, { useState } from 'react'
-import NavBar from './NavBar'
-import HeroImage from './HeroImage'
-import Header from './Header'
-import PreviewCard from './PreviewCard'
-import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-// PostForm component
-// Use - A form to create a new post
-//
-// props: 
-//       - 
-//       - 
-//
-// components used:
-//       - Bootstrap rows and columns with classes applied
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const PostForm = ({ submitPost }) => {
 
@@ -30,7 +11,6 @@ function submitForm(event) {
 
   submitPost(title, continent, postContent)
 }
-
 
   return (
     <>

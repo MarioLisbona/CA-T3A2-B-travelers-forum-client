@@ -1,29 +1,10 @@
 import React from 'react'
-import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// Asia component
-// Use - Displays information about Asia and the 8 latest Asia posts displayed in preview cards
-//
-// props: 
-//       - forumMember - used to conditionally render guest or member navbar
-//       - asiaPosts - an array of posts filtered from the fetch at /posts
-//
-// components used:
-//       - MemberNavBar and NavBar
-//       - Hero image with correct class for images
-//       - Header, CTA button to view all posts for this category
-//       - Map over asiaPosts array and render a preview card for each post
-//       - footer
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 const Asia = ({ forumMember, asiaPosts }) => {
-
 
   return (
     <>

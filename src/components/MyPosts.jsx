@@ -1,25 +1,9 @@
 import React from 'react'
-import NavBar from './NavBar'
 import HeroImage from './HeroImage'
-import Header from './Header'
 import PreviewCard from './PreviewCard'
-import Footer from './Footer'
 import MemberHeader from './MemberHeader'
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// MyPosts component
-// Use - Displays header for members with 2 CTA buttons
-//
-// props: 
-//       - 
-//
-// components used:
-//       - 
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-const MyPosts = ({ forumMember, latestPosts }) => {
-
-  const emptyPostsArray = []
+const MyPosts = ({ latestPosts }) => {
 
   return (
     <>

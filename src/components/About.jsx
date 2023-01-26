@@ -1,13 +1,11 @@
 import React from 'react'
-import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
-import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import AboutInfo from './AboutInfo'
 
+const About = () => {
 
-const About = ({ forumMember, logoutMember }) => {
   return (
     <>
       {/* Heroimage */}
