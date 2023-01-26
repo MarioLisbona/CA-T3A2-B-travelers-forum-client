@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // Africa component
@@ -27,8 +26,6 @@ const Africa = ({ forumMember, africaPosts }) => {
 
   return (
     <>
-      {/* conditionally render navbar for guest and member */}
-      {/* {forumMember ? <MemberNavBar /> : <NavBar />} */}
       {/* Heroimage */}
       <HeroImage heroClass={'acirfa'}/>
       {/* container for main body of the page */}
