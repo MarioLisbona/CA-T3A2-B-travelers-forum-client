@@ -6,19 +6,6 @@ import PreviewCard from './PreviewCard'
 import Footer from './Footer'
 import AboutInfo from './AboutInfo'
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// About component
-// Use - Displays information about the forum
-//
-// props: 
-//       - forumMember - used to conditionally render guest or member navbar
-//
-// components used:
-//       - MemberNavBar and NavBar
-//       - Hero image with correct class for images
-//       - Header, no CTA button, About Info component
-//       - footer
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 const About = ({ forumMember, logoutMember }) => {
   return (

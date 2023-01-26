@@ -49,7 +49,7 @@ const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
             <h1>See the latest Posts</h1>
             {latestPosts.length > 0
               ? latestPosts.map((post, idx) => (
-                <PreviewCard key ={idx} post={post}  />
+                idx < 8 ? <PreviewCard key ={idx} post={post}  /> : ''
               ))
               : forumMember
                   ? <Header headingText={"Much empty..."} 
