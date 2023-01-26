@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import CtaButton from './CtaButton'
 
 const LoginForm = ({ loginMember }) => {
 
@@ -29,7 +30,7 @@ const LoginForm = ({ loginMember }) => {
         <fieldset class="row mb-3">
           <legend class="col-form-label col-sm-2 pt-0"></legend>
           <div class="col-sm-4">
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success btn-lg">Login</button>
           </div>
         </fieldset>
       </form>
