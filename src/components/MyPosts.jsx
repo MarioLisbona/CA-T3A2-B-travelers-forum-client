@@ -5,11 +5,8 @@ import MemberHeader from './MemberHeader'
 
 const MyPosts = ({ latestPosts, loggedInMember }) => {
 
-  console.log(latestPosts[0].author._id)
-  console.log(loggedInMember.id)
-
+// filter all posts to just ones created by the member logged in
   const myPosts = latestPosts.filter(post => post.author._id == loggedInMember.id)
-  console.log(myPosts)
 
   return (
     <>
