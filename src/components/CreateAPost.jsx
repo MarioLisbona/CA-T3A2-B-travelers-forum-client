@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 import PostForm from './PostForm'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +24,6 @@ import PostForm from './PostForm'
 const CreateAPost = ({ forumMember, submitPost }) => {
   return (
     <>
-      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'create'} />
       <div className="container">
         <Header headingText={"Create a post"} />
