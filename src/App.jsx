@@ -199,12 +199,12 @@ const App = () => {
 
     // create object to receive Register form data
     const newComment = {
-      // post: postId,
-      // author: loggedInMember.username,
-      // content: comment
-      post: "63d1c9f90a5b0cb5c88503ae",
-      author: "63d1c9b40a5b0cb5c884ffc3",
-      content: "Posting a comment with some dummy data.....copying author and post id's from postman"
+      post: postId,
+      author: loggedInMember.username,
+      content: comment
+      // post: "63d1c9f90a5b0cb5c88503ae",
+      // author: "63d1c9b40a5b0cb5c884ffc3",
+      // content: "Posting a comment with some dummy data.....copying author and post id's from postman"
     }
 
     // testing
