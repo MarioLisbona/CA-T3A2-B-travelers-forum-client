@@ -13,7 +13,6 @@ const Login = ({ loginMember }) => {
         <Header headingText={"Login for more features"} btnText={'Login'} showBtn />
         <LoginForm loginMember={loginMember} />
       </div>
-      <Footer />
   </>
   )
 }

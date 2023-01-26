@@ -13,7 +13,6 @@ const CreateAPost = ({ submitPost }) => {
         <Header headingText={"Create a post"} />
         <PostForm submitPost={submitPost}  />
       </div>
-      <Footer />
     </>
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
-import Footer from './Footer'
 import AboutInfo from './AboutInfo'
 
 const About = () => {
@@ -17,7 +16,6 @@ const About = () => {
           bodyText={<AboutInfo />}
           btnText={'Learn More'} />
       </div>
-      <Footer />
     </>
   )
 }

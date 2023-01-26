@@ -13,7 +13,6 @@ const Register = ({ forumMember, createMember }) => {
         <Header headingText={"Register to become a member"} btnText={'Register'} />
         <RegisterFormValidation createMember={createMember} />
       </div>
-      <Footer />
   </>
   )
 }

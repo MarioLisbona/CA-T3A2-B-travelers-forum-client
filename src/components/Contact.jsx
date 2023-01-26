@@ -13,7 +13,6 @@ const Contact = () => {
           <Header headingText={"Connect with us at the links below"} btnText={'View all Contact Information'} />
           <SocialMedia />
         </div>
-        <Footer />
     </>
   )
 }
