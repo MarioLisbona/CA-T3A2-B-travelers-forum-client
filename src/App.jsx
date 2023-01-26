@@ -33,8 +33,14 @@ const App = () => {
   // state variables for posts and members
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
   const [posts, setPosts] = useState([])
-  const [forumMember, setForumMember] = useState(false)
-  const [loggedInMember, setLoggedInMember] = useState({})
+  const [forumMember, setForumMember] = useState(true)
+
+  const [loggedInMember, setLoggedInMember] = useState(
+    {id: '63d21e8d35efd62202c96a69',
+    username: 'MarioLisbona',
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…Tg2fQ.2EyTNQSplf70bzI7zlbLi4rW7XVYnXvZGtx8Ls3fpPs'
+  }
+  )
 
   // fetch all the posts from the API on component on mount only and assign to state variable
   // may need to change this to trigger and track the posts state
@@ -199,12 +205,23 @@ const App = () => {
       content: comment
     }
 
-    // testing
-    console.log('post just commented on', post[0])
-    console.log('existing comments', post[0].comments)
-    console.log('new comment created', newComment)
 
-    post[0].comments.push(newComment)
+    // console.log('existing comments before push new comment', post[0].comments)
+    // post[0].comments.push(newComment)
+    // console.log('existing comments after push new comment', post[0].comments)
+    // console.log('post id', post[0]._id)
+
+    // console.log(posts[22]._id)
+    const targetPostId = post[0]._id
+
+    const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+
+    // console.log('found postindex', postIndex)
+    // console.log(posts[postIndex].comments)
+
+    posts[postIndex].comments.push(newComment)
+
 
 
     // post the new comment to the API and assign the return object to returnedComment
@@ -216,8 +233,8 @@ const App = () => {
       },
       'body': JSON.stringify(newComment)
     })
-
-    // nav(`/posts/${post[0]._id}`)
+    // cant redirect untill new comment is added to this post
+    // nav(`/posts/${post[0].category}`)
 
     const returnedObject = await returnedComment.json()
     // testing
