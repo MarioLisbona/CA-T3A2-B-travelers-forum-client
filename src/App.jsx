@@ -99,6 +99,8 @@ const App = () => {
       const returnedObject = await returnedMember.json()
       // loging returned object from API
       console.log('returned object New Member', returnedObject)
+
+      nav('/login')
     }
     catch (err){
       console.log(err.message)
