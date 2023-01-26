@@ -80,6 +80,9 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
                 showBtn1 
                 btn1Text={"Register"}
                 btn1ToPage={"/register"}
+                showBtn2
+                btn2Text={"Login"}
+                btn2ToPage={"/login"}
               />
         }
       </div>
