@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroImage from './HeroImage'
 import PreviewCard from './PreviewCard'
-import MemberHeader from './MemberHeader'
+import Header from './Header'
 
 const MyPosts = ({ latestPosts, loggedInMember }) => {
 
@@ -12,18 +12,18 @@ const MyPosts = ({ latestPosts, loggedInMember }) => {
     <>
       <HeroImage heroClass={'landing-page'}/>
       <div className="container">
-      <MemberHeader headingText={`Hi ${loggedInMember.username}, welcome to the forum`}
+      <Header headingText={`Hi ${loggedInMember.username}, welcome to the forum`}
         bodyText={"All your posts are displayed below"} 
         btn1Text={'Create a Post'}
         showBtn1
-        btn1ToPage={'/create/'}
+        btn1ToPage={'/create'}
       />
       <div className="row g-3">
         {myPosts.length > 0
           ? myPosts.map((post, idx) => (
               <PreviewCard key ={idx} post={post}  />
             ))
-          : <MemberHeader headingText={"You havn't made any posts yet."}
+          : <Header headingText={"You havn't made any posts yet."}
               bodyText={"Click the Create a Post button above to make your first post to the forum."} 
             />
         }
