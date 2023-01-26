@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 //       - Link
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const MemberNavBar = () => {
+const MemberNavBar = ({ logoutMember }) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
@@ -84,7 +84,7 @@ const MemberNavBar = () => {
                                 <Link className="dropdown-item text-white" to="/contact">
                                     Contact Us
                                 </Link>
-                                <Link className="dropdown-item text-white" to="/">
+                                <Link onClick={logoutMember} className="dropdown-item text-white" to="/">
                                     Log out
                                 </Link>
                             </div>
