@@ -38,7 +38,7 @@ const Africa = ({ forumMember, africaPosts }) => {
                 }
                 btn1ToPage={
                   forumMember
-                    ? "/posts/create"
+                    ? "/posts/new"
                     : "/register"
                 }
               />

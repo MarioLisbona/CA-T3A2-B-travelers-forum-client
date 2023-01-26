@@ -38,7 +38,7 @@ const Australia = ({ forumMember, australiaPosts }) => {
                 }
                 btn1ToPage={
                   forumMember
-                    ? "/posts/create"
+                    ? "/posts/new"
                     : "/register"
                 }
               />

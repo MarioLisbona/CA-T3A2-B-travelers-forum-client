@@ -64,7 +64,7 @@ const MemberNavBar = ({ logoutMember }) => {
                                 <Link className="dropdown-item text-white" to="/posts">
                                     My Posts
                                 </Link>
-                                <Link className="dropdown-item text-white" to="/posts/create">
+                                <Link className="dropdown-item text-white" to="/posts/new">
                                     Create a Post
                                     </Link>
                                 <Link className="dropdown-item text-white" to="/about">
