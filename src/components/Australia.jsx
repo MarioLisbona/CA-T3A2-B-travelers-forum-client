@@ -24,7 +24,6 @@ import Footer from './Footer'
 
 const Australia = ({ forumMember, australiaPosts }) => {
 
-  const emptyPostsArray = []
   return (
     <>
       {/* Heroimage */}
@@ -37,7 +36,7 @@ const Australia = ({ forumMember, australiaPosts }) => {
           <div className="row g-3">
             {/* If australiaPosts has objects then map over the array and render a preview card for each post
             and pass in the post object */}
-            {emptyPostsArray.length > 0
+            {australiaPosts.length > 0
               ? australiaPosts.map((post, idx) => (
                 <PreviewCard key ={idx} post={post}  />
               ))

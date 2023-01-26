@@ -52,7 +52,7 @@ function submitForm(event) {
               <option value="South America">South America</option>
               <option value="Antarctica">Antarctica</option>
               <option value="Europe">Europe</option>
-              <option value="Asia">Asia</option>
+              <option value="Australia">Australia</option>
             </select>
           </div>
         </div>
