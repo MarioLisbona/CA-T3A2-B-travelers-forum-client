@@ -10,7 +10,10 @@ const CreateAPost = ({ submitPost }) => {
     <>
       <HeroImage heroClass={'create'} />
       <div className="container">
-        <Header headingText={"Create a post"} />
+        <Header 
+          headingText={"Create a post"}
+          bodyText={"Tell us about an amazing story from your travels. Choose a continent and what experience you had."}
+        />
         <PostForm submitPost={submitPost}  />
       </div>
     </>

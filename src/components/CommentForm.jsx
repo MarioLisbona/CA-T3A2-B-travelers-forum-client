@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 
 const CommentForm = ({ post, submitComment }) => {
 
+  // tracking state of variables used in the comment form
   const [title] = useState(post[0].title)
   const [continent] = useState(post[0].category)
   const [comment, setComment] = useState('')
 
-  console.log(post[0])
-  
+  // prevent default behaviour of the form
+  // call submitComment , passing in form data to post the comment to the database
   function submitForm(event) {
     event.preventDefault()
     submitComment(post, comment)

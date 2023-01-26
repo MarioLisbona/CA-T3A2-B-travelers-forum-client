@@ -243,9 +243,9 @@ const App = () => {
           <Route path="/contact" element={<Contact forumMember={forumMember} />} />
           <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
-          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} />} />
+          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
           <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
-          <Route path={"/posts/:id"} element={<ShowPostWrapper />} />
+          <Route path={"/posts/:id"} element={<ShowPostWrapper />}  />
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
       <Footer />

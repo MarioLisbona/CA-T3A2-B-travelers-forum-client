@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 
 const LoginForm = ({ loginMember }) => {
 
+  // tracking stae of login form data
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
 
+  // once form is submitted prevent default and call loginMember function passing in form data
   function submitForm(event) {
     event.preventDefault()
     

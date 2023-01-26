@@ -11,6 +11,7 @@ const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
 		<>
       <HeroImage heroClass={'landing-page'} />
         <div className="container">
+          {/* conditionally render a message for member and guest */}
           {forumMember 
             ? <MemberHeader headingText={`Hi ${loggedInMember.username}, welcome to the forum`}
                 bodyText={"A blurb about how cool the forum is etc"} 
@@ -28,12 +29,14 @@ const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
                 btn2ToPage={"/login"}
               />
           }
+          {/* render 8 latest preview cards */}
           <div className="row g-3">
             <h1>See the latest Posts</h1>
             {latestPosts.length > 0
               ? latestPosts.map((post, idx) => (
                 idx < 8 ? <PreviewCard key ={idx} post={post}  /> : ''
               ))
+              // conditionally render message for guest and member
               : forumMember
                   ? <Header headingText={"Much empty..."} 
                       bodyText={"The travel forum currently has no posts. Click the Create a Post button above to be the first to contribute."} 
