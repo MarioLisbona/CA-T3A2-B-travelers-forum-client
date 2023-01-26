@@ -23,7 +23,7 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
-import HeroImage from './components/HeroImage'
+
 
 const App = () => {
 
@@ -35,12 +35,19 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
 
+
   const [loggedInMember, setLoggedInMember] = useState(
     {id: '63d21e8d35efd62202c96a69',
     username: 'MarioLisbona',
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…Tg2fQ.2EyTNQSplf70bzI7zlbLi4rW7XVYnXvZGtx8Ls3fpPs'
   }
   )
+  
+  const currentUser = {
+    username: sessionStorage.getItem("username"),
+    id: sessionStorage.getItem("id"),
+    token: sessionStorage.getItem("token"),
+  }
 
   // fetch all the posts from the API on component on mount only and assign to state variable
   // may need to change this to trigger and track the posts state
@@ -131,9 +138,9 @@ const App = () => {
       // loging returned object from API
       console.log('returned Object - logged in member', returnedObject)
 
-      // sessionStorage.setItem("username", returnedObject.username)
-      // sessionStorage.setItem("id", returnedObject.id)
-      // sessionStorage.setItem("token", returnedObject.token)
+      sessionStorage.setItem("username", returnedObject.username)
+      sessionStorage.setItem("id", returnedObject.id)
+      sessionStorage.setItem("token", returnedObject.token)
 
       setForumMember(true)
 
@@ -152,7 +159,7 @@ const App = () => {
 
   function logoutMember() {
     setForumMember(false)
-
+    sessionStorage.clear()
     setLoggedInMember({})
 
       nav('/')
