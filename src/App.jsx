@@ -36,18 +36,21 @@ const App = () => {
   const [forumMember, setForumMember] = useState(false)
 
 
-  const [loggedInMember, setLoggedInMember] = useState(
-    {id: '63d21e8d35efd62202c96a69',
-    username: 'MarioLisbona',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…Tg2fQ.2EyTNQSplf70bzI7zlbLi4rW7XVYnXvZGtx8Ls3fpPs'
-  }
-  )
+  const [loggedInMember, setLoggedInMember] = useState({})
   
   const currentUser = {
     username: sessionStorage.getItem("username"),
     id: sessionStorage.getItem("id"),
     token: sessionStorage.getItem("token"),
   }
+
+  useEffect(() => {
+    if (currentUser.token) {
+      setLoggedInMember(currentUser)
+      setForumMember(true)
+    }
+  }, [])
+ 
 
   // fetch all the posts from the API on component on mount only and assign to state variable
   // may need to change this to trigger and track the posts state
