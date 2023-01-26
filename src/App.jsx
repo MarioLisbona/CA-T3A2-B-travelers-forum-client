@@ -47,18 +47,6 @@ const App = () => {
     fetchPosts()
   }, [])
 
-  // // fetch all the members from the API on component on mount only and assign to members variable
-  // // may need to change this to trigger and track the members state
-  // useEffect(() => {
-  //   async function fetchMembers() {
-  //     const result = await fetch("https://indigo-stocking-production.up.railway.app/members")
-  //     const data = await result.json()
-  //     setMembers(data)
-  //   }
-
-  //   fetchMembers()
-  // }, [])
-
   // Higher Order Function to display a full page post from the link in the preview cards
   // uses id param passed in from preview card button to filter posts array to find the correct post object
   // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
@@ -204,9 +192,6 @@ const App = () => {
       post: postId,
       author: loggedInMember.id,
       content: comment
-      // post: "63d1c9f90a5b0cb5c88503ae",
-      // author: "63d1c9b40a5b0cb5c884ffc3",
-      // content: "Posting a comment with some dummy data.....copying author and post id's from postman"
     }
 
     // testing
@@ -222,6 +207,8 @@ const App = () => {
       },
       'body': JSON.stringify(newComment)
     })
+
+    // nav(`/posts/${post._id}`)
 
     const returnedObject = await returnedComment.json()
     // testing
