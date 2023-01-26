@@ -23,7 +23,7 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
-import HeroImage from './components/HeroImage'
+
 
 const App = () => {
 
@@ -48,8 +48,6 @@ const App = () => {
     id: sessionStorage.getItem("id"),
     token: sessionStorage.getItem("token"),
   }
-
-  console.log(currentUser.token)
 
   // fetch all the posts from the API on component on mount only and assign to state variable
   // may need to change this to trigger and track the posts state
