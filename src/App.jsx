@@ -157,13 +157,11 @@ const App = () => {
 
     // create object to receive Register form data
     const newPost = {
+      author: loggedInMember.id,
       title: title,
       category: continent,
       content: postContent
     }
-
-    // testing
-    console.log(newPost)
 
 
     
