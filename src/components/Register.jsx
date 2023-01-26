@@ -28,7 +28,6 @@ const Register = ({ forumMember, createMember }) => {
     <HeroImage heroClass={'register'} />
       <div className="container">
         <Header headingText={"Register to become a member"} btnText={'Register'} />
-        {/* <RegisterForm addUser={addUser} /> */}
         <RegisterFormValidation createMember={createMember} />
       </div>
       <Footer />

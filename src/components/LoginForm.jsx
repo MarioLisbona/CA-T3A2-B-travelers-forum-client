@@ -5,13 +5,6 @@ const LoginForm = ({ loginMember }) => {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
 
-  function submitFormRegister(event) {
-    event.preventDefault()
-    console.log({email: email, username: username, password: password})
-
-    AddUser(email, username, password)
-  }
-
   function submitForm(event) {
     event.preventDefault()
     
