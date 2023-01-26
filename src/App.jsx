@@ -228,12 +228,8 @@ const App = () => {
       {forumMember ? <MemberNavBar logoutMember={logoutMember} /> : <NavBar />}
       <Routes>
         <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-
-        {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
         <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
         <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
-        {/* ////////////////////////////////////////////////////////////////////////////////////// */}
-
         <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
         <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
         <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
@@ -248,10 +244,7 @@ const App = () => {
         <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
         <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} />} />
         <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
-
-        {/* <Route path={"/posts/:id"} element={<FullPagePost forumMember={forumMember} />} /> */}
         <Route path={"/posts/:id"} element={<ShowPostWrapper />} />
-
         <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
       </Routes>
       
