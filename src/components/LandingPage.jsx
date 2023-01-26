@@ -21,7 +21,7 @@ import MemberHeader from './MemberHeader'
 //       - footer
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const LandingPage = ({ forumMember, latestPosts }) => {
+const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
 
 
 	return (
@@ -29,7 +29,7 @@ const LandingPage = ({ forumMember, latestPosts }) => {
       <HeroImage heroClass={'landing-page'} />
         <div className="container">
           {forumMember 
-            ? <MemberHeader headingText={`Hi {loggedInMember.username}, welcome to the forum`}
+            ? <MemberHeader headingText={`Hi ${loggedInMember.username}, welcome to the forum`}
                 bodyText={"A blurb about how cool the forum is etc"} 
                 btn1Text={'My Posts'}
                 btn2Text={'Create a Post'}

@@ -32,7 +32,6 @@ const App = () => {
   // state variables for posts and members
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
   const [posts, setPosts] = useState([])
-  // const [members, setMembers] = useState([])
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
 
@@ -239,7 +238,7 @@ const App = () => {
     {/* Browser router paths */}
       {forumMember ? <MemberNavBar logoutMember={logoutMember} /> : <NavBar />}
       <Routes>
-        <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} />} />
+        <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
 
         {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
         <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
