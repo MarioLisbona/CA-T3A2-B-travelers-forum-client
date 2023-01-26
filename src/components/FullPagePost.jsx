@@ -76,7 +76,7 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
           : comments.length == 0 
             ? ''
             : <Header
-                bodyText={'Only Members can comment on a post. Register today to become a member'}
+                bodyText={'Only Members can comment on a post. Register today to become a member or sign in'}
                 showBtn1 
                 btn1Text={"Register"}
                 btn1ToPage={"/register"}

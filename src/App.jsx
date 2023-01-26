@@ -202,7 +202,7 @@ const App = () => {
     // create object to receive Register form data
     const newComment = {
       post: postId,
-      author: loggedInMember.username,
+      author: loggedInMember.id,
       content: comment
       // post: "63d1c9f90a5b0cb5c88503ae",
       // author: "63d1c9b40a5b0cb5c884ffc3",
