@@ -71,9 +71,10 @@ const App = () => {
   const ShowPostWrapper = () =>{
     const { id } = useParams()
     const post = posts.filter(post => post._id == id)
-    return post
-      ? <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} />
-      : <PageNotFound />
+    console.log(post)
+    return post == 0
+      ? <PageNotFound />
+      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} />
   }
 
   // async function - is called when the register form is submitted
@@ -281,7 +282,7 @@ const App = () => {
           <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
           <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
+          <Route path={"/posts/new"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
           <Route path={"/posts/:id"} element={<ShowPostWrapper />}  />
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>

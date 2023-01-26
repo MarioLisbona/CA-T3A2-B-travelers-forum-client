@@ -8,7 +8,7 @@ const MemberHeader = ( { headingText, bodyText, showBtn1, showBtn2, btn1Text, bt
     <h1>{headingText}</h1>
     <p className="lead">{bodyText}</p>
     <p>
-      {showBtn1 ? <CtaButton showBtn1 btn1Text={btn1Text} btn1ToPage={"/posts"} /> : ''} {showBtn2 ? <CtaButton showBtn2 btn2Text={btn2Text} btn2ToPage={"/posts/create"} /> : ''}
+      {showBtn1 ? <CtaButton showBtn1 btn1Text={btn1Text} btn1ToPage={"/posts"} /> : ''} {showBtn2 ? <CtaButton showBtn2 btn2Text={btn2Text} btn2ToPage={"/posts/new"} /> : ''}
     </p>
 </div>
   )
@@ -16,4 +16,4 @@ const MemberHeader = ( { headingText, bodyText, showBtn1, showBtn2, btn1Text, bt
 
 export default MemberHeader
 
-"/posts/create"
+"/posts/new"

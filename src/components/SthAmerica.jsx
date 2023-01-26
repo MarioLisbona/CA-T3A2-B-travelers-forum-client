@@ -21,7 +21,7 @@ const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
               : forumMember
                   ? <Header headingText={"Much empty..."} 
                     bodyText={"The North American travel forum currently has no posts, Click below to be the first"} 
-                    showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/create"} />
+                    showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/new"} />
                   : <Header headingText={"Much empty..."} 
                   bodyText={"The North American travel forum currently has no posts, register today to be the first to contribute."}
                     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />

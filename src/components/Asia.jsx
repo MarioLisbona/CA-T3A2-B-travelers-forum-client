@@ -39,7 +39,7 @@ const Asia = ({ forumMember, asiaPosts }) => {
                 }
                 btn1ToPage={
                   forumMember
-                    ? "/posts/create"
+                    ? "/posts/new"
                     : "/register"
                 }
               />

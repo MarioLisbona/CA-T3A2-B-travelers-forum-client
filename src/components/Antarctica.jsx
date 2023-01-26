@@ -35,7 +35,7 @@ const Antarctica = ({ forumMember, antarcticaPosts }) => {
                     }
                     btn1ToPage={
                       forumMember
-                        ? "/posts/create"
+                        ? "/posts/new"
                         : "/register"
                     }
                   />
