@@ -28,7 +28,7 @@ const Africa = ({ forumMember, africaPosts }) => {
   return (
     <>
       {/* conditionally render navbar for guest and member */}
-      {forumMember ? <MemberNavBar /> : <NavBar />}
+      {/* {forumMember ? <MemberNavBar /> : <NavBar />} */}
       {/* Heroimage */}
       <HeroImage heroClass={'acirfa'}/>
       {/* container for main body of the page */}

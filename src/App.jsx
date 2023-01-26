@@ -22,6 +22,7 @@ import MyPosts from './components/MyPosts'
 import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
+import MemberNavBar from './components/MemberNavBar'
 
 const App = () => {
 
@@ -236,36 +237,35 @@ const App = () => {
   return (
     <>
     {/* Browser router paths */}
-      {/* <BrowserRouter> */}
-        <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} />} />
+      {forumMember ? <MemberNavBar logoutMember={logoutMember} /> : <NavBar />}
+      <Routes>
+        <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} />} />
 
-          {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
-          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
-          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
-          {/* ////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* TEST FUNCTIONS BEING USED FOR LOGIN AND REGISTER */}
+        <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
+        <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
+        {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
-          <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
-          <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
-          <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
-          <Route path="/view/continent/nth-america" element={<NthAmerica forumMember={forumMember} nthAmericaPosts={nthAmericaPosts} />} />
-          <Route path="/view/continent/sth-america" element={<SthAmerica forumMember={forumMember} sthAmericaPosts={sthAmericaPosts} />} />
-          <Route path="/view/continent/antarctica" element={<Antarctica forumMember={forumMember} antarcticaPosts={antarcticaPosts} />} />
-          <Route path="/view/continent/europe" element={<Europe forumMember={forumMember} europePosts={europePosts} />} />
-          <Route path="/view/continent/australia" element={<Australia forumMember={forumMember} australiaPosts={australiaPosts} />} />
-          <Route path="/about" element={<About forumMember={forumMember} logoutMember={logoutMember} />} />
-          <Route path="/contact" element={<Contact forumMember={forumMember} />} />
-          <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
-          <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
-          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} />} />
-          <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
+        <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
+        <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
+        <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
+        <Route path="/view/continent/nth-america" element={<NthAmerica forumMember={forumMember} nthAmericaPosts={nthAmericaPosts} />} />
+        <Route path="/view/continent/sth-america" element={<SthAmerica forumMember={forumMember} sthAmericaPosts={sthAmericaPosts} />} />
+        <Route path="/view/continent/antarctica" element={<Antarctica forumMember={forumMember} antarcticaPosts={antarcticaPosts} />} />
+        <Route path="/view/continent/europe" element={<Europe forumMember={forumMember} europePosts={europePosts} />} />
+        <Route path="/view/continent/australia" element={<Australia forumMember={forumMember} australiaPosts={australiaPosts} />} />
+        <Route path="/about" element={<About forumMember={forumMember} logoutMember={logoutMember} />} />
+        <Route path="/contact" element={<Contact forumMember={forumMember} />} />
+        <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
+        <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
+        <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} />} />
+        <Route path={"/posts/create"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
 
-          {/* <Route path={"/posts/:id"} element={<FullPagePost forumMember={forumMember} />} /> */}
-          <Route path={"/posts/:id"} element={<ShowPostWrapper />} />
+        {/* <Route path={"/posts/:id"} element={<FullPagePost forumMember={forumMember} />} /> */}
+        <Route path={"/posts/:id"} element={<ShowPostWrapper />} />
 
-          <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
-        </Routes>
-      {/* </BrowserRouter> */}
+        <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
+      </Routes>
       
 
     </>

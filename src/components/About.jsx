@@ -25,7 +25,7 @@ const About = ({ forumMember, logoutMember }) => {
   return (
     <>
       {/* conditionally render navbar for guest and member */}
-      {forumMember ? <MemberNavBar logoutMember={logoutMember} /> : <NavBar />}
+      {/* {forumMember ? <MemberNavBar logoutMember={logoutMember} /> : <NavBar />} */}
       {/* Heroimage */}
       <HeroImage heroClass={'about'} />
       {/* container for main body of the page */}
