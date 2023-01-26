@@ -3,7 +3,6 @@ import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import Footer from './Footer'
-import RegisterForm from './RegisterForm'
 import RegisterFormValidation from './RegisterFormValidation'
 
 
