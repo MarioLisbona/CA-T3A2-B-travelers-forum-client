@@ -24,39 +24,44 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
     <>
       <div className="container min-vh-100">
         <PostContent post={post} />
-        <h3 className="ps-5 my-3">Comments</h3>
+        {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}
         {comments.length > 0
           ? comments.map((comment, idx) => (
               <CommentContent key={idx} comment={comment}/>
             ))
+            : <Header
+                headingText={'Much empty...'}
+                bodyText={
+                  forumMember
+                  ? 'This post has no comments yet. Comment below to be the first'
+                  : 'This post has no comments yet.'
+                }
+              />
             // conditionally render header's for messaged if user is logged in or not
             // this needs some work.....logic is a little off
-            : <Header
-                bodyText={'Only Members can comment on a post. Register today to become a member or login'}
-                showBtn1 
-                btn1Text={"Register"}
-                btn1ToPage={"/register"}
-                showBtn2
-                btn2Text={"Login"}
-                btn2ToPage={"/login"}
-              />
+            // : <Header
+            //     bodyText={'Only Members can comment on a post. Register today to become a member or login'}
+            //     showBtn1 
+            //     btn1Text={"Register"}
+            //     btn1ToPage={"/register"}
+            //     showBtn2
+            //     btn2Text={"Login"}
+            //     btn2ToPage={"/login"}
+            //   />
         }
-        {comments.length > 0 ? <h3 className="ps-5 my-3">Post a Comment</h3> : ''}
+        <h3 className="ps-5 my-3">Post a Comment</h3>
         {forumMember
           ? <CommentForm post={post} submitComment={submitComment} />
-
-          : comments.length == 0 
-            ? ''
-            : <Header
-                bodyText={'Only Members can comment on a post. Register today to become a member or login'}
-                showBtn1 
-                btn1Text={"Register"}
-                btn1ToPage={"/register"}
-                showBtn2
-                btn2Text={"Login"}
-                btn2ToPage={"/login"}
-              />
+          : <Header
+              bodyText={'Only Members can comment on a post. Register or login to comment on a post.'}
+              showBtn1 
+              btn1Text={"Register"}
+              btn1ToPage={"/register"}
+              showBtn2
+              btn2Text={"Login"}
+              btn2ToPage={"/login"}
+            />
         }
       </div>
     </>
