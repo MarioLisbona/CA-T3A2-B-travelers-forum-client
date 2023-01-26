@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // Asia component
@@ -29,7 +28,6 @@ const Asia = ({ forumMember, asiaPosts }) => {
   return (
     <>
       {/* conditionally render navbar for guest and member */}
-      {forumMember ? <MemberNavBar /> : <NavBar />}
       {/* Heroimage */}
       <HeroImage heroClass={'asia'}/>
         {/* container for main body of the page */}
