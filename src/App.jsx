@@ -33,7 +33,7 @@ const App = () => {
   // state variables for posts and members
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
   const [posts, setPosts] = useState([])
-  const [forumMember, setForumMember] = useState(true)
+  const [forumMember, setForumMember] = useState(false)
 
   const [loggedInMember, setLoggedInMember] = useState(
     {id: '63d21e8d35efd62202c96a69',
