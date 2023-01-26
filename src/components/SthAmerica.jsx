@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // South America component
@@ -27,7 +26,6 @@ const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
 
   return (
     <>
-    {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage heroClass={'s-am'} />
       <div className="container">
         <Header headingText={"Welcome to South America"}
