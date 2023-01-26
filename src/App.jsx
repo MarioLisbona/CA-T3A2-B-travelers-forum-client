@@ -180,6 +180,12 @@ const App = () => {
     // testing
     console.log('returned Object - submitted post', returnedObject)
 
+    setPosts([...posts, returnedObject])
+
+    console.log(returnedObject._id)
+
+    nav(`/posts/${returnedObject._id}`)
+
   }
 
   // async function - is called when the comment form is submitted
