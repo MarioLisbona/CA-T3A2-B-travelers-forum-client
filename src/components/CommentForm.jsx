@@ -5,13 +5,12 @@ const CommentForm = ({ post, submitComment }) => {
   const [title] = useState(post[0].title)
   const [continent] = useState(post[0].category)
   const [comment, setComment] = useState('')
-  const postId = post[0]._id
 
   console.log(post[0])
   
   function submitForm(event) {
     event.preventDefault()
-    submitComment(postId, comment, title, continent)
+    submitComment(post, comment)
   }
 
   return (
