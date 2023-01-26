@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // PageNotFound component
@@ -23,7 +22,6 @@ import MemberNavBar from './MemberNavBar'
 const PageNotFound = ({ forumMember }) => {
   return (
     <>
-      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'about'} />
         <div className="container">
           <Header headingText={"Error: 404 - Page not found"} />

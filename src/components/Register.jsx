@@ -3,7 +3,6 @@ import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 import RegisterForm from './RegisterForm'
 import RegisterFormValidation from './RegisterFormValidation'
 
@@ -26,7 +25,6 @@ import RegisterFormValidation from './RegisterFormValidation'
 const Register = ({ forumMember, createMember }) => {
   return (
     <>
-    {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage heroClass={'register'} />
       <div className="container">
         <Header headingText={"Register to become a member"} btnText={'Register'} />

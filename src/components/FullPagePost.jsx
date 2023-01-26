@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 import PostContent from './PostContent'
 import CommentContent from './CommentContent'
 import CommentForm from './CommentForm';
@@ -38,7 +37,6 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
 
   return (
     <>
-      {forumMember ? <MemberNavBar /> : <NavBar />}
       <div className="container min-vh-100">
         <PostContent post={post} />
         <h3 className="ps-5 my-3">Comments</h3>

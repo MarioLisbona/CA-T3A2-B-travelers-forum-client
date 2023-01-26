@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 import MemberHeader from './MemberHeader'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +23,6 @@ const MyPosts = ({ forumMember, latestPosts }) => {
 
   return (
     <>
-      {forumMember ? <MemberNavBar /> : <NavBar />}
       <HeroImage heroClass={'landing-page'}/>
       <div className="container">
       <MemberHeader headingText={`Hi SOME PERSONS NAME, welcome to the forum`}

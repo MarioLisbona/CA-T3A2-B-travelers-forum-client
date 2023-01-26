@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 import AboutInfo from './AboutInfo'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,8 +23,6 @@ import AboutInfo from './AboutInfo'
 const About = ({ forumMember, logoutMember }) => {
   return (
     <>
-      {/* conditionally render navbar for guest and member */}
-      {forumMember ? <MemberNavBar logoutMember={logoutMember} /> : <NavBar />}
       {/* Heroimage */}
       <HeroImage heroClass={'about'} />
       {/* container for main body of the page */}

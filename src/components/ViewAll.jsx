@@ -4,7 +4,6 @@ import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import Footer from './Footer'
-import MemberNavBar from './MemberNavBar'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // ViewAll component
@@ -29,7 +28,6 @@ const ViewAll = ({ forumMember, allPosts }) => {
 
   return (
     <>
-    {forumMember ? <MemberNavBar /> : <NavBar />}
     <HeroImage  heroClass={'view-all'}/>
       <div className="container">
         <Header headingText={"Browse the entire Forum"} bodyText={"This is a little blurb about being able to view all the forum posts...r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}/>
