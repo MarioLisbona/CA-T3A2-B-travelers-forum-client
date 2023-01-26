@@ -11,9 +11,7 @@ const CommentForm = ({ post, submitComment }) => {
   
   function submitForm(event) {
     event.preventDefault()
-    console.log({ post_id: postId, title: title, continent: continent, comment: comment })
-
-    submitComment(postId, title, continent, comment)
+    submitComment(postId, comment, title, continent)
   }
 
   return (

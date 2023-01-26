@@ -45,19 +45,19 @@ const App = () => {
     }
 
     fetchPosts()
-  }, [posts])
-
-  // fetch all the members from the API on component on mount only and assign to members variable
-  // may need to change this to trigger and track the members state
-  useEffect(() => {
-    async function fetchMembers() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/members")
-      const data = await result.json()
-      setMembers(data)
-    }
-
-    fetchMembers()
   }, [])
+
+  // // fetch all the members from the API on component on mount only and assign to members variable
+  // // may need to change this to trigger and track the members state
+  // useEffect(() => {
+  //   async function fetchMembers() {
+  //     const result = await fetch("https://indigo-stocking-production.up.railway.app/members")
+  //     const data = await result.json()
+  //     setMembers(data)
+  //   }
+
+  //   fetchMembers()
+  // }, [])
 
   // Higher Order Function to display a full page post from the link in the preview cards
   // uses id param passed in from preview card button to filter posts array to find the correct post object
@@ -98,7 +98,7 @@ const App = () => {
 
       const returnedObject = await returnedMember.json()
       // loging returned object from API
-      console.log('returned Object', returnedObject)
+      console.log('returned object New Member', returnedObject)
     }
     catch (err){
       console.log(err.message)
@@ -132,7 +132,7 @@ const App = () => {
 
       const returnedObject = await returnedMember.json()
       // loging returned object from API
-      console.log('returned Object', returnedObject)
+      console.log('returned Object - logged in member', returnedObject)
 
       // sessionStorage.setItem("username", returnedObject.username)
       // sessionStorage.setItem("id", returnedObject.id)
@@ -189,20 +189,22 @@ const App = () => {
 
     const returnedObject = await returnedPost.json()
     // testing
-    console.log('returned Object', returnedObject)
+    console.log('returned Object - submitted post', returnedObject)
 
   }
 
   // async function - is called when the comment form is submitted
   // passed the data from the comment form and creates a new comment object with postId, title, continent, comment
-  const submitComment =  async (postId, title, continent, comment) => {
+  const submitComment =  async (postId, comment) => {
 
     // create object to receive Register form data
     const newComment = {
-      post_id: postId,
-      title: title,
-      continent: continent,
-      comment: comment
+      // post: postId,
+      // author: loggedInMember.username,
+      // content: comment
+      post: "63d1c9f90a5b0cb5c88503ae",
+      author: "63d1c9b40a5b0cb5c884ffc3",
+      content: "Posting a comment with some dummy data.....copying author and post id's from postman"
     }
 
     // testing
@@ -210,7 +212,7 @@ const App = () => {
 
 
     // post the new comment to the API and assign the return object to returnedComment
-    const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments', {
+    const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments/new', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -221,7 +223,7 @@ const App = () => {
 
     const returnedObject = await returnedComment.json()
     // testing
-    console.log('returned Object', returnedObject)
+    console.log('returned comment', returnedObject)
   }
 
     // fitlering the posts array returned by the feth into seperate arrays for each category
