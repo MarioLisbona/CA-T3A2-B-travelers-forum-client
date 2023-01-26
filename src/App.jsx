@@ -185,11 +185,11 @@ const App = () => {
 
   // async function - is called when the comment form is submitted
   // passed the data from the comment form and creates a new comment object with postId, title, continent, comment
-  const submitComment =  async (postId, comment) => {
+  const submitComment =  async (post, comment) => {
 
     // create object to receive Register form data
     const newComment = {
-      post: postId,
+      post: post[0]._id,
       author: loggedInMember.id,
       content: comment
     }

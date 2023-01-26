@@ -23,7 +23,7 @@ const PreviewCard = ({ post }) => {
 						<div className="card-body">
 								<h5 className="card-title">{post.title.substring(0, 100)}</h5>
 								{/* need to wait till structured of posted posts is correct in DB */}
-								<h6>{`Author: {post.author.username}`}</h6>
+								<h6>{`Author: ${post.author.username}`}</h6>
 								<h6>{`Author: ${post.date_posted.substring(0, 10)}`}</h6>
 								<hr></hr>
 								<p className="card-text">{`${post.content.substring(0, 150)}......`}</p>
