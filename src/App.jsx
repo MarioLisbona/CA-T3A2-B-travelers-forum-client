@@ -248,12 +248,19 @@ const App = () => {
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedComment.json()
     
+
+
     const targetPostId = post[0]._id
     const postIndex = posts.findIndex(post => targetPostId == post._id)
-    posts[postIndex].comments.push(newComment)
 
-    // testing
-    console.log('returned comment', returnedObject)
+    console.log(posts[postIndex].comments)
+    posts[postIndex].comments.push(returnedObject)
+    console.log(posts[postIndex].comments)
+    setPosts(posts)
+
+
+
+    nav(`/posts/${targetPostId}`)
   }
 
 
