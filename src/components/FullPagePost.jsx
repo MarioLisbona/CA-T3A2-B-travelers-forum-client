@@ -7,7 +7,10 @@ import CommentForm from './CommentForm';
 
 // props for conditional rendering, the post object passed from the preview card that is clicked
 // submitComment posts the comment to the database
-const FullPagePost = ({ forumMember, post, submitComment }) => {
+const FullPagePost = ({ forumMember, post, submitComment, loggedInMember }) => {
+
+  console.log('loggedMemberId: ', loggedInMember.id)
+  console.log('author ID from post:', post[0].author._id)
 
   // map over post to pull comments from the nested array and create a new comments object to be used
   // when rendering CommentContent component
@@ -24,6 +27,7 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
     <>
       <div className="container min-vh-100">
         <PostContent post={post} />
+        {loggedInMember.id == post[0].author._id ? 'Your the post owner' : 'You dont own this post'}
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}
         {comments.length > 0

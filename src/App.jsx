@@ -75,10 +75,9 @@ const App = () => {
   const ShowPostWrapper = () =>{
     const { id } = useParams()
     const post = posts.filter(post => post._id == id)
-    console.log(post)
     return post == 0
       ? <PageNotFound />
-      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} />
+      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} />
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
