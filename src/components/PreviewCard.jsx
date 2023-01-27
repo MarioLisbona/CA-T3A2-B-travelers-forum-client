@@ -11,7 +11,7 @@ const PreviewCard = ({ post }) => {
 						<div className="card-body">
 								<h5 className="card-title">{`${post.title.substring(0, 50)}...`}</h5>
 								<h6>{`Author: ${post.author.username}`}</h6>
-								<h6>{`Author: ${post.date_posted.substring(0, 10)}`}</h6>
+								<h6>{`Date: ${post.date_posted.substring(0, 10)}`}</h6>
 								<hr></hr>
 								<p className="card-text">{`${post.content.substring(0, 150)}......`}</p>
 								

@@ -28,6 +28,7 @@ const PostContent = ({ post }) => {
                   </div>
                 </div>
             </div>
+            <hr></hr>
             <div className="col-md-12">
                 <div className="bg-alt">{post[0].content}</div>
             </div>
