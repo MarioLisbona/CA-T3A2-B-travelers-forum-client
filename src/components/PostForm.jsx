@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // submitPost function comes in as a prop
-const PostForm = ({ submitPost }) => {
+const PostForm = ({ submitPost, edit, editPost, post }) => {
 
   // tracking the state of post form data
 const [title, setTitle] = useState('')
@@ -12,13 +12,18 @@ const [postContent, setPostContent] = useState('')
 // will call submitPost function passing in formdata
 function submitForm(event) {
   event.preventDefault()
-
   submitPost(title, continent, postContent)
+}
+
+function submitEditForm(event) {
+  event.preventDefault()
+  editPost(post, title, continent, postContent)
+  console.log('editing post', post[0]._id, title, continent, postContent)
 }
 
   return (
     <>
-      <form onSubmit={submitForm} className="p-5 bg-light rounded-3 border border-success">
+      <form onSubmit={edit ? submitEditForm : submitForm} className="p-5 bg-light rounded-3 border border-success">
         <div className="row mb-3">
           <label for="inputPostTitle" className="col-sm-2 col-form-label">Post Title</label>
           <div className="col-sm-10">
