@@ -83,7 +83,8 @@ const App = () => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         createMember function       /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // async function - is called when the register form is submitted
+
+// async function - is called when the register form is submitted
   const createMember =  async (user, pwd) => {
 
     try {
@@ -113,24 +114,23 @@ const App = () => {
       console.log(err.message)
     }
   }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         loginMember function       //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-  // async function - is called when the register form is submitted
-  // passed the data from the register form and creates a new member object with user and pwd
+// async function - is called when the login form is submitted
   const loginMember =  async (username, password) => {
 
     try {
-      // create object to receive Register form data
+      // create object to store login form data that will be posted to db
       const memberToLogin = {
         username: username,
         password: password
       }
-
-      // testing
-      console.log('newMember object', memberToLogin)
       
-      // post the new member to the API and assign the return object to returnedMember
+      // post the new memberToLogin object to the API and assign the return object to returnedMember
       const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/login', {
         method: 'POST',
         headers: {
@@ -140,23 +140,26 @@ const App = () => {
         'body': JSON.stringify(memberToLogin)
       })
 
-
+      // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
-      // loging returned object from API
-      console.log('returned Object - logged in member', returnedObject)
 
+      // assigning the returned object to session storage keys
       sessionStorage.setItem("username", returnedObject.username)
       sessionStorage.setItem("id", returnedObject.id)
       sessionStorage.setItem("token", returnedObject.token)
 
+      // forumMember is logged in for conditional rendering
       setForumMember(true)
 
+      // set logged in member details
+      // may be unnecessary repitition here????????????
       setLoggedInMember({
         username: returnedObject.username,
         id: returnedObject.id,
         token: returnedObject.token
       })
 
+      // navigate to landing/member home page
       nav('/')
     }
     catch (err){
@@ -164,19 +167,31 @@ const App = () => {
     }
   }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         logoutMember function       /////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// logs out the member
   function logoutMember() {
+    // for conditional rendering
     setForumMember(false)
+    // clear session storage
     sessionStorage.clear()
+    // set logged in member details to empty object
     setLoggedInMember({})
 
       nav('/')
   }
 
-  // async function - is called when the create a post form is submitted
-  // passed the data from the create a post form and creates a new post object with itle, continent, postContent
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         submitPost function       ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// async function - is called when the create a post form is submitted
   const submitPost =  async (title, continent, postContent) => {
 
-    // create object to receive Register form data
+    // create object to receive create post form data
     const newPost = {
       author: loggedInMember.id,
       title: title,
@@ -184,9 +199,7 @@ const App = () => {
       content: postContent
     }
 
-
-    
-    // post the new post to the API and assign the return object to returnedPost
+    // post the new newPost object to the API and assign the return object to returnedPost
     const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts/new', {
       method: 'POST',
       headers: {
@@ -196,23 +209,26 @@ const App = () => {
       'body': JSON.stringify(newPost)
     })
 
+    // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedPost.json()
-    // testing
-    console.log('returned Object - submitted post', returnedObject)
 
+    // add the returned post object to the posts array
     setPosts([...posts, returnedObject])
 
-    console.log(returnedObject._id)
-
+    // navigate to the new post in full page post
     nav(`/posts/${returnedObject._id}`)
 
   }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         submitComment function       ////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // async function - is called when the comment form is submitted
-  // passed the data from the comment form and creates a new comment object with postId, title, continent, comment
+
   const submitComment =  async (post, comment) => {
 
-    // create object to receive Register form data
+    // create object to receive create comment form data
     const newComment = {
       post: post[0]._id,
       author: loggedInMember.id,
@@ -255,7 +271,8 @@ const App = () => {
     console.log('returned comment', returnedObject)
   }
 
-    // fitlering the posts array returned by the feth into seperate arrays for each category
+
+    // fitlering the posts array returned by the fetch into separate arrays for each category
     const europePosts = posts.filter(post => post.category == 'Europe')
     const australiaPosts = posts.filter(post => post.category == 'Australia')
     const asiaPosts = posts.filter(post => post.category == 'Asia')
@@ -290,10 +307,6 @@ const App = () => {
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
       <Footer />
-    
-      
-      
-
     </>
   )
 }
