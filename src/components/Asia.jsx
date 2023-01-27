@@ -13,7 +13,7 @@ const Asia = ({ forumMember, asiaPosts }) => {
         {/* container for main body of the page */}
         <div className="container">
           <Header headingText={"Welcome to the Asian Continent!"}
-            bodyText={"This is a little blurb about the Asian content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+            bodyText={"Asia is the largest of the world’s continents, covering approximately 30 percent of the Earth’s land area. It is also the world’s most populous continent, with roughly 60 percent of the total population. Asia makes up the eastern portion of the Eurasian supercontinent; Europe occupies the western portion. The border between the two continents is debated. However, most geographers define Asia’s western border as an indirect line that follows the Ural Mountains, the Caucasus Mountains, and the Caspian and Black Seas. Asia is bordered by the Arctic, Pacific, and Indian Oceans.Asia’s physical geography, environment and resources, and human geography can be considered separately. Asia can be divided into five major physical regions: mountain systems; plateaus; plains, steppes, and deserts; freshwater environments; and saltwater environments."}
           />
           <div className="row g-3">
             {/* If asiaPosts has objects then map over the array and render a preview card for each post
