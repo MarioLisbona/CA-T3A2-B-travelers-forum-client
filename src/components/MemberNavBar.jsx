@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const MemberNavBar = ({ logoutMember }) => {
+
+const MemberNavBar = ({ logoutMember, loggedInMember }) => {
     
   return (
     <>
@@ -61,6 +63,9 @@ const MemberNavBar = ({ logoutMember }) => {
                           My Account
                           </a>
                           <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                                <Link className="dropdown-item text-dark" to="/">
+                                    {loggedInMember.username}
+                                </Link>
                                 <Link className="dropdown-item text-white" to="/posts">
                                     My Posts
                                 </Link>
