@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 
+// submitPost function comes in as a prop
 const PostForm = ({ submitPost }) => {
 
+  // tracking the state of post form data
 const [title, setTitle] = useState('')
 const [continent, setContinent] = useState('')
 const [postContent, setPostContent] = useState('')
 
+// call submitForm function when form is submitted
+// will call submitPost function passing in formdata
 function submitForm(event) {
   event.preventDefault()
 

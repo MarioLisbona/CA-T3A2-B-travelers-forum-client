@@ -4,7 +4,8 @@ import Header from './Header'
 import Footer from './Footer'
 import RegisterFormValidation from './RegisterFormValidation'
 
-const Register = ({ forumMember, createMember }) => {
+// createMember function passed in as prop to be passed to RegisterFormValidation component
+const Register = ({ createMember }) => {
 
   return (
     <>

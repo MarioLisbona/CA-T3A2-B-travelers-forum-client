@@ -10,37 +10,54 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const RegisterFormValidation = ({ createMember }) => {
 
+  // used to track the state of username input field and error message
+  // will focus on username input on mount and focus on error message if there is one
   const userRef = useRef();
   const errRef = useRef();
 
+  // track the state of user input entered
+  // whether the user input entered is valid or not
+  // whether the user input has focus or not
   const [user, setUser] = useState('');
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
+  // track the state of password entered
+  // whether the user password entered is valid or not
+  // whether the user password has focus or not
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
+  // track the state of matched password entered
+  // whether the matched password entered is valid or not
+  // whether the matched password has focus or not
   const [matchPwd, setMatchPwd] = useState('');
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
+  // track the state of whether an error message is showing
+  // whether the state of whether all inputs have been entered correctly
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
+  // set focus to username input on component load only
   useEffect(() => {
       userRef.current.focus();
   }, [])
 
+  // anytime username input changes, check its validity against the regex pattern
   useEffect(() => {
       setValidName(USER_REGEX.test(user));
   }, [user])
 
+  // anytime password or matchpassword input changes, check its validity against the regex pattern and against the other password
   useEffect(() => {
       setValidPwd(PWD_REGEX.test(pwd));
       setValidMatch(pwd === matchPwd);
   }, [pwd, matchPwd])
 
+  // clear error message once its been read and user input adjusted accordingly
   useEffect(() => {
       setErrMsg('');
   }, [user, pwd, matchPwd])
@@ -53,14 +70,18 @@ const RegisterFormValidation = ({ createMember }) => {
 
   return (
     <section>
+      {/* ternerary - if errmsg is truthy display error message class otherwise use offscreen class to change error message postition off screen  */}
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       <h1>Register</h1>
       <form onSubmit={handleSubmit} className="p-5 bg-light rounded-3 border border-success">
       <label htmlFor="username">
           Username:
+          {/* displaying font awesome icons for valid and invalid input */}
           <span className={validName ? "valid" : "hide"}>
             <FontAwesomeIcon icon={faCheck}  />
           </span>
+          {/* displaying font awesome icons for valid and invalid input */}
+
           <span className={validName || !user ? "hide" : "invalid"}>
             <FontAwesomeIcon icon={faTimes} />
           </span>
@@ -79,6 +100,7 @@ const RegisterFormValidation = ({ createMember }) => {
         onFocus={() => setUserFocus(true)}
         onBlur={() => setUserFocus(false)}
       />
+      {/* displaying error message with requirements for username */}
       <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
           <FontAwesomeIcon icon={faInfoCircle} />
           4 to 24 characters.<br />
@@ -89,9 +111,11 @@ const RegisterFormValidation = ({ createMember }) => {
 
       <label htmlFor="password">
         Password:
+        {/* displaying font awesome icons for valid and invalid password */}
         <span className={validPwd ? "valid" : "hide"}>
           <FontAwesomeIcon icon={faCheck} />
         </span>
+        {/* displaying font awesome icons for valid and invalid password */}
         <span className={validPwd || !pwd ? "hide" : "invalid"} >
           <FontAwesomeIcon icon={faTimes} />
         </span>
@@ -108,6 +132,7 @@ const RegisterFormValidation = ({ createMember }) => {
           onFocus={() => setPwdFocus(true)}
           onBlur={() => setPwdFocus(false)}
         />
+        {/* displaying error message with requirements for password */}
         <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
           <FontAwesomeIcon icon={faInfoCircle} />
           8 to 24 characters.<br />
@@ -118,9 +143,11 @@ const RegisterFormValidation = ({ createMember }) => {
 
         <label htmlFor="confirm_pwd">
           Confirm Password:
+          {/* displaying font awesome icons for valid and invalid password match */}
           <span className={validMatch && matchPwd ? "valid" : "hide"} >
             <FontAwesomeIcon icon={faCheck} />
           </span>
+          {/* displaying font awesome icons for valid and invalid password match */}
           <span className={validMatch || !matchPwd ? "hide" : "invalid"} >
           <FontAwesomeIcon icon={faTimes} />
           </span>
@@ -137,12 +164,17 @@ const RegisterFormValidation = ({ createMember }) => {
           onFocus={() => setMatchFocus(true)}
           onBlur={() => setMatchFocus(false)}
         />
+        {/* displaying error message with requirements for passwordmatch */}
         <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
           <FontAwesomeIcon icon={faInfoCircle} />
           Must match the first password input field.
         </p>
 
-        <button disabled={!validName || !validPwd || !validMatch ? true : false} className="btn btn-success btn-lg my-3">Sign Up</button>
+        {/* disablling the submit button untill all fields in the form have valid input */}
+        <span>
+          <button disabled={!validName || !validPwd || !validMatch ? true : false} className="btn btn-success btn-lg my-3">Sign Up</button>
+        </span>
+        
       </form>
 
       <p>
