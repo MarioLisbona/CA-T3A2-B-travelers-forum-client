@@ -234,27 +234,8 @@ const App = () => {
       author: loggedInMember.id,
       content: comment
     }
-
-
-    // console.log('existing comments before push new comment', post[0].comments)
-    // post[0].comments.push(newComment)
-    // console.log('existing comments after push new comment', post[0].comments)
-    // console.log('post id', post[0]._id)
-
-    // console.log(posts[22]._id)
-    const targetPostId = post[0]._id
-
-    const postIndex = posts.findIndex(post => targetPostId == post._id)
-
-
-    // console.log('found postindex', postIndex)
-    // console.log(posts[postIndex].comments)
-
-    posts[postIndex].comments.push(newComment)
-
-
-
-    // post the new comment to the API and assign the return object to returnedComment
+    
+    // post the newComment object to the API and assign the return object to returnedComment
     const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments/new', {
       method: 'POST',
       headers: {
@@ -263,10 +244,14 @@ const App = () => {
       },
       'body': JSON.stringify(newComment)
     })
-    // cant redirect untill new comment is added to this post
-    // nav(`/posts/${post[0].category}`)
 
+    // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedComment.json()
+    
+    const targetPostId = post[0]._id
+    const postIndex = posts.findIndex(post => targetPostId == post._id)
+    posts[postIndex].comments.push(newComment)
+
     // testing
     console.log('returned comment', returnedObject)
   }
