@@ -249,17 +249,18 @@ const App = () => {
     const returnedObject = await returnedComment.json()
     
 
-
+    // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
     const targetPostId = post[0]._id
+    // using targetPostId to find the correct post in the array of posts fetched from the server
     const postIndex = posts.findIndex(post => targetPostId == post._id)
 
-    console.log(posts[postIndex].comments)
+    // pushing the new comment to the comments array in the correct post
     posts[postIndex].comments.push(returnedObject)
-    console.log(posts[postIndex].comments)
+    // updating the state of the posts array with the new comments for this post
     setPosts(posts)
 
-
-
+    // navigate to the full page post with new comments
+    window.scrollTo(0, 0)
     nav(`/posts/${targetPostId}`)
   }
 
