@@ -3,7 +3,7 @@ import React from 'react'
 const PostContent = ({ post }) => {
 
   return (
-    <div className="p-5 mt-5 bg-light rounded-3 border border-success">
+    <div className="p-5 mt-5 mb-3 bg-light rounded-3 border border-success">
 				<h1 className="mb-3">{post[0].title}</h1>
         <div className="row">
             <div className="col-md-6">
