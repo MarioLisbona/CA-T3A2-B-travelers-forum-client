@@ -192,6 +192,8 @@ const App = () => {
 // async function - is called when the create a post form is submitted
   const submitPost =  async (title, continent, postContent) => {
 
+    console.log({"value for loggedInMember.id": loggedInMember.id})
+
     // create object to receive create post form data
     const newPost = {
       author: loggedInMember.id,
@@ -228,6 +230,8 @@ const App = () => {
   // async function - is called when the comment form is submitted
 
   const submitComment =  async (post, comment) => {
+
+    console.log({"value for loggedInMember.id": loggedInMember.id})
 
     // create object to receive create comment form data
     const newComment = {
