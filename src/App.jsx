@@ -77,7 +77,7 @@ const App = () => {
     const post = posts.filter(post => post._id == id)
     return post == 0
       ? <PageNotFound />
-      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} />
+      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} />
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,6 +222,38 @@ const App = () => {
 
   }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         deletePost function       ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const deletePost =  async (post) => {
+
+  console.log('author ID from post inside APP.jsx:', post[0].author._id)
+  console.log('post ID from post inside APP.jsx:', post[0]._id)
+
+
+  // post the new newPost object to the API and assign the return object to returnedPost
+  await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+
+  async function fetchPosts() {
+    const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+    const data = await result.json()
+    setPosts(data)
+  }
+
+  fetchPosts()
+
+  // navigate to the new post in full page post
+  nav('/posts')
+
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         submitComment function       ////////////////////////////////////////////////

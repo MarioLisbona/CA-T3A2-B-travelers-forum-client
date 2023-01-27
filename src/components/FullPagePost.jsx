@@ -4,11 +4,11 @@ import Footer from './Footer'
 import PostContent from './PostContent'
 import CommentContent from './CommentContent'
 import CommentForm from './CommentForm'
-import CtaButton from './CtaButton';
+import { Link } from 'react-router-dom';
 
 // props for conditional rendering, the post object passed from the preview card that is clicked
 // submitComment posts the comment to the database
-const FullPagePost = ({ forumMember, post, submitComment, loggedInMember }) => {
+const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, deletePost }) => {
 
   console.log('loggedMemberId: ', loggedInMember.id)
   console.log('author ID from post:', post[0].author._id)
@@ -24,20 +24,24 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember }) => {
     // window.scroll(0, 0)
   }, [])
 
+  function deleteButton() {
+    deletePost(post)
+  }
+
   return (
     <>
       <div className="container min-vh-100">
         <PostContent post={post} />
         {loggedInMember.id == post[0].author._id
-          ? <CtaButton
-              showBtn1
-              showBtn2
-              btn1Text={'Edit Post'}
-              btn2Text={'Delete Post'}
-              btn1ToPage={'/'}
-              btn2ToPage={'/'}
-            />
-          : 'You dont own this post'
+        ? <span>
+            <Link className="btn btn-success btn-lg my-3 text-black">
+              Edit Post
+            </Link>
+            <Link  to="/" className="btn btn-success btn-lg my-3 ms-2 text-black" onClick={() => {deleteButton()} }>
+              Delete Post
+            </Link>
+          </span>
+          : ''
         }
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}
