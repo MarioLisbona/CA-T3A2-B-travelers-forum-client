@@ -250,7 +250,7 @@ const editPost =  async (post, title, continent, postContent) => {
 
   // create object to receive edit post form data
   const editedPost = {
-    author: loggedInMember.id,
+    // author: loggedInMember.id,
     title: title,
     category: continent,
     content: postContent
@@ -263,7 +263,7 @@ const editPost =  async (post, title, continent, postContent) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    'body': JSON.stringify(newPost)
+    'body': JSON.stringify(editedPost)
   })
 
   // creating JSON object with returned object from the fetch request

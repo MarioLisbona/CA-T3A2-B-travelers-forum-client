@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // submitPost function comes in as a prop
-const PostForm = ({ submitPost, edit, editPost }) => {
+const PostForm = ({ submitPost, edit, editPost, post }) => {
 
   // tracking the state of post form data
 const [title, setTitle] = useState('')
@@ -17,8 +17,8 @@ function submitForm(event) {
 
 function submitEditForm(event) {
   event.preventDefault()
-  // editPost(post, title, continent, postContent)
-  console.log('editing post', title, continent, postContent)
+  editPost(post, title, continent, postContent)
+  console.log('editing post', post[0]._id, title, continent, postContent)
 }
 
   return (
