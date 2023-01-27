@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -60,12 +61,10 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item dropdown me-4">
                         <a className="nav-link dropdown-toggle text-white" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          My Account
+                        <FontAwesomeIcon icon={faUser} className="me-2"/>
+                        {loggedInMember.username}
                           </a>
                           <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item text-dark" to="/">
-                                    {loggedInMember.username}
-                                </Link>
                                 <Link className="dropdown-item text-white" to="/posts">
                                     My Posts
                                 </Link>
