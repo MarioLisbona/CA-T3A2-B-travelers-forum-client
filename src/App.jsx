@@ -34,16 +34,19 @@ const App = () => {
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
   const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
-
-
+  // track state of the logged in member
   const [loggedInMember, setLoggedInMember] = useState({})
   
+  // create currentUser Object from values in session storage
   const currentUser = {
     username: sessionStorage.getItem("username"),
     id: sessionStorage.getItem("id"),
     token: sessionStorage.getItem("token"),
   }
 
+  // on mount only, if the there is session storage data stored on the current user
+  // set logged in member to current user object
+  // set forumMember to true for conditional rendering
   useEffect(() => {
     if (currentUser.token) {
       setLoggedInMember(currentUser)
@@ -77,19 +80,18 @@ const App = () => {
       : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} />
   }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         createMember function       /////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // async function - is called when the register form is submitted
-  // passed the data from the register form and creates a new member object with user and pwd
   const createMember =  async (user, pwd) => {
 
     try {
-      // create object to receive Register form data
+      // create object to store Register form data that will be posted to db
       const newMember = {
         username: user,
         password: pwd
       }
-
-      // testing
-      console.log('newMember object', newMember)
       
       // post the new member to the API and assign the return object to returnedMember
       const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
@@ -101,17 +103,18 @@ const App = () => {
         'body': JSON.stringify(newMember)
       })
 
-
+      // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
-      // loging returned object from API
-      console.log('returned object New Member', returnedObject)
 
+      // once complete, navigate to the login screen
       nav('/login')
     }
     catch (err){
       console.log(err.message)
     }
   }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
   // async function - is called when the register form is submitted
   // passed the data from the register form and creates a new member object with user and pwd
