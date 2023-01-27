@@ -38,17 +38,6 @@ const FullPagePost = ({ forumMember, post, submitComment }) => {
                   : 'This post has no comments yet.'
                 }
               />
-            // conditionally render header's for messaged if user is logged in or not
-            // this needs some work.....logic is a little off
-            // : <Header
-            //     bodyText={'Only Members can comment on a post. Register today to become a member or login'}
-            //     showBtn1 
-            //     btn1Text={"Register"}
-            //     btn1ToPage={"/register"}
-            //     showBtn2
-            //     btn2Text={"Login"}
-            //     btn2ToPage={"/login"}
-            //   />
         }
         <h3 className="ps-5 my-3">Post a Comment</h3>
         {forumMember
