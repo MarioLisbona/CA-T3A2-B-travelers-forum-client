@@ -44,7 +44,7 @@ const App = () => {
     token: sessionStorage.getItem("token"),
   }
 
-  // on mount only, if the there is session storage data stored on the current user
+  // on mount and if setForumMember changes, if the there is session storage data stored on the current user
   // set logged in member to current user object
   // set forumMember to true for conditional rendering
   useEffect(() => {
@@ -52,7 +52,8 @@ const App = () => {
       setLoggedInMember(currentUser)
       setForumMember(true)
     }
-  }, [])
+    console.log('inside useEffect for setting logged in member')
+  }, [setForumMember])
  
 
   // fetch all the posts from the API on component on mount only and assign to state variable
