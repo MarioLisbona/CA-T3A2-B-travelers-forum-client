@@ -73,7 +73,7 @@ const RegisterFormValidation = ({ createMember }) => {
       {/* ternerary - if errmsg is truthy display error message class otherwise use offscreen class to change error message postition off screen  */}
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit} className="p-5 bg-light rounded-3 border border-success">
+      <form onSubmit={handleSubmit} className="p-5 py-4 bg-light rounded-3 border border-success">
       <label htmlFor="username">
           Username:
           {/* displaying font awesome icons for valid and invalid input */}
@@ -174,10 +174,6 @@ const RegisterFormValidation = ({ createMember }) => {
         <span>
           <button disabled={!validName || !validPwd || !validMatch ? true : false} className="btn btn-success btn-lg my-3">Sign Up</button>
         </span>
-        
-      </form>
-
-      <p>
         Already registered?<br />
         <span>
           {/*put router link here*/}
@@ -185,7 +181,10 @@ const RegisterFormValidation = ({ createMember }) => {
             Login
           </Link>
         </span>
-      </p>
+        
+      </form>
+
+
 
     </section>
   )
