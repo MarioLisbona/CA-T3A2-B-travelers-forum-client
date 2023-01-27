@@ -28,13 +28,15 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
     deletePost(post)
   }
 
+
+  console.log(post._id)
   return (
     <>
       <div className="container min-vh-100">
         <PostContent post={post} />
         {loggedInMember.id == post[0].author._id
         ? <span>
-            <Link className="btn btn-success btn-lg my-3 text-black">
+            <Link to={`/posts/edit/${post[0]._id}`} className="btn btn-success btn-lg my-3 text-black">
               Edit Post
             </Link>
             <Link  to="/" className="btn btn-success btn-lg my-3 ms-2 text-black" onClick={() => {deleteButton()} }>

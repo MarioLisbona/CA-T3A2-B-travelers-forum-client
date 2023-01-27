@@ -23,6 +23,7 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
+import FullPagePostToEdit from './components/FullPagePostToEdit'
 
 
 const App = () => {
@@ -78,6 +79,19 @@ const App = () => {
     return post == 0
       ? <PageNotFound />
       : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} />
+  }
+
+
+  // Higher Order Function to display a full page post from the link in the preview cards
+  // uses id param passed in from preview card button to filter posts array to find the correct post object
+  // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
+  // and submitComment is the function to post the data from the comment form to the API
+  const EditPostWrapper = () =>{
+    const { id } = useParams()
+    const post = posts.filter(post => post._id == id)
+    return post == 0
+      ? <PageNotFound />
+      : <FullPagePostToEdit post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} editPost={editPost} />
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -224,6 +238,55 @@ const App = () => {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         editPost function       ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// async function - is called when the edit a post form is editted
+const editPost =  async (post, title, continent, postContent) => {
+
+  console.log('EDITPOST')
+  console.log({"value for loggedInMember.id": loggedInMember.id})
+  console.log({"value for post.id": post[0]._id})
+
+  // create object to receive edit post form data
+  const editedPost = {
+    author: loggedInMember.id,
+    title: title,
+    category: continent,
+    content: postContent
+  }
+
+  // PUT the new editPost object to the API and assign the return object to returnedPost
+  const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    'body': JSON.stringify(newPost)
+  })
+
+  // creating JSON object with returned object from the fetch request
+  const returnedObject = await returnedPost.json()
+
+  // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+  const targetPostId = post[0]._id
+  // using targetPostId to find the correct post in the array of posts fetched from the server
+  const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+  posts.splice(postIndex, 1, returnedObject)
+
+  // updating the state of the posts array with the new comments for this post
+  setPosts(posts)
+
+  // navigate to the full page post with new comments
+  window.scrollTo(0, 0)
+  nav(`/posts/${targetPostId}`)
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         deletePost function       ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -333,6 +396,7 @@ const deletePost =  async (post) => {
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
           <Route path={"/posts/new"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
           <Route path={"/posts/:id"} element={<ShowPostWrapper />}  />
+          <Route path={"/posts/edit/:id"} element={<EditPostWrapper />}  />
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
       <Footer />
