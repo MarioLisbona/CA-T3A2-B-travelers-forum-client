@@ -9,14 +9,23 @@ const ViewAll = ({ forumMember, allPosts }) => {
 
   return (
     <>
-    <HeroImage  heroClass={'view-all'}/>
+      {/* Heroimage */}
+      <HeroImage  heroClass={'view-all'}/>
       <div className="container">
-        <Header headingText={"Browse the entire Forum"} bodyText={"This is a little blurb about being able to view all the forum posts...r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}/>
+        <Header headingText={"Browse the entire Forum"}
+          bodyText={"This is a little blurb about being able to view all the forum posts...r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+        />
+        {/* container for main body of the page */}
         <div className="row g-3">
+          {/* If allPosts has objects then map over the array and render a preview card for each post
+          and pass in the post object */}
           {allPosts.length > 0
                 ? allPosts.map((post, idx) => (
                   <PreviewCard key ={idx} post={post}  />
                 ))
+                // If allPosts is an empty array then render a message for guest and one for member
+                // guest message will prompt to register to make a post with CTA button
+                // member message will prompt to make a post with CTA button
                 : forumMember
                     ? <Header headingText={"Much empty..."} 
                       bodyText={"The Europe travel forum currently has no posts, Click below to be the first"} 
