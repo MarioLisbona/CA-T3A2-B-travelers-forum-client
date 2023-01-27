@@ -9,7 +9,7 @@ const PreviewCard = ({ post }) => {
 			<div className="col-md-6 col-lg-4 col-xl-3">
 				<div className="card mx-auto m-1 bg-secondary text-white border border-success" style={{ minHeight: "350px", maxHeight: "500px"}}>
 						<div className="card-body">
-								<h5 className="card-title">{post.title.substring(0, 100)}</h5>
+								<h5 className="card-title">{`${post.title.substring(0, 50)}...`}</h5>
 								<h6>{`Author: ${post.author.username}`}</h6>
 								<h6>{`Author: ${post.date_posted.substring(0, 10)}`}</h6>
 								<hr></hr>
