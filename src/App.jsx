@@ -207,34 +207,38 @@ const App = () => {
 // async function - is called when the create a post form is submitted
   const submitPost =  async (title, continent, postContent) => {
 
-    // console.log({"value for loggedInMember.id": loggedInMember.id})
+    try {
+      // create object to receive create post form data
+      const newPost = {
+        author: loggedInMember.id,
+        title: title,
+        category: continent,
+        content: postContent
+      }
 
-    // create object to receive create post form data
-    const newPost = {
-      author: loggedInMember.id,
-      title: title,
-      category: continent,
-      content: postContent
+      // post the new newPost object to the API and assign the return object to returnedPost
+      const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts/new', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        'body': JSON.stringify(newPost)
+      })
+
+      // creating JSON object with returned object from the fetch request
+      const returnedObject = await returnedPost.json()
+
+      // add the returned post object to the posts array
+      setPosts([...posts, returnedObject])
+
+      // navigate to the new post in full page post
+      nav(`/posts/${returnedObject._id}`)
+    }
+    catch (err){
+      console.log(err.message)
     }
 
-    // post the new newPost object to the API and assign the return object to returnedPost
-    const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts/new', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      'body': JSON.stringify(newPost)
-    })
-
-    // creating JSON object with returned object from the fetch request
-    const returnedObject = await returnedPost.json()
-
-    // add the returned post object to the posts array
-    setPosts([...posts, returnedObject])
-
-    // navigate to the new post in full page post
-    nav(`/posts/${returnedObject._id}`)
 
   }
 
