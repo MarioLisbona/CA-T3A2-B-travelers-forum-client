@@ -174,7 +174,7 @@ const App = () => {
       })
 
       // navigate to landing/member home page
-      nav('/')
+      nav(`/posts/${sessionStorage.postId}`)
     }
     catch (err){
       // console.log(err.message)
