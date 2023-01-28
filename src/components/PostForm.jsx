@@ -27,7 +27,7 @@ function submitEditForm(event) {
         <div className="row mb-3">
           <label for="inputPostTitle" className="col-sm-2 col-form-label">Post Title</label>
           <div className="col-sm-10">
-            <input required type="text" value={title} onChange={(event) => setTitle(event.target.value)} className="form-control" id="title"></input>
+            <input required maxlength="10" type="text" value={title} onChange={(event) => setTitle(event.target.value)} className="form-control" id="title"></input>
           </div>
         </div>
         <div className="row mb-3">
@@ -48,7 +48,7 @@ function submitEditForm(event) {
         <fieldset className="row mb-3">
           <legend className="col-form-label col-sm-2 pt-0">Tell us your story</legend>
           <div className="col-sm-10">
-            <textarea required className="form-control" rows="15" value={postContent} onChange={(event) => setPostContent(event.target.value)}></textarea>
+            <textarea required maxlength="10000" className="form-control" rows="15" value={postContent} onChange={(event) => setPostContent(event.target.value)}></textarea>
           </div>
         </fieldset>
         <fieldset className="row mb-3">
