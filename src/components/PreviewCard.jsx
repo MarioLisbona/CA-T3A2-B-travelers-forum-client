@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // Post object passed in when mapping over posts array and creating each preview card
-const PreviewCard = ({ post }) => {
+const PreviewCard = ({ post, editDelete }) => {
 
 	return (
 		<>
@@ -14,9 +14,8 @@ const PreviewCard = ({ post }) => {
 								<h6>{`Date: ${post.date_posted.substring(0, 10)}`}</h6>
 								<hr></hr>
 								<p className="card-text">{`${post.content.substring(0, 150)}......`}</p>
-								
 								<Link to={`/posts/${post._id}`} className="btn btn-primary position-absolute bottom-0 start-10 translate-x my-3">
-									Read more
+									{editDelete ? 'Edit / Delete' : 'Read more'}
 								</Link>
 						</div>
 				</div>

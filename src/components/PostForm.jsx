@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 
 // submitPost function comes in as a prop
-const PostForm = ({ submitPost, edit, editPost, post }) => {
+const PostForm = ({ submitPost, editPost, post, edit }) => {
+
 
   // tracking the state of post form data
-const [title, setTitle] = useState('')
-const [continent, setContinent] = useState('')
-const [postContent, setPostContent] = useState('')
+  // ternerary used to pre-poulate the form when editing a post
+const [title, setTitle] = useState(edit ? post[0].title : '')
+const [continent, setContinent] = useState(edit ? post[0].category : '')
+const [postContent, setPostContent] = useState(edit ? post[0].content : '')
 
 // call submitForm function when form is submitted
 // will call submitPost function passing in formdata
@@ -27,7 +29,7 @@ function submitEditForm(event) {
         <div className="row mb-3">
           <label for="inputPostTitle" className="col-sm-2 col-form-label">Post Title</label>
           <div className="col-sm-10">
-            <input required type="text" value={title} onChange={(event) => setTitle(event.target.value)} className="form-control" id="title"></input>
+            <input required maxLength="50" type="text" value={title} onChange={(event) => setTitle(event.target.value)} className="form-control" id="title"></input>
           </div>
         </div>
         <div className="row mb-3">
@@ -48,7 +50,7 @@ function submitEditForm(event) {
         <fieldset className="row mb-3">
           <legend className="col-form-label col-sm-2 pt-0">Tell us your story</legend>
           <div className="col-sm-10">
-            <textarea required className="form-control" rows="15" value={postContent} onChange={(event) => setPostContent(event.target.value)}></textarea>
+            <textarea required maxLength="10000" className="form-control" rows="15" value={postContent} onChange={(event) => setPostContent(event.target.value)}></textarea>
           </div>
         </fieldset>
         <fieldset className="row mb-3">
