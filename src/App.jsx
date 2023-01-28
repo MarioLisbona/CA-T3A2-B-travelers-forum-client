@@ -53,7 +53,7 @@ const App = () => {
       setLoggedInMember(currentUser)
       setForumMember(true)
     }
-    console.log('inside useEffect for setting logged in member')
+    // console.log('inside useEffect for setting logged in member')
   }, [setForumMember])
  
 
@@ -125,7 +125,7 @@ const App = () => {
       nav('/login')
     }
     catch (err){
-      console.log(err.message)
+      // console.log(err.message)
     }
   }
 
@@ -177,7 +177,7 @@ const App = () => {
       nav('/')
     }
     catch (err){
-      console.log(err.message)
+      // console.log(err.message)
     }
   }
 
@@ -205,7 +205,7 @@ const App = () => {
 // async function - is called when the create a post form is submitted
   const submitPost =  async (title, continent, postContent) => {
 
-    console.log({"value for loggedInMember.id": loggedInMember.id})
+    // console.log({"value for loggedInMember.id": loggedInMember.id})
 
     // create object to receive create post form data
     const newPost = {
@@ -244,9 +244,9 @@ const App = () => {
 // async function - is called when the edit a post form is editted
 const editPost =  async (post, title, continent, postContent) => {
 
-  console.log('EDITPOST')
-  console.log({"value for loggedInMember.id": loggedInMember.id})
-  console.log({"value for post.id": post[0]._id})
+  // console.log('EDITPOST')
+  // console.log({"value for loggedInMember.id": loggedInMember.id})
+  // console.log({"value for post.id": post[0]._id})
 
   // create object to receive edit post form data
   const editedPost = {
@@ -292,8 +292,8 @@ const editPost =  async (post, title, continent, postContent) => {
 
 const deletePost =  async (post) => {
 
-  console.log('author ID from post inside APP.jsx:', post[0].author._id)
-  console.log('post ID from post inside APP.jsx:', post[0]._id)
+  // console.log('author ID from post inside APP.jsx:', post[0].author._id)
+  // console.log('post ID from post inside APP.jsx:', post[0]._id)
 
 
   // post the new newPost object to the API and assign the return object to returnedPost
@@ -325,7 +325,7 @@ const deletePost =  async (post) => {
 
   const submitComment =  async (post, comment) => {
 
-    console.log({"value for loggedInMember.id": loggedInMember.id})
+    // console.log({"value for loggedInMember.id": loggedInMember.id})
 
     // create object to receive create comment form data
     const newComment = {
