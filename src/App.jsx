@@ -173,8 +173,10 @@ const App = () => {
         token: returnedObject.token
       })
 
+      console.log(Boolean(sessionStorage.postId))
+      sessionStorage.postId ? nav(`/posts/${sessionStorage.postId}`) : nav('/')
       // navigate to landing/member home page
-      nav(`/posts/${sessionStorage.postId}`)
+      // nav(`/posts/${sessionStorage.postId}`)
     }
     catch (err){
       // console.log(err.message)
