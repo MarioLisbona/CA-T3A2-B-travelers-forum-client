@@ -228,7 +228,7 @@ const App = () => {
 
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedPost.json()
-
+    console.log(returnedObject.error)
     // add the returned post object to the posts array
     setPosts([...posts, returnedObject])
 
@@ -236,7 +236,6 @@ const App = () => {
     nav(`/posts/${returnedObject._id}`)
 
   }
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         editPost function       ///////////////////////////////////////////////////
@@ -262,7 +261,8 @@ const editPost =  async (post, title, continent, postContent) => {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': 'Bearer ' + sessionStorage.token
     },
     'body': JSON.stringify(editedPost)
   })
@@ -302,7 +302,8 @@ const deletePost =  async (post) => {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': 'Bearer ' + sessionStorage.token
     }
   })
 
@@ -340,7 +341,8 @@ const deletePost =  async (post) => {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       },
       'body': JSON.stringify(newComment)
     })
