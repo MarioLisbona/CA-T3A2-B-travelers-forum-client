@@ -27,13 +27,13 @@ function submitEditForm(event) {
         <div className="row mb-3">
           <label for="inputPostTitle" className="col-sm-2 col-form-label">Post Title</label>
           <div className="col-sm-10">
-            <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} className="form-control" id="title"></input>
+            <input required type="text" value={title} onChange={(event) => setTitle(event.target.value)} className="form-control" id="title"></input>
           </div>
         </div>
         <div className="row mb-3">
           <label for="input-continent-select" className="col-sm-2 col-form-label">Choose a Continent</label>
           <div className="col-sm-10">
-            <select className="form-select" value={continent} onChange={(event) => setContinent(event.target.value)} id="inputPostContinent">
+            <select required className="form-select" value={continent} onChange={(event) => setContinent(event.target.value)} id="inputPostContinent">
               <option selected></option>
               <option value="Asia">Asia</option>
               <option value="Africa">Africa</option>
@@ -48,7 +48,7 @@ function submitEditForm(event) {
         <fieldset className="row mb-3">
           <legend className="col-form-label col-sm-2 pt-0">Tell us your story</legend>
           <div className="col-sm-10">
-            <textarea className="form-control" rows="15" value={postContent} onChange={(event) => setPostContent(event.target.value)}></textarea>
+            <textarea required className="form-control" rows="15" value={postContent} onChange={(event) => setPostContent(event.target.value)}></textarea>
           </div>
         </fieldset>
         <fieldset className="row mb-3">
