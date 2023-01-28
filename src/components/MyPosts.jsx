@@ -3,7 +3,7 @@ import HeroImage from './HeroImage'
 import PreviewCard from './PreviewCard'
 import Header from './Header'
 
-const MyPosts = ({ latestPosts, loggedInMember }) => {
+const MyPosts = ({ latestPosts, loggedInMember, editDelete }) => {
 
 // filter all posts to just ones created by the member logged in
   const myPosts = latestPosts.filter(post => post.author._id == loggedInMember.id)
@@ -21,7 +21,7 @@ const MyPosts = ({ latestPosts, loggedInMember }) => {
       <div className="row g-3">
         {myPosts.length > 0
           ? myPosts.map((post, idx) => (
-              <PreviewCard key ={idx} post={post}  />
+              <PreviewCard key ={idx} post={post} editDelete  />
             ))
           : <Header headingText={"You havn't made any posts yet."}
               bodyText={"Click the Create a Post button above to make your first post to the forum."} 
