@@ -179,7 +179,7 @@ const App = () => {
       // nav(`/posts/${sessionStorage.postId}`)
     }
     catch (err){
-      // console.log(err.message)
+      console.log(err.message)
     }
   }
 
