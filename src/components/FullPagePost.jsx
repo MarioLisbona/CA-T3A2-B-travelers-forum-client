@@ -21,7 +21,7 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
   
   // used to try make the window load at the top - React remembers the old screen postion because SPA dont refresh
   useEffect(() => {
-    // window.scroll(0, 0)
+    window.scroll(0, 0)
   }, [])
 
   function deleteButton() {

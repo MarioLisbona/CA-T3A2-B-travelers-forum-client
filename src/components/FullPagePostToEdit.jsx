@@ -11,6 +11,11 @@ import PostForm from './PostForm';
 // submitComment posts the comment to the database
 const FullPagePostToEdit = ({ post, editPost }) => {
 
+  // used to try make the window load at the top - React remembers the old screen postion because SPA dont refresh
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
+
   return (
     <>
       <div className="container min-vh-100">
