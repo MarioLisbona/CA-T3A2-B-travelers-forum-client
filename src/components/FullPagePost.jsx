@@ -10,9 +10,6 @@ import { Link } from 'react-router-dom';
 // submitComment posts the comment to the database
 const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, deletePost }) => {
 
-  // console.log('loggedMemberId: ', loggedInMember.id)
-  // console.log('author ID from post:', post[0].author._id)
-
   // map over post to pull comments from the nested array and create a new comments object to be used
   // when rendering CommentContent component
   const comments = post[0].comments.map(comment => (
@@ -27,6 +24,10 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
   function deleteButton() {
     deletePost(post)
   }
+
+
+  sessionStorage.setItem("postId", post[0]._id)
+
 
 
   // console.log(post._id)
