@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 const PostForm = ({ submitPost, edit, editPost, post }) => {
 
   // tracking the state of post form data
-const [title, setTitle] = useState(post[0].title)
-const [continent, setContinent] = useState(post[0].category)
-const [postContent, setPostContent] = useState(post[0].content)
+const [title, setTitle] = useState('')
+const [continent, setContinent] = useState('')
+const [postContent, setPostContent] = useState('')
 
 // call submitForm function when form is submitted
 // will call submitPost function passing in formdata
