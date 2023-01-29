@@ -16,7 +16,7 @@ const CommentForm = ({ post, submitComment }) => {
 
   return (
     <>
-    <form onSubmit={submitForm} className="p-5 bg-light rounded-3 border border-success">
+    <form onSubmit={submitForm} className="p-5 pb-3 bg-light rounded-3 border border-success">
       <fieldset className="row mb-3">
         <legend className="col-form-label col-sm-2 pt-0">Comment</legend>
         <div className="col-sm-10">
