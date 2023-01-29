@@ -157,26 +157,29 @@ const App = () => {
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
 
-      // assigning the returned object to session storage keys
-      sessionStorage.setItem("username", returnedObject.username)
-      sessionStorage.setItem("id", returnedObject.id)
-      sessionStorage.setItem("token", returnedObject.token)
 
-      // forumMember is logged in for conditional rendering
-      setForumMember(true)
+      if (returnedObject.id) {
+        // assigning the returned object to session storage keys
+        sessionStorage.setItem("username", returnedObject.username)
+        sessionStorage.setItem("id", returnedObject.id)
+        sessionStorage.setItem("token", returnedObject.token)
 
-      // set logged in member details
-      // may be unnecessary repitition here????????????
-      setLoggedInMember({
-        username: returnedObject.username,
-        id: returnedObject.id,
-        token: returnedObject.token
-      })
+        // forumMember is logged in for conditional rendering
+        setForumMember(true)
 
-      console.log(Boolean(sessionStorage.postId))
-      sessionStorage.postId ? nav(`/posts/${sessionStorage.postId}`) : nav('/')
-      // navigate to landing/member home page
-      // nav(`/posts/${sessionStorage.postId}`)
+        // set logged in member details
+        // may be unnecessary repitition here????????????
+        setLoggedInMember({
+          username: returnedObject.username,
+          id: returnedObject.id,
+          token: returnedObject.token
+        })
+
+        sessionStorage.postId ? nav(`/posts/${sessionStorage.postId}`) : nav('/')
+      } else {
+        alert('failed login')
+        nav('/')
+      }
     }
     catch (err){
       console.log(err.message)
