@@ -21,14 +21,14 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
     window.scroll(0, 0)
   }, [])
 
+  // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
     deletePost(post)
   }
 
-
+  // store the current post id in session storage
+  // used for a redirect from to last page from login page
   sessionStorage.setItem("postId", post[0]._id)
-
-
 
   // console.log(post._id)
   return (
