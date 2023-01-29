@@ -300,29 +300,31 @@ const editPost =  async (post, title, continent, postContent) => {
 
 const deletePost =  async (post) => {
 
-  // console.log('author ID from post inside APP.jsx:', post[0].author._id)
-  // console.log('post ID from post inside APP.jsx:', post[0]._id)
+  try {
 
+    // post the new newPost object to the API and assign the return object to returnedPost
+    await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
 
-  // post the new newPost object to the API and assign the return object to returnedPost
-  await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+    async function fetchPosts() {
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+      const data = await result.json()
+      setPosts(data)
     }
-  })
 
-  async function fetchPosts() {
-    const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-    const data = await result.json()
-    setPosts(data)
+    fetchPosts()
+
+    // navigate to the new post in full page post
+    nav('/posts')
   }
-
-  fetchPosts()
-
-  // navigate to the new post in full page post
-  nav('/posts')
+  catch (err){
+    console.log(err.message)
+  }
 
 }
 
