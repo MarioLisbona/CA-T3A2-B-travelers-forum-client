@@ -40,8 +40,8 @@ const CommentContent = ({ comment, loggedInMember, post, commentOwner }) => {
         <hr></hr>
         {commentOwner
         ? <span>
-            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" class="btn btn-success my-2 me-1">Edit Post</button></Link>
-            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" class="btn btn-success my-2">Delete Post</button></Link>
+            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" className="btn btn-success my-2 me-1">Edit Comment</button></Link>
+            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Comment</button></Link>
           </span>
           : ''
         }

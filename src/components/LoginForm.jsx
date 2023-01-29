@@ -15,23 +15,23 @@ const LoginForm = ({ loginMember }) => {
 
   return (
     <>
-      <form onSubmit={submitForm} class="p-5 bg-light rounded-3 border border-success">
-        <div class="row mb-3">
-          <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
-          <div class="col-sm-4">
-            <input required type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="form-control" id="inputUsername"></input>
+      <form onSubmit={submitForm} className="p-5 pt-3 pb-2 bg-light rounded-3 border border-success">
+        <div className="row mb-3">
+          <label for="inputUsername" className="col-sm-2 col-form-label">Username</label>
+          <div className="col-sm-4">
+            <input required type="text" value={username} onChange={(event) => setUsername(event.target.value)} className="form-control" id="inputUsername"></input>
           </div>
         </div>
-        <div class="row mb-3">
-          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-4">
-            <input required type="password" value={password} onChange={(event) => setPassword(event.target.value)} class="form-control" id="inputPassword"></input>
+        <div className="row mb-3">
+          <label for="inputPassword" className="col-sm-2 col-form-label">Password</label>
+          <div className="col-sm-4">
+            <input required type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="form-control" id="inputPassword"></input>
           </div>
         </div>
-        <fieldset class="row mb-3">
-          <legend class="col-form-label col-sm-2 pt-0"></legend>
-          <div class="col-sm-4">
-            <button type="submit" class="btn btn-success btn-lg">Login</button>
+        <fieldset className="row mb-3">
+          <legend className="col-form-label col-sm-2 pt-0"></legend>
+          <div className="col-sm-4">
+            <button type="submit" className="btn btn-success my-2">Login</button>
           </div>
         </fieldset>
       </form>

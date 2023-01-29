@@ -42,12 +42,8 @@ const PostContent = ({ post, postOwner, deletePost }) => {
         <hr></hr>
         {postOwner
         ? <span>
-            {/* <Link to={`/posts/edit/${post[0]._id}`} className="btn p-2 btn-success btn-lg my-3 text-black">
-              Edit Post
-            </Link> */}
-            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" class="btn btn-success my-2 me-1">Edit Post</button></Link>
-            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" class="btn btn-success my-2">Delete Post</button></Link>
-            {/* <Link  to="/" className="btn btn-success btn-lg m-3 ms-2 text-black" onClick={() => {deleteButton()} }> */}
+            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" className="btn btn-success my-2 me-1">Edit Post</button></Link>
+            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Post</button></Link>
           </span>
           : ''
         }

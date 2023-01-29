@@ -172,14 +172,11 @@ const RegisterFormValidation = ({ createMember }) => {
 
         {/* disablling the submit button untill all fields in the form have valid input */}
         <span>
-          <button disabled={!validName || !validPwd || !validMatch ? true : false} className="btn btn-success btn-lg my-3">Sign Up</button>
+          <button disabled={!validName || !validPwd || !validMatch ? true : false} className="btn btn-success my-2 me-1">Sign Up</button>
         </span>
         Already registered?<br />
         <span>
-          {/*put router link here*/}
-          <Link to="/login" className="btn btn-success btn-lg my-3 text-black">
-            Login
-          </Link>
+          <Link to="/login"><button type="button" className="btn btn-success my-2 me-1">Login</button></Link>
         </span>
         
       </form>
