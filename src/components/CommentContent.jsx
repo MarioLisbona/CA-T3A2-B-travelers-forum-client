@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const CommentContent = ({ comment }) => {
+const CommentContent = ({ comment, loggedInMember, post, commentOwner }) => {
+
+  console.log(commentOwner)
   
   return (
     <div className="ps-5 py-2 my-2 bg-light rounded-3 border border-success">
@@ -31,6 +34,17 @@ const CommentContent = ({ comment }) => {
                 <div className="bg-alt">{comment.content}</div>
             </div>
         </div>
+        {commentOwner
+        ? <span>
+            <Link to={`/posts/edit/${post[0]._id}`} className="btn btn-success btn-lg my-3 text-black">
+              Edit Comment
+            </Link>
+            <Link  to="/" className="btn btn-success btn-lg my-3 ms-2 text-black" onClick={() => {deleteButton()} }>
+              Delete Comment
+            </Link>
+          </span>
+          : ''
+        }
     </div>
   )
 }
