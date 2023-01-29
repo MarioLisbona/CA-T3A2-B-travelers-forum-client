@@ -305,7 +305,7 @@ const deletePost =  async (post) => {
 
   try {
 
-    // post the new newPost object to the API and assign the return object to returnedPost
+    // Delete request to the server with post id interpolated to url
     await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
       method: 'DELETE',
       headers: {
@@ -314,6 +314,7 @@ const deletePost =  async (post) => {
       }
     })
 
+    // fetch posts again as the data has changed
     async function fetchPosts() {
       const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
       const data = await result.json()
@@ -389,7 +390,7 @@ const deleteComment =  async (comment, post) => {
 
   try {
 
-    // post the new newPost object to the API and assign the return object to returnedPost
+     // Delete request to the server with comment id interpolated to url
     await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
       method: 'DELETE',
       headers: {
@@ -406,13 +407,12 @@ const deleteComment =  async (comment, post) => {
 
     fetchPosts()
 
-    // navigate to the new post in full page post
+    // navigate back to the post in full page post
     nav(`/posts/${post[0]._id}`)
   }
   catch (err){
     console.log(err.message)
   }
-
 }
 
 
