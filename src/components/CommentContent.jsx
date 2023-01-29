@@ -5,7 +5,7 @@ import Modal from './Modal'
 const CommentContent = ({ comment, loggedInMember, post, commentOwner, deleteComment, modalNumber, editComment }) => {
 
 
-  // delete button function calls deletePost async passing in the current post as the argument
+  // delete button function calls deleteComment async function passing in the current post and comment as the arguments
   function deleteButton() {
     deleteComment(comment, post)
   }
@@ -40,9 +40,12 @@ const CommentContent = ({ comment, loggedInMember, post, commentOwner, deleteCom
             </div>
         </div>
         <hr></hr>
+        {/* If the logged in user is the author of the comment
+        rendering 2 buttons
+        Edit - to edit a posts. Each edit button is targeting a modal with id ##modal${modalNumber} using the key from previous mapping of CommentContent to edit the comment
+        Delete Button to call the deleteButton function which calls deleteComment */}
         {commentOwner
         ? <span>
-            {/* <Link to={`/posts/edit/${post[0]._id}`}><button type="button" className="btn btn-success my-2 me-1">Edit Comment</button></Link> */}
             <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${modalNumber}`}>
               Edit Comment
             </button>

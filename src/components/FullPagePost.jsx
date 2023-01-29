@@ -40,6 +40,7 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
         }
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}
+        {/* if the logged in user is the author, render CommentContent passing in functions to delet and edit a comment */}
         {comments.length > 0
           ? comments.map((comment, idx) => (
             comment.userId == loggedInMember.id 
