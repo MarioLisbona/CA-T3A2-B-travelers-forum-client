@@ -6,13 +6,13 @@ import pinterestIcon from "../assets/icons8-pinterest-30.png"
 
 const SocialMedia = () => {
   return (
-      <div id="social-media" class="d-flex flex-column mb-3 p-5 my-4 bg-light rounded-3 border border-success">
-        <h1 class="mb-3">Social Media</h1>
+      <div id="social-media" className="d-flex flex-column mb-3 p-5 my-4 bg-light rounded-3 border border-success">
+        <h1 className="mb-3">Social Media</h1>
         <div className="row">
           <div className="col-md-2">
-            <a id="instagram" href="https://www.instagram.com" class="text-reset text-decoration-none" target="_blank">
-              <div class="p-2 d-flex flex-row justify-content-start">
-                <div class="me-3">
+            <a id="instagram" href="https://www.instagram.com" className="text-reset text-decoration-none" target="_blank">
+              <div className="p-2 d-flex flex-row justify-content-start">
+                <div className="me-3">
                   <img src={instagramIcon}></img>
                 </div>
                 <div>
@@ -20,9 +20,9 @@ const SocialMedia = () => {
                 </div>
               </div>
             </a>
-            <a href="https://www.facebook.com" class="text-reset text-decoration-none" target="_blank">
-              <div class="p-2 d-flex flex-row justify-content-start">
-                <div class="me-3">
+            <a href="https://www.facebook.com" className="text-reset text-decoration-none" target="_blank">
+              <div className="p-2 d-flex flex-row justify-content-start">
+                <div className="me-3">
                 <img src={facebookIcon}></img>
                 </div>
                 <div>
@@ -30,23 +30,23 @@ const SocialMedia = () => {
                 </div>
               </div>
             </a>
-            <a href="https://www.twitter.com" class="text-reset text-decoration-none" target="_blank">
-              <div class="p-2 d-flex flex-row justify-content-start">
-                <div class="me-3">
+            <a href="https://www.twitter.com" className="text-reset text-decoration-none" target="_blank">
+              <div className="p-2 d-flex flex-row justify-content-start">
+                <div className="me-3">
                 <img src={twitterIcon}></img>
                 </div>
                 <div>
-                  <p class="external-link">Twitter</p>
+                  <p className="external-link">Twitter</p>
                 </div>
               </div>
             </a>
-            <a href="https://www.pinterest.com" class="text-reset text-decoration-none" target="_blank">
-              <div class="p-2 d-flex flex-row justify-content-start">
-                <div class="me-3">
+            <a href="https://www.pinterest.com" className="text-reset text-decoration-none" target="_blank">
+              <div className="p-2 d-flex flex-row justify-content-start">
+                <div className="me-3">
                 <img src={pinterestIcon}></img>
                 </div>
                 <div>
-                  <p class="external-link">Pinterest</p>
+                  <p className="external-link">Pinterest</p>
                 </div>
               </div>
             </a>

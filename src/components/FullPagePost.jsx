@@ -8,12 +8,18 @@ import { Link } from 'react-router-dom';
 
 // props for conditional rendering, the post object passed from the preview card that is clicked
 // submitComment posts the comment to the database
-const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, deletePost }) => {
+const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, deletePost, deleteComment, editComment }) => {
 
   // map over post to pull comments from the nested array and create a new comments object to be used
   // when rendering CommentContent component
   const comments = post[0].comments.map(comment => (
-      { username: comment.author.username, date: comment.date_posted.substring(0, 10), content: comment.content}
+      {
+        id: comment._id,
+        userId: comment.author._id, 
+        username: comment.author.username, 
+        date: comment.date_posted.substring(0, 10), 
+        content: comment.content
+      }
   ))
   
   // used to try make the window load at the top - React remembers the old screen postion because SPA dont refresh
@@ -21,36 +27,24 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
     window.scroll(0, 0)
   }, [])
 
-  function deleteButton() {
-    deletePost(post)
-  }
-
-
+  // store the current post id in session storage
+  // used for a redirect from to last page from login page
   sessionStorage.setItem("postId", post[0]._id)
 
-
-
-  // console.log(post._id)
   return (
     <>
       <div className="container min-vh-100">
-        <PostContent post={post} />
         {loggedInMember.id == post[0].author._id
-        ? <span>
-            <Link to={`/posts/edit/${post[0]._id}`} className="btn btn-success btn-lg my-3 text-black">
-              Edit Post
-            </Link>
-            <Link  to="/" className="btn btn-success btn-lg my-3 ms-2 text-black" onClick={() => {deleteButton()} }>
-              Delete Post
-            </Link>
-          </span>
-          : ''
+          ? <PostContent post={post} postOwner deletePost={deletePost} />
+          : <PostContent post={post} />
         }
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}
         {comments.length > 0
           ? comments.map((comment, idx) => (
-              <CommentContent key={idx} comment={comment}/>
+            comment.userId == loggedInMember.id 
+              ? <CommentContent key={idx} comment={comment} loggedInMember={loggedInMember} post={post} commentOwner deleteComment={deleteComment} modalNumber={idx} editComment={editComment} />
+              : <CommentContent key={idx} comment={comment} loggedInMember={loggedInMember} post={post} />
             ))
             : <Header
                 headingText={'Much empty...'}

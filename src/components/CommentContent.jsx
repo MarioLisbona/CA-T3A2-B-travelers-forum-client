@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Modal from './Modal'
 
-const CommentContent = ({ comment }) => {
+const CommentContent = ({ comment, loggedInMember, post, commentOwner, deleteComment, modalNumber, editComment }) => {
+
+
+  // delete button function calls deletePost async passing in the current post as the argument
+  function deleteButton() {
+    deleteComment(comment, post)
+  }
   
   return (
-    <div className="ps-5 py-2 my-2 bg-light rounded-3 border border-success">
+    <div className="ps-5 pb-1 py-2 my-2 bg-light rounded-3 border border-success">
         <div className="row">
             <div className="col-md-4">
                 <div>
@@ -31,6 +39,18 @@ const CommentContent = ({ comment }) => {
                 <div className="bg-alt">{comment.content}</div>
             </div>
         </div>
+        <hr></hr>
+        {commentOwner
+        ? <span>
+            {/* <Link to={`/posts/edit/${post[0]._id}`}><button type="button" className="btn btn-success my-2 me-1">Edit Comment</button></Link> */}
+            <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${modalNumber}`}>
+              Edit Comment
+            </button>
+            <Modal comment={comment} post={post} modalNumber={modalNumber} editComment={editComment} />
+            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Comment</button></Link>
+          </span>
+          : ''
+        }
     </div>
   )
 }
