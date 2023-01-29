@@ -30,7 +30,7 @@ const [editedComment, setEditedComment] = useState(comment.content)
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-success my-2 me-1" data-dismiss="modal">Close</button>
-              <button type="button" onClick={() => {editCommentModal()}} className="btn btn-success my-2 me-1">Save changes</button>
+              <button type="button" onClick={() => {editCommentModal()}} className="btn btn-success my-2 me-1" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>

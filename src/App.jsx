@@ -426,49 +426,50 @@ const editComment =  async (comment, editedComment, post) => {
   console.log('inside editComment function')  
   console.log({commentObject: comment})  
   console.log({newComment: editedComment})  
-  console.log({postObject: post})  
+  console.log({postObject: post})
+  console.log(comment.id)
+  console.log(post[0]._id)
 
 
-  // try {
+  try {
 
-  //   // create object to receive edit post form data
-  //   const editedPost = {
-  //     // author: loggedInMember.id,
-  //     title: title,
-  //     category: continent,
-  //     content: postContent
-  //   }
+    // create object to receive edit post form data
+    const editedCommentObject = {
+      content: editedComment
+    }
 
-  //   // PUT the new editPost object to the API and assign the return object to returnedPost
-  //   const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     'body': JSON.stringify(editedPost)
-  //   })
+    // PUT the new editPost object to the API and assign the return object to returnedPost
+    const returnedEditedComment = await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(editedCommentObject)
+    })
 
-  //   // creating JSON object with returned object from the fetch request
-  //   const returnedObject = await returnedPost.json()
+    // creating JSON object with returned object from the fetch request
+    const returnedObject = await returnedEditedComment.json()
 
-  //   // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
-  //   const targetPostId = post[0]._id
-  //   // using targetPostId to find the correct post in the array of posts fetched from the server
-  //   const postIndex = posts.findIndex(post => targetPostId == post._id)
+    console.log(returnedObject)
 
-  //   posts.splice(postIndex, 1, returnedObject)
+    // fetch posts again as the data has changed
+    async function fetchPosts() {
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+      const data = await result.json()
+      setPosts(data)
+    }
 
-  //   // updating the state of the posts array with the new comments for this post
-  //   setPosts(posts)
+    fetchPosts()
 
-  //   // navigate to the full page post with new comments
-  //   window.scrollTo(0, 0)
-  //   nav(`/posts/${targetPostId}`)
-  // }
-  // catch (err){
-  //   console.log(err.message)
-  // }
+
+    // navigate to the full page post with new comments
+    window.scrollTo(0, 0)
+    nav(`/posts/${post[0]._id}`)
+  }
+  catch (err){
+    console.log(err.message)
+  }
 
 }
 
