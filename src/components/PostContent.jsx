@@ -9,7 +9,7 @@ const PostContent = ({ post, postOwner, deletePost }) => {
   }
 
   return (
-    <div className="p-5 mt-5 mb-3 bg-light rounded-3 border border-success">
+    <div className="p-5 pb-1 mt-5 mb-3 bg-light rounded-3 border border-success">
 				<h1 className="mb-3">{post[0].title}</h1>
         <div className="row">
             <div className="col-md-6">
@@ -41,12 +41,12 @@ const PostContent = ({ post, postOwner, deletePost }) => {
         </div>
         {postOwner
         ? <span>
-            <Link to={`/posts/edit/${post[0]._id}`} className="btn btn-success btn-lg my-3 text-black">
+            {/* <Link to={`/posts/edit/${post[0]._id}`} className="btn p-2 btn-success btn-lg my-3 text-black">
               Edit Post
-            </Link>
-            <Link  to="/" className="btn btn-success btn-lg my-3 ms-2 text-black" onClick={() => {deleteButton()} }>
-              Delete Post
-            </Link>
+            </Link> */}
+            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" class="btn btn-success my-2 me-1">Edit Post</button></Link>
+            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" class="btn btn-success my-2">Delete Post</button></Link>
+            {/* <Link  to="/" className="btn btn-success btn-lg m-3 ms-2 text-black" onClick={() => {deleteButton()} }> */}
           </span>
           : ''
         }

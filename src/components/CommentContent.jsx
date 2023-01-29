@@ -6,7 +6,7 @@ const CommentContent = ({ comment, loggedInMember, post, commentOwner }) => {
   console.log(commentOwner)
   
   return (
-    <div className="ps-5 py-2 my-2 bg-light rounded-3 border border-success">
+    <div className="ps-5 pb-1 py-2 my-2 bg-light rounded-3 border border-success">
         <div className="row">
             <div className="col-md-4">
                 <div>
