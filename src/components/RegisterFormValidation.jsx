@@ -176,7 +176,7 @@ const RegisterFormValidation = ({ createMember }) => {
         </span>
         Already registered?<br />
         <span>
-          <Link to="/login"><button type="button" class="btn btn-success my-2 me-1">Login</button></Link>
+          <Link to="/login"><button type="button" className="btn btn-success my-2 me-1">Login</button></Link>
         </span>
         
       </form>
