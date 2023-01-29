@@ -231,12 +231,18 @@ const App = () => {
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedPost.json()
     console.log(returnedObject.error)
+    if (returnedObject.error) {
+      logoutMember()
+      nav('/login')
+      console.log("Whoops! Looks like you were logged out. Please log in and try again.")
+    }
+    else {
     // add the returned post object to the posts array
     setPosts([...posts, returnedObject])
 
     // navigate to the new post in full page post
     nav(`/posts/${returnedObject._id}`)
-
+    }
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
