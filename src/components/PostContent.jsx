@@ -39,6 +39,7 @@ const PostContent = ({ post, postOwner, deletePost }) => {
                 <div className="bg-alt">{post[0].content}</div>
             </div>
         </div>
+        <hr></hr>
         {postOwner
         ? <span>
             {/* <Link to={`/posts/edit/${post[0]._id}`} className="btn p-2 btn-success btn-lg my-3 text-black">
