@@ -335,42 +335,46 @@ const deletePost =  async (post) => {
 
   const submitComment =  async (post, comment) => {
 
-    // console.log({"value for loggedInMember.id": loggedInMember.id})
+    try {
 
-    // create object to receive create comment form data
-    const newComment = {
-      post: post[0]._id,
-      author: loggedInMember.id,
-      content: comment
+      // create object to receive create comment form data
+      const newComment = {
+        post: post[0]._id,
+        author: loggedInMember.id,
+        content: comment
+      }
+      
+      // post the newComment object to the API and assign the return object to returnedComment
+      const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments/new', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        'body': JSON.stringify(newComment)
+      })
+
+      // creating JSON object with returned object from the fetch request
+      const returnedObject = await returnedComment.json()
+      
+
+      // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+      const targetPostId = post[0]._id
+      // using targetPostId to find the correct post in the array of posts fetched from the server
+      const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+      // pushing the new comment to the comments array in the correct post
+      posts[postIndex].comments.push(returnedObject)
+      // updating the state of the posts array with the new comments for this post
+      setPosts(posts)
+
+      // navigate to the full page post with new comments
+      window.scrollTo(0, 0)
+      nav(`/posts/${targetPostId}`)
     }
-    
-    // post the newComment object to the API and assign the return object to returnedComment
-    const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments/new', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      'body': JSON.stringify(newComment)
-    })
-
-    // creating JSON object with returned object from the fetch request
-    const returnedObject = await returnedComment.json()
-    
-
-    // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
-    const targetPostId = post[0]._id
-    // using targetPostId to find the correct post in the array of posts fetched from the server
-    const postIndex = posts.findIndex(post => targetPostId == post._id)
-
-    // pushing the new comment to the comments array in the correct post
-    posts[postIndex].comments.push(returnedObject)
-    // updating the state of the posts array with the new comments for this post
-    setPosts(posts)
-
-    // navigate to the full page post with new comments
-    window.scrollTo(0, 0)
-    nav(`/posts/${targetPostId}`)
+    catch (err){
+      console.log(err.message)
+    }
   }
 
 
