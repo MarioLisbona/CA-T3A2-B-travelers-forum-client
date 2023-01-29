@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CommentContent = ({ comment, loggedInMember, post, commentOwner }) => {
+const CommentContent = ({ comment, loggedInMember, post, commentOwner, deleteComment }) => {
 
   // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
-    deleteComment(comment)
+    deleteComment(comment, post)
   }
   
   return (

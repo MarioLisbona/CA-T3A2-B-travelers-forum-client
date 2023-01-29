@@ -8,12 +8,18 @@ import { Link } from 'react-router-dom';
 
 // props for conditional rendering, the post object passed from the preview card that is clicked
 // submitComment posts the comment to the database
-const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, deletePost }) => {
+const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, deletePost, deleteComment }) => {
 
   // map over post to pull comments from the nested array and create a new comments object to be used
   // when rendering CommentContent component
   const comments = post[0].comments.map(comment => (
-      { userId: comment.author._id, username: comment.author.username, date: comment.date_posted.substring(0, 10), content: comment.content}
+      {
+        id: comment._id,
+        userId: comment.author._id, 
+        username: comment.author.username, 
+        date: comment.date_posted.substring(0, 10), 
+        content: comment.content
+      }
   ))
   
   // used to try make the window load at the top - React remembers the old screen postion because SPA dont refresh
@@ -40,7 +46,7 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
           //   ))
           ? comments.map((comment, idx) => (
             comment.userId == loggedInMember.id 
-              ? <CommentContent key={idx} comment={comment} loggedInMember={loggedInMember} post={post} commentOwner />
+              ? <CommentContent key={idx} comment={comment} loggedInMember={loggedInMember} post={post} commentOwner deleteComment={deleteComment} />
               : <CommentContent key={idx} comment={comment} loggedInMember={loggedInMember} post={post} />
             ))
             : <Header

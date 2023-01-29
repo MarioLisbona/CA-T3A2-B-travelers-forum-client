@@ -78,7 +78,7 @@ const App = () => {
     const post = posts.filter(post => post._id == id)
     return post == 0
       ? <PageNotFound />
-      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} />
+      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} deleteComment={deleteComment} />
   }
 
 
@@ -379,6 +379,41 @@ const deletePost =  async (post) => {
       console.log(err.message)
     }
   }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         deleteComment function       ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const deleteComment =  async (comment, post) => {
+
+  try {
+
+    // post the new newPost object to the API and assign the return object to returnedPost
+    await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+
+    async function fetchPosts() {
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+      const data = await result.json()
+      setPosts(data)
+    }
+
+    fetchPosts()
+
+    // navigate to the new post in full page post
+    nav(`/posts/${post[0]._id}`)
+  }
+  catch (err){
+    console.log(err.message)
+  }
+
+}
 
 
     // fitlering the posts array returned by the fetch into separate arrays for each category
