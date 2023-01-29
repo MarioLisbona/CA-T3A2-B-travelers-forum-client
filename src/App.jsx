@@ -78,7 +78,7 @@ const App = () => {
     const post = posts.filter(post => post._id == id)
     return post == 0
       ? <PageNotFound />
-      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} deleteComment={deleteComment} />
+      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} deleteComment={deleteComment} editComment={editComment} />
   }
 
 
@@ -413,6 +413,64 @@ const deleteComment =  async (comment, post) => {
   catch (err){
     console.log(err.message)
   }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         editComment function       ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// async function - is called when the edit a post form is editted
+const editComment =  async (comment, editedComment, post) => {
+
+  console.log('inside editComment function')  
+  console.log({commentObject: comment})  
+  console.log({newComment: editedComment})  
+  console.log({postObject: post})
+  console.log(comment.id)
+  console.log(post[0]._id)
+
+
+  try {
+
+    // create object to receive edit post form data
+    const editedCommentObject = {
+      content: editedComment
+    }
+
+    // PUT the new editPost object to the API and assign the return object to returnedPost
+    const returnedEditedComment = await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(editedCommentObject)
+    })
+
+    // creating JSON object with returned object from the fetch request
+    const returnedObject = await returnedEditedComment.json()
+
+    console.log(returnedObject)
+
+    // fetch posts again as the data has changed
+    async function fetchPosts() {
+      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+      const data = await result.json()
+      setPosts(data)
+    }
+
+    fetchPosts()
+
+
+    // navigate to the full page post with new comments
+    window.scrollTo(0, 0)
+    nav(`/posts/${post[0]._id}`)
+  }
+  catch (err){
+    console.log(err.message)
+  }
+
 }
 
 
