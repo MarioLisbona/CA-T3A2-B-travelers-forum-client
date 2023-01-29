@@ -250,44 +250,46 @@ const App = () => {
 // async function - is called when the edit a post form is editted
 const editPost =  async (post, title, continent, postContent) => {
 
-  // console.log('EDITPOST')
-  // console.log({"value for loggedInMember.id": loggedInMember.id})
-  // console.log({"value for post.id": post[0]._id})
+  try {
 
-  // create object to receive edit post form data
-  const editedPost = {
-    // author: loggedInMember.id,
-    title: title,
-    category: continent,
-    content: postContent
+    // create object to receive edit post form data
+    const editedPost = {
+      // author: loggedInMember.id,
+      title: title,
+      category: continent,
+      content: postContent
+    }
+
+    // PUT the new editPost object to the API and assign the return object to returnedPost
+    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify(editedPost)
+    })
+
+    // creating JSON object with returned object from the fetch request
+    const returnedObject = await returnedPost.json()
+
+    // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+    const targetPostId = post[0]._id
+    // using targetPostId to find the correct post in the array of posts fetched from the server
+    const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+    posts.splice(postIndex, 1, returnedObject)
+
+    // updating the state of the posts array with the new comments for this post
+    setPosts(posts)
+
+    // navigate to the full page post with new comments
+    window.scrollTo(0, 0)
+    nav(`/posts/${targetPostId}`)
   }
-
-  // PUT the new editPost object to the API and assign the return object to returnedPost
-  const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    'body': JSON.stringify(editedPost)
-  })
-
-  // creating JSON object with returned object from the fetch request
-  const returnedObject = await returnedPost.json()
-
-  // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
-  const targetPostId = post[0]._id
-  // using targetPostId to find the correct post in the array of posts fetched from the server
-  const postIndex = posts.findIndex(post => targetPostId == post._id)
-
-  posts.splice(postIndex, 1, returnedObject)
-
-  // updating the state of the posts array with the new comments for this post
-  setPosts(posts)
-
-  // navigate to the full page post with new comments
-  window.scrollTo(0, 0)
-  nav(`/posts/${targetPostId}`)
+  catch (err){
+    console.log(err.message)
+  }
 
 }
 
