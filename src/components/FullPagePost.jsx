@@ -21,11 +21,6 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
     window.scroll(0, 0)
   }, [])
 
-  // delete button function calls deletePost async passing in the current post as the argument
-  function deleteButton() {
-    deletePost(post)
-  }
-
   // store the current post id in session storage
   // used for a redirect from to last page from login page
   sessionStorage.setItem("postId", post[0]._id)
@@ -33,17 +28,9 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
   return (
     <>
       <div className="container min-vh-100">
-        <PostContent post={post} />
         {loggedInMember.id == post[0].author._id
-        ? <span>
-            <Link to={`/posts/edit/${post[0]._id}`} className="btn btn-success btn-lg my-3 text-black">
-              Edit Post
-            </Link>
-            <Link  to="/" className="btn btn-success btn-lg my-3 ms-2 text-black" onClick={() => {deleteButton()} }>
-              Delete Post
-            </Link>
-          </span>
-          : ''
+          ? <PostContent post={post} postOwner deletePost={deletePost} />
+          : <PostContent post={post} />
         }
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}

@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 
 const CommentContent = ({ comment, loggedInMember, post, commentOwner }) => {
 
-  console.log(commentOwner)
+  // delete button function calls deletePost async passing in the current post as the argument
+  function deleteButton() {
+    deleteComment(comment)
+  }
   
   return (
-    <div className="ps-5 py-2 my-2 bg-light rounded-3 border border-success">
+    <div className="ps-5 pb-1 py-2 my-2 bg-light rounded-3 border border-success">
         <div className="row">
             <div className="col-md-4">
                 <div>
@@ -34,14 +37,11 @@ const CommentContent = ({ comment, loggedInMember, post, commentOwner }) => {
                 <div className="bg-alt">{comment.content}</div>
             </div>
         </div>
+        <hr></hr>
         {commentOwner
         ? <span>
-            <Link to={`/posts/edit/${post[0]._id}`} className="btn btn-success btn-lg my-3 text-black">
-              Edit Comment
-            </Link>
-            <Link  to="/" className="btn btn-success btn-lg my-3 ms-2 text-black" onClick={() => {deleteButton()} }>
-              Delete Comment
-            </Link>
+            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" class="btn btn-success my-2 me-1">Edit Post</button></Link>
+            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" class="btn btn-success my-2">Delete Post</button></Link>
           </span>
           : ''
         }

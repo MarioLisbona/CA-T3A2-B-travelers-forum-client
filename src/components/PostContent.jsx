@@ -1,9 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const PostContent = ({ post }) => {
+const PostContent = ({ post, postOwner, deletePost }) => {
+
+  // delete button function calls deletePost async passing in the current post as the argument
+  function deleteButton() {
+    deletePost(post)
+  }
 
   return (
-    <div className="p-5 mt-5 mb-3 bg-light rounded-3 border border-success">
+    <div className="p-5 pb-1 mt-5 mb-3 bg-light rounded-3 border border-success">
 				<h1 className="mb-3">{post[0].title}</h1>
         <div className="row">
             <div className="col-md-6">
@@ -33,6 +39,18 @@ const PostContent = ({ post }) => {
                 <div className="bg-alt">{post[0].content}</div>
             </div>
         </div>
+        <hr></hr>
+        {postOwner
+        ? <span>
+            {/* <Link to={`/posts/edit/${post[0]._id}`} className="btn p-2 btn-success btn-lg my-3 text-black">
+              Edit Post
+            </Link> */}
+            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" class="btn btn-success my-2 me-1">Edit Post</button></Link>
+            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" class="btn btn-success my-2">Delete Post</button></Link>
+            {/* <Link  to="/" className="btn btn-success btn-lg m-3 ms-2 text-black" onClick={() => {deleteButton()} }> */}
+          </span>
+          : ''
+        }
     </div>
   )
 }
