@@ -15,7 +15,7 @@ const LoginForm = ({ loginMember }) => {
 
   return (
     <>
-      <form onSubmit={submitForm} class="p-5 bg-light rounded-3 border border-success">
+      <form onSubmit={submitForm} class="p-5 pt-3 pb-2 bg-light rounded-3 border border-success">
         <div class="row mb-3">
           <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
           <div class="col-sm-4">
@@ -31,7 +31,7 @@ const LoginForm = ({ loginMember }) => {
         <fieldset class="row mb-3">
           <legend class="col-form-label col-sm-2 pt-0"></legend>
           <div class="col-sm-4">
-            <button type="submit" class="btn btn-success btn-lg">Login</button>
+            <button type="submit" class="btn btn-success my-2">Login</button>
           </div>
         </fieldset>
       </form>
