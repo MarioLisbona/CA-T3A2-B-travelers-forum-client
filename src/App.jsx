@@ -224,7 +224,8 @@ const App = () => {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer ' + sessionStorage.token
         },
         'body': JSON.stringify(newPost)
       })
@@ -267,7 +268,8 @@ const editPost =  async (post, title, continent, postContent) => {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       },
       'body': JSON.stringify(editedPost)
     })
@@ -309,7 +311,8 @@ const deletePost =  async (post) => {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       }
     })
 
@@ -352,7 +355,8 @@ const deletePost =  async (post) => {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer ' + sessionStorage.token
         },
         'body': JSON.stringify(newComment)
       })
@@ -394,7 +398,8 @@ const deleteComment =  async (comment, post) => {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       }
     })
 
