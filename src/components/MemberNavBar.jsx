@@ -11,8 +11,8 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
           <div className="container-fluid">
-              <Link className="navbar-brand text-white" to="/">
-                  Traveler's Forum
+              <Link className="navbar-brand ms-0 ps-0" to="/">
+                <img src="../src/components/logo2.png" width="200" height="40" alt=""></img>
               </Link>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
