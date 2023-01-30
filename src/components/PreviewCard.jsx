@@ -11,8 +11,9 @@ const PreviewCard = ({ post, editDelete }) => {
 						<div className="card-body">
 								<h5 className="card-title">{`${post.title.substring(0, 50)}...`}</h5>
 								<h6>{`Author: ${post.author.username}`}</h6>
+								<h6>{`Contient: ${post.category}`}</h6>
 								<h6>{`Date: ${post.date_posted.substring(0, 10)}`}</h6>
-								<hr></hr>
+								<hr className="p-0 my-1"></hr>
 								<p className="card-text">{`${post.content.substring(0, 150)}......`}</p>
 								{/* Render button to go to fullpage post. If the logged in member is the owner , gthe button will render Edit / delete */}
 								<Link to={`/posts/${post._id}`}>

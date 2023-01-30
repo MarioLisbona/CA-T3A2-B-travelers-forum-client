@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Modal from './Modal'
+import ModalConfirmDelete from './ModalConfirmDelete'
 
 const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumber, editComment }) => {
 
@@ -14,7 +15,7 @@ const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumbe
     // displaying comment contents
     <div className="ps-5 pb-1 py-2 my-2 bg-light rounded-3 border border-success">
         <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-4 mt-3">
                 <div>
                   <div className="row">
                     <div className="col-md-4">
@@ -36,11 +37,16 @@ const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumbe
                   </div>
                 </div>
             </div>
+            <div className="pe-5">
+              <hr></hr>
+            </div>
             <div className="col-md-12">
-                <div className="bg-alt">{comment.content}</div>
+                <div className="bg-alt pe-5">{comment.content}</div>
             </div>
         </div>
-        <hr></hr>
+        <div className="pe-5">
+          <hr></hr>
+        </div>
         {/* If the logged in user is the author of the comment
         render 2 buttons
         Edit - to edit a comment. Each edit button is targeting a modal with id #modal${modalNumber} using the key from previous mapping of CommentContent to edit the comment
@@ -56,9 +62,11 @@ const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumbe
                 modalNumber={modalNumber} 
                 editComment={editComment}
               />
-              <Link to="/" onClick={() => {deleteButton()}} >
+              {/* <Link to="/" onClick={() => {deleteButton()}} >
                 <button type="button" className="btn btn-success my-2">Delete Comment</button>
-              </Link>
+              </Link> */}
+              <button type="button" className="btn btn-success my-2" data-toggle="modal" data-target={"#ModalDeleteComment"}>Delete Comment</button>
+              <ModalConfirmDelete type={'Comment'} delConfirmed={deleteButton} />
             </span>
           : ''
         }
