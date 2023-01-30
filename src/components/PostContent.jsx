@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ModalPost from './ModalPost'
 
-const PostContent = ({ post, postOwner, deletePost }) => {
+const PostContent = ({ post, postOwner, deletePost, editPost }) => {
+
+  console.log('postcontent', post[0]._id)
 
   // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
@@ -41,8 +44,16 @@ const PostContent = ({ post, postOwner, deletePost }) => {
         </div>
         <hr></hr>
         {postOwner
-        ? <span>
-            <Link to={`/posts/edit/${post[0]._id}`}><button type="button" className="btn btn-success my-2 me-1">Edit Post</button></Link>
+        // ? <span>
+        //     <Link to={`/posts/edit/${post[0]._id}`}><button type="button" className="btn btn-success my-2 me-1">Edit Post</button></Link>
+        //     <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Post</button></Link>
+        //   </span>
+        ?
+          <span>
+            <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${post[0]._id}`}>
+              Edit Post
+            </button>
+            <ModalPost post={post} modalNumber={post[0]._id} editPost={editPost} />
             <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Post</button></Link>
           </span>
           : ''
