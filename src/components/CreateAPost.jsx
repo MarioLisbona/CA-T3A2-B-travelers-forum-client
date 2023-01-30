@@ -14,6 +14,7 @@ const CreateAPost = ({ submitPost }) => {
           headingText={"Create a post"}
           bodyText={"Tell us about an amazing story from your travels. Choose a continent and what experience you had."}
         />
+        {/* render PostForm passing in the submitPost function */}
         <PostForm submitPost={submitPost}  />
       </div>
     </>

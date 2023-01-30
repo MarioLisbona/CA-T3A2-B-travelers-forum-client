@@ -11,7 +11,8 @@ const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
     {/* Heroimage */}
     <HeroImage heroClass={'s-am'} />
       <div className="container">
-        <Header headingText={"Welcome to South America"}
+        <Header 
+          headingText={"Welcome to South America"}
           bodyText={"This is a little blurb about South America. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "} 
         />
         {/* container for main body of the page */}

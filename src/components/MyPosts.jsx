@@ -3,13 +3,14 @@ import HeroImage from './HeroImage'
 import PreviewCard from './PreviewCard'
 import Header from './Header'
 
-const MyPosts = ({ latestPosts, loggedInMember, editDelete }) => {
+const MyPosts = ({ latestPosts, loggedInMember }) => {
 
 // filter all posts to just ones created by the member logged in
   const myPosts = latestPosts.filter(post => post.author._id == loggedInMember.id)
 
   return (
     <>
+      {/* rednering a page with only 8 preview cards */}
       <HeroImage heroClass={'landing-page'}/>
       <div className="container">
       <Header headingText={`Hi ${loggedInMember.username}, welcome to the forum`}

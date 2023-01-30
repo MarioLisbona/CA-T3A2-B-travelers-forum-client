@@ -23,7 +23,6 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
-import FullPagePostToEdit from './components/FullPagePostToEdit'
 
 
 const App = () => {
@@ -485,7 +484,6 @@ const editComment =  async (comment, editedComment, post) => {
 
 
     // navigate to the full page post with new comments
-    window.scrollTo(0, 0)
     nav(`/posts/${post[0]._id}`)
   }
   catch (err){

@@ -12,7 +12,8 @@ const ViewAll = ({ forumMember, allPosts }) => {
       {/* Heroimage */}
       <HeroImage  heroClass={'view-all'}/>
       <div className="container">
-        <Header headingText={"Browse the entire Forum"}
+        <Header 
+          headingText={"Browse the entire Forum"}
           bodyText={"This is a little blurb about being able to view all the forum posts...r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
         />
         {/* container for main body of the page */}

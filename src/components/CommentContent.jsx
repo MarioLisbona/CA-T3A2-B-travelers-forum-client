@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Modal from './Modal'
 
-const CommentContent = ({ comment, loggedInMember, post, commentOwner, deleteComment, modalNumber, editComment }) => {
+const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumber, editComment }) => {
 
 
   // delete button function calls deleteComment async function passing in the current post and comment as the arguments
@@ -11,6 +11,7 @@ const CommentContent = ({ comment, loggedInMember, post, commentOwner, deleteCom
   }
   
   return (
+    // displaying comment contents
     <div className="ps-5 pb-1 py-2 my-2 bg-light rounded-3 border border-success">
         <div className="row">
             <div className="col-md-4">
@@ -41,17 +42,24 @@ const CommentContent = ({ comment, loggedInMember, post, commentOwner, deleteCom
         </div>
         <hr></hr>
         {/* If the logged in user is the author of the comment
-        rendering 2 buttons
-        Edit - to edit a posts. Each edit button is targeting a modal with id ##modal${modalNumber} using the key from previous mapping of CommentContent to edit the comment
-        Delete Button to call the deleteButton function which calls deleteComment */}
+        render 2 buttons
+        Edit - to edit a comment. Each edit button is targeting a modal with id #modal${modalNumber} using the key from previous mapping of CommentContent to edit the comment
+        Delete Button to call the deleteButton function which calls deleteComment in App.jsx */}
         {commentOwner
-        ? <span>
-            <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${modalNumber}`}>
-              Edit Comment
-            </button>
-            <Modal comment={comment} post={post} modalNumber={modalNumber} editComment={editComment} />
-            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Comment</button></Link>
-          </span>
+          ? <span>
+              <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${modalNumber}`}>
+                Edit Comment
+              </button>
+              <Modal 
+                comment={comment} 
+                post={post} 
+                modalNumber={modalNumber} 
+                editComment={editComment}
+              />
+              <Link to="/" onClick={() => {deleteButton()}} >
+                <button type="button" className="btn btn-success my-2">Delete Comment</button>
+              </Link>
+            </span>
           : ''
         }
     </div>

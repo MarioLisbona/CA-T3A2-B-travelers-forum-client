@@ -22,7 +22,7 @@ function submitEditForm(event) {
   editPost(post, title, continent, postContent)
   // console.log('editing post', post[0]._id, title, continent, postContent)
 }
-
+  // render form with post inputs
   return (
     <>
       <form onSubmit={edit ? submitEditForm : submitForm} className="p-5 bg-light rounded-3 border border-success">

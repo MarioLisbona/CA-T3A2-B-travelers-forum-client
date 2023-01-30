@@ -7,11 +7,13 @@ import RegisterFormValidation from './RegisterFormValidation'
 // createMember function passed in as prop to be passed to RegisterFormValidation component
 const Register = ({ createMember }) => {
 
+  // Render registration page
   return (
     <>
     <HeroImage heroClass={'register'} />
       <div className="container">
         <Header headingText={"Register to become a member"} btnText={'Register'} />
+        {/* render Component passing in createMember function */}
         <RegisterFormValidation createMember={createMember} />
       </div>
   </>

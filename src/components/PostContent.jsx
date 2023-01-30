@@ -8,7 +8,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
   function deleteButton() {
     deletePost(post)
   }
-
+  // render post content
   return (
     <div className="p-5 pb-1 mt-5 mb-3 bg-light rounded-3 border border-success">
 				<h1 className="mb-3">{post[0].title}</h1>
@@ -41,19 +41,18 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
             </div>
         </div>
         <hr></hr>
+        {/* If the logged in user is the author of the post
+        render 2 buttons
+        Edit - to edit a post. the edit button is targeting a modal with id #modal${post[0]._id}
+        Delete Button to call the deleteButton function which calls deletePost in App.jsx */}
         {postOwner
-        // ? <span>
-        //     <Link to={`/posts/edit/${post[0]._id}`}><button type="button" className="btn btn-success my-2 me-1">Edit Post</button></Link>
-        //     <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Post</button></Link>
-        //   </span>
-        ?
-          <span>
-            <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${post[0]._id}`}>
-              Edit Post
-            </button>
-            <ModalPost post={post} modalNumber={post[0]._id} editPost={editPost} />
-            <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Post</button></Link>
-          </span>
+          ? <span>
+              <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${post[0]._id}`}>
+                Edit Post
+              </button>
+              <ModalPost post={post} modalNumber={post[0]._id} editPost={editPost} />
+              <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Post</button></Link>
+            </span>
           : ''
         }
     </div>

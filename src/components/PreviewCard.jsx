@@ -14,14 +14,12 @@ const PreviewCard = ({ post, editDelete }) => {
 								<h6>{`Date: ${post.date_posted.substring(0, 10)}`}</h6>
 								<hr></hr>
 								<p className="card-text">{`${post.content.substring(0, 150)}......`}</p>
-								{/* <Link to={`/posts/${post._id}`} className="btn btn-primary position-absolute bottom-0 start-10 translate-x my-3">
-									{editDelete ? 'Edit / Delete' : 'Read more'}
-								</Link> */}
+								{/* Render button to go to fullpage post. If the logged in member is the owner , gthe button will render Edit / delete */}
 								<Link to={`/posts/${post._id}`}>
 									<button
 										type="button" 
 										className="btn btn-success position-absolute bottom-0 start-10 translate-x my-3">
-											{editDelete ? 'Edit / Delete' : 'Read more'}
+										{editDelete ? 'Edit / Delete' : 'Read more'}
 									</button>
 								</Link>
 						</div>

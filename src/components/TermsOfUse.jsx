@@ -1,9 +1,9 @@
 import React from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
-import Footer from './Footer'
 
-const TermsOfUse = ({ forumMember }) => {
+// redner terms of use page
+const TermsOfUse = () => {
   return (
     <>
     <HeroImage heroClass={'europe'} />
