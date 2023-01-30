@@ -220,7 +220,7 @@ const App = () => {
       }
 
       // post the new newPost object to the API and assign the return object to returnedPost
-      const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts/new', {
+      const returnedPost = await fetch('https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/posts/new', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -232,7 +232,14 @@ const App = () => {
 
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedPost.json()
-
+      
+      // Callum Edit
+      // If JWT lost after login but before form submit
+      if (returnedObject.error) {  
+        alert('Whoops! Looks like you were logged out. Please log in and try again.')
+        logoutMember()
+        return nav('/login')
+      }
       // add the returned post object to the posts array
       setPosts([...posts, returnedObject])
 
@@ -264,7 +271,7 @@ const editPost =  async (post, title, continent, postContent) => {
     }
 
     // PUT the new editPost object to the API and assign the return object to returnedPost
-    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+    const returnedPost = await fetch(`https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/posts/${post[0]._id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -307,7 +314,7 @@ const deletePost =  async (post) => {
   try {
 
     // Delete request to the server with post id interpolated to url
-    await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+    await fetch(`https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/posts/${post[0]._id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -318,7 +325,8 @@ const deletePost =  async (post) => {
 
     // fetch posts again as the data has changed
     async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+      const result = await fetch("https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/posts/")
+    
       const data = await result.json()
       setPosts(data)
     }
@@ -351,7 +359,7 @@ const deletePost =  async (post) => {
       }
       
       // post the newComment object to the API and assign the return object to returnedComment
-      const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments/new', {
+      const returnedComment = await fetch('https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/comments/new', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -364,6 +372,13 @@ const deletePost =  async (post) => {
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedComment.json()
       
+      // Callum Edit
+      // If JWT lost after login but before form submit
+      if (returnedObject.error) {  
+        alert('Whoops! Looks like you were logged out. Please log in and try again.')
+        logoutMember()
+        return nav('/login')
+      }
 
       // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
       const targetPostId = post[0]._id
@@ -394,7 +409,7 @@ const deleteComment =  async (comment, post) => {
   try {
 
      // Delete request to the server with comment id interpolated to url
-    await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+    await fetch(`https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/comments/${comment.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -404,7 +419,7 @@ const deleteComment =  async (comment, post) => {
     })
 
     async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+      const result = await fetch("https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/posts/")
       const data = await result.json()
       setPosts(data)
     }
@@ -443,7 +458,7 @@ const editComment =  async (comment, editedComment, post) => {
     }
 
     // PUT the new editPost object to the API and assign the return object to returnedPost
-    const returnedEditedComment = await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+    const returnedEditedComment = await fetch(`https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/comments/${comment.id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -460,7 +475,7 @@ const editComment =  async (comment, editedComment, post) => {
 
     // fetch posts again as the data has changed
     async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+      const result = await fetch("https://ca-t3a2-b-travelers-forum-server-test.up.railway.app/posts/")
       const data = await result.json()
       setPosts(data)
     }
