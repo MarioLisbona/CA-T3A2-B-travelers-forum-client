@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ModalConfirmDelete from './ModalConfirmDelete'
 import ModalPost from './ModalPost'
+import moment from 'moment'
+
 
 const PostContent = ({ post, postOwner, deletePost, editPost }) => {
 
@@ -37,7 +39,8 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
                 <div className="">Posted:</div>
               </div>
               <div className="col-md-6 mb-4">
-                <div className="bg-alt mb-2">{post[0].date_posted.substring(0, 10)}</div>
+                {/* <div className="bg-alt mb-2">{post[0].date_posted.substring(0, 10)}</div> */}
+                <div className="bg-alt mb-2">{`${moment(post[0].date_posted.slice(0, 16)).format('MMM Do YYYY')}`}</div>
               </div>
             </div>
             </div>
