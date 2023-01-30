@@ -31,7 +31,7 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPo
 
   return (
     <>
-      <div className="container min-vh-100">
+      <div className="container min-vh-100" style={{ marginTop: "100px"}}>
         {loggedInMember.id == post[0].author._id
           ? <PostContent post={post} postOwner deletePost={deletePost} editPost={editPost} />
           : <PostContent post={post} />
