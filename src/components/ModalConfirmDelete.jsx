@@ -7,7 +7,7 @@ const ModalConfirmDelete = ({ type, delConfirmed }) => {
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content p-3">
           <div className="modal-header p-0 py-3">
-            <h5 className="modal-title" id="exampleModalLongTitle">{`Are you sure you want to delete this ${type} ?`}</h5>
+            <h5 className="modal-title" id="exampleModalLongTitle">{`Really delete this ${type} ?`}</h5>
             {/* close modal without saving changes */}
             <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
