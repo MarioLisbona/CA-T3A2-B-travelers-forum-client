@@ -71,9 +71,6 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
                                 <Link className="dropdown-item text-white" to="/about">
                                     About
                                 </Link>
-                                <Link className="dropdown-item text-white" to="/contact">
-                                    Contact Us
-                                </Link>
                                 <Link onClick={logoutMember} className="dropdown-item text-white" to="/">
                                     Log out
                                 </Link>
