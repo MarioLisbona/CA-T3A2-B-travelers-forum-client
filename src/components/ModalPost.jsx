@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 
-const Modal = ({ modalNumber, post }) => {
+const Modal = ({ modalNumber, post, editPost }) => {
 
   const [title, setTitle] = useState(post[0].title)
   const [continent, setContinent] = useState(post[0].category)
   const [postContent, setPostContent] = useState(post[0].content)
 
+  console.log('inside post modal', post, title, continent, postContent)
+
   // delete button function calls deletePost async passing in the current post as the argument
   function editPostModal() {
-    editPost(post)
+    editPost(post, title, continent, postContent)
   }
 
   return (

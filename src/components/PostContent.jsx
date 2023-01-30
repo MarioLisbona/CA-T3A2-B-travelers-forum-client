@@ -4,8 +4,6 @@ import ModalPost from './ModalPost'
 
 const PostContent = ({ post, postOwner, deletePost, editPost }) => {
 
-  console.log('postcontent', post[0]._id)
-
   // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
     deletePost(post)
