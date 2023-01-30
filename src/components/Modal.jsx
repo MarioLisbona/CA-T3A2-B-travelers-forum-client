@@ -11,9 +11,6 @@ const [editedComment, setEditedComment] = useState(comment.content)
 
   return (
     <>
-      {/* <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`modal${key}`}>
-              Edit Comment
-      </button> */}
       <div className="modal fade" id={`modal${modalNumber}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content p-3">
@@ -29,7 +26,6 @@ const [editedComment, setEditedComment] = useState(comment.content)
             </textarea>
             </div>
             <div className="modal-footer p-0 py-3">
-              {/* <button type="button" className="btn btn-success" data-dismiss="modal">Close</button> */}
               <button type="button" onClick={() => {editCommentModal()}} className="btn btn-success" data-dismiss="modal">Save changes</button>
             </div>
           </div>
