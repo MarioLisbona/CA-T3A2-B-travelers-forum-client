@@ -263,8 +263,12 @@ const App = () => {
         return nav('/login')
       }
 
-      // add the returned post object to the posts array
-      setPosts([...posts, returnedObject])
+      posts.unshift(returnedObject)
+      setPosts(posts)
+
+      // // add the returned post object to the posts array
+      // setPosts([...posts, returnedObject])
+
 
       // navigate to the new post in full page post
       nav(`/posts/${returnedObject._id}`)
