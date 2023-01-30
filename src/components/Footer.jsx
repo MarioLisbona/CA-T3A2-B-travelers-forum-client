@@ -5,6 +5,7 @@ const Footer = () => {
 	
 	return (
 		<>
+		{/* display a footer with inks */}
 			<footer>
 			<hr className="border border-success"></hr>
 				<div className="row m-1">

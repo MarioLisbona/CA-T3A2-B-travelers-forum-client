@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MemberNavBar = ({ logoutMember, loggedInMember }) => {
     
+    // display navbar for members
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">

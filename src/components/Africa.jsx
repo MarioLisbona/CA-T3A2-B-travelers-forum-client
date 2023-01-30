@@ -11,7 +11,8 @@ const Africa = ({ forumMember, africaPosts }) => {
       <HeroImage heroClass={'acirfa'}/>
       {/* container for main body of the page */}
       <div className="container">
-        <Header headingText={"Welcome to the African Continent!"} 
+        <Header 
+          headingText={"Welcome to the African Continent!"} 
           bodyText={"This is a little blurb about the african content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
         />
         <div className="row g-3">

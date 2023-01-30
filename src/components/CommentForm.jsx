@@ -3,8 +3,6 @@ import React, { useState } from 'react'
 const CommentForm = ({ post, submitComment }) => {
 
   // tracking state of variables used in the comment form
-  const [title] = useState(post[0].title)
-  const [continent] = useState(post[0].category)
   const [comment, setComment] = useState('')
 
   // prevent default behaviour of the form
@@ -16,6 +14,7 @@ const CommentForm = ({ post, submitComment }) => {
 
   return (
     <>
+    {/* comment form */}
     <form onSubmit={submitForm} className="p-5 pb-3 bg-light rounded-3 border border-success">
       <fieldset className="row mb-3">
         <legend className="col-form-label col-sm-2 pt-0">Comment</legend>

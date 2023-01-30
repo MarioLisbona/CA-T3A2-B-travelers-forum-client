@@ -11,6 +11,7 @@ const Login = ({ loginMember }) => {
     <HeroImage heroClass={'login'} />
       <div className="container">
         <Header headingText={"Login for more features"} btnText={'Login'} showBtn />
+        {/* render loginform passing in loginMember function */}
         <LoginForm loginMember={loginMember} />
       </div>
   </>

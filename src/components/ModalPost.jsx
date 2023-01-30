@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 
 const Modal = ({ modalNumber, post, editPost }) => {
 
+  // track state for post details. Initial state is existing post data
   const [title, setTitle] = useState(post[0].title)
   const [continent, setContinent] = useState(post[0].category)
   const [postContent, setPostContent] = useState(post[0].content)
-
-  console.log('inside post modal', post, title, continent, postContent)
 
   // delete button function calls deletePost async passing in the current post as the argument
   function editPostModal() {
     editPost(post, title, continent, postContent)
   }
 
+  // display modal for editing a post
   return (
     <>
       <div className="modal fade" id={`modal${modalNumber}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -20,6 +20,7 @@ const Modal = ({ modalNumber, post, editPost }) => {
           <div className="modal-content p-3">
             <div className="modal-header p-0 py-3">
               <h5 className="modal-title" id="exampleModalLongTitle">Edit your Post</h5>
+              {/* close modal without saving changes */}
               <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -48,6 +49,7 @@ const Modal = ({ modalNumber, post, editPost }) => {
               </div>
             </div>
             <div className="modal-footer p-0 py-3">
+              {/* save changed by calling editPostModal and close modal */}
               <button type="button" onClick={() => {editPostModal()}} className="btn btn-success" data-dismiss="modal">Save changes</button>
             </div>
           </div>
