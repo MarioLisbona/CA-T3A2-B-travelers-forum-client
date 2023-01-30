@@ -28,14 +28,14 @@ import FullPagePostToEdit from './components/FullPagePostToEdit'
 
 const App = () => {
 
+  // navigate to pages from within a function
   const nav = useNavigate()
 
-
-  // state variables for posts and members
+  // state variable to track and store posts array
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
+  // track state of the logged in member
   const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
-  // track state of the logged in member
   const [loggedInMember, setLoggedInMember] = useState({})
   
   // create currentUser Object from values in session storage
@@ -45,19 +45,18 @@ const App = () => {
     token: sessionStorage.getItem("token"),
   }
 
-  // on mount and if setForumMember changes, if the there is session storage data stored on the current user
-  // set logged in member to current user object
+  // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
+  // set logged in member to currentUser object
   // set forumMember to true for conditional rendering
   useEffect(() => {
     if (currentUser.token) {
       setLoggedInMember(currentUser)
       setForumMember(true)
     }
-    // console.log('inside useEffect for setting logged in member')
   }, [setForumMember])
  
 
-  // fetch all the posts from the API on component on mount only and assign to state variable
+  // fetch all the posts from the API on component on mount only and assign to posts with sePosts()
   // may need to change this to trigger and track the posts state
   useEffect(() => {
     async function fetchPosts() {
@@ -65,17 +64,18 @@ const App = () => {
       const data = await result.json()
       setPosts(data)
     }
-
     fetchPosts()
   }, [])
 
   // Higher Order Function to display a full page post from the link in the preview cards
   // uses id param passed in from preview card button to filter posts array to find the correct post object
-  // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
-  // and submitComment is the function to post the data from the comment form to the API
+  // FullPagePost component is passed the post array with a single post object, forumMember for conditional rendering
+  // loggedInMember object and functions to edit & delete posts from the database. Submit, edit and delete comments from the database
   const ShowPostWrapper = () =>{
+
     const { id } = useParams()
     const post = posts.filter(post => post._id == id)
+
     return post == 0
       ? <PageNotFound />
       : <FullPagePost
@@ -91,17 +91,17 @@ const App = () => {
   }
 
 
-  // Higher Order Function to display a full page post from the link in the preview cards
-  // uses id param passed in from preview card button to filter posts array to find the correct post object
-  // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
-  // and submitComment is the function to post the data from the comment form to the API
-  const EditPostWrapper = () =>{
-    const { id } = useParams()
-    const post = posts.filter(post => post._id == id)
-    return post == 0
-      ? <PageNotFound />
-      : <FullPagePostToEdit post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} editPost={editPost} />
-  }
+  // // Higher Order Function to display a full page post from the link in the preview cards
+  // // uses id param passed in from preview card button to filter posts array to find the correct post object
+  // // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
+  // // and submitComment is the function to post the data from the comment form to the API
+  // const EditPostWrapper = () =>{
+  //   const { id } = useParams()
+  //   const post = posts.filter(post => post._id == id)
+  //   return post == 0
+  //     ? <PageNotFound />
+  //     : <FullPagePostToEdit post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} editPost={editPost} />
+  // }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         createMember function       /////////////////////////////////////////////
@@ -126,6 +126,10 @@ const App = () => {
         },
         'body': JSON.stringify(newMember)
       })
+
+      ////////////////////////////////////
+      // This is possibly not needed here
+      ////////////////////////////////////
 
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
@@ -167,7 +171,9 @@ const App = () => {
       const returnedObject = await returnedMember.json()
 
 
+      // The user has supplied valid login credentials
       if (returnedObject.id) {
+        
         // assigning the returned object to session storage keys
         sessionStorage.setItem("username", returnedObject.username)
         sessionStorage.setItem("id", returnedObject.id)
@@ -184,7 +190,16 @@ const App = () => {
           token: returnedObject.token
         })
 
-        sessionStorage.postId ? nav(`/posts/${sessionStorage.postId}`) : nav('/')
+        // If the user has viewed a post before clicking the login or register/login forms
+        // that post id will be stored in session storage.
+        // Once the user has successfully logged in, they will be returned to the last post they were reading.
+        // Otherwise they have logged in from the landing page so will be redirected to that.
+        sessionStorage.postId
+          ? nav(`/posts/${sessionStorage.postId}`)
+          : nav('/')
+
+      // login details are incorrect
+      // need to render a modal here with error message
       } else {
         alert('failed login')
         nav('/')
@@ -207,8 +222,8 @@ const App = () => {
     sessionStorage.clear()
     // set logged in member details to empty object
     setLoggedInMember({})
-
-      nav('/')
+    // navigate to the home page
+    nav('/')
   }
 
 
@@ -259,14 +274,13 @@ const App = () => {
 ////////////////////////////////         editPost function       ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// async function - is called when the edit a post form is editted
+// async function - is called when a users post is edited
 const editPost =  async (post, title, continent, postContent) => {
 
   try {
 
     // create object to receive edit post form data
     const editedPost = {
-      // author: loggedInMember.id,
       title: title,
       category: continent,
       content: postContent
@@ -287,15 +301,16 @@ const editPost =  async (post, title, continent, postContent) => {
 
     // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
     const targetPostId = post[0]._id
-    // using targetPostId to find the correct post in the array of posts fetched from the server
+    // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
     const postIndex = posts.findIndex(post => targetPostId == post._id)
 
+    // replace the post with the updated one
     posts.splice(postIndex, 1, returnedObject)
 
-    // updating the state of the posts array with the new comments for this post
+    // updating the state of the posts array with the updated post
     setPosts(posts)
 
-    // navigate to the full page post with new comments
+    // navigate to the updated full page post
     window.scrollTo(0, 0)
     nav(`/posts/${targetPostId}`)
   }
@@ -323,13 +338,16 @@ const deletePost =  async (post) => {
       }
     })
 
-    // fetch posts again as the data has changed
+    // fetch posts again as the posts array has changed
+
+    // //////////////////////////////////////////////////////////
+    // should be able to delete the post id from the array stored in memory?????
+
     async function fetchPosts() {
       const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
       const data = await result.json()
       setPosts(data)
     }
-
     fetchPosts()
 
     // navigate to the new post in full page post
@@ -343,13 +361,13 @@ const deletePost =  async (post) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         submitComment function       ////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // async function - is called when the comment form is submitted
-
+//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+  
+// async function - is called when the comment form is submitted
   const submitComment =  async (post, comment) => {
 
     try {
-
       // create object to receive create comment form data
       const newComment = {
         post: post[0]._id,
@@ -370,7 +388,6 @@ const deletePost =  async (post) => {
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedComment.json()
       
-
       // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
       const targetPostId = post[0]._id
       // using targetPostId to find the correct post in the array of posts fetched from the server
@@ -378,11 +395,11 @@ const deletePost =  async (post) => {
 
       // pushing the new comment to the comments array in the correct post
       posts[postIndex].comments.push(returnedObject)
+
       // updating the state of the posts array with the new comments for this post
       setPosts(posts)
 
       // navigate to the full page post with new comments
-      window.scrollTo(0, 0)
       nav(`/posts/${targetPostId}`)
     }
     catch (err){
@@ -395,10 +412,10 @@ const deletePost =  async (post) => {
 ////////////////////////////////         deleteComment function       ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// async function - is called when the delete comment button is selected
 const deleteComment =  async (comment, post) => {
 
   try {
-
      // Delete request to the server with comment id interpolated to url
     await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
       method: 'DELETE',
@@ -408,12 +425,15 @@ const deleteComment =  async (comment, post) => {
       }
     })
 
+    // //////////////////////////////////////////////////////////
+    // should be able to delete the comment id from the array stored in memory?????
+    // this will be harder than delete a post
+    // this is loading pretty fast with a fetch, so may not be ncessary
     async function fetchPosts() {
       const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
       const data = await result.json()
       setPosts(data)
     }
-
     fetchPosts()
 
     // navigate back to the post in full page post
@@ -429,19 +449,10 @@ const deleteComment =  async (comment, post) => {
 ////////////////////////////////         editComment function       ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// async function - is called when the edit a post form is editted
+// async function - is called when the edit a post form is edited
 const editComment =  async (comment, editedComment, post) => {
 
-  console.log('inside editComment function')  
-  console.log({commentObject: comment})  
-  console.log({newComment: editedComment})  
-  console.log({postObject: post})
-  console.log(comment.id)
-  console.log(post[0]._id)
-
-
   try {
-
     // create object to receive edit post form data
     const editedCommentObject = {
       content: editedComment
@@ -457,10 +468,12 @@ const editComment =  async (comment, editedComment, post) => {
       'body': JSON.stringify(editedCommentObject)
     })
 
+////////////////////////////////////////////////////
+// not used
+
+
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedEditedComment.json()
-
-    console.log(returnedObject)
 
     // fetch posts again as the data has changed
     async function fetchPosts() {
@@ -468,7 +481,6 @@ const editComment =  async (comment, editedComment, post) => {
       const data = await result.json()
       setPosts(data)
     }
-
     fetchPosts()
 
 
@@ -483,7 +495,7 @@ const editComment =  async (comment, editedComment, post) => {
 }
 
 
-    // fitlering the posts array returned by the fetch into separate arrays for each category
+    // filtering the posts array returned by the fetch into separate arrays for each category
     const europePosts = posts.filter(post => post.category == 'Europe')
     const australiaPosts = posts.filter(post => post.category == 'Australia')
     const asiaPosts = posts.filter(post => post.category == 'Asia')
