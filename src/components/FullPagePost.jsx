@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 // props for conditional rendering, the post object passed from the preview card that is clicked
 // submitComment posts the comment to the database
-const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, deletePost, deleteComment, editComment }) => {
+const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPost, deletePost, deleteComment, editComment }) => {
 
   // map over post to pull comments from the nested array and create a new comments object to be used
   // when rendering CommentContent component
@@ -35,11 +35,12 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, delete
     <>
       <div className="container min-vh-100">
         {loggedInMember.id == post[0].author._id
-          ? <PostContent post={post} postOwner deletePost={deletePost} />
+          ? <PostContent post={post} postOwner deletePost={deletePost} editPost={editPost} />
           : <PostContent post={post} />
         }
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}
+        {/* if the logged in user is the author, render CommentContent passing in functions to delet and edit a comment */}
         {comments.length > 0
           ? comments.map((comment, idx) => (
             comment.userId == loggedInMember.id 

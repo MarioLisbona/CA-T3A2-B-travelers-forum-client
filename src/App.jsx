@@ -78,7 +78,16 @@ const App = () => {
     const post = posts.filter(post => post._id == id)
     return post == 0
       ? <PageNotFound />
-      : <FullPagePost post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} deleteComment={deleteComment} editComment={editComment} />
+      : <FullPagePost
+          post={post}
+          forumMember={forumMember}
+          loggedInMember={loggedInMember} 
+          editPost={editPost}
+          deletePost={deletePost} 
+          submitComment={submitComment} 
+          editComment={editComment}
+          deleteComment={deleteComment} 
+        />
   }
 
 
@@ -526,7 +535,7 @@ const editComment =  async (comment, editedComment, post) => {
           <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
           <Route path={"/posts/new"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
           <Route path={"/posts/:id"} element={<ShowPostWrapper />}  />
-          <Route path={"/posts/edit/:id"} element={<EditPostWrapper />}  />
+          <Route path={"/posts/edit/:id"} element={<ShowPostWrapper />}  />
           <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
         </Routes>
       <Footer />
