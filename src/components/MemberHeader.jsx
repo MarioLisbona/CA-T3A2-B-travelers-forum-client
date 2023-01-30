@@ -3,6 +3,7 @@ import CtaButton from './CtaButton'
 
 const MemberHeader = ( { headingText, bodyText, showBtn1, showBtn2, btn1Text, btn2Text} ) => {
   
+  // Header for members only with conditionally rendered buttons
   return (
     <div className="p-5 py-3 my-4 bg-light rounded-3 border border-success">
     <h1>{headingText}</h1>
@@ -15,5 +16,3 @@ const MemberHeader = ( { headingText, bodyText, showBtn1, showBtn2, btn1Text, bt
 }
 
 export default MemberHeader
-
-"/posts/new"

@@ -5,6 +5,7 @@ import Footer from './Footer'
 
 const Privacy = () => {
   return (
+    // render privacy page info
     <>
     <HeroImage heroClass={'europe'} />
       <div className="container">

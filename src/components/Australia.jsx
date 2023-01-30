@@ -10,7 +10,8 @@ const Australia = ({ forumMember, australiaPosts }) => {
       {/* Heroimage */}
       <HeroImage heroClass={'australia'} />
         <div className="container">
-          <Header headingText={"Welcome to the Australia!"}
+          <Header 
+            headingText={"Welcome to the Australia!"}
             bodyText={"This is a little blurb about Australia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
           />
           {/* container for main body of the page */}

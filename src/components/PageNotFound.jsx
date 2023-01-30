@@ -4,7 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 
 const PageNotFound = () => {
-  
+  // render 404 page not found
   return (
     <>
       <HeroImage heroClass={'about'} />

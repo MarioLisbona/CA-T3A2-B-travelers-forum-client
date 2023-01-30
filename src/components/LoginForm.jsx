@@ -15,6 +15,7 @@ const LoginForm = ({ loginMember }) => {
 
   return (
     <>
+    {/* login form inputs */}
       <form onSubmit={submitForm} className="p-5 pt-3 pb-2 bg-light rounded-3 border border-success">
         <div className="row mb-3">
           <label for="inputUsername" className="col-sm-2 col-form-label">Username</label>
