@@ -247,13 +247,21 @@ const App = () => {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer ' + sessionStorage.token
         },
         'body': JSON.stringify(newPost)
       })
 
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedPost.json()
+      
+      // If JWT lost after login but before form submit
+      if (returnedObject.error) {  
+        alert('Whoops! Looks like you were logged out. Please log in and try again.')
+        logoutMember()
+        return nav('/login')
+      }
 
       // add the returned post object to the posts array
       setPosts([...posts, returnedObject])
@@ -267,7 +275,6 @@ const App = () => {
 
 
   }
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         editPost function       ///////////////////////////////////////////////////
@@ -290,13 +297,21 @@ const editPost =  async (post, title, continent, postContent) => {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       },
       'body': JSON.stringify(editedPost)
     })
 
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedPost.json()
+
+    // If JWT lost after login but before form submit
+    // if (returnedObject.error) {  
+    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
+    //   logoutMember()
+    //   return nav('/login')
+    // }
 
     // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
     const targetPostId = post[0]._id
@@ -329,21 +344,31 @@ const deletePost =  async (post) => {
   try {
 
     // Delete request to the server with post id interpolated to url
-    await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       }
     })
 
-    // fetch posts again as the posts array has changed
+    const returnedObject = await returnedPost.json()
+
+    // If JWT lost after login but before form submit
+    // if (returnedObject.error) {  
+    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
+    //   logoutMember()
+    //   return nav('/login')
+    // }
 
     // //////////////////////////////////////////////////////////
     // should be able to delete the post id from the array stored in memory?????
 
+    // fetch posts again as the posts array has changed
     async function fetchPosts() {
       const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+    
       const data = await result.json()
       setPosts(data)
     }
@@ -379,7 +404,8 @@ const deletePost =  async (post) => {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer ' + sessionStorage.token
         },
         'body': JSON.stringify(newComment)
       })
@@ -387,6 +413,13 @@ const deletePost =  async (post) => {
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedComment.json()
       
+      // If JWT lost after login but before form submit
+      if (returnedObject.error) {  
+        alert('Whoops! Looks like you were logged out. Please log in and try again.')
+        logoutMember()
+        return nav('/login')
+      }
+
       // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
       const targetPostId = post[0]._id
       // using targetPostId to find the correct post in the array of posts fetched from the server
@@ -416,13 +449,23 @@ const deleteComment =  async (comment, post) => {
 
   try {
      // Delete request to the server with comment id interpolated to url
-    await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+    const returnComment = await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       }
     })
+
+    const returnedObject = returnComment.json()
+
+    // If JWT lost after login but before form submit
+    // if (returnedObject.error) {  
+    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
+    //   logoutMember()
+    //   return nav('/login')
+    // }
 
     // //////////////////////////////////////////////////////////
     // should be able to delete the comment id from the array stored in memory?????
@@ -462,7 +505,8 @@ const editComment =  async (comment, editedComment, post) => {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
       },
       'body': JSON.stringify(editedCommentObject)
     })
@@ -473,6 +517,13 @@ const editComment =  async (comment, editedComment, post) => {
 
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedEditedComment.json()
+
+    // If JWT lost after login but before form submit
+    // if (returnedObject.error) {  
+    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
+    //   logoutMember()
+    //   return nav('/login')
+    // }
 
     // fetch posts again as the data has changed
     async function fetchPosts() {
