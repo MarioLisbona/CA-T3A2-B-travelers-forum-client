@@ -13,32 +13,38 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
     <div className="p-5 pb-1 mt-5 mb-3 bg-light rounded-3 border border-success">
 				<h1 className="mb-3">{post[0].title}</h1>
         <div className="row">
-            <div className="col-md-6">
-                <div className="">
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="">Member:</div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="bg-alt mb-2">{post[0].author.username}</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="">
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="">Posted:</div>
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="bg-alt mb-2">{post[0].date_posted.substring(0, 10)}</div>
-                    </div>
-                  </div>
-                </div>
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-4">
+                <div className="">Member:</div>
+              </div>
+              <div className="col-md-6">
+                <div className="bg-alt mb-2">{post[0].author.username}</div>
+              </div>
             </div>
-            <hr></hr>
-            <div className="col-md-12">
-                <div className="bg-alt">{post[0].content}</div>
+            <div className="row">
+              <div className="col-md-4">
+                <div className="">Continent:</div>
+              </div>
+              <div className="col-md-6">
+                <div className="bg-alt mb-2">{post[0].category}</div>
+              </div>
             </div>
+          <div>
+            <div className="row">
+              <div className="col-md-4">
+                <div className="">Posted:</div>
+              </div>
+              <div className="col-md-6 mb-4">
+                <div className="bg-alt mb-2">{post[0].date_posted.substring(0, 10)}</div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <hr></hr>
+          <div className="col-md-12">
+              <div className="bg-alt">{post[0].content}</div>
+          </div>
         </div>
         <hr></hr>
         {/* If the logged in user is the author of the post
