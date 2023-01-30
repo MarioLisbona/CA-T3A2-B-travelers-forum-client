@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Modal from './Modal'
+import ModalConfirmDelete from './ModalConfirmDelete'
 
 const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumber, editComment }) => {
 
@@ -56,9 +57,11 @@ const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumbe
                 modalNumber={modalNumber} 
                 editComment={editComment}
               />
-              <Link to="/" onClick={() => {deleteButton()}} >
+              {/* <Link to="/" onClick={() => {deleteButton()}} >
                 <button type="button" className="btn btn-success my-2">Delete Comment</button>
-              </Link>
+              </Link> */}
+              <button type="button" className="btn btn-success my-2" data-toggle="modal" data-target={"#ModalDeleteComment"}>Delete Comment</button>
+              <ModalConfirmDelete type={'Comment'} delConfirmed={deleteButton} />
             </span>
           : ''
         }
