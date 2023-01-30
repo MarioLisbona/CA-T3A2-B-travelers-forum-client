@@ -54,11 +54,6 @@ const NavBar = () => {
                                 About
                         </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link text-white" to="/contact">
-                                Contact Us
-                            </Link>
-                        </li>
                     </ul>
                     <div className="navbar-nav ms-auto">              	
                         <Link to="/login" className="nav-item nav-link text-white">
