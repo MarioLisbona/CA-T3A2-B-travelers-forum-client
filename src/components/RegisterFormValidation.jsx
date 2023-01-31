@@ -11,6 +11,8 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect, regFormResetState }) => {
 
   // reset user inputs if the user registration fails
+  // and call loginFormResetState to reset state in App.
+  // This is so the modal will keep showing on every failed registration attempt
   function regFormReset() {
     setUser('')
     setPwd('')
@@ -208,7 +210,7 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
             </div>
             <div className="modal-footer p-0 py-3">
               {/* on ok click - if login successfull call redirect function and redirect to /login/
-              if registration fails call regFormReset to reset input fields */}
+              if registration fails call regFormReset to reset input fields and reset state */}
               <button onClick={regSuccess ? redirect : regFormReset } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
             </div>
           </div>

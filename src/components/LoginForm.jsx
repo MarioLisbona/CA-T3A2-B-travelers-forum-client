@@ -6,9 +6,6 @@ const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginR
   const [username, setUsername] = useState(loginInput)
   const [password, setPassword] = useState()
 
-  console.log('inside login form, login successful: ', loginSuccess)
-  console.log('inside login form, login message: ', loginMessage)
-
   // useeffect to automatically show the modal
   // if statement prevents the modal being show on mount prior to login details have been entered
   useEffect(() => {
@@ -21,7 +18,9 @@ const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginR
   }, [loginSuccess, loginMessage])
 
 
-    // reset user inputs if the user registration fails
+    // reset user inputs if the user registration fails 
+    // and call loginFormResetState to reset state in App.
+    // This is so the modal will keep showing on every failed login attempt
     function loginFormReset() {
       setUsername('')
       setPassword('')
@@ -65,8 +64,8 @@ const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginR
               <h5 className="modal-title" id="exampleModalLongTitle">{loginMessage}</h5>
             </div>
             <div className="modal-footer p-0 py-3">
-              {/* on ok click - if login successfull call redirect function and redirect to /login/
-              if registration fails call regFormReset to reset input fields */}
+              {/* on ok click - if login successful call redirect function and redirect to /login/
+              if registration fails call regFormReset to reset input fields and reset state */}
               <button onClick={loginSuccess ? loginRedirect : loginFormReset } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
             </div>
           </div>
