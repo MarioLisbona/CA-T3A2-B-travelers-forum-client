@@ -39,6 +39,7 @@ const App = () => {
   const [loggedInMember, setLoggedInMember] = useState({})
   const [regSuccess, setRegSuccess] = useState(false)
   const [regMessage, setRegMessage] = useState('')
+  const [loginInput, setLoginInput] = useState('')
   
   // create currentUser Object from values in session storage
   const currentUser = {
@@ -141,16 +142,14 @@ const App = () => {
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
 
-      console.log(returnedObject)
-      console.log(Boolean(returnedObject.error))
-
       if (!returnedObject.error){
         setRegMessage('Registration Successful')
         setRegSuccess(true)
+        setLoginInput(returnedObject.username)
         // once complete, navigate to the login screen
         // nav("/login")
       } else {
-        setRegMessage('Registration failed')
+        setRegMessage(`Registration failed - ${returnedObject.error}`)
         setRegSuccess(false)
         // nav("/register/result")
       }
@@ -212,14 +211,18 @@ const App = () => {
         // that post id will be stored in session storage.
         // Once the user has successfully logged in, they will be returned to the last post they were reading.
         // Otherwise they have logged in from the landing page so will be redirected to that.
-        sessionStorage.postId
-          ? nav(`/posts/${sessionStorage.postId}`)
-          : nav('/')
+         if (sessionStorage.postId) {
+          setLoginInput('')
+          nav(`/posts/${sessionStorage.postId}`)
+         } else {
+          nav('/')
+         }
 
       // login details are incorrect
       // need to render a modal here with error message
       } else {
         alert('failed login')
+        setLoginInput('')
         nav('/')
       }
     }
@@ -240,6 +243,9 @@ const App = () => {
     sessionStorage.clear()
     // set logged in member details to empty object
     setLoggedInMember({})
+
+    setLoginInput('')
+    
     // navigate to the home page
     nav('/')
   }
@@ -582,7 +588,7 @@ const editComment =  async (comment, editedComment, post) => {
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
+          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} />} />    
           <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />

@@ -4,7 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 import LoginForm from './LoginForm'
 
-const Login = ({ loginMember }) => {
+const Login = ({ loginMember, loginInput }) => {
 
   return (
     <>
@@ -12,7 +12,7 @@ const Login = ({ loginMember }) => {
       <div className="container">
         <Header headingText={"Login for more features"} btnText={'Login'} showBtn />
         {/* render loginform passing in loginMember function */}
-        <LoginForm loginMember={loginMember} />
+        <LoginForm loginMember={loginMember} loginInput={loginInput} />
       </div>
   </>
   )

@@ -10,8 +10,6 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
 
-  console.log(regSuccess)
-
   function regFormRest() {
     setUser('')
     setPwd('')
