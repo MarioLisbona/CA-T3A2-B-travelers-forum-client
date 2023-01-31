@@ -420,6 +420,10 @@ const deletePost =  async (post) => {
     const postIndex = posts.findIndex(post => targetPostId == post._id)
 
 
+    posts.splice(postIndex, 1)
+    setPosts(posts)
+
+
     // // fetch posts again as the posts array has changed
     // async function fetchPosts() {
     //   const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
