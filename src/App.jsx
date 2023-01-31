@@ -23,6 +23,7 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
+import ModalRegistrationMessage from './ModalRegistrationMessage'
 
 
 const App = () => {
@@ -36,6 +37,8 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
+  const [regSuccess, setRegSuccess] = useState(false)
+  const [regMessage, setRegMessage] = useState('')
   
   // create currentUser Object from values in session storage
   const currentUser = {
@@ -133,8 +136,19 @@ const App = () => {
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
 
-      // once complete, navigate to the login screen
-      nav('/login')
+      console.log(returnedObject)
+      console.log(Boolean(returnedObject.error))
+
+      if (!returnedObject.error){
+        setRegMessage('Registration Successful')
+        setRegSuccess(true)
+        // once complete, navigate to the login screen
+        // nav("/login")
+      } else {
+        setRegMessage('Registration failed')
+        setRegSuccess(false)
+        // nav("/register/result")
+      }
     }
     catch (err){
       console.log(err.message)
@@ -564,7 +578,7 @@ const editComment =  async (comment, editedComment, post) => {
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
           <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
-          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
+          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
           <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
