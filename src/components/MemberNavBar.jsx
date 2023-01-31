@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "../assets/logo2.png"
+import logo from "../assets/logo1.png"
 
 
 const MemberNavBar = ({ logoutMember, loggedInMember }) => {
@@ -10,7 +10,7 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
     // display navbar for members
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
           <div className="container-fluid">
               <Link className="navbar-brand ms-0 ps-0" to="/">
                 <img src={logo} width="200" height="40" alt=""></img>
