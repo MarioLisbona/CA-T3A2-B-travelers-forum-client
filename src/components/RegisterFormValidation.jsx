@@ -8,17 +8,21 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
-const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
+const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect, regFormResetState }) => {
 
   // reset user inputs if the user registration fails
-  function regFormRest() {
+  // and call loginFormResetState to reset state in App.
+  // This is so the modal will keep showing on every failed registration attempt
+  function regFormReset() {
     setUser('')
     setPwd('')
     setMatchPwd('')
+    regFormResetState()
   }
 
   // useeffect to automatically show the modal
   // if statement prevents the modal being show on mount prior to registration details have been entered
+  console.log('Just prior to useEffect to automatically show the modal', regMessage, regSuccess)
   useEffect(() => {
     if (!regMessage == '') {
       $(document).ready(function(){
@@ -199,19 +203,19 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
       </form>
       {/* Modal  */}
       <div className="modal fade" id='ModalReg' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content p-3">
-          <div className="modal-header p-0 py-3">
-            <h5 className="modal-title" id="exampleModalLongTitle">{regMessage}</h5>
-          </div>
-          <div className="modal-footer p-0 py-3">
-            {/* on ok click - if login successfull call redirect function and redirect to /login/
-            if registration fails call regFormReset to reset input fields */}
-            <button onClick={regSuccess ? redirect : regFormRest } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content p-3">
+            <div className="modal-header p-0 py-3">
+              <h5 className="modal-title" id="exampleModalLongTitle">{regMessage}</h5>
+            </div>
+            <div className="modal-footer p-0 py-3">
+              {/* on ok click - if login successfull call redirect function and redirect to /login/
+              if registration fails call regFormReset to reset input fields and reset state */}
+              <button onClick={regSuccess ? redirect : regFormReset } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </section>
   )
 }

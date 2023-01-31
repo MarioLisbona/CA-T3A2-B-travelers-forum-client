@@ -23,7 +23,6 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
-import ModalRegistrationMessage from './ModalRegistrationMessage'
 
 
 const App = () => {
@@ -37,8 +36,16 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
+
+  // controls messages and when to show modal for registration success/failure
   const [regSuccess, setRegSuccess] = useState(false)
   const [regMessage, setRegMessage] = useState('')
+
+  // controls messages and when to show modal for registration success/failure
+  const [loginSuccess, setLoginSuccess] = useState(false)
+  const [loginMessage, setLoginMessage] = useState('')
+
+  // used to prepopulate the login username input after successful registration
   const [loginInput, setLoginInput] = useState('')
   
   // create currentUser Object from values in session storage
@@ -48,9 +55,37 @@ const App = () => {
     token: sessionStorage.getItem("token"),
   }
 
+  // couldnt manage to regirect to /login  with a <Link> inside registration form so did it here
   function redirect() {
     nav("/login")
     setRegMessage('')
+  }
+
+  
+  // reset state if user registration fails
+  function regFormResetState() {
+    setRegMessage('')
+    setRegSuccess(false)
+  }
+
+  // reset state if user login fails
+  function loginFormResetState() {
+    setLoginMessage('')
+    setLoginSuccess(false)
+  }
+
+    // If the user has viewed a post before clicking the login or register/login forms
+    // that post id will be stored in session storage.
+    // Once the user has successfully logged in, they will be returned to the last post they were reading.
+    // Otherwise they have logged in from the landing page so will be redirected to that.
+  function loginRedirect(sessionStorage) {
+    if (sessionStorage.postId) {
+      // reset login username input field
+      setLoginInput('')
+      nav(`/posts/${sessionStorage.postId}`)
+    } else {
+      nav('/')
+    }
   }
 
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
@@ -98,19 +133,6 @@ const App = () => {
         />
   }
 
-
-  // // Higher Order Function to display a full page post from the link in the preview cards
-  // // uses id param passed in from preview card button to filter posts array to find the correct post object
-  // // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
-  // // and submitComment is the function to post the data from the comment form to the API
-  // const EditPostWrapper = () =>{
-  //   const { id } = useParams()
-  //   const post = posts.filter(post => post._id == id)
-  //   return post == 0
-  //     ? <PageNotFound />
-  //     : <FullPagePostToEdit post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} editPost={editPost} />
-  // }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         createMember function       /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,7 +165,7 @@ const App = () => {
         // used for conditional logic in modal
         setRegMessage('Registration Successful')
         setRegSuccess(true)
-        // prepopulate the login input if succesful
+        // prepopulate the login input if succesfull
         setLoginInput(returnedObject.username)
       } else {
         // used for conditional logic in modal
@@ -187,6 +209,12 @@ const App = () => {
 
       // The user has supplied valid login credentials
       if (returnedObject.id) {
+        console.log('inside loginMember before setter', loginMessage)
+        console.log('inside loginMember before setter', loginSuccess)
+
+        // used for conditional logic in modal
+        setLoginMessage('Login Successful')
+        setLoginSuccess(true)
         
         // assigning the returned object to session storage keys
         sessionStorage.setItem("username", returnedObject.username)
@@ -204,25 +232,20 @@ const App = () => {
           token: returnedObject.token
         })
 
-        // If the user has viewed a post before clicking the login or register/login forms
-        // that post id will be stored in session storage.
-        // Once the user has successfully logged in, they will be returned to the last post they were reading.
-        // Otherwise they have logged in from the landing page so will be redirected to that.
-         if (sessionStorage.postId) {
-          // reset login username input field
-          setLoginInput('')
-          nav(`/posts/${sessionStorage.postId}`)
-         } else {
-          nav('/')
-         }
+        // call redirect function to redirect to login page after successful user registration
+        loginRedirect(sessionStorage)
 
       // login details are incorrect
       // need to render a modal here with error message
       } else {
-        alert('failed login')
+        console.log(returnedObject)
+        // used for conditional logic in modal
+        setLoginMessage(`Login failed - ${returnedObject.error}`)
+        setLoginSuccess(false)
+
         // reset login username input field
         setLoginInput('')
-        nav('/')
+        nav('/login')
       }
     }
     catch (err){
@@ -245,6 +268,10 @@ const App = () => {
 
     // reset login username input
     setLoginInput('')
+
+    // setting the state when user logs out
+    setLoginMessage('')
+    setLoginSuccess(false)
     
     // navigate to the home page
     nav('/')
@@ -288,12 +315,9 @@ const App = () => {
         return nav('/login')
       }
 
+      // add the newly created post to the start of the posts array
       posts.unshift(returnedObject)
       setPosts(posts)
-
-      // // add the returned post object to the posts array
-      // setPosts([...posts, returnedObject])
-
 
       // navigate to the new post in full page post
       nav(`/posts/${returnedObject._id}`)
@@ -588,8 +612,8 @@ const editComment =  async (comment, editedComment, post) => {
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} />} />    
-          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} />} />
+          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} loginSuccess={loginSuccess} loginMessage={loginMessage} loginRedirect={loginRedirect} loginFormResetState={loginFormResetState} />} />    
+          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} regFormResetState={regFormResetState} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
           <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
