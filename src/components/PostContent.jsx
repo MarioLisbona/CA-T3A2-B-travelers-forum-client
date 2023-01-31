@@ -7,11 +7,6 @@ import moment from 'moment'
 
 const PostContent = ({ post, postOwner, deletePost, editPost }) => {
 
-  const localDate = new Date(post[0].date_posted)
-  console.log(post[0].date_posted)
-  console.log(localDate)
-  console.log(moment(localDate).format('MMM Do YYYY h:mm:a'))
-
   // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
     deletePost(post)
@@ -44,7 +39,6 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
                 <div className="">Posted:</div>
               </div>
               <div className="col-md-6 mb-4">
-                {/* <div className="bg-alt mb-2">{post[0].date_posted.substring(0, 10)}</div> */}
                 <div className="bg-alt mb-2">{`${moment(post[0].date_posted).format('MMM Do YYYY hh:mm:a')}`}</div>
               </div>
             </div>

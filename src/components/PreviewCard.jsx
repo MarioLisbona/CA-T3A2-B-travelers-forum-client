@@ -5,10 +5,6 @@ import moment from 'moment'
 // Post object passed in when mapping over posts array and creating each preview card
 const PreviewCard = ({ post, editDelete }) => {
 
-	console.log('Preview card: ', post.date_posted)
-	console.log(moment(post.date_posted.slice(0, 16)).format('MMM Do YYYY hh:mm'))
-	console.log(moment(post.date_posted.slice(0, -1)).format('MMM Do YYYY hh:mm'))
-
 	return (
 		<>
 			<div className="col-md-6 col-lg-4 col-xl-3">
