@@ -8,14 +8,17 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
-const RegisterFormValidation = ({ createMember, regSuccess, regMessage }) => {
+const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
 
   console.log(regSuccess, regMessage)
 
   useEffect(() => {
-    $(document).ready(function(){
-      $("#ModalReg").modal('show');
-    })
+    if (!regMessage == '') {
+      $(document).ready(function(){
+        $("#ModalReg").modal('show');
+      })
+    }
+    
   }, [regMessage, regSuccess])
 
   // used to track the state of username input field and error message
@@ -193,13 +196,13 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage }) => {
           <div className="modal-header p-0 py-3">
             <h5 className="modal-title" id="exampleModalLongTitle">{regMessage}</h5>
             {/* close modal without saving changes */}
-            <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close">
+            {/* <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </button> */}
           </div>
           <div className="modal-footer p-0 py-3">
             {/* save changes by calling editCommentModal and close modal */}
-            <Link to={regSuccess ? "/login" : "/register"}><button  type="button" className="btn btn-success" data-dismiss="modal">Ok</button></Link>
+            <button onClick={redirect} type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
           </div>
         </div>
       </div>

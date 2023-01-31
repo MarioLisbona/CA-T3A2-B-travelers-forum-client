@@ -47,6 +47,10 @@ const App = () => {
     token: sessionStorage.getItem("token"),
   }
 
+  function redirect() {
+    nav("/login")
+  }
+
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
   // set logged in member to currentUser object
   // set forumMember to true for conditional rendering
@@ -578,7 +582,7 @@ const editComment =  async (comment, editedComment, post) => {
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
           <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
-          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} />} />
+          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
           <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
