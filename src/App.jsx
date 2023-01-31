@@ -23,6 +23,7 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
+import SearchingForPost from './components/SearchingForPost'
 
 
 const App = () => {
@@ -120,7 +121,7 @@ const App = () => {
     const post = posts.filter(post => post._id == id)
 
     return post == 0
-      ? <PageNotFound />
+      ? <SearchingForPost forumMember={forumMember} />
       : <FullPagePost
           post={post}
           forumMember={forumMember}
