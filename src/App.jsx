@@ -414,14 +414,31 @@ const deletePost =  async (post) => {
     // //////////////////////////////////////////////////////////
     // should be able to delete the post id from the array stored in memory?????
 
-    // fetch posts again as the posts array has changed
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
+
+    console.log('DeletePost')
+    console.log({postsArray: posts})
+    console.log({deletingPost: post[0]._id})
+    console.log({postsArray: posts})
+
+    // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+    const targetPostId = post[0]._id
+    // using targetPostId to find the correct post in the array of posts fetched from the server
+    const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+    console.log(postIndex)
+    console.log('Array before splice', posts)
+    posts.splice(postIndex, 1)
+    console.log('Array after splice', posts)
+
+
+    // // fetch posts again as the posts array has changed
+    // async function fetchPosts() {
+    //   const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
     
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    //   const data = await result.json()
+    //   setPosts(data)
+    // }
+    // fetchPosts()
 
     // navigate to the new post in full page post
     nav('/posts')
