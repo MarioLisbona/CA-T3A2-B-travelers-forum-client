@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginRedirect }) => {
+const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginRedirect, loginFormResetState }) => {
 
   // tracking stae of login form data
   const [username, setUsername] = useState(loginInput)
@@ -25,6 +25,7 @@ const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginR
     function loginFormReset() {
       setUsername('')
       setPassword('')
+      loginFormResetState()
     }
 
   // once form is submitted prevent default and call loginMember function passing in form data

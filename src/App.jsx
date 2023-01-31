@@ -68,6 +68,12 @@ const App = () => {
     setRegSuccess(false)
   }
 
+    // reset user inputs if the user registration fails
+    function loginFormResetState() {
+      setLoginMessage('')
+      setLoginSuccess(false)
+    }
+
     // If the user has viewed a post before clicking the login or register/login forms
     // that post id will be stored in session storage.
     // Once the user has successfully logged in, they will be returned to the last post they were reading.
@@ -635,7 +641,7 @@ const editComment =  async (comment, editedComment, post) => {
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} loginSuccess={loginSuccess} loginMessage={loginMessage} loginRedirect={loginRedirect} />} />    
+          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} loginSuccess={loginSuccess} loginMessage={loginMessage} loginRedirect={loginRedirect} loginFormResetState={loginFormResetState} />} />    
           <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} regFormResetState={regFormResetState} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
