@@ -404,8 +404,6 @@ const deletePost =  async (post) => {
       }
     })
 
-    const returnedObject = await returnedPost.json()
-
     // If JWT lost after login but before form submit
     // if (returnedObject.error) {  
     //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
