@@ -8,7 +8,22 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
-const RegisterFormValidation = ({ createMember }) => {
+const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
+
+  function regFormRest() {
+    setUser('')
+    setPwd('')
+    setMatchPwd('')
+  }
+
+  useEffect(() => {
+    if (!regMessage == '') {
+      $(document).ready(function(){
+        $("#ModalReg").modal('show');
+      })
+    }
+    
+  }, [regMessage, regSuccess])
 
   // used to track the state of username input field and error message
   // will focus on username input on mount and focus on error message if there is one
@@ -170,7 +185,7 @@ const RegisterFormValidation = ({ createMember }) => {
           Must match the first password input field.
         </p>
 
-        {/* disablling the submit button untill all fields in the form have valid input */}
+        {/* disabling the submit button until all fields in the form have valid input */}
         <span>
           <button disabled={!validName || !validPwd || !validMatch ? true : false} className="btn btn-success my-2 me-1">Sign Up</button>
         </span>
@@ -178,11 +193,24 @@ const RegisterFormValidation = ({ createMember }) => {
         <span>
           <Link to="/login"><button type="button" className="btn btn-success my-2 me-1">Login</button></Link>
         </span>
-        
       </form>
-
-
-
+      <div className="modal fade" id='ModalReg' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div className="modal-dialog modal-dialog-centered" role="document">
+        <div className="modal-content p-3">
+          <div className="modal-header p-0 py-3">
+            <h5 className="modal-title" id="exampleModalLongTitle">{regMessage}</h5>
+            {/* close modal without saving changes */}
+            {/* <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> */}
+          </div>
+          <div className="modal-footer p-0 py-3">
+            {/* save changes by calling editCommentModal and close modal */}
+            <button onClick={regSuccess ? redirect : regFormRest } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
     </section>
   )
 }
