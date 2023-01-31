@@ -11,10 +11,18 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
 
   // reset user inputs if the user registration fails
-  function regFormRest() {
+  function regFormReset() {
     setUser('')
     setPwd('')
     setMatchPwd('')
+    /////////////////////////////////////////////////////////////
+    console.log("inside reFormReset:", regMessage)
+    regMessage = ''
+    console.log("inside reFormReset:", regMessage)
+    
+    // need to set regMessge to '' in App
+    /////////////////////////////////////////////////////////////
+
   }
 
   // useeffect to automatically show the modal
@@ -207,7 +215,7 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
             <div className="modal-footer p-0 py-3">
               {/* on ok click - if login successfull call redirect function and redirect to /login/
               if registration fails call regFormReset to reset input fields */}
-              <button onClick={regSuccess ? redirect : regFormRest } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
+              <button onClick={regSuccess ? redirect : regFormReset } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
             </div>
           </div>
         </div>
