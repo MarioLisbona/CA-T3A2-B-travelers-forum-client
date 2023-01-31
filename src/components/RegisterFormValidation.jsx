@@ -8,25 +8,19 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
-const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
+const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect, regFormResetState }) => {
 
   // reset user inputs if the user registration fails
   function regFormReset() {
     setUser('')
     setPwd('')
     setMatchPwd('')
-    /////////////////////////////////////////////////////////////
-    console.log("inside reFormReset:", regMessage)
-    regMessage = ''
-    console.log("inside reFormReset:", regMessage)
-    
-    // need to set regMessge to '' in App
-    /////////////////////////////////////////////////////////////
-
+    regFormResetState()
   }
 
   // useeffect to automatically show the modal
   // if statement prevents the modal being show on mount prior to registration details have been entered
+  console.log('Just prior to useEffect to automatically show the modal', regMessage, regSuccess)
   useEffect(() => {
     if (!regMessage == '') {
       $(document).ready(function(){

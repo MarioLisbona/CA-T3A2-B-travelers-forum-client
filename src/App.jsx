@@ -38,12 +38,15 @@ const App = () => {
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
 
+  // controls messages and when to show modal for registration success/failure
   const [regSuccess, setRegSuccess] = useState(false)
   const [regMessage, setRegMessage] = useState('')
 
+  // controls messages and when to show modal for registration success/failure
   const [loginSuccess, setLoginSuccess] = useState(false)
   const [loginMessage, setLoginMessage] = useState('')
 
+  // used to prepopulate the login username input after successful registration
   const [loginInput, setLoginInput] = useState('')
   
   // create currentUser Object from values in session storage
@@ -53,23 +56,30 @@ const App = () => {
     token: sessionStorage.getItem("token"),
   }
 
+  // couldnt manage to regirect to /login  with a <Link> inside registration form so did it here
   function redirect() {
     nav("/login")
     setRegMessage('')
   }
 
-  function loginRedirect(sessionStorage) {
+  // reset user inputs if the user registration fails
+  function regFormResetState() {
+    setRegMessage('')
+    setRegSuccess(false)
+  }
+
     // If the user has viewed a post before clicking the login or register/login forms
-        // that post id will be stored in session storage.
-        // Once the user has successfully logged in, they will be returned to the last post they were reading.
-        // Otherwise they have logged in from the landing page so will be redirected to that.
-         if (sessionStorage.postId) {
-          // reset login username input field
-          setLoginInput('')
-          nav(`/posts/${sessionStorage.postId}`)
-         } else {
-          nav('/')
-         }
+    // that post id will be stored in session storage.
+    // Once the user has successfully logged in, they will be returned to the last post they were reading.
+    // Otherwise they have logged in from the landing page so will be redirected to that.
+  function loginRedirect(sessionStorage) {
+    if (sessionStorage.postId) {
+      // reset login username input field
+      setLoginInput('')
+      nav(`/posts/${sessionStorage.postId}`)
+    } else {
+      nav('/')
+    }
   }
 
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
@@ -243,6 +253,8 @@ const App = () => {
         //  } else {
         //   nav('/')
         //  }
+
+        loginRedirect(sessionStorage)
 
       // login details are incorrect
       // need to render a modal here with error message
@@ -624,7 +636,7 @@ const editComment =  async (comment, editedComment, post) => {
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
           <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} loginSuccess={loginSuccess} loginMessage={loginMessage} loginRedirect={loginRedirect} />} />    
-          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} />} />
+          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} regFormResetState={regFormResetState} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
           <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
