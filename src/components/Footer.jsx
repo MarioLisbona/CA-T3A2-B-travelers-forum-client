@@ -7,7 +7,7 @@ const Footer = () => {
 		<>
 		{/* display a footer with inks */}
 			<footer>
-			<hr className="border border-success"></hr>
+			<hr className="border border-dark"></hr>
 				<div className="row m-1">
 					<div className="col-md-6">
 							<p>Copyright © 2023 Traveler's Forum</p>
