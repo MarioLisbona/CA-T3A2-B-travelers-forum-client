@@ -22,7 +22,6 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
 
   // useeffect to automatically show the modal
   // if statement prevents the modal being show on mount prior to registration details have been entered
-  console.log('Just prior to useEffect to automatically show the modal', regMessage, regSuccess)
   useEffect(() => {
     if (!regMessage == '') {
       $(document).ready(function(){

@@ -209,8 +209,6 @@ const App = () => {
 
       // The user has supplied valid login credentials
       if (returnedObject.id) {
-        console.log('inside loginMember before setter', loginMessage)
-        console.log('inside loginMember before setter', loginSuccess)
 
         // used for conditional logic in modal
         setLoginMessage('Login Successful')
