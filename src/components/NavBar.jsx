@@ -25,7 +25,7 @@ const NavBar = () => {
                             <a className="nav-link dropdown-toggle text-white" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Browse By Continent
                             </a>
-                            <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                            <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <Link className="dropdown-item text-white" to="/view/continent/asia">
                                 Asia
                             </Link>
