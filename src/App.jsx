@@ -37,8 +37,13 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
+
   const [regSuccess, setRegSuccess] = useState(false)
   const [regMessage, setRegMessage] = useState('')
+
+  const [loginSuccess, setLoginSuccess] = useState(false)
+  const [loginMessage, setLoginMessage] = useState('')
+
   const [loginInput, setLoginInput] = useState('')
   
   // create currentUser Object from values in session storage
@@ -51,6 +56,20 @@ const App = () => {
   function redirect() {
     nav("/login")
     setRegMessage('')
+  }
+
+  function loginRedirect(sessionStorage) {
+    // If the user has viewed a post before clicking the login or register/login forms
+        // that post id will be stored in session storage.
+        // Once the user has successfully logged in, they will be returned to the last post they were reading.
+        // Otherwise they have logged in from the landing page so will be redirected to that.
+         if (sessionStorage.postId) {
+          // reset login username input field
+          setLoginInput('')
+          nav(`/posts/${sessionStorage.postId}`)
+         } else {
+          nav('/')
+         }
   }
 
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
@@ -187,6 +206,15 @@ const App = () => {
 
       // The user has supplied valid login credentials
       if (returnedObject.id) {
+        console.log('inside loginMember before setter', loginMessage)
+        console.log('inside loginMember before setter', loginSuccess)
+
+        // used for conditional logic in modal
+        setLoginMessage('Login Successful')
+        setLoginSuccess(true)
+
+        console.log('inside loginMember after setter', loginMessage)
+        console.log('inside loginMember after setter', loginSuccess)
         
         // assigning the returned object to session storage keys
         sessionStorage.setItem("username", returnedObject.username)
@@ -208,21 +236,25 @@ const App = () => {
         // that post id will be stored in session storage.
         // Once the user has successfully logged in, they will be returned to the last post they were reading.
         // Otherwise they have logged in from the landing page so will be redirected to that.
-         if (sessionStorage.postId) {
-          // reset login username input field
-          setLoginInput('')
-          nav(`/posts/${sessionStorage.postId}`)
-         } else {
-          nav('/')
-         }
+        //  if (sessionStorage.postId) {
+        //   // reset login username input field
+        //   setLoginInput('')
+        //   nav(`/posts/${sessionStorage.postId}`)
+        //  } else {
+        //   nav('/')
+        //  }
 
       // login details are incorrect
       // need to render a modal here with error message
       } else {
-        alert('failed login')
+        console.log(returnedObject)
+        // used for conditional logic in modal
+        setLoginMessage(`Login failed - ${returnedObject.error}`)
+        setLoginSuccess(false)
+
         // reset login username input field
         setLoginInput('')
-        nav('/')
+        nav('/login')
       }
     }
     catch (err){
@@ -245,6 +277,9 @@ const App = () => {
 
     // reset login username input
     setLoginInput('')
+
+    setLoginMessage('')
+    setLoginSuccess(false)
     
     // navigate to the home page
     nav('/')
@@ -588,7 +623,7 @@ const editComment =  async (comment, editedComment, post) => {
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
         <Routes>
           <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} />} />    
+          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} loginSuccess={loginSuccess} loginMessage={loginMessage} loginRedirect={loginRedirect} />} />    
           <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} />} />
           <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
           <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />

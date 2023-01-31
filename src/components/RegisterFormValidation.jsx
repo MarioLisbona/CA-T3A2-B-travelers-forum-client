@@ -199,19 +199,19 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
       </form>
       {/* Modal  */}
       <div className="modal fade" id='ModalReg' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content p-3">
-          <div className="modal-header p-0 py-3">
-            <h5 className="modal-title" id="exampleModalLongTitle">{regMessage}</h5>
-          </div>
-          <div className="modal-footer p-0 py-3">
-            {/* on ok click - if login successfull call redirect function and redirect to /login/
-            if registration fails call regFormReset to reset input fields */}
-            <button onClick={regSuccess ? redirect : regFormRest } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content p-3">
+            <div className="modal-header p-0 py-3">
+              <h5 className="modal-title" id="exampleModalLongTitle">{regMessage}</h5>
+            </div>
+            <div className="modal-footer p-0 py-3">
+              {/* on ok click - if login successfull call redirect function and redirect to /login/
+              if registration fails call regFormReset to reset input fields */}
+              <button onClick={regSuccess ? redirect : regFormRest } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </section>
   )
 }
