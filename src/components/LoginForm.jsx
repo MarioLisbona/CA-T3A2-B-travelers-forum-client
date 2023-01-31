@@ -57,7 +57,7 @@ const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginR
         </fieldset>
       </form>
       {/* Modal  */}
-      <div className="modal fade" id='ModalLogin' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div className="modal fade" data-keyboard="false" data-backdrop="static" id='ModalLogin' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content p-3">
             <div className="modal-header p-0 py-3">
