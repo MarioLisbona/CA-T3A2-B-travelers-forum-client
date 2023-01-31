@@ -14,7 +14,13 @@ const NthAmerica = ({ forumMember, nthAmericaPosts }) => {
         <div className="container">
           <Header 
             headingText={"Welcome to the North America!"}
-            bodyText={"This is a little blurb about North America. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "} 
+            bodyText={
+              <>
+                <p>North America, the third-largest continent, extends from the tiny Aleutian Islands in the northwest to the Isthmus of Panama in the south. The continent includes the enormous island of Greenland in the northeast and the small island countries and territories that dot the Caribbean Sea and western North Atlantic Ocean. In the far north, the continent stretches halfway around the world, from Greenland to the Aleutians. But at Panama’s narrowest part, the continent is just 50 kilometers (31 miles) across.</p>
+                <p>North America can be divided into five physical regions: the mountainous west, the Great Plains, the Canadian Shield, the varied eastern region, and the Caribbean. Mexico and Central America’s western coast are connected to the mountainous west, while its lowlands and coastal plains extend into the eastern region.</p>
+                <p>Within these regions are all the major types of biomes in the world. A biome is a community of animals and plants spreading over an extensive area with a relatively uniform climate. Some diverse biomes represented in North America include desert, grassland, tundra, and coral reefs.</p>
+              </>
+            } 
           />
           {/* container for main body of the page */}
           <div className="row g-3">

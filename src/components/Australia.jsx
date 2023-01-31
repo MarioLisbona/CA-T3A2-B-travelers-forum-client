@@ -12,7 +12,14 @@ const Australia = ({ forumMember, australiaPosts }) => {
         <div className="container">
           <Header 
             headingText={"Welcome to the Australia!"}
-            bodyText={"This is a little blurb about Australia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+            bodyText={
+              <>
+                <p>Australia is the only country in the world that covers an entire continent. It is one of the largest countries on Earth. Although it is rich in natural resources and has a lot of fertile land, more than one-third of Australia is desert.</p>
+                <p>Most Australian cities and farms are located in the southwest and southeast, where the climate is more comfortable. There are dense rain forests in the northeast. The famous outback (remote rural areas) contains the country's largest deserts, where there are scorching temperatures, little water, and almost no vegetation.</p>
+                <p>Running around the eastern and southeastern edge of Australia is the Great Dividing Range. This 2,300-mile (3,700-kilometer) stretch of mountain sends water down into Australia's most important rivers and the Great Artesian Basin, the largest groundwater source in the world.</p>
+              </>
+
+            }
           />
           {/* container for main body of the page */}
           <div className="row g-3">
