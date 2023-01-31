@@ -23,7 +23,6 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
-import ModalRegistrationMessage from './ModalRegistrationMessage'
 
 
 const App = () => {
@@ -62,17 +61,18 @@ const App = () => {
     setRegMessage('')
   }
 
-  // reset user inputs if the user registration fails
+  
+  // reset state if user registration fails
   function regFormResetState() {
     setRegMessage('')
     setRegSuccess(false)
   }
 
-    // reset user inputs if the user registration fails
-    function loginFormResetState() {
-      setLoginMessage('')
-      setLoginSuccess(false)
-    }
+  // reset state if user login fails
+  function loginFormResetState() {
+    setLoginMessage('')
+    setLoginSuccess(false)
+  }
 
     // If the user has viewed a post before clicking the login or register/login forms
     // that post id will be stored in session storage.
@@ -133,19 +133,6 @@ const App = () => {
         />
   }
 
-
-  // // Higher Order Function to display a full page post from the link in the preview cards
-  // // uses id param passed in from preview card button to filter posts array to find the correct post object
-  // // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
-  // // and submitComment is the function to post the data from the comment form to the API
-  // const EditPostWrapper = () =>{
-  //   const { id } = useParams()
-  //   const post = posts.filter(post => post._id == id)
-  //   return post == 0
-  //     ? <PageNotFound />
-  //     : <FullPagePostToEdit post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} editPost={editPost} />
-  // }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         createMember function       /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,7 +165,7 @@ const App = () => {
         // used for conditional logic in modal
         setRegMessage('Registration Successful')
         setRegSuccess(true)
-        // prepopulate the login input if succesful
+        // prepopulate the login input if succesfull
         setLoginInput(returnedObject.username)
       } else {
         // used for conditional logic in modal
@@ -228,9 +215,6 @@ const App = () => {
         // used for conditional logic in modal
         setLoginMessage('Login Successful')
         setLoginSuccess(true)
-
-        console.log('inside loginMember after setter', loginMessage)
-        console.log('inside loginMember after setter', loginSuccess)
         
         // assigning the returned object to session storage keys
         sessionStorage.setItem("username", returnedObject.username)
@@ -248,18 +232,7 @@ const App = () => {
           token: returnedObject.token
         })
 
-        // If the user has viewed a post before clicking the login or register/login forms
-        // that post id will be stored in session storage.
-        // Once the user has successfully logged in, they will be returned to the last post they were reading.
-        // Otherwise they have logged in from the landing page so will be redirected to that.
-        //  if (sessionStorage.postId) {
-        //   // reset login username input field
-        //   setLoginInput('')
-        //   nav(`/posts/${sessionStorage.postId}`)
-        //  } else {
-        //   nav('/')
-        //  }
-
+        // call redirect function to redirect to login page after successful user registration
         loginRedirect(sessionStorage)
 
       // login details are incorrect
@@ -296,6 +269,7 @@ const App = () => {
     // reset login username input
     setLoginInput('')
 
+    // setting the state when user logs out
     setLoginMessage('')
     setLoginSuccess(false)
     
@@ -341,12 +315,9 @@ const App = () => {
         return nav('/login')
       }
 
+      // add the newly created post to the start of the posts array
       posts.unshift(returnedObject)
       setPosts(posts)
-
-      // // add the returned post object to the posts array
-      // setPosts([...posts, returnedObject])
-
 
       // navigate to the new post in full page post
       nav(`/posts/${returnedObject._id}`)
