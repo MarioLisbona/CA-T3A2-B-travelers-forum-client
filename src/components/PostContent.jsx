@@ -39,7 +39,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
                 <div className="">Posted:</div>
               </div>
               <div className="col-md-6 mb-4">
-                <div className="bg-alt mb-2">{`${moment(post[0].date_posted).format('MMM Do YYYY hh:mm:a')}`}</div>
+                <div className="bg-alt mb-2">{moment(post[0].date_posted).format('MMM Do YYYY hh:mm:a')}</div>
               </div>
             </div>
             </div>
