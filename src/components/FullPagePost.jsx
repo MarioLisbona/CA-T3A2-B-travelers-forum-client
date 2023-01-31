@@ -15,7 +15,7 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPo
         id: comment._id,
         userId: comment.author._id, 
         username: comment.author.username, 
-        date: comment.date_posted.substring(0, 10), 
+        date: comment.date_posted, 
         content: comment.content
       }
   ))
