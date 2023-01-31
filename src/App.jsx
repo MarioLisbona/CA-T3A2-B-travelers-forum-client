@@ -49,6 +49,7 @@ const App = () => {
 
   function redirect() {
     nav("/login")
+    setRegMessage('')
   }
 
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user

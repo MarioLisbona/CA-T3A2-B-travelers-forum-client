@@ -10,7 +10,13 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
 
-  console.log(regSuccess, regMessage)
+  console.log(regSuccess)
+
+  function regFormRest() {
+    setUser('')
+    setPwd('')
+    setMatchPwd('')
+  }
 
   useEffect(() => {
     if (!regMessage == '') {
@@ -202,7 +208,7 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
           </div>
           <div className="modal-footer p-0 py-3">
             {/* save changes by calling editCommentModal and close modal */}
-            <button onClick={redirect} type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
+            <button onClick={regSuccess ? redirect : regFormRest } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
           </div>
         </div>
       </div>
