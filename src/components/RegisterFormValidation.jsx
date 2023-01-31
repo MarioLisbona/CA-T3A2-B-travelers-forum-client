@@ -22,7 +22,6 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
 
   // useeffect to automatically show the modal
   // if statement prevents the modal being show on mount prior to registration details have been entered
-  console.log('Just prior to useEffect to automatically show the modal', regMessage, regSuccess)
   useEffect(() => {
     if (!regMessage == '') {
       $(document).ready(function(){
@@ -202,7 +201,7 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
         </span>
       </form>
       {/* Modal  */}
-      <div className="modal fade" id='ModalReg' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div className="modal fade" data-keyboard="false" data-backdrop="static" id='ModalReg' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content p-3">
             <div className="modal-header p-0 py-3">
