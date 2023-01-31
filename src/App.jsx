@@ -135,23 +135,20 @@ const App = () => {
         'body': JSON.stringify(newMember)
       })
 
-      ////////////////////////////////////
-      // This is possibly not needed here
-      ////////////////////////////////////
-
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
 
+      // if there is no error message registration successful
       if (!returnedObject.error){
+        // used for conditional logic in modal
         setRegMessage('Registration Successful')
         setRegSuccess(true)
+        // prepopulate the login input if succesful
         setLoginInput(returnedObject.username)
-        // once complete, navigate to the login screen
-        // nav("/login")
       } else {
+        // used for conditional logic in modal
         setRegMessage(`Registration failed - ${returnedObject.error}`)
         setRegSuccess(false)
-        // nav("/register/result")
       }
     }
     catch (err){
@@ -212,6 +209,7 @@ const App = () => {
         // Once the user has successfully logged in, they will be returned to the last post they were reading.
         // Otherwise they have logged in from the landing page so will be redirected to that.
          if (sessionStorage.postId) {
+          // reset login username input field
           setLoginInput('')
           nav(`/posts/${sessionStorage.postId}`)
          } else {
@@ -222,6 +220,7 @@ const App = () => {
       // need to render a modal here with error message
       } else {
         alert('failed login')
+        // reset login username input field
         setLoginInput('')
         nav('/')
       }
@@ -244,6 +243,7 @@ const App = () => {
     // set logged in member details to empty object
     setLoggedInMember({})
 
+    // reset login username input
     setLoginInput('')
     
     // navigate to the home page

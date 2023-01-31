@@ -10,12 +10,15 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect }) => {
 
+  // reset user inputs if the user registration fails
   function regFormRest() {
     setUser('')
     setPwd('')
     setMatchPwd('')
   }
 
+  // useeffect to automatically show the modal
+  // if statement prevents the modal being show on mount prior to registration details have been entered
   useEffect(() => {
     if (!regMessage == '') {
       $(document).ready(function(){
@@ -194,18 +197,16 @@ const RegisterFormValidation = ({ createMember, regSuccess, regMessage, redirect
           <Link to="/login"><button type="button" className="btn btn-success my-2 me-1">Login</button></Link>
         </span>
       </form>
+      {/* Modal  */}
       <div className="modal fade" id='ModalReg' tabIndex="-1" role="dialog"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content p-3">
           <div className="modal-header p-0 py-3">
             <h5 className="modal-title" id="exampleModalLongTitle">{regMessage}</h5>
-            {/* close modal without saving changes */}
-            {/* <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button> */}
           </div>
           <div className="modal-footer p-0 py-3">
-            {/* save changes by calling editCommentModal and close modal */}
+            {/* on ok click - if login successfull call redirect function and redirect to /login/
+            if registration fails call regFormReset to reset input fields */}
             <button onClick={regSuccess ? redirect : regFormRest } type="button" className="btn btn-success" data-dismiss="modal">Ok</button>
           </div>
         </div>
