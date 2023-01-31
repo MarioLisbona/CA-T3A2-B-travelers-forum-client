@@ -419,7 +419,8 @@ const deletePost =  async (post) => {
     // using targetPostId to find the correct post in the array of posts fetched from the server
     const postIndex = posts.findIndex(post => targetPostId == post._id)
 
-
+    // remove deleted posts from the array of posts
+    // set state of posts again with new array
     posts.splice(postIndex, 1)
     setPosts(posts)
 
