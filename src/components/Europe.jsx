@@ -20,9 +20,7 @@ const Europe = ({ forumMember, europePosts }) => {
                 <p>Europe’s main peninsulas are the Iberian, Italian, and Balkan, located in southern Europe, and the Scandinavian and Jutland, located in northern Europe. The link between these peninsulas has made Europe a dominant economic, social, and cultural force throughout recorded history.</p>
                 <p>Europe’s physical geography, environment and resources, and human geography can be considered separately.</p>
                 <p>Today, Europe is home to the citizens of Albania, Andorra, Austria, Belarus, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, the Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Kosovo, Latvia, Liechtenstein, Lithuania, Luxembourg, Macedonia, Malta, Moldova, Monaco, Montenegro, Netherlands, Norway, Poland, Portugal, Romania, Russia, San Marino, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, Ukraine, the United Kingdom (England, Scotland, Wales, and Northern Ireland), and Vatican City.</p>
-
               </>
-
             } 
           />
           {/* container for main body of the page */}
