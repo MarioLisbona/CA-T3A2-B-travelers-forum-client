@@ -3,8 +3,14 @@ import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
+import { fetchPosts } from '../functions'
 
-const ViewAll = ({ forumMember, allPosts }) => {
+const ViewAll = ({ forumMember, allPosts, setPosts }) => {
+
+  useEffect(() => {
+    fetchPosts(setPosts)
+    console.log('inside useEffect in View All')
+  }, [])
 
   return (
     <>

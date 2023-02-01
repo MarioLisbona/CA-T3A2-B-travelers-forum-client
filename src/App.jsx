@@ -636,7 +636,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <ViewAll 
                 forumMember={forumMember} 
-                allPosts={posts} 
+                allPosts={posts} //may not be needed now???
+                setPosts={setPosts}
               />
             } 
           />
