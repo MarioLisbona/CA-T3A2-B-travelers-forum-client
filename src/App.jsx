@@ -602,7 +602,8 @@ const editComment =  async (comment, editedComment, post) => {
               <LandingPage 
                 forumMember={forumMember} 
                 latestPosts={posts} 
-                loggedInMember={loggedInMember} 
+                loggedInMember={loggedInMember}
+                setPosts={setPosts}
               />
             } 
           />

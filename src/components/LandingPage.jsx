@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import MemberHeader from './MemberHeader'
+import { fetchPosts } from '../functions'
 
-const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
+const LandingPage = ({ forumMember, latestPosts, loggedInMember, setPosts }) => {
+
+  useEffect(() => {
+    fetchPosts(setPosts)
+    console.log('inside useEffect in LandingPage')
+  }, [])
 
 	return (
 		<>
