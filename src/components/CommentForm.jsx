@@ -19,7 +19,12 @@ const CommentForm = ({ post, submitComment }) => {
       <fieldset className="row mb-3">
         <legend className="col-form-label col-sm-2 pt-0">Comment</legend>
         <div className="col-sm-10">
-          <textarea required maxLength="1000" value={comment} onChange={(event) => setComment(event.target.value)} className="form-control" rows="10" ></textarea>
+          <textarea
+            required maxLength="1000"
+            value={comment} 
+            onChange={(event) => setComment(event.target.value)} 
+            className="form-control" rows="10" >
+          </textarea>
         </div>
       </fieldset>
       <fieldset className="row mb-3">

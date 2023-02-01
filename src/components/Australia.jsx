@@ -18,7 +18,6 @@ const Australia = ({ forumMember, australiaPosts }) => {
                 <p>Most Australian cities and farms are located in the southwest and southeast, where the climate is more comfortable. There are dense rain forests in the northeast. The famous outback (remote rural areas) contains the country's largest deserts, where there are scorching temperatures, little water, and almost no vegetation.</p>
                 <p>Running around the eastern and southeastern edge of Australia is the Great Dividing Range. This 2,300-mile (3,700-kilometer) stretch of mountain sends water down into Australia's most important rivers and the Great Artesian Basin, the largest groundwater source in the world.</p>
               </>
-
             }
           />
           {/* container for main body of the page */}
