@@ -25,6 +25,8 @@ import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
 import SearchingForPost from './components/SearchingForPost'
 
+import { fetchPosts } from './functions'
+
 
 const App = () => {
 
@@ -103,12 +105,7 @@ const App = () => {
   // fetch all the posts from the API on component on mount only and assign to posts with sePosts()
   // may need to change this to trigger and track the posts state
   useEffect(() => {
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    fetchPosts(setPosts)
   }, [])
 
   // Higher Order Function to display a full page post from the link in the preview cards
@@ -425,16 +422,6 @@ const deletePost =  async (post) => {
     posts.splice(postIndex, 1)
     setPosts(posts)
 
-
-    // // fetch posts again as the posts array has changed
-    // async function fetchPosts() {
-    //   const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-    
-    //   const data = await result.json()
-    //   setPosts(data)
-    // }
-    // fetchPosts()
-
     // navigate to the new post in full page post
     nav('/posts')
   }
@@ -519,7 +506,7 @@ const deleteComment =  async (comment, post) => {
       }
     })
 
-    const returnedObject = returnComment.json()
+    // const returnedObject = returnComment.json()
 
     // If JWT lost after login but before form submit
     // if (returnedObject.error) {  
@@ -532,12 +519,8 @@ const deleteComment =  async (comment, post) => {
     // should be able to delete the comment id from the array stored in memory?????
     // this will be harder than delete a post
     // this is loading pretty fast with a fetch, so may not be ncessary
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+
+    fetchPosts(setPosts)
 
     // navigate back to the post in full page post
     nav(`/posts/${post[0]._id}`)
@@ -587,12 +570,7 @@ const editComment =  async (comment, editedComment, post) => {
     // }
 
     // fetch posts again as the data has changed
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    fetchPosts(setPosts)
 
 
     // navigate to the full page post with new comments
