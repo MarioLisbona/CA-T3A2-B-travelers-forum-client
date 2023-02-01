@@ -25,16 +25,27 @@ import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
 import SearchingForPost from './components/SearchingForPost'
 
+import { fetchPosts } from './functions'
+
 
 const App = () => {
 
   // navigate to pages from within a function
   const nav = useNavigate()
 
-  // state variable to track and store posts array
+  // state variable to track and store all posts
+  const [posts, setPosts] = useState([])
+  // tracking the state of posts in each category
+  const [asiaPosts, setAsiaPosts] = useState([])
+  const [africaPosts, setAfricaPosts] = useState([])
+  const [northAmericaPosts, setNorthAmericaPosts] = useState([])
+  const [southAmericaPosts, setSouthAmericaPosts] = useState([])
+  const [antarcticaPosts, setAntarcticaPosts] = useState([])
+  const [europePosts, setEuropePosts] = useState([])
+  const [australiaPosts, setAustraliaPosts] = useState([])
+  
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
   // track state of the logged in member
-  const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
 
@@ -103,12 +114,7 @@ const App = () => {
   // fetch all the posts from the API on component on mount only and assign to posts with sePosts()
   // may need to change this to trigger and track the posts state
   useEffect(() => {
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    fetchPosts(setPosts)
   }, [])
 
   // Higher Order Function to display a full page post from the link in the preview cards
@@ -425,16 +431,6 @@ const deletePost =  async (post) => {
     posts.splice(postIndex, 1)
     setPosts(posts)
 
-
-    // // fetch posts again as the posts array has changed
-    // async function fetchPosts() {
-    //   const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-    
-    //   const data = await result.json()
-    //   setPosts(data)
-    // }
-    // fetchPosts()
-
     // navigate to the new post in full page post
     nav('/posts')
   }
@@ -519,7 +515,7 @@ const deleteComment =  async (comment, post) => {
       }
     })
 
-    const returnedObject = returnComment.json()
+    // const returnedObject = returnComment.json()
 
     // If JWT lost after login but before form submit
     // if (returnedObject.error) {  
@@ -532,12 +528,8 @@ const deleteComment =  async (comment, post) => {
     // should be able to delete the comment id from the array stored in memory?????
     // this will be harder than delete a post
     // this is loading pretty fast with a fetch, so may not be ncessary
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+
+    fetchPosts(setPosts)
 
     // navigate back to the post in full page post
     nav(`/posts/${post[0]._id}`)
@@ -587,12 +579,7 @@ const editComment =  async (comment, editedComment, post) => {
     // }
 
     // fetch posts again as the data has changed
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    fetchPosts(setPosts)
 
 
     // navigate to the full page post with new comments
@@ -606,13 +593,13 @@ const editComment =  async (comment, editedComment, post) => {
 
 
     // filtering the posts array returned by the fetch into separate arrays for each category
-    const europePosts = posts.filter(post => post.category == 'Europe')
-    const australiaPosts = posts.filter(post => post.category == 'Australia')
-    const asiaPosts = posts.filter(post => post.category == 'Asia')
-    const africaPosts = posts.filter(post => post.category == 'Africa')
-    const nthAmericaPosts = posts.filter(post => post.category == 'North America')
-    const sthAmericaPosts = posts.filter(post => post.category == 'South America')
-    const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
+    // const europePosts = posts.filter(post => post.category == 'Europe')
+    // const australiaPosts = posts.filter(post => post.category == 'Australia')
+    // const asiaPosts = posts.filter(post => post.category == 'Asia')
+    // const africaPosts = posts.filter(post => post.category == 'Africa')
+    // const nthAmericaPosts = posts.filter(post => post.category == 'North America')
+    // const sthAmericaPosts = posts.filter(post => post.category == 'South America')
+    // const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
 
   return (
     <>
@@ -623,8 +610,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <LandingPage 
                 forumMember={forumMember} 
-                latestPosts={posts} 
-                loggedInMember={loggedInMember} 
+                posts={posts} 
+                loggedInMember={loggedInMember}
+                setPosts={setPosts}
               />
             } 
           />
@@ -657,7 +645,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <ViewAll 
                 forumMember={forumMember} 
-                allPosts={posts} 
+                posts={posts}
+                setPosts={setPosts}
               />
             } 
           />
@@ -665,7 +654,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Asia 
                 forumMember={forumMember} 
-                asiaPosts={asiaPosts} 
+                posts={asiaPosts}
+                setPosts={setAsiaPosts}
+                URI={'/category/Asia'}
               />
             } 
           />
@@ -673,7 +664,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Africa 
                 forumMember={forumMember} 
-                africaPosts={africaPosts} 
+                posts={africaPosts}
+                setPosts={setAfricaPosts}
+                URI={'/category/Africa'}
               />
             } 
           />
@@ -681,7 +674,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <NthAmerica 
                 forumMember={forumMember} 
-                nthAmericaPosts={nthAmericaPosts} 
+                posts={northAmericaPosts}
+                setPosts={setNorthAmericaPosts}
+                URI={'/category/North America'}
               />
             } 
           />
@@ -689,7 +684,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <SthAmerica 
                 forumMember={forumMember} 
-                sthAmericaPosts={sthAmericaPosts} 
+                posts={southAmericaPosts}
+                setPosts={setSouthAmericaPosts}
+                URI={'/category/South America'}
               />
             } 
           />
@@ -697,7 +694,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Antarctica 
                 forumMember={forumMember} 
-                antarcticaPosts={antarcticaPosts} 
+                posts={antarcticaPosts}
+                setPosts={setAntarcticaPosts}
+                URI={'/category/Antarctica'}
               />
             } 
           />
@@ -705,7 +704,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Europe 
                 forumMember={forumMember} 
-                europePosts={europePosts} 
+                posts={europePosts}
+                setPosts={setEuropePosts}
+                URI={'/category/Europe'}
                 />
               } 
             />
@@ -713,7 +714,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Australia 
                 forumMember={forumMember} 
-                australiaPosts={australiaPosts} 
+                posts={australiaPosts}
+                setPosts={setAustraliaPosts}
+                URI={'/category/Australia'}
               />
             } 
           />
