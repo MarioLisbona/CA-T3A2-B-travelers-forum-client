@@ -33,10 +33,19 @@ const App = () => {
   // navigate to pages from within a function
   const nav = useNavigate()
 
-  // state variable to track and store posts array
+  // state variable to track and store all posts
+  const [posts, setPosts] = useState([])
+  // tracking the state of posts in each category
+  const [asiaPosts, setAsiaPosts] = useState([])
+  const [africaPosts, setAfricaPosts] = useState([])
+  const [northAmericaPosts, setNorthAmericaPosts] = useState([])
+  const [southAmericaPosts, setSouthAmericaPosts] = useState([])
+  const [antarcticaPosts, setAntarcticaPosts] = useState([])
+  const [europePosts, setEuropePosts] = useState([])
+  const [australiaPosts, setAustraliaPosts] = useState([])
+  
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
   // track state of the logged in member
-  const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
 
@@ -601,7 +610,7 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <LandingPage 
                 forumMember={forumMember} 
-                latestPosts={posts} 
+                posts={posts} 
                 loggedInMember={loggedInMember}
                 setPosts={setPosts}
               />
@@ -636,7 +645,7 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <ViewAll 
                 forumMember={forumMember} 
-                allPosts={posts} //may not be needed now???
+                posts={posts}
                 setPosts={setPosts}
               />
             } 
@@ -645,9 +654,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Asia 
                 forumMember={forumMember} 
-                // asiaPosts={asiaPosts} 
-                posts={posts}
-                setPosts={setPosts}
+                posts={asiaPosts}
+                setPosts={setAsiaPosts}
                 URI={'/category/Asia'}
               />
             } 
@@ -656,9 +664,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Africa 
                 forumMember={forumMember} 
-                // africaPosts={africaPosts} //should not be needed now
-                posts={posts}
-                setPosts={setPosts}
+                posts={africaPosts}
+                setPosts={setAfricaPosts}
                 URI={'/category/Africa'}
               />
             } 
@@ -667,9 +674,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <NthAmerica 
                 forumMember={forumMember} 
-                // nthAmericaPosts={nthAmericaPosts} 
-                posts={posts}
-                setPosts={setPosts}
+                posts={northAmericaPosts}
+                setPosts={setNorthAmericaPosts}
                 URI={'/category/North America'}
               />
             } 
@@ -678,9 +684,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <SthAmerica 
                 forumMember={forumMember} 
-                // sthAmericaPosts={sthAmericaPosts} 
-                posts={posts}
-                setPosts={setPosts}
+                posts={southAmericaPosts}
+                setPosts={setSouthAmericaPosts}
                 URI={'/category/South America'}
               />
             } 
@@ -689,9 +694,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Antarctica 
                 forumMember={forumMember} 
-                // antarcticaPosts={antarcticaPosts}
-                posts={posts}
-                setPosts={setPosts}
+                posts={antarcticaPosts}
+                setPosts={setAntarcticaPosts}
                 URI={'/category/Antarctica'}
               />
             } 
@@ -700,9 +704,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Europe 
                 forumMember={forumMember} 
-                // europePosts={europePosts} 
-                posts={posts}
-                setPosts={setPosts}
+                posts={europePosts}
+                setPosts={setEuropePosts}
                 URI={'/category/Europe'}
                 />
               } 
@@ -711,9 +714,8 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Australia 
                 forumMember={forumMember} 
-                // australiaPosts={australiaPosts} 
-                posts={posts}
-                setPosts={setPosts}
+                posts={australiaPosts}
+                setPosts={setAustraliaPosts}
                 URI={'/category/Australia'}
               />
             } 

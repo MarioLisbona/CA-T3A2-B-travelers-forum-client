@@ -5,7 +5,7 @@ import Header from './Header'
 import PreviewCard from './PreviewCard'
 import { fetchPosts } from '../functions'
 
-const ViewAll = ({ forumMember, allPosts, setPosts }) => {
+const ViewAll = ({ forumMember, posts, setPosts }) => {
 
   useEffect(() => {
     // fetching the posts on mount only
@@ -27,8 +27,8 @@ const ViewAll = ({ forumMember, allPosts, setPosts }) => {
         <div className="row g-3">
           {/* If allPosts has objects then map over the array and render a preview card for each post
           and pass in the post object */}
-          {allPosts.length > 0
-                ? allPosts.map((post, idx) => (
+          {posts.length > 0
+                ? posts.map((post, idx) => (
                   <PreviewCard key ={idx} post={post}  />
                 ))
                 // If allPosts is an empty array then render a message for guest and one for member
