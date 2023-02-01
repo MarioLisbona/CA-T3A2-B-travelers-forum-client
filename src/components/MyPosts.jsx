@@ -13,7 +13,7 @@ const MyPosts = ({ latestPosts, loggedInMember }) => {
       {/* rednering a page with only 8 preview cards */}
       <HeroImage heroClass={'landing-page'}/>
       <div className="container">
-      <Header headingText={`Hi ${loggedInMember.username}, welcome to the forum`}
+      <Header headingText={typeof loggedInMember.username === 'undefined' ? "Welcome to the Traveler's Forum" : `Hi ${loggedInMember.username}, welcome to the forum`}
         bodyText={"All your posts are displayed below"} 
         btn1Text={'Create a Post'}
         showBtn1
