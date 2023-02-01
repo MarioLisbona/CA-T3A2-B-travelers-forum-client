@@ -35,7 +35,7 @@ const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
             {latestPosts.length > 0
               ? latestPosts.map((post, idx) => (
                 idx < 8 
-                  ? <PreviewCard key ={idx} post={post} />
+                  ? <PreviewCard key={idx} post={post} />
                   : ''
               ))
               // conditionally render message for guest and member
