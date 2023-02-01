@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import Register from './components/Register'
-import { BrowserRouter, Routes, Route, useParams, useNavigate } from 'react-router-dom'
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import ViewAll from './components/ViewAll'
 import Asia from './components/Asia'
 import Africa from './components/Africa'
@@ -616,29 +616,161 @@ const editComment =  async (comment, editedComment, post) => {
 
   return (
     <>
-    {/* Browser router paths */}
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
+        {/* Browser router paths */}
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} loginInput={loginInput} loginSuccess={loginSuccess} loginMessage={loginMessage} loginRedirect={loginRedirect} loginFormResetState={loginFormResetState} />} />    
-          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} regMessage={regMessage} regSuccess={regSuccess} redirect={redirect} regFormResetState={regFormResetState} />} />
-          <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
-          <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
-          <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
-          <Route path="/view/continent/nth-america" element={<NthAmerica forumMember={forumMember} nthAmericaPosts={nthAmericaPosts} />} />
-          <Route path="/view/continent/sth-america" element={<SthAmerica forumMember={forumMember} sthAmericaPosts={sthAmericaPosts} />} />
-          <Route path="/view/continent/antarctica" element={<Antarctica forumMember={forumMember} antarcticaPosts={antarcticaPosts} />} />
-          <Route path="/view/continent/europe" element={<Europe forumMember={forumMember} europePosts={europePosts} />} />
-          <Route path="/view/continent/australia" element={<Australia forumMember={forumMember} australiaPosts={australiaPosts} />} />
-          <Route path="/about" element={<About forumMember={forumMember} />} />
-          <Route path="/contact" element={<Contact forumMember={forumMember} />} />
-          <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
-          <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
-          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path={"/posts/new"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
-          <Route path={"/posts/:id"} element={<ShowPostWrapper />}  />
-          <Route path={"/posts/edit/:id"} element={<ShowPostWrapper />}  />
-          <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
+          <Route path="/" 
+            element={
+              <LandingPage 
+                forumMember={forumMember} 
+                latestPosts={posts} 
+                loggedInMember={loggedInMember} 
+              />
+            } 
+          />
+          <Route path="/login" 
+            element={
+              <Login 
+                forumMember={forumMember} 
+                loginMember={loginMember} 
+                loginInput={loginInput} 
+                loginSuccess={loginSuccess} 
+                loginMessage={loginMessage} 
+                loginRedirect={loginRedirect} 
+                loginFormResetState={loginFormResetState} 
+              />
+            } 
+          />    
+          <Route path="/register" 
+            element={
+              <Register 
+                forumMember={forumMember} 
+                createMember={createMember} 
+                regMessage={regMessage} 
+                regSuccess={regSuccess} 
+                redirect={redirect} 
+                regFormResetState={regFormResetState} 
+              />
+            } 
+          />
+          <Route path="/view/all" 
+            element={
+              <ViewAll 
+                forumMember={forumMember} 
+                allPosts={posts} 
+              />
+            } 
+          />
+          <Route path="/view/continent/asia" 
+            element={
+              <Asia 
+                forumMember={forumMember} 
+                asiaPosts={asiaPosts} 
+              />
+            } 
+          />
+          <Route path="/view/continent/africa" 
+            element={
+              <Africa 
+                forumMember={forumMember} 
+                africaPosts={africaPosts} 
+              />
+            } 
+          />
+          <Route path="/view/continent/nth-america" 
+            element={
+              <NthAmerica 
+                forumMember={forumMember} 
+                nthAmericaPosts={nthAmericaPosts} 
+              />
+            } 
+          />
+          <Route path="/view/continent/sth-america" 
+            element={
+              <SthAmerica 
+                forumMember={forumMember} 
+                sthAmericaPosts={sthAmericaPosts} 
+              />
+            } 
+          />
+          <Route path="/view/continent/antarctica" 
+            element={
+              <Antarctica 
+                forumMember={forumMember} 
+                antarcticaPosts={antarcticaPosts} 
+              />
+            } 
+          />
+          <Route path="/view/continent/europe" 
+            element={
+              <Europe 
+                forumMember={forumMember} 
+                europePosts={europePosts} 
+                />
+              } 
+            />
+          <Route path="/view/continent/australia" 
+            element={
+              <Australia 
+                forumMember={forumMember} 
+                australiaPosts={australiaPosts} 
+              />
+            } 
+          />
+          <Route path="/about" 
+            element={
+              <About forumMember={forumMember} />
+            } 
+          />
+          <Route path="/contact" 
+        
+            element={
+              <Contact forumMember={forumMember} />
+            } 
+          />
+          <Route path="/terms" 
+            element={
+              <TermsOfUse forumMember={forumMember} />
+            } 
+          />
+          <Route path="/privacy" 
+            element={
+              <Privacy forumMember={forumMember} />
+            } 
+          />
+          <Route path={"/posts"} 
+            element={
+              <MyPosts 
+                forumMember={forumMember} 
+                latestPosts={posts} 
+                loggedInMember={loggedInMember} 
+              />
+            } 
+          />
+          <Route path={"/posts/new"} 
+            element={
+              <CreateAPost 
+                forumMember={forumMember} 
+                submitPost={submitPost} 
+              />
+            } 
+          />
+          <Route path={"/posts/:id"} 
+            element={
+              <ShowPostWrapper />
+            }  
+          />
+          <Route path={"/posts/edit/:id"} 
+            element={
+              <ShowPostWrapper />
+            }  
+          />
+          <Route path='*' 
+            element={
+              <PageNotFound 
+              forumMember={forumMember} 
+          />} 
+        />
         </Routes>
       <Footer />
     </>

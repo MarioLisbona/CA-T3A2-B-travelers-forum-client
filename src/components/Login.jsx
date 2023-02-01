@@ -1,7 +1,6 @@
 import React from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
-import Footer from './Footer'
 import LoginForm from './LoginForm'
 
 const Login = ({ loginMember, loginInput, loginSuccess, loginMessage, loginRedirect, loginFormResetState }) => {

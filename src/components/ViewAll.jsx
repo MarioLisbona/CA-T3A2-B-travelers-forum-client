@@ -3,7 +3,6 @@ import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
-import Footer from './Footer'
 
 const ViewAll = ({ forumMember, allPosts }) => {
 
@@ -28,12 +27,20 @@ const ViewAll = ({ forumMember, allPosts }) => {
                 // guest message will prompt to register to make a post with CTA button
                 // member message will prompt to make a post with CTA button
                 : forumMember
-                    ? <Header headingText={"Much empty..."} 
-                      bodyText={"The Europe travel forum currently has no posts, Click below to be the first"} 
-                      showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/new"} />
-                    : <Header headingText={"Much empty..."} 
-                    bodyText={"The Europe travel forum currently has no posts, register today to be the first to contribute."}
-                      showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
+                    ? <Header 
+                        headingText={"Much empty..."} 
+                        bodyText={"The Europe travel forum currently has no posts, Click below to be the first"} 
+                        showBtn1 
+                        btn1Text={"Add a post"} 
+                        btn1ToPage={"/posts/new"} 
+                      />
+                    : <Header 
+                        headingText={"Much empty..."} 
+                        bodyText={"The Europe travel forum currently has no posts, register today to be the first to contribute."}
+                        showBtn1 
+                        btn1Text={"Register"} 
+                        btn1ToPage={"/register"} 
+                      />
           }
         </div>
       </div>
