@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import ModalConfirmDelete from './ModalConfirmDelete'
 import ModalPost from './ModalPost'
 import moment from 'moment'
@@ -56,12 +55,24 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
         Delete Button to call the deleteButton function which calls deletePost in App.jsx */}
         {postOwner
           ? <span>
-              <button type="button" className="btn btn-success my-2 me-1" data-toggle="modal" data-target={`#modal${post[0]._id}`}>
+              <button 
+                type="button" 
+                className="btn btn-success my-2 me-1" 
+                data-toggle="modal" 
+                data-target={`#modal${post[0]._id}`}>
                 Edit Post
               </button>
-              <ModalPost post={post} modalNumber={post[0]._id} editPost={editPost} />
-              {/* <Link to="/" onClick={() => {deleteButton()}} ><button type="button" className="btn btn-success my-2">Delete Post</button></Link> */}
-              <button type="button" className="btn btn-success my-2" data-toggle="modal" data-target={"#ModalDeletePost"}>Delete Post</button>
+              <ModalPost 
+                post={post} 
+                modalNumber={post[0]._id} 
+                editPost={editPost} 
+              />
+              <button 
+                type="button" 
+                className="btn btn-success my-2" 
+                data-toggle="modal" 
+                data-target={"#ModalDeletePost"}>Delete Post
+              </button>
               <ModalConfirmDelete type={'Post'} delConfirmed={deleteButton} />
             </span>
           : ''
