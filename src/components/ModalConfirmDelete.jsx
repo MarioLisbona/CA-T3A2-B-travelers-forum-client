@@ -15,7 +15,12 @@ const ModalConfirmDelete = ({ type, delConfirmed }) => {
           </div>
           <div className="modal-footer p-0 py-3">
             {/* save changes by calling editCommentModal and close modal */}
-            <button type="button" onClick={delConfirmed} className="btn btn-success" data-dismiss="modal">Confirm Delete</button>
+            <button 
+              type="button" 
+              onClick={delConfirmed} 
+              className="btn btn-success" 
+              data-dismiss="modal">Confirm Delete
+            </button>
           </div>
         </div>
       </div>
