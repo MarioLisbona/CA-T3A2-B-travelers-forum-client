@@ -39,7 +39,7 @@ const LandingPage = ({ forumMember, posts, loggedInMember, setPosts }) => {
           }
           {/* render 8 latest preview cards */}
           <div className="row g-3">
-            <h1>See the latest Posts</h1>
+            <h2>See the latest Posts</h2>
             {posts.length > 0
               ? posts.map((post, idx) => (
                 idx < 8 
