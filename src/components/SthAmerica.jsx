@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
+import { fetchPosts } from '../functions'
 
-const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
+const SthAmerica = ({ forumMember, posts, setPosts, URI }) => {
+
+  useEffect(() => {
+    // fetching the posts on mount only
+    // This means that new posts by other users will show every time this component is mounted
+    fetchPosts(setPosts, URI)
+    console.log('inside useEffect in South America')
+  }, [])
+
+  const sthAmericaPosts = posts.filter(post => post.category == 'South America')
 
   return (
     <>
@@ -33,10 +43,10 @@ const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
               // member message will prompt to make a post with CTA button
               : forumMember
                   ? <Header headingText={"Much empty..."} 
-                    bodyText={"The North American travel forum currently has no posts, Click below to be the first"} 
+                    bodyText={"The South American travel forum currently has no posts, Click below to be the first"} 
                     showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/new"} />
                   : <Header headingText={"Much empty..."} 
-                  bodyText={"The North American travel forum currently has no posts, register today to be the first to contribute."}
+                  bodyText={"The South American travel forum currently has no posts, register today to be the first to contribute."}
                     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
             }
         </div>

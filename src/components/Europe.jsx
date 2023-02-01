@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
+import { fetchPosts } from '../functions'
 
-const Europe = ({ forumMember, europePosts }) => {
+const Europe = ({ forumMember, posts, setPosts, URI }) => {
+
+  useEffect(() => {
+    // fetching the posts on mount only
+    // This means that new posts by other users will show every time this component is mounted
+    fetchPosts(setPosts, URI)
+    console.log('inside useEffect in Europe')
+  }, [])
+
+  const europePosts = posts.filter(post => post.category == 'Europe')
 
   return (
     <>

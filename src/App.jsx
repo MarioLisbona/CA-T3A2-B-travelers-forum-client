@@ -584,13 +584,13 @@ const editComment =  async (comment, editedComment, post) => {
 
 
     // filtering the posts array returned by the fetch into separate arrays for each category
-    const europePosts = posts.filter(post => post.category == 'Europe')
-    const australiaPosts = posts.filter(post => post.category == 'Australia')
-    const asiaPosts = posts.filter(post => post.category == 'Asia')
-    const africaPosts = posts.filter(post => post.category == 'Africa')
-    const nthAmericaPosts = posts.filter(post => post.category == 'North America')
-    const sthAmericaPosts = posts.filter(post => post.category == 'South America')
-    const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
+    // const europePosts = posts.filter(post => post.category == 'Europe')
+    // const australiaPosts = posts.filter(post => post.category == 'Australia')
+    // const asiaPosts = posts.filter(post => post.category == 'Asia')
+    // const africaPosts = posts.filter(post => post.category == 'Africa')
+    // const nthAmericaPosts = posts.filter(post => post.category == 'North America')
+    // const sthAmericaPosts = posts.filter(post => post.category == 'South America')
+    // const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
 
   return (
     <>
@@ -645,7 +645,10 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Asia 
                 forumMember={forumMember} 
-                asiaPosts={asiaPosts} 
+                // asiaPosts={asiaPosts} 
+                posts={posts}
+                setPosts={setPosts}
+                URI={'/category/Asia'}
               />
             } 
           />
@@ -653,7 +656,10 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Africa 
                 forumMember={forumMember} 
-                africaPosts={africaPosts} 
+                // africaPosts={africaPosts} //should not be needed now
+                posts={posts}
+                setPosts={setPosts}
+                URI={'/category/Africa'}
               />
             } 
           />
@@ -661,7 +667,10 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <NthAmerica 
                 forumMember={forumMember} 
-                nthAmericaPosts={nthAmericaPosts} 
+                // nthAmericaPosts={nthAmericaPosts} 
+                posts={posts}
+                setPosts={setPosts}
+                URI={'/category/North America'}
               />
             } 
           />
@@ -669,7 +678,10 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <SthAmerica 
                 forumMember={forumMember} 
-                sthAmericaPosts={sthAmericaPosts} 
+                // sthAmericaPosts={sthAmericaPosts} 
+                posts={posts}
+                setPosts={setPosts}
+                URI={'/category/South America'}
               />
             } 
           />
@@ -677,7 +689,10 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Antarctica 
                 forumMember={forumMember} 
-                antarcticaPosts={antarcticaPosts} 
+                // antarcticaPosts={antarcticaPosts}
+                posts={posts}
+                setPosts={setPosts}
+                URI={'/category/Antarctica'}
               />
             } 
           />
@@ -685,7 +700,10 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Europe 
                 forumMember={forumMember} 
-                europePosts={europePosts} 
+                // europePosts={europePosts} 
+                posts={posts}
+                setPosts={setPosts}
+                URI={'/category/Europe'}
                 />
               } 
             />
@@ -693,7 +711,10 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <Australia 
                 forumMember={forumMember} 
-                australiaPosts={australiaPosts} 
+                // australiaPosts={australiaPosts} 
+                posts={posts}
+                setPosts={setPosts}
+                URI={'/category/Australia'}
               />
             } 
           />

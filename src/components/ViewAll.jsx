@@ -8,6 +8,8 @@ import { fetchPosts } from '../functions'
 const ViewAll = ({ forumMember, allPosts, setPosts }) => {
 
   useEffect(() => {
+    // fetching the posts on mount only
+    // This means that new posts by other users will show every time this component is mounted
     fetchPosts(setPosts)
     console.log('inside useEffect in View All')
   }, [])
