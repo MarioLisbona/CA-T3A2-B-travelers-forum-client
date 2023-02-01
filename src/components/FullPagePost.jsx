@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import Header from './Header'
-import Footer from './Footer'
 import PostContent from './PostContent'
 import CommentContent from './CommentContent'
 import CommentForm from './CommentForm'
-import { Link } from 'react-router-dom';
 
 const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPost, deletePost, deleteComment, editComment }) => {
 
