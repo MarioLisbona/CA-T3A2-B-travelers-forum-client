@@ -10,7 +10,6 @@ const Asia = ({ forumMember, posts, setPosts, URI }) => {
     // fetching the posts on mount only
     // This means that new posts by other users will show every time this component is mounted
     fetchPosts(setPosts, URI)
-    console.log('inside useEffect in Asia')
   }, [])
 
   const asiaPosts = posts.filter(post => post.category == 'Asia')
