@@ -26,7 +26,6 @@ import MemberNavBar from './components/MemberNavBar'
 import SearchingForPost from './components/SearchingForPost'
 
 import { fetchPosts } from './functions'
-import ModalJwtExpired from './components/ModalJwtExpired'
 
 
 const App = () => {
@@ -74,11 +73,7 @@ const App = () => {
     setRegMessage('')
   }
 
-  // function to redirect after Modal closes
-  function redirectFunction(url) {
-    nav(url)
-  }
-
+  
   // reset state if user registration fails
   function regFormResetState() {
     setRegMessage('')
@@ -284,7 +279,7 @@ const App = () => {
     setLoginSuccess(false)
     
     // navigate to the home page
-    // nav('/')
+    nav('/')
   }
 
 
@@ -320,20 +315,17 @@ const App = () => {
       
       // If JWT lost after login but before form submit
       if (returnedObject.error) {  
-        // alert('Whoops! Looks like you were logged out. Please log in and try again.')
+        alert('Whoops! Looks like you were logged out. Please log in and try again.')
         logoutMember()
-        // return nav('/login')
-        nav('/jwt-expired')
-      // JWT valid
-      } else {
-        // add the newly created post to the start of the posts array
-        posts.unshift(returnedObject)
-        setPosts(posts)
-  
-        // navigate to the new post in full page post
-        nav(`/posts/${returnedObject._id}`)
+        return nav('/login')
       }
 
+      // add the newly created post to the start of the posts array
+      posts.unshift(returnedObject)
+      setPosts(posts)
+
+      // navigate to the new post in full page post
+      nav(`/posts/${returnedObject._id}`)
     }
     catch (err){
       console.log(err.message)
@@ -775,9 +767,6 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <ShowPostWrapper />
             }  
-          />
-          <Route path={"/jwt-expired"}
-            element={<ModalJwtExpired redirectFunction={redirectFunction} />}
           />
           <Route path='*' 
             element={
