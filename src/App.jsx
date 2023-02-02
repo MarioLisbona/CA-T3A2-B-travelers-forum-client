@@ -26,6 +26,7 @@ import MemberNavBar from './components/MemberNavBar'
 import SearchingForPost from './components/SearchingForPost'
 
 import { fetchPosts } from './functions'
+import ModalJwtExpired from './components/ModalJwtExpired'
 
 
 const App = () => {
@@ -73,7 +74,11 @@ const App = () => {
     setRegMessage('')
   }
 
-  
+  // function to redirect after Modal closes
+  function redirectFunction(url) {
+    nav(url)
+  }
+
   // reset state if user registration fails
   function regFormResetState() {
     setRegMessage('')
@@ -279,7 +284,7 @@ const App = () => {
     setLoginSuccess(false)
     
     // navigate to the home page
-    nav('/')
+    // nav('/')
   }
 
 
@@ -309,23 +314,25 @@ const App = () => {
         },
         'body': JSON.stringify(newPost)
       })
-
+      
+      console.log(returnedPost.status)
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedPost.json()
-      
+      console.log(returnedObject)
       // If JWT lost after login but before form submit
-      if (returnedObject.error) {  
-        alert('Whoops! Looks like you were logged out. Please log in and try again.')
+      if (returnedPost.status != 201) {  
         logoutMember()
-        return nav('/login')
+        nav('/jwt-expired')
+      // JWT valid
+      } else {
+        // add the newly created post to the start of the posts array
+        posts.unshift(returnedObject)
+        setPosts(posts)
+  
+        // navigate to the new post in full page post
+        nav(`/posts/${returnedObject._id}`)
       }
 
-      // add the newly created post to the start of the posts array
-      posts.unshift(returnedObject)
-      setPosts(posts)
-
-      // navigate to the new post in full page post
-      nav(`/posts/${returnedObject._id}`)
     }
     catch (err){
       console.log(err.message)
@@ -364,13 +371,10 @@ const editPost =  async (post, title, continent, postContent) => {
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedPost.json()
 
-    // If JWT lost after login but before form submit
-    // if (returnedObject.error) {  
-    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
-    //   logoutMember()
-    //   return nav('/login')
-    // }
-
+    if (returnedPost.status != 200) {  
+      logoutMember()
+      nav('/jwt-expired')
+    } else {
     // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
     const targetPostId = post[0]._id
     // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
@@ -385,6 +389,7 @@ const editPost =  async (post, title, continent, postContent) => {
     // navigate to the updated full page post
     window.scrollTo(0, 0)
     nav(`/posts/${targetPostId}`)
+    }
   }
   catch (err){
     console.log(err.message)
@@ -411,13 +416,11 @@ const deletePost =  async (post) => {
       }
     })
 
-    // If JWT lost after login but before form submit
-    // if (returnedObject.error) {  
-    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
-    //   logoutMember()
-    //   return nav('/login')
-    // }
-
+    // const returnedObject = await returnedPost.json()
+    if (returnedPost.status != 204) {  
+      logoutMember()
+      nav('/jwt-expired')
+    } else {
     // //////////////////////////////////////////////////////////
     // should be able to delete the post id from the array stored in memory?????
 
@@ -433,6 +436,7 @@ const deletePost =  async (post) => {
 
     // navigate to the new post in full page post
     nav('/posts')
+    }
   }
   catch (err){
     console.log(err.message)
@@ -471,12 +475,10 @@ const deletePost =  async (post) => {
       const returnedObject = await returnedComment.json()
       
       // If JWT lost after login but before form submit
-      if (returnedObject.error) {  
-        alert('Whoops! Looks like you were logged out. Please log in and try again.')
+      if (returnedComment.status != 201) {  
         logoutMember()
-        return nav('/login')
-      }
-
+        nav('/jwt-expired')
+      } else {
       // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
       const targetPostId = post[0]._id
       // using targetPostId to find the correct post in the array of posts fetched from the server
@@ -490,6 +492,7 @@ const deletePost =  async (post) => {
 
       // navigate to the full page post with new comments
       nav(`/posts/${targetPostId}`)
+      }
     }
     catch (err){
       console.log(err.message)
@@ -515,14 +518,11 @@ const deleteComment =  async (comment, post) => {
       }
     })
 
-    // const returnedObject = returnComment.json()
-
-    // If JWT lost after login but before form submit
-    // if (returnedObject.error) {  
-    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
-    //   logoutMember()
-    //   return nav('/login')
-    // }
+    // const returnedObject = await returnComment.json()
+    if (returnComment.status != 204) {  
+      logoutMember()
+      nav('/jwt-expired')
+    } else {
 
     // //////////////////////////////////////////////////////////
     // should be able to delete the comment id from the array stored in memory?????
@@ -533,6 +533,7 @@ const deleteComment =  async (comment, post) => {
 
     // navigate back to the post in full page post
     nav(`/posts/${post[0]._id}`)
+    }
   }
   catch (err){
     console.log(err.message)
@@ -572,18 +573,16 @@ const editComment =  async (comment, editedComment, post) => {
     const returnedObject = await returnedEditedComment.json()
 
     // If JWT lost after login but before form submit
-    // if (returnedObject.error) {  
-    //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
-    //   logoutMember()
-    //   return nav('/login')
-    // }
-
+    if (returnedEditedComment.status != 200) {  
+      logoutMember()
+      nav('/jwt-expired')
+    } else {
     // fetch posts again as the data has changed
     fetchPosts(setPosts)
 
-
     // navigate to the full page post with new comments
     nav(`/posts/${post[0]._id}`)
+    }
   }
   catch (err){
     console.log(err.message)
@@ -767,6 +766,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <ShowPostWrapper />
             }  
+          />
+          <Route path={"/jwt-expired"}
+            element={<ModalJwtExpired redirectFunction={redirectFunction} />}
           />
           <Route path='*' 
             element={
