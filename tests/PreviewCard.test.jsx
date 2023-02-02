@@ -42,6 +42,7 @@ describe('PreviewCard Component', () => {
 
   it('Displays when the post was created', () => {
     expect(container.querySelector('h66')).toBeDefined()
+    console.log(container.querySelector('h66'))
     // expect(container.querySelector('h6')).toHaveTextContent('Post Title')
   })
 
