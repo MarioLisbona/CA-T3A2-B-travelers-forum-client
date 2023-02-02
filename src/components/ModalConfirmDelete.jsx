@@ -3,7 +3,7 @@ import React from 'react'
 const ModalConfirmDelete = ({ type, delConfirmed }) => {
   return (
     <>
-    <div className="modal fade" id={`ModalDelete${type}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div className="modal fade" data-keyboard="false" data-backdrop="static" id={`ModalDelete${type}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content p-3">
           <div className="modal-header p-0 py-3">
@@ -15,7 +15,12 @@ const ModalConfirmDelete = ({ type, delConfirmed }) => {
           </div>
           <div className="modal-footer p-0 py-3">
             {/* save changes by calling editCommentModal and close modal */}
-            <button type="button" onClick={delConfirmed} className="btn btn-success" data-dismiss="modal">Confirm Delete</button>
+            <button 
+              type="button" 
+              onClick={delConfirmed} 
+              className="btn btn-success" 
+              data-dismiss="modal">Confirm Delete
+            </button>
           </div>
         </div>
       </div>

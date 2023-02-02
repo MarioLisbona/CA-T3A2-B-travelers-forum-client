@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "../assets/logo2.png"
+import logo from "../assets/logo1.png"
 
 
 const MemberNavBar = ({ logoutMember, loggedInMember }) => {
@@ -10,7 +10,7 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
     // display navbar for members
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div className="container-fluid">
               <Link className="navbar-brand ms-0 ps-0" to="/">
                 <img src={logo} width="200" height="40" alt=""></img>
@@ -29,7 +29,7 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
                           <a className="nav-link dropdown-toggle text-white" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Browse By Continent
                           </a>
-                          <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                          <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <Link className="dropdown-item text-white" to="/view/continent/asia">
                                 Asia
                             </Link>
@@ -61,7 +61,7 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
                         <FontAwesomeIcon icon={faUser} className="me-2"/>
                         {loggedInMember.username}
                           </a>
-                          <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                          <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                                 <Link className="dropdown-item text-white" to="/posts">
                                     My Posts
                                 </Link>

@@ -1,10 +1,9 @@
 import React from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
-import Footer from './Footer'
 import LoginForm from './LoginForm'
 
-const Login = ({ loginMember }) => {
+const Login = ({ loginMember, loginInput, loginSuccess, loginMessage, loginRedirect, loginFormResetState }) => {
 
   return (
     <>
@@ -12,7 +11,7 @@ const Login = ({ loginMember }) => {
       <div className="container">
         <Header headingText={"Login for more features"} btnText={'Login'} showBtn />
         {/* render loginform passing in loginMember function */}
-        <LoginForm loginMember={loginMember} />
+        <LoginForm loginMember={loginMember} loginInput={loginInput} loginSuccess={loginSuccess} loginMessage={loginMessage} loginRedirect={loginRedirect} loginFormResetState={loginFormResetState} />
       </div>
   </>
   )

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
-import Footer from './Footer'
+import { fetchPosts } from '../functions'
 
-const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
+const SthAmerica = ({ forumMember, posts, setPosts, URI }) => {
+
+  useEffect(() => {
+    // fetching the posts on mount only
+    // This means that new posts by other users will show every time this component is mounted
+    fetchPosts(setPosts, URI)
+    console.log('inside useEffect in South America')
+  }, [])
+
+  const sthAmericaPosts = posts.filter(post => post.category == 'South America')
 
   return (
     <>
@@ -13,7 +22,13 @@ const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
       <div className="container">
         <Header 
           headingText={"Welcome to South America"}
-          bodyText={"This is a little blurb about South America. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "} 
+          bodyText={
+            <>
+              <p>Within these regions are all the major types of biomes in the world. A biome is a community of animals and plants spreading over an extensive area with a relatively uniform climate. Some diverse biomes represented in North America include desert, grassland, tundra, and coral reefs.</p>
+              <p>South America is bounded by the Caribbean Sea to the northwest and north, the Atlantic Ocean to the northeast, east, and southeast, and the Pacific Ocean to the west. In the northwest it is joined to North America by the Isthmus of Panama, a land bridge narrowing to about 50 miles (80 km) at one point. Drake Passage, south of Cape Horn, separates South America from Antarctica.</p>
+              <p>Relatively few islands rim the continent, except in the south. These include the glaciated coastal archipelagoes of Argentina and Chile. The Falkland (Malvinas) Islands are east of southern Argentina. To the north, the West Indies stretch from Trinidad to Florida, but those islands usually are associated with North America. Of the remainder, most are small oceanic islands off the coasts of South America, including the Galapagos Islands, Ecuador, in the Pacific Ocean.</p>
+            </>
+          } 
         />
         {/* container for main body of the page */}
         <div className="row g-3">
@@ -28,10 +43,10 @@ const SthAmerica = ({ forumMember, sthAmericaPosts }) => {
               // member message will prompt to make a post with CTA button
               : forumMember
                   ? <Header headingText={"Much empty..."} 
-                    bodyText={"The North American travel forum currently has no posts, Click below to be the first"} 
+                    bodyText={"The South American travel forum currently has no posts, Click below to be the first"} 
                     showBtn1 btn1Text={"Add a post"} btn1ToPage={"/posts/new"} />
                   : <Header headingText={"Much empty..."} 
-                  bodyText={"The North American travel forum currently has no posts, register today to be the first to contribute."}
+                  bodyText={"The South American travel forum currently has no posts, register today to be the first to contribute."}
                     showBtn1 btn1Text={"Register"} btn1ToPage={"/register"} />
             }
         </div>

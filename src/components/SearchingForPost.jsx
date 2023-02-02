@@ -2,13 +2,12 @@ import React from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 
-const Privacy = () => {
+const SearchingForPost = () => {
   return (
-    // render privacy page info
     <>
-    <HeroImage heroClass={'europe'} />
+    <HeroImage heroClass={'about'} />
       <div className="container">
-        <Header headingText={"View our privacy policies"} btnText={'View all Privacy info'} />
+        <Header headingText={"Locating Post...."} />
         <div className="row g-3">
         </div>
       </div>
@@ -16,4 +15,4 @@ const Privacy = () => {
   )
 }
 
-export default Privacy
+export default SearchingForPost

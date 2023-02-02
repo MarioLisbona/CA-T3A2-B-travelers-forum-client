@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import Register from './components/Register'
-import { BrowserRouter, Routes, Route, useParams, useNavigate } from 'react-router-dom'
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import ViewAll from './components/ViewAll'
 import Asia from './components/Asia'
 import Africa from './components/Africa'
@@ -23,6 +23,9 @@ import CreateAPost from './components/CreateAPost'
 import FullPagePost from './components/FullPagePost'
 import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
+import SearchingForPost from './components/SearchingForPost'
+
+import { fetchPosts } from './functions'
 
 
 const App = () => {
@@ -30,18 +33,71 @@ const App = () => {
   // navigate to pages from within a function
   const nav = useNavigate()
 
-  // state variable to track and store posts array
+  // state variable to track and store all posts
+  const [posts, setPosts] = useState([])
+  // tracking the state of posts in each category
+  const [asiaPosts, setAsiaPosts] = useState([])
+  const [africaPosts, setAfricaPosts] = useState([])
+  const [northAmericaPosts, setNorthAmericaPosts] = useState([])
+  const [southAmericaPosts, setSouthAmericaPosts] = useState([])
+  const [antarcticaPosts, setAntarcticaPosts] = useState([])
+  const [europePosts, setEuropePosts] = useState([])
+  const [australiaPosts, setAustraliaPosts] = useState([])
+  
   // boolean used  with forumMember for testing conditional rendering of guest and member elements
   // track state of the logged in member
-  const [posts, setPosts] = useState([])
   const [forumMember, setForumMember] = useState(false)
   const [loggedInMember, setLoggedInMember] = useState({})
+
+  // controls messages and when to show modal for registration success/failure
+  const [regSuccess, setRegSuccess] = useState(false)
+  const [regMessage, setRegMessage] = useState('')
+
+  // controls messages and when to show modal for registration success/failure
+  const [loginSuccess, setLoginSuccess] = useState(false)
+  const [loginMessage, setLoginMessage] = useState('')
+
+  // used to prepopulate the login username input after successful registration
+  const [loginInput, setLoginInput] = useState('')
   
   // create currentUser Object from values in session storage
   const currentUser = {
     username: sessionStorage.getItem("username"),
     id: sessionStorage.getItem("id"),
     token: sessionStorage.getItem("token"),
+  }
+
+  // couldnt manage to regirect to /login  with a <Link> inside registration form so did it here
+  function redirect() {
+    nav("/login")
+    setRegMessage('')
+  }
+
+  
+  // reset state if user registration fails
+  function regFormResetState() {
+    setRegMessage('')
+    setRegSuccess(false)
+  }
+
+  // reset state if user login fails
+  function loginFormResetState() {
+    setLoginMessage('')
+    setLoginSuccess(false)
+  }
+
+    // If the user has viewed a post before clicking the login or register/login forms
+    // that post id will be stored in session storage.
+    // Once the user has successfully logged in, they will be returned to the last post they were reading.
+    // Otherwise they have logged in from the landing page so will be redirected to that.
+  function loginRedirect(sessionStorage) {
+    if (sessionStorage.postId) {
+      // reset login username input field
+      setLoginInput('')
+      nav(`/posts/${sessionStorage.postId}`)
+    } else {
+      nav('/')
+    }
   }
 
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
@@ -58,12 +114,7 @@ const App = () => {
   // fetch all the posts from the API on component on mount only and assign to posts with sePosts()
   // may need to change this to trigger and track the posts state
   useEffect(() => {
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    fetchPosts(setPosts)
   }, [])
 
   // Higher Order Function to display a full page post from the link in the preview cards
@@ -76,7 +127,7 @@ const App = () => {
     const post = posts.filter(post => post._id == id)
 
     return post == 0
-      ? <PageNotFound />
+      ? <SearchingForPost forumMember={forumMember} />
       : <FullPagePost
           post={post}
           forumMember={forumMember}
@@ -88,19 +139,6 @@ const App = () => {
           deleteComment={deleteComment} 
         />
   }
-
-
-  // // Higher Order Function to display a full page post from the link in the preview cards
-  // // uses id param passed in from preview card button to filter posts array to find the correct post object
-  // // FullPAgePost component is passed the post array with a single post object, forumMember for confitioanl rendering
-  // // and submitComment is the function to post the data from the comment form to the API
-  // const EditPostWrapper = () =>{
-  //   const { id } = useParams()
-  //   const post = posts.filter(post => post._id == id)
-  //   return post == 0
-  //     ? <PageNotFound />
-  //     : <FullPagePostToEdit post={post} forumMember={forumMember} submitComment={submitComment} loggedInMember={loggedInMember} deletePost={deletePost} editPost={editPost} />
-  // }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         createMember function       /////////////////////////////////////////////
@@ -126,15 +164,21 @@ const App = () => {
         'body': JSON.stringify(newMember)
       })
 
-      ////////////////////////////////////
-      // This is possibly not needed here
-      ////////////////////////////////////
-
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedMember.json()
 
-      // once complete, navigate to the login screen
-      nav('/login')
+      // if there is no error message registration successful
+      if (!returnedObject.error){
+        // used for conditional logic in modal
+        setRegMessage('Registration Successful')
+        setRegSuccess(true)
+        // prepopulate the login input if succesfull
+        setLoginInput(returnedObject.username)
+      } else {
+        // used for conditional logic in modal
+        setRegMessage(`Registration failed - ${returnedObject.error}`)
+        setRegSuccess(false)
+      }
     }
     catch (err){
       console.log(err.message)
@@ -172,6 +216,10 @@ const App = () => {
 
       // The user has supplied valid login credentials
       if (returnedObject.id) {
+
+        // used for conditional logic in modal
+        setLoginMessage('Login Successful')
+        setLoginSuccess(true)
         
         // assigning the returned object to session storage keys
         sessionStorage.setItem("username", returnedObject.username)
@@ -189,19 +237,20 @@ const App = () => {
           token: returnedObject.token
         })
 
-        // If the user has viewed a post before clicking the login or register/login forms
-        // that post id will be stored in session storage.
-        // Once the user has successfully logged in, they will be returned to the last post they were reading.
-        // Otherwise they have logged in from the landing page so will be redirected to that.
-        sessionStorage.postId
-          ? nav(`/posts/${sessionStorage.postId}`)
-          : nav('/')
+        // call redirect function to redirect to login page after successful user registration
+        loginRedirect(sessionStorage)
 
       // login details are incorrect
       // need to render a modal here with error message
       } else {
-        alert('failed login')
-        nav('/')
+        console.log(returnedObject)
+        // used for conditional logic in modal
+        setLoginMessage(`Login failed - ${returnedObject.error}`)
+        setLoginSuccess(false)
+
+        // reset login username input field
+        setLoginInput('')
+        nav('/login')
       }
     }
     catch (err){
@@ -221,6 +270,14 @@ const App = () => {
     sessionStorage.clear()
     // set logged in member details to empty object
     setLoggedInMember({})
+
+    // reset login username input
+    setLoginInput('')
+
+    // setting the state when user logs out
+    setLoginMessage('')
+    setLoginSuccess(false)
+    
     // navigate to the home page
     nav('/')
   }
@@ -263,8 +320,9 @@ const App = () => {
         return nav('/login')
       }
 
-      // add the returned post object to the posts array
-      setPosts([...posts, returnedObject])
+      // add the newly created post to the start of the posts array
+      posts.unshift(returnedObject)
+      setPosts(posts)
 
       // navigate to the new post in full page post
       nav(`/posts/${returnedObject._id}`)
@@ -353,8 +411,6 @@ const deletePost =  async (post) => {
       }
     })
 
-    const returnedObject = await returnedPost.json()
-
     // If JWT lost after login but before form submit
     // if (returnedObject.error) {  
     //   alert('Whoops! Looks like you were logged out. Please log in and try again.')
@@ -365,14 +421,15 @@ const deletePost =  async (post) => {
     // //////////////////////////////////////////////////////////
     // should be able to delete the post id from the array stored in memory?????
 
-    // fetch posts again as the posts array has changed
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-    
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+    const targetPostId = post[0]._id
+    // using targetPostId to find the correct post in the array of posts fetched from the server
+    const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+    // remove deleted posts from the array of posts
+    // set state of posts again with new array
+    posts.splice(postIndex, 1)
+    setPosts(posts)
 
     // navigate to the new post in full page post
     nav('/posts')
@@ -458,7 +515,7 @@ const deleteComment =  async (comment, post) => {
       }
     })
 
-    const returnedObject = returnComment.json()
+    // const returnedObject = returnComment.json()
 
     // If JWT lost after login but before form submit
     // if (returnedObject.error) {  
@@ -471,12 +528,8 @@ const deleteComment =  async (comment, post) => {
     // should be able to delete the comment id from the array stored in memory?????
     // this will be harder than delete a post
     // this is loading pretty fast with a fetch, so may not be ncessary
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+
+    fetchPosts(setPosts)
 
     // navigate back to the post in full page post
     nav(`/posts/${post[0]._id}`)
@@ -526,12 +579,7 @@ const editComment =  async (comment, editedComment, post) => {
     // }
 
     // fetch posts again as the data has changed
-    async function fetchPosts() {
-      const result = await fetch("https://indigo-stocking-production.up.railway.app/posts/")
-      const data = await result.json()
-      setPosts(data)
-    }
-    fetchPosts()
+    fetchPosts(setPosts)
 
 
     // navigate to the full page post with new comments
@@ -545,39 +593,187 @@ const editComment =  async (comment, editedComment, post) => {
 
 
     // filtering the posts array returned by the fetch into separate arrays for each category
-    const europePosts = posts.filter(post => post.category == 'Europe')
-    const australiaPosts = posts.filter(post => post.category == 'Australia')
-    const asiaPosts = posts.filter(post => post.category == 'Asia')
-    const africaPosts = posts.filter(post => post.category == 'Africa')
-    const nthAmericaPosts = posts.filter(post => post.category == 'North America')
-    const sthAmericaPosts = posts.filter(post => post.category == 'South America')
-    const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
+    // const europePosts = posts.filter(post => post.category == 'Europe')
+    // const australiaPosts = posts.filter(post => post.category == 'Australia')
+    // const asiaPosts = posts.filter(post => post.category == 'Asia')
+    // const africaPosts = posts.filter(post => post.category == 'Africa')
+    // const nthAmericaPosts = posts.filter(post => post.category == 'North America')
+    // const sthAmericaPosts = posts.filter(post => post.category == 'South America')
+    // const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
 
   return (
     <>
-    {/* Browser router paths */}
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
+        {/* Browser router paths */}
         <Routes>
-          <Route path="/" element={<LandingPage forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path="/login" element={<Login forumMember={forumMember} loginMember={loginMember} />} />    
-          <Route path="/register" element={<Register forumMember={forumMember} createMember={createMember} />} />
-          <Route path="/view/all" element={<ViewAll forumMember={forumMember} allPosts={posts} />} />
-          <Route path="/view/continent/asia" element={<Asia forumMember={forumMember} asiaPosts={asiaPosts} />} />
-          <Route path="/view/continent/africa" element={<Africa forumMember={forumMember} africaPosts={africaPosts} />} />
-          <Route path="/view/continent/nth-america" element={<NthAmerica forumMember={forumMember} nthAmericaPosts={nthAmericaPosts} />} />
-          <Route path="/view/continent/sth-america" element={<SthAmerica forumMember={forumMember} sthAmericaPosts={sthAmericaPosts} />} />
-          <Route path="/view/continent/antarctica" element={<Antarctica forumMember={forumMember} antarcticaPosts={antarcticaPosts} />} />
-          <Route path="/view/continent/europe" element={<Europe forumMember={forumMember} europePosts={europePosts} />} />
-          <Route path="/view/continent/australia" element={<Australia forumMember={forumMember} australiaPosts={australiaPosts} />} />
-          <Route path="/about" element={<About forumMember={forumMember} />} />
-          <Route path="/contact" element={<Contact forumMember={forumMember} />} />
-          <Route path="/terms" element={<TermsOfUse forumMember={forumMember} />} />
-          <Route path="/privacy" element={<Privacy forumMember={forumMember} />} />
-          <Route path={"/posts"} element={<MyPosts forumMember={forumMember} latestPosts={posts} loggedInMember={loggedInMember} />} />
-          <Route path={"/posts/new"} element={<CreateAPost forumMember={forumMember} submitPost={submitPost} />} />
-          <Route path={"/posts/:id"} element={<ShowPostWrapper />}  />
-          <Route path={"/posts/edit/:id"} element={<ShowPostWrapper />}  />
-          <Route path='*' element={<PageNotFound forumMember={forumMember} />} />
+          <Route path="/" 
+            element={
+              <LandingPage 
+                forumMember={forumMember} 
+                posts={posts} 
+                loggedInMember={loggedInMember}
+                setPosts={setPosts}
+              />
+            } 
+          />
+          <Route path="/login" 
+            element={
+              <Login 
+                forumMember={forumMember} 
+                loginMember={loginMember} 
+                loginInput={loginInput} 
+                loginSuccess={loginSuccess} 
+                loginMessage={loginMessage} 
+                loginRedirect={loginRedirect} 
+                loginFormResetState={loginFormResetState} 
+              />
+            } 
+          />    
+          <Route path="/register" 
+            element={
+              <Register 
+                forumMember={forumMember} 
+                createMember={createMember} 
+                regMessage={regMessage} 
+                regSuccess={regSuccess} 
+                redirect={redirect} 
+                regFormResetState={regFormResetState} 
+              />
+            } 
+          />
+          <Route path="/view/all" 
+            element={
+              <ViewAll 
+                forumMember={forumMember} 
+                posts={posts}
+                setPosts={setPosts}
+              />
+            } 
+          />
+          <Route path="/view/continent/asia" 
+            element={
+              <Asia 
+                forumMember={forumMember} 
+                posts={asiaPosts}
+                setPosts={setAsiaPosts}
+                URI={'/category/Asia'}
+              />
+            } 
+          />
+          <Route path="/view/continent/africa" 
+            element={
+              <Africa 
+                forumMember={forumMember} 
+                posts={africaPosts}
+                setPosts={setAfricaPosts}
+                URI={'/category/Africa'}
+              />
+            } 
+          />
+          <Route path="/view/continent/nth-america" 
+            element={
+              <NthAmerica 
+                forumMember={forumMember} 
+                posts={northAmericaPosts}
+                setPosts={setNorthAmericaPosts}
+                URI={'/category/North America'}
+              />
+            } 
+          />
+          <Route path="/view/continent/sth-america" 
+            element={
+              <SthAmerica 
+                forumMember={forumMember} 
+                posts={southAmericaPosts}
+                setPosts={setSouthAmericaPosts}
+                URI={'/category/South America'}
+              />
+            } 
+          />
+          <Route path="/view/continent/antarctica" 
+            element={
+              <Antarctica 
+                forumMember={forumMember} 
+                posts={antarcticaPosts}
+                setPosts={setAntarcticaPosts}
+                URI={'/category/Antarctica'}
+              />
+            } 
+          />
+          <Route path="/view/continent/europe" 
+            element={
+              <Europe 
+                forumMember={forumMember} 
+                posts={europePosts}
+                setPosts={setEuropePosts}
+                URI={'/category/Europe'}
+                />
+              } 
+            />
+          <Route path="/view/continent/australia" 
+            element={
+              <Australia 
+                forumMember={forumMember} 
+                posts={australiaPosts}
+                setPosts={setAustraliaPosts}
+                URI={'/category/Australia'}
+              />
+            } 
+          />
+          <Route path="/about" 
+            element={
+              <About forumMember={forumMember} />
+            } 
+          />
+          <Route path="/contact" 
+        
+            element={
+              <Contact forumMember={forumMember} />
+            } 
+          />
+          <Route path="/terms" 
+            element={
+              <TermsOfUse forumMember={forumMember} />
+            } 
+          />
+          <Route path="/privacy" 
+            element={
+              <Privacy forumMember={forumMember} />
+            } 
+          />
+          <Route path={"/posts"} 
+            element={
+              <MyPosts 
+                forumMember={forumMember} 
+                latestPosts={posts} 
+                loggedInMember={loggedInMember} 
+              />
+            } 
+          />
+          <Route path={"/posts/new"} 
+            element={
+              <CreateAPost 
+                forumMember={forumMember} 
+                submitPost={submitPost} 
+              />
+            } 
+          />
+          <Route path={"/posts/:id"} 
+            element={
+              <ShowPostWrapper />
+            }  
+          />
+          <Route path={"/posts/edit/:id"} 
+            element={
+              <ShowPostWrapper />
+            }  
+          />
+          <Route path='*' 
+            element={
+              <PageNotFound 
+              forumMember={forumMember} 
+          />} 
+        />
         </Routes>
       <Footer />
     </>

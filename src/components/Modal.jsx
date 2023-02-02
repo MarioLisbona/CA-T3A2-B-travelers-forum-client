@@ -13,7 +13,7 @@ const [editedComment, setEditedComment] = useState(comment.content)
   // prepopulate with existing comment data
   return (
     <>
-      <div className="modal fade" id={`modal${modalNumber}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div className="modal fade" data-keyboard="false" data-backdrop="static" id={`modal${modalNumber}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content p-3">
             <div className="modal-header p-0 py-3">
@@ -24,11 +24,23 @@ const [editedComment, setEditedComment] = useState(comment.content)
               </button>
             </div>
             <div className="modal-content">
-            <textarea required maxLength="1000" rows="10" cols="50" value={editedComment} onChange={(event) => setEditedComment(event.target.value)}></textarea>
+            <textarea
+              required 
+              maxLength="1000" 
+              rows="10" 
+              cols="50" 
+              value={editedComment} 
+              onChange={(event) => setEditedComment(event.target.value)}>
+            </textarea>
             </div>
             <div className="modal-footer p-0 py-3">
               {/* save changes by calling editCommentModal and close modal */}
-              <button type="button" onClick={() => {editCommentModal()}} className="btn btn-success" data-dismiss="modal">Save changes</button>
+              <button 
+                type="button" 
+                onClick={() => {editCommentModal()}} 
+                className="btn btn-success" 
+                data-dismiss="modal">Save changes
+              </button>
             </div>
           </div>
         </div>

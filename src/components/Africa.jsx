@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
+import { fetchPosts } from '../functions'
 
-const Africa = ({ forumMember, africaPosts }) => {
+const Africa = ({ forumMember, posts, setPosts, URI }) => {
+
+  useEffect(() => {
+    // fetching the posts on mount only
+    // This means that new posts by other users will show every time this component is mounted
+    fetchPosts(setPosts, URI)
+    console.log('inside useEffect in Africa')
+  }, [])
+
+  // filtering AfricaPosts from the latest fetched posts
+  const africaPosts = posts.filter(post => post.category == 'Africa')
 
   return (
     <>
@@ -13,7 +24,13 @@ const Africa = ({ forumMember, africaPosts }) => {
       <div className="container">
         <Header 
           headingText={"Welcome to the African Continent!"} 
-          bodyText={"This is a little blurb about the african content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q...... "}
+          bodyText={
+          <>
+            <p>Africa, the second largest continent, is bounded by the Mediterranean Sea, the Red Sea, the Indian Ocean, and the Atlantic Ocean. It is divided almost equally in half by the Equator.</p>
+            <p>Africa's physical geography, environment and resources, and human geography can be considered separately.</p>
+            <p>Africa has eight major physical regions: the Sahara, the Sahel, the Ethiopian Highlands, the savanna, the Swahili Coast, the rainforest, the African Great Lakes, and southern Africa. Some of these regions cover large bands of the continent, such as the Sahara and Sahel, while others are isolated areas, such as the Ethiopian Highlands and the Great Lakes. Each of these regions has unique animal and plant communities.</p>
+          </>
+        }
         />
         <div className="row g-3">
           {/* If africaPosts has objects then map over the array and render a preview card for each post

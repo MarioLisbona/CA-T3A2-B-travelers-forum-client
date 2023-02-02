@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import Modal from './Modal'
 import ModalConfirmDelete from './ModalConfirmDelete'
+import moment from 'moment'
 
 const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumber, editComment }) => {
-
 
   // delete button function calls deleteComment async function passing in the current post and comment as the arguments
   function deleteButton() {
@@ -32,7 +31,7 @@ const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumbe
                       <div>Posted:</div>
                     </div>
                     <div className="col-md-7 mb-4">
-                      <div className="bg-alt mb-2">{comment.date}</div>
+                      <div className="bg-alt mb-2">{moment(comment.date).format('MMM Do YYYY hh:mm:a')}</div>
                     </div>
                   </div>
                 </div>

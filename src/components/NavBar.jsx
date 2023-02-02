@@ -6,12 +6,19 @@ const NavBar = () => {
     // guest navbar
 	return (
 		<>
-		<nav className="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
+		<nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container-fluid">
                 <Link className="navbar-brand ms-0 ps-0" to="/">
                     <img src={logo} width="200" height="40" alt=""></img>
                 </Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button 
+                    className="navbar-toggler white" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,7 +32,7 @@ const NavBar = () => {
                             <a className="nav-link dropdown-toggle text-white" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Browse By Continent
                             </a>
-                            <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                            <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <Link className="dropdown-item text-white" to="/view/continent/asia">
                                 Asia
                             </Link>

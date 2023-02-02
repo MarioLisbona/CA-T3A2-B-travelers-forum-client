@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
 import MemberHeader from './MemberHeader'
+import { fetchPosts } from '../functions'
 
-const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
+const LandingPage = ({ forumMember, posts, loggedInMember, setPosts }) => {
+
+  useEffect(() => {
+    // fetching the posts on mount only
+    // This means that new posts by other users will show every time this component is mounted
+    fetchPosts(setPosts)
+    console.log('inside useEffect in LandingPage')
+  }, [])
 
 	return (
 		<>
@@ -31,11 +39,11 @@ const LandingPage = ({ forumMember, latestPosts, loggedInMember }) => {
           }
           {/* render 8 latest preview cards */}
           <div className="row g-3">
-            <h1>See the latest Posts</h1>
-            {latestPosts.length > 0
-              ? latestPosts.map((post, idx) => (
+            <h2>See the latest Posts</h2>
+            {posts.length > 0
+              ? posts.map((post, idx) => (
                 idx < 8 
-                  ? <PreviewCard key ={idx} post={post} />
+                  ? <PreviewCard key={idx} post={post} />
                   : ''
               ))
               // conditionally render message for guest and member
