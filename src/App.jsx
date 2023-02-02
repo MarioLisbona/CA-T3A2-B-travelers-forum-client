@@ -26,6 +26,7 @@ import MemberNavBar from './components/MemberNavBar'
 import SearchingForPost from './components/SearchingForPost'
 
 import { fetchPosts } from './functions'
+import ModalJwtExpired from './components/ModalJwtExpired'
 
 
 const App = () => {
@@ -767,6 +768,9 @@ const editComment =  async (comment, editedComment, post) => {
             element={
               <ShowPostWrapper />
             }  
+          />
+          <Route path={"/jwt-expired"}
+            element={<ModalJwtExpired />}
           />
           <Route path='*' 
             element={
