@@ -8,7 +8,6 @@ const Header = ({ headingText, bodyText, btn1Text, showBtn1, btn1ToPage, btn2Tex
 		<div className="p-5 py-3 my-4 bg-light rounded-3 border border-success">
 				<h1>{headingText}</h1>
 				<p className="lead">{bodyText}</p>
-				<p>
 					{showBtn1
 						? <CtaButton
 								showBtn1 
@@ -25,7 +24,6 @@ const Header = ({ headingText, bodyText, btn1Text, showBtn1, btn1ToPage, btn2Tex
 							/> 
 						: ''
 					}
-				</p>
 		</div>
 	)
 }
