@@ -14,17 +14,6 @@ const MyPosts = ({ latestPosts, loggedInMember, forumMember }) => {
       {/* rednering a page with only 8 preview cards */}
       <HeroImage heroClass={'landing-page'}/>
       <div className="container">
-        {/* <Header 
-          headingText={
-            typeof loggedInMember.username === 'undefined'
-              ? "Welcome to the Traveler's Forum" 
-              : `Hi ${loggedInMember.username}, welcome to the forum`
-          }
-          bodyText={"All your posts are displayed below"} 
-          btn1Text={'Create a Post'}
-          showBtn1
-          btn1ToPage={'/posts/new'}
-        /> */}
         {forumMember 
             ? <MemberHeader headingText={`Hi ${loggedInMember.username}, welcome to the forum`}
                 bodyText={"A blurb about how cool the forum is etc"} 

@@ -11,7 +11,6 @@ const ViewAll = ({ forumMember, posts, setPosts }) => {
     // fetching the posts on mount only
     // This means that new posts by other users will show every time this component is mounted
     fetchPosts(setPosts)
-    console.log('inside useEffect in View All')
   }, [])
 
   return (
