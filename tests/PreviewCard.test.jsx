@@ -73,7 +73,7 @@ describe('PreviewCard Component', () => {
           </BrowserRouter>
         , container)
       })
-      expect(screen.getByText('Contient: Africa')).toBeDefined()
+      expect(screen.getByText('Continent: Africa')).toBeDefined()
     })
 
     it("render the date posted", () => {
