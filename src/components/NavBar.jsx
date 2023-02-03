@@ -63,11 +63,11 @@ const NavBar = () => {
                         </li>
                     </ul>
                     <div className="navbar-nav ms-auto">              	
-                        <Link to="/login" className="nav-item nav-link text-white">
-                            Login
-                        </Link>
                         <Link to="/register" className="nav-item nav-link text-white">
                             Register
+                        </Link>
+                        <Link to="/login" className="nav-item nav-link text-white">
+                            Login
                         </Link>
                     </div>
                 </div>
