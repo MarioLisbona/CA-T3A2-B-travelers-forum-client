@@ -7,8 +7,8 @@ import LandingPage from "../src/components/LandingPage"
 import { expect } from "vitest"
 import PreviewCard from '../src/components/PreviewCard'
 import React from "react";
-import { unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
+import { unmountComponentAtNode } from "react-dom"
+import { act } from "react-dom/test-utils"
 import moment from 'moment/moment'
 
 
