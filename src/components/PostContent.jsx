@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ModalConfirmDelete from './ModalConfirmDelete'
 import ModalPost from './ModalPost'
 import moment from 'moment'
 
 
-const PostContent = ({ post, postOwner, deletePost, editPost }) => {
+const PostContent = ({ post, postOwner, deletePost, editPost, loggedInMember }) => {
+
+  const [rating, setRating] = useState(0)
+  const [ratingScore, setRatingScore] = useState(0)
+
+  console.log(post)
+  console.log(rating)
 
   // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
@@ -32,15 +38,21 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
                 <div className="bg-alt mb-2">{post[0].category}</div>
               </div>
             </div>
-          <div>
             <div className="row">
               <div className="col-md-4">
                 <div className="">Posted:</div>
               </div>
-              <div className="col-md-6 mb-4">
+              <div className="col-md-6">
                 <div className="bg-alt mb-2">{moment(post[0].date_posted).format('MMM Do YYYY hh:mm:a')}</div>
               </div>
             </div>
+            <div className="row">
+              <div className="col-md-4">
+                <div className="">Rating:</div>
+              </div>
+              <div className="col-md-6 mb-4">
+                <div className="bg-alt mb-2">Post average rating</div>
+              </div>
             </div>
           </div>
           <hr></hr>
@@ -69,12 +81,33 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
               />
               <button 
                 type="button" 
-                className="btn btn-success my-2" 
+                className="btn btn-success my-2 me-1" 
                 data-toggle="modal" 
                 data-target={"#ModalDeletePost"}>Delete Post
               </button>
               <ModalConfirmDelete type={'Post'} delConfirmed={deleteButton} />
             </span>
+          : ''
+        }
+        {loggedInMember && !postOwner
+          ? 
+          <div class="btn-group">
+              <button type="button" class="btn btn-success my-2">Rate This Post</button>
+              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-2 " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu  bg-light rounded-3 border border-success">
+                <a class="dropdown-item"><button type="button" value={1} onClick={event => setRating(event.target.value)} className="btn m-0">★</button></a>
+                <a class="dropdown-item"><button type="button" value={2} onClick={event => setRating(event.target.value)} className="btn m-0">★★</button></a>
+                <a class="dropdown-item"><button type="button" value={3} onClick={event => setRating(event.target.value)} className="btn m-0">★★★</button></a>
+                <a class="dropdown-item"><button type="button" value={4} onClick={event => setRating(event.target.value)} className="btn m-0">★★★★</button></a>
+                <a class="dropdown-item"><button type="button" value={5} onClick={event => setRating(event.target.value)} className="btn m-0">★★★★★</button></a>
+                {/* <a class="dropdown-item" href="#">★★</a>
+                <a class="dropdown-item" href="#">★★★</a>
+                <a class="dropdown-item" href="#">★★★★</a>
+                <a class="dropdown-item" href="#">★★★★★</a> */}
+              </div>
+            </div>
           : ''
         }
     </div>

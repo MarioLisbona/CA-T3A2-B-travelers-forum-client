@@ -31,8 +31,8 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPo
     <>
       <div className="container min-vh-100" style={{ marginTop: "100px"}}>
         {loggedInMember.id == post[0].author._id
-          ? <PostContent post={post} postOwner deletePost={deletePost} editPost={editPost} />
-          : <PostContent post={post} />
+          ? <PostContent post={post} postOwner deletePost={deletePost} editPost={editPost} loggedInMember={loggedInMember} />
+          : <PostContent post={post} loggedInMember={loggedInMember} />
         }
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}
