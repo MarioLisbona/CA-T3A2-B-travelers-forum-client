@@ -40,7 +40,7 @@ const CommentContent = ({ comment, post, commentOwner, deleteComment, modalNumbe
               <hr></hr>
             </div>
             <div className="col-md-12">
-                <div className="bg-alt pe-5">{comment.content}</div>
+                <div style={{ whiteSpace: "pre-wrap" }} className="bg-alt pe-5">{comment.content}</div>
             </div>
         </div>
         <div className="pe-5">

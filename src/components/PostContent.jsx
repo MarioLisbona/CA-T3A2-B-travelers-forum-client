@@ -45,7 +45,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
           </div>
           <hr></hr>
           <div className="col-md-12">
-              <div className="bg-alt">{post[0].content}</div>
+              <div style={{ whiteSpace: "pre-wrap" }} className="bg-alt">{post[0].content}</div>
           </div>
         </div>
         <hr></hr>
