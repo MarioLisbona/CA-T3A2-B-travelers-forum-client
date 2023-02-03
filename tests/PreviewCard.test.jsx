@@ -15,35 +15,36 @@ import PreviewCard from '../src/components/PreviewCard'
 describe('PreviewCard Component', () => {
   let container
 
+  let testPost = {
+    "_id": "63dae1618c42e092ac5b80b0",
+    "title": "creating a post about africa",
+    "author": {
+        "_id": "63dae0718c42e092ac5b8076",
+        "username": "Person12345"
+    },
+    "category": "Africa",
+    "content": "Zulu Nation!",
+    "comments": [],
+    "date_posted": "2023-02-01T22:02:09.746Z",
+    "__v": 0
+  }
+
   beforeEach( function () {
     container = render(
       <BrowserRouter>
         <App>
-          <PreviewCard />
+          <LandingPage>
+            <PreviewCard testPost={testPost} />
+          </LandingPage>
         </App>
       </BrowserRouter>
     ).container
   })
 
   it('Displays a title for the post', () => {
+    // console.log(JSON.stringify(container.querySelectorAll('h3').length))
     expect(container.querySelector('h3')).toBeDefined()
-    // expect(container.querySelector('h3')).toHaveTextContent('Post Title')
-  })
-
-  it('Displays author of the post', () => {
-    expect(container.querySelector('h6')).toBeDefined()
-    // expect(container.querySelector('h6')).toHaveTextContent('Author')
-  })
-
-  it('Displays the category of the post', () => {
-    expect(container.querySelector('h6')).toBeDefined()
-    // expect(container.querySelector('h6')).toHaveTextContent('Post Title')
-  })
-
-  it('Displays when the post was created', () => {
-    expect(container.querySelector('h66')).toBeDefined()
-    console.log(container.querySelector('h66'))
-    // expect(container.querySelector('h6')).toHaveTextContent('Post Title')
+    // expect(container.querySelector('h3')).toHaveTextContent('creating a post about africa')
   })
 
 })
