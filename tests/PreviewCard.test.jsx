@@ -13,18 +13,23 @@ import moment from 'moment/moment'
 
 
   let testPost = {
-    "_id": "63dae1618c42e092ac5b80b0",
-    "title": "creating a post about africa",
+    "_id": "63de2945e7cdc5329d0101d3",
+    "title": "Test post 1",
     "author": {
-        "_id": "63dae0718c42e092ac5b8076",
-        "username": "Person12345"
+        "_id": "63ddd718cb5adb00abd92db5",
+        "username": "MarioLisbona"
     },
-    "category": "Africa",
-    "content": "Zulu Nation!",
+    "category": "Asia",
+    "content": "This is a test post",
     "comments": [],
-    "date_posted": "2023-02-01T22:02:09.746Z",
-    "__v": 0
-  }
+    "rating": [
+        3
+    ],
+    "date_posted": "2023-02-04T09:45:41.873Z",
+    "__v": 0,
+    "calculated_rating": 3,
+    "id": "63de2945e7cdc5329d0101d3"
+}
 
   let container = null;
   beforeEach(() => {
@@ -51,23 +56,27 @@ import moment from 'moment/moment'
 
   describe('Preview card renders with post information', () => {
     it("render the post title", () => {
-      expect(screen.getByText('creating a post about africa...')).toBeDefined()
+      expect(screen.getByText('Test post 1...')).toBeDefined()
     })
 
     it("render the post author", () => {
-      expect(screen.getByText('Author: Person12345')).toBeDefined()
+      expect(screen.getByText('Author: MarioLisbona')).toBeDefined()
     })
 
     it("render the post category", () => {
-      expect(screen.getByText('Continent: Africa')).toBeDefined()
+      expect(screen.getByText('Continent: Asia')).toBeDefined()
+    })
+
+    it("render the post rating", () => {
+      expect(screen.getByText(`Rating: ${testPost.calculated_rating} ★`)).toBeDefined()
     })
 
     it("render the date posted", () => {
       expect(screen.getByText(`Posted: ${moment(testPost.date_posted).startOf('minute').fromNow()}`)).toBeDefined()
     })
 
-    it("render the date posted", () => {
-      expect(screen.getByText('Zulu Nation!......')).toBeDefined()
+    it("render the post preview", () => {
+      expect(screen.getByText('This is a test post......')).toBeDefined()
     })
   })
 
