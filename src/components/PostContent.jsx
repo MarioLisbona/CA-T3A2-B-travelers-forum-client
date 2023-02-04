@@ -1,10 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ModalConfirmDelete from './ModalConfirmDelete'
 import ModalPost from './ModalPost'
 import moment from 'moment'
 
 
-const PostContent = ({ post, postOwner, deletePost, editPost }) => {
+const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, ratePost, memberHasRated }) => {
+
+  // rating state
+  const [rating, setRating] = useState(0)
+
+  useEffect(() => {
+
+    // useEffect with rating as its dependency
+    // everyt time rating changes, use switch case and render the correct amount of stars in the div
+    const div = document.getElementById('star-rating')
+    div.innerText = ''
+
+    switch(rating) {
+      case '0':
+        div.innerText = ''
+        break
+      case '1':
+        div.innerText = '★'
+        break
+      case '2':
+        div.innerText = '★★'
+        break
+      case '3':
+        div.innerText = '★★★'
+        break
+      case '4':
+        div.innerText = '★★★★★'
+        break
+      case '5':
+        div.innerText = '★★★★★'
+        break
+    }
+  }, [rating])
+
+  // called when the rating is submitted
+  // clears all the stars from the rating div
+  // and calls ratePost to update the db and the memberHasRated array
+  function ratePostButton() {
+    const div = document.getElementById('star-rating')
+    div.innerText = ''
+    ratePost(post, rating)
+  }
 
   // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
@@ -32,15 +73,25 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
                 <div className="bg-alt mb-2">{post[0].category}</div>
               </div>
             </div>
-          <div>
             <div className="row">
               <div className="col-md-4">
                 <div className="">Posted:</div>
               </div>
-              <div className="col-md-6 mb-4">
+              <div className="col-md-6">
                 <div className="bg-alt mb-2">{moment(post[0].date_posted).format('MMM Do YYYY hh:mm:a')}</div>
               </div>
             </div>
+            <div className="row">
+              <div className="col-md-4">
+                <div className="">Rating:</div>
+              </div>
+              <div className="col-md-6 mb-4">
+                <div className="bg-alt mb-2">{
+                  post[0].calculated_rating == 0
+                    ? 'This post has not been rated yet'
+                    : `${post[0].calculated_rating} ★`
+                }</div>
+              </div>
             </div>
           </div>
           <hr></hr>
@@ -69,7 +120,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
               />
               <button 
                 type="button" 
-                className="btn btn-success my-2" 
+                className="btn btn-success my-2 me-1" 
                 data-toggle="modal" 
                 data-target={"#ModalDeletePost"}>Delete Post
               </button>
@@ -77,6 +128,75 @@ const PostContent = ({ post, postOwner, deletePost, editPost }) => {
             </span>
           : ''
         }
+        {/* If the user is logged in and is not the owner of the post 
+        and the post hasn't already been rated by this user
+        render the rate post button and dropdown */}
+        {forumMember && !postOwner && !memberHasRated.includes(post[0]._id)
+          ? 
+          <div class="btn-group">
+            <div className="me-3 mt-3">Rate This Post</div>
+              <button 
+                type="button" 
+                // disable button until a star rating is chosen
+                disabled={rating == 0 ? true : false} 
+                onClick={ratePostButton} 
+                class="btn btn-success my-2 rounded me-1">
+                  Submit
+              </button>
+              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-2 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
+              <div class="dropdown-menu  bg-light rounded-3 border border-success">
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={1} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={2} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={3} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={4} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★★★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={5} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★★★★
+                  </button>
+                </a>
+              </div>
+            </div>
+          : ''
+        }
+        {/* div to store the star rating after stars are selected */}
+        <div id="star-rating"class="mt-1 mb-2"></div>
     </div>
   )
 }
