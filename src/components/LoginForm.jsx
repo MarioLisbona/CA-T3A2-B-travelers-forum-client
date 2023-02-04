@@ -38,13 +38,13 @@ const LoginForm = ({ loginMember, loginInput, loginSuccess, loginMessage, loginR
     {/* login form inputs */}
       <form onSubmit={submitForm} className="p-5 pt-3 pb-2 bg-light rounded-3 border border-success">
         <div className="row mb-3">
-          <label for="inputUsername" className="col-sm-2 col-form-label">Username</label>
+          <label htmlFor="inputUsername" className="col-sm-2 col-form-label">Username</label>
           <div className="col-sm-4">
             <input required type="text" value={username} onChange={(event) => setUsername(event.target.value)} className="form-control" id="inputUsername"></input>
           </div>
         </div>
         <div className="row mb-3">
-          <label for="inputPassword" className="col-sm-2 col-form-label">Password</label>
+          <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>
           <div className="col-sm-4">
             <input required type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="form-control" id="inputPassword"></input>
           </div>
