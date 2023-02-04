@@ -4,11 +4,15 @@ import ModalPost from './ModalPost'
 import moment from 'moment'
 
 
-const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, ratePost }) => {
+const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, ratePost, memberHasRated }) => {
 
   const [rating, setRating] = useState(0)
 
-  console.log('inside PostContent', post[0].calculated_rating)
+  console.log('inside PostContent - post id', post[0]._id)
+  console.log('inside PostContent - member rated posts', memberHasRated)
+
+  console.log('inside PostContent -', memberHasRated.includes(post[0]._id))
+
 
   useEffect(() => {
 
@@ -122,7 +126,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
           : ''
         }
         {/* If the user is logged in and is not the owner of the post */}
-        {forumMember && !postOwner
+        {forumMember && !postOwner && !memberHasRated.includes(post[0]._id)
           ? 
           <div class="btn-group">
             <div className="me-3 mt-3">Rate This Post</div>

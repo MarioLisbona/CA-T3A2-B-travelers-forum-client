@@ -150,6 +150,7 @@ const App = () => {
           editComment={editComment}
           deleteComment={deleteComment}
           ratePost={ratePost}
+          memberHasRated={memberHasRated}
         />
   }
 
