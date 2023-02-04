@@ -26,7 +26,7 @@ function submitEditForm(event) {
     <>
       <form onSubmit={edit ? submitEditForm : submitForm} className="p-5 bg-light rounded-3 border border-success">
         <div className="row mb-3">
-          <label for="inputPostTitle" className="col-sm-2 col-form-label">Post Title</label>
+          <label htmlFor="inputPostTitle" className="col-sm-2 col-form-label">Post Title</label>
           <div className="col-sm-10">
             <input 
               required 
@@ -40,7 +40,7 @@ function submitEditForm(event) {
           </div>
         </div>
         <div className="row mb-3">
-          <label for="input-continent-select" className="col-sm-2 col-form-label">Choose a Continent</label>
+          <label htmlFor="input-continent-select" className="col-sm-2 col-form-label">Choose a Continent</label>
           <div className="col-sm-10">
             <select 
               required 

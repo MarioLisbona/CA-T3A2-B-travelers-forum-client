@@ -34,8 +34,8 @@ const Modal = ({ modalNumber, post, editPost }) => {
               </button>
             </div>
             <div className="modal-body">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Title</label>
+              <div className="form-group">
+                <label for="recipient-name" className="col-form-label">Title</label>
                 <input 
                   required maxLength="50" 
                   type="text" 
@@ -45,8 +45,8 @@ const Modal = ({ modalNumber, post, editPost }) => {
                   id="title">
                 </input>
               </div>
-              <label for="inputPostContinent" class="col-form-label">Continent</label>
-              <div class="form-group">
+              <label for="inputPostContinent" className="col-form-label">Continent</label>
+              <div className="form-group">
                 <select 
                   required 
                   className="form-select" 
@@ -63,8 +63,8 @@ const Modal = ({ modalNumber, post, editPost }) => {
                   <option value="Australia">Australia</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Post</label>
+              <div className="form-group">
+                <label for="message-text" className="col-form-label">Post</label>
                 <textarea 
                   required 
                   maxLength="10000" 
