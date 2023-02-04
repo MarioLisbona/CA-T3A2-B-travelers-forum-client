@@ -8,10 +8,10 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
 
   const [rating, setRating] = useState(0)
 
-  console.log('inside PostContent - post id', post[0]._id)
+  // console.log('inside PostContent - post id', post[0]._id)
   console.log('inside PostContent - member rated posts', memberHasRated)
 
-  console.log('inside PostContent -', memberHasRated.includes(post[0]._id))
+  // console.log('inside PostContent -', memberHasRated.includes(post[0]._id))
 
 
   useEffect(() => {

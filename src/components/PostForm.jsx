@@ -20,7 +20,6 @@ function submitForm(event) {
 function submitEditForm(event) {
   event.preventDefault()
   editPost(post, title, continent, postContent)
-  // console.log('editing post', post[0]._id, title, continent, postContent)
 }
   // render form with post inputs
   return (

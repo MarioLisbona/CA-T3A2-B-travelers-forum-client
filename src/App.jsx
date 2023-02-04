@@ -37,7 +37,7 @@ const App = () => {
   // state variable for memberHasRated
   const [memberHasRated, setMemberHasRated] = useState([])
 
-  console.log('top app, member has rated these posts', memberHasRated)
+  console.log('top of app, member has rated these posts', memberHasRated)
 
   // state variable to track and store all posts
   const [posts, setPosts] = useState([])
@@ -324,11 +324,10 @@ const App = () => {
         },
         'body': JSON.stringify(newPost)
       })
-      
-      console.log(returnedPost.status)
+    
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedPost.json()
-      console.log(returnedObject)
+
       // If JWT lost after login but before form submit
       if (returnedPost.status === 403) {  
         logoutMember()
@@ -430,8 +429,17 @@ const ratePost =  async (post, rating) => {
       'body': JSON.stringify(userRatingObject)
     })
 
+    
+
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedPost.json()
+
+    console.log('inside ratePost function -  hasRated array: ', memberHasRated )
+    console.log('inside ratePost function -  hasRated array: post id to add', returnedObject._id )
+
+    setMemberHasRated([...memberHasRated, returnedObject._id])
+
+    console.log('after update memerhasrated array', memberHasRated)
 
     if (returnedPost.status != 200) {  
       logoutMember()

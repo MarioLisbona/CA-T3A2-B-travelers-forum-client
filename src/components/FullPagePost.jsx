@@ -6,6 +6,7 @@ import CommentForm from './CommentForm'
 
 const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPost, deletePost, deleteComment, editComment, ratePost, memberHasRated }) => {
 
+  console.log('Inside Member Posts - memberHasRated', memberHasRated)
   // map over post to pull comments from the nested array and create a new comments object to be used
   // when rendering CommentContent component
   const comments = post[0].comments.map(comment => (
