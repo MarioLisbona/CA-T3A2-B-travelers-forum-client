@@ -21,7 +21,7 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav mr-auto">
                       <li className="nav-item">
-                          <Link className="nav-link text-white" to="../view/all">
+                          <Link data-testid="browse-all" className="nav-link text-white" to="../view/all">
                               Browse all Destinations
                           </Link>
                       </li>
