@@ -8,6 +8,8 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
 
   const [rating, setRating] = useState(0)
 
+  console.log('inside PostContent', post[0].calculated_rating)
+
   useEffect(() => {
 
     const div = document.getElementById('star-rating')
@@ -77,7 +79,11 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
                 <div className="">Rating:</div>
               </div>
               <div className="col-md-6 mb-4">
-                <div className="bg-alt mb-2">Post average rating</div>
+                <div className="bg-alt mb-2">{
+                  post[0].calculated_rating == 0
+                    ? 'This post has not been rated yet'
+                    : post[0].calculated_rating
+                }</div>
               </div>
             </div>
           </div>
