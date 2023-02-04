@@ -105,9 +105,7 @@ const App = () => {
     }
   }
 
-  function ratePost(postID, rating) {
-    console.log('inside app.jsx',postID, rating)
-  }
+
 
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
   // set logged in member to currentUser object
@@ -380,26 +378,77 @@ const editPost =  async (post, title, continent, postContent) => {
       logoutMember()
       nav('/jwt-expired')
     } else {
-    // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
-    const targetPostId = post[0]._id
-    // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
-    const postIndex = posts.findIndex(post => targetPostId == post._id)
+      // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+      const targetPostId = post[0]._id
+      // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
+      const postIndex = posts.findIndex(post => targetPostId == post._id)
 
-    // replace the post with the updated one
-    posts.splice(postIndex, 1, returnedObject)
+      // replace the post with the updated one
+      posts.splice(postIndex, 1, returnedObject)
 
-    // updating the state of the posts array with the updated post
-    setPosts(posts)
+      // updating the state of the posts array with the updated post
+      setPosts(posts)
 
-    // navigate to the updated full page post
-    window.scrollTo(0, 0)
-    nav(`/posts/${targetPostId}`)
+      // navigate to the updated full page post
+      window.scrollTo(0, 0)
+      nav(`/posts/${targetPostId}`)
     }
   }
   catch (err){
     console.log(err.message)
   }
 
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         ratePost function       ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// async function - is called when a users post is edited
+const ratePost =  async (post, rating) => {
+
+  try {
+    const userRatingObject = {
+      "userRating": rating
+    }
+
+    // PUT the new rating attribute to the API and assign the return object to returnedPost
+    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}/rating`, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
+      },
+      'body': JSON.stringify(userRatingObject)
+    })
+
+    // creating JSON object with returned object from the fetch request
+    const returnedObject = await returnedPost.json()
+
+    if (returnedPost.status != 200) {  
+      logoutMember()
+      nav('/jwt-expired')
+    } else {
+      // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+      const targetPostId = post[0]._id
+      // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
+      const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+      // replace the post with the updated one
+      posts.splice(postIndex, 1, returnedObject)
+
+      // updating the state of the posts array with the updated post
+      setPosts(posts)
+
+      // navigate to the updated full page post
+      window.scrollTo(0, 0)
+      nav(`/posts/${targetPostId}`)
+    }
+  }
+  catch (err){
+    console.log(err.message)
+  }
 }
 
 
