@@ -12,7 +12,6 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
 
     const div = document.getElementById('star-rating')
     div.innerText = ''
-    console.log(rating)
 
     switch(rating) {
       case '1':
@@ -36,8 +35,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
   function ratePostButton() {
     const div = document.getElementById('star-rating')
     div.innerText = ''
-    
-    ratePost(post[0]._id, rating)
+    ratePost(post, rating)
   }
 
   // delete button function calls deletePost async passing in the current post as the argument
