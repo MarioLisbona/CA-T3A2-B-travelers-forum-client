@@ -323,7 +323,7 @@ const App = () => {
       const returnedObject = await returnedPost.json()
       console.log(returnedObject)
       // If JWT lost after login but before form submit
-      if (returnedPost.status != 201) {  
+      if (returnedPost.status === 403) {  
         logoutMember()
         nav('/jwt-expired')
       // JWT valid
@@ -374,7 +374,7 @@ const editPost =  async (post, title, continent, postContent) => {
     // creating JSON object with returned object from the fetch request
     const returnedObject = await returnedPost.json()
 
-    if (returnedPost.status != 200) {  
+    if (returnedPost.status === 403) {  
       logoutMember()
       nav('/jwt-expired')
     } else {
@@ -471,7 +471,7 @@ const deletePost =  async (post) => {
     })
 
     // const returnedObject = await returnedPost.json()
-    if (returnedPost.status != 204) {  
+    if (returnedPost.status === 403) {  
       logoutMember()
       nav('/jwt-expired')
     } else {
@@ -529,7 +529,7 @@ const deletePost =  async (post) => {
       const returnedObject = await returnedComment.json()
       
       // If JWT lost after login but before form submit
-      if (returnedComment.status != 201) {  
+      if (returnedComment.status === 403) {  
         logoutMember()
         nav('/jwt-expired')
       } else {
@@ -573,7 +573,7 @@ const deleteComment =  async (comment, post) => {
     })
 
     // const returnedObject = await returnComment.json()
-    if (returnComment.status != 204) {  
+    if (returnComment.status === 403) {  
       logoutMember()
       nav('/jwt-expired')
     } else {
@@ -627,7 +627,7 @@ const editComment =  async (comment, editedComment, post) => {
     const returnedObject = await returnedEditedComment.json()
 
     // If JWT lost after login but before form submit
-    if (returnedEditedComment.status != 200) {  
+    if (returnedEditedComment.status === 403) {  
       logoutMember()
       nav('/jwt-expired')
     } else {
