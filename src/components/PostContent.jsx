@@ -6,16 +6,13 @@ import moment from 'moment'
 
 const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, ratePost, memberHasRated }) => {
 
+  // rating state
   const [rating, setRating] = useState(0)
-
-  // console.log('inside PostContent - post id', post[0]._id)
-  console.log('inside PostContent - member rated posts', memberHasRated)
-
-  // console.log('inside PostContent -', memberHasRated.includes(post[0]._id))
-
 
   useEffect(() => {
 
+    // useEffect with rating as its dependency
+    // everyt time rating changes, use switch case and render the correct amount of stars in the div
     const div = document.getElementById('star-rating')
     div.innerText = ''
 
@@ -41,6 +38,9 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
     }
   }, [rating])
 
+  // called when the rating is submitted
+  // clears all the stars from the rating div
+  // and calls ratePost to update the db and the memberHasRated array
   function ratePostButton() {
     const div = document.getElementById('star-rating')
     div.innerText = ''
@@ -128,7 +128,9 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
             </span>
           : ''
         }
-        {/* If the user is logged in and is not the owner of the post */}
+        {/* If the user is logged in and is not the owner of the post 
+        and the post hasn't already been rated by this user
+        render the rate post button and dropdown */}
         {forumMember && !postOwner && !memberHasRated.includes(post[0]._id)
           ? 
           <div class="btn-group">
@@ -186,6 +188,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
             </div>
           : ''
         }
+        {/* div to store the star rating after stars are selected */}
         <div id="star-rating"class="mt-1 mb-2"></div>
     </div>
   )

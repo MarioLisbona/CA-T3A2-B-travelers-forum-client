@@ -34,7 +34,7 @@ const App = () => {
   // navigate to pages from within a function
   const nav = useNavigate()
 
-  // state variable for memberHasRated
+  // state variable for memberHasRated - stores the id's of posts that a user has already rated
   const [memberHasRated, setMemberHasRated] = useState([])
 
   console.log('top of app, member has rated these posts', memberHasRated)
@@ -410,15 +410,16 @@ const editPost =  async (post, title, continent, postContent) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////         ratePost function       ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// async function - is called when a users post is edited
+// async function - is called when a users rates a post
 const ratePost =  async (post, rating) => {
 
   try {
+    // create a rating object that will be the json body for rating a post
     const userRatingObject = {
       "userRating": rating
     }
 
-    // PUT the new rating attribute to the API and assign the return object to returnedPost
+    // PATCH the new rating attribute to the API and assign the return object to returnedPost
     const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}/rating`, {
       method: 'PATCH',
       headers: {
@@ -430,16 +431,11 @@ const ratePost =  async (post, rating) => {
     })
 
     
-
     // creating JSON object with returned object from the fetch request
-    const returnedObject = await returnedPost.json()
+    const returnedObject = await returnedPost.json()  
 
-    console.log('inside ratePost function -  hasRated array: ', memberHasRated )
-    console.log('inside ratePost function -  hasRated array: post id to add', returnedObject._id )
-
+    // add the id of the post that just been rated to the memberHadsRated array
     setMemberHasRated([...memberHasRated, returnedObject._id])
-
-    console.log('after update memerhasrated array', memberHasRated)
 
     if (returnedPost.status != 200) {  
       logoutMember()
