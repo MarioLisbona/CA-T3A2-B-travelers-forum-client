@@ -105,6 +105,10 @@ const App = () => {
     }
   }
 
+  function ratePost(postID, rating) {
+    console.log('inside app.jsx',postID, rating)
+  }
+
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
   // set logged in member to currentUser object
   // set forumMember to true for conditional rendering
@@ -141,7 +145,8 @@ const App = () => {
           deletePost={deletePost} 
           submitComment={submitComment} 
           editComment={editComment}
-          deleteComment={deleteComment} 
+          deleteComment={deleteComment}
+          ratePost={ratePost}
         />
   }
 

@@ -1,16 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ModalConfirmDelete from './ModalConfirmDelete'
 import ModalPost from './ModalPost'
 import moment from 'moment'
 
 
-const PostContent = ({ post, postOwner, deletePost, editPost, loggedInMember }) => {
+const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, ratePost }) => {
 
   const [rating, setRating] = useState(0)
-  const [ratingScore, setRatingScore] = useState(0)
 
-  console.log(post)
-  console.log(rating)
+  useEffect(() => {
+
+    const div = document.getElementById('star-rating')
+    div.innerText = ''
+    console.log(rating)
+
+    switch(rating) {
+      case '1':
+        div.innerText = '★'
+        break
+      case '2':
+        div.innerText = '★★'
+        break
+      case '3':
+        div.innerText = '★★★'
+        break
+      case '4':
+        div.innerText = '★★★★★'
+        break
+      case '5':
+        div.innerText = '★★★★★'
+        break
+    }
+  }, [rating])
+
+  function ratePostButton() {
+    const div = document.getElementById('star-rating')
+    div.innerText = ''
+    
+    ratePost(post[0]._id, rating)
+  }
 
   // delete button function calls deletePost async passing in the current post as the argument
   function deleteButton() {
@@ -89,27 +117,65 @@ const PostContent = ({ post, postOwner, deletePost, editPost, loggedInMember }) 
             </span>
           : ''
         }
-        {loggedInMember && !postOwner
+        {/* If the user is logged in and is not the owner of the post */}
+        {forumMember && !postOwner
           ? 
           <div class="btn-group">
-              <button type="button" class="btn btn-success my-2">Rate This Post</button>
-              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-2 " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
+            <div className="me-3 mt-3">Rate This Post</div>
+              <button type="button" onClick={ratePostButton} class="btn btn-success my-2 rounded me-1">Submit</button>
+              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-2 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               </button>
               <div class="dropdown-menu  bg-light rounded-3 border border-success">
-                <a class="dropdown-item"><button type="button" value={1} onClick={event => setRating(event.target.value)} className="btn m-0">★</button></a>
-                <a class="dropdown-item"><button type="button" value={2} onClick={event => setRating(event.target.value)} className="btn m-0">★★</button></a>
-                <a class="dropdown-item"><button type="button" value={3} onClick={event => setRating(event.target.value)} className="btn m-0">★★★</button></a>
-                <a class="dropdown-item"><button type="button" value={4} onClick={event => setRating(event.target.value)} className="btn m-0">★★★★</button></a>
-                <a class="dropdown-item"><button type="button" value={5} onClick={event => setRating(event.target.value)} className="btn m-0">★★★★★</button></a>
-                {/* <a class="dropdown-item" href="#">★★</a>
-                <a class="dropdown-item" href="#">★★★</a>
-                <a class="dropdown-item" href="#">★★★★</a>
-                <a class="dropdown-item" href="#">★★★★★</a> */}
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={1} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={2} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={3} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={4} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★★★
+                  </button>
+                </a>
+                <a class="dropdown-item">
+                  <button 
+                    type="button" 
+                    value={5} 
+                    onClick={(event) => setRating(event.target.value)} 
+                    className="btn m-0">
+                      ★★★★★
+                  </button>
+                </a>
               </div>
             </div>
           : ''
         }
+        <div id="star-rating"class="mt-1 mb-2"></div>
     </div>
   )
 }
