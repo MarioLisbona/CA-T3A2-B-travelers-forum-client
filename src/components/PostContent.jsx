@@ -89,7 +89,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
                 <div className="bg-alt mb-2">{
                   post[0].calculated_rating == 0
                     ? 'This post has not been rated yet'
-                    : post[0].calculated_rating
+                    : `${post[0].calculated_rating} ★`
                 }</div>
               </div>
             </div>
@@ -135,7 +135,7 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
           ? 
           <div class="btn-group">
             <div className="me-3 mt-3">Rate This Post</div>
-              <button type="button" onClick={ratePostButton} class="btn btn-success my-2 rounded me-1">Submit</button>
+              <button type="button" disabled={rating == 0 ? true : false} onClick={ratePostButton} class="btn btn-success my-2 rounded me-1">Submit</button>
               <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-2 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               </button>
               <div class="dropdown-menu  bg-light rounded-3 border border-success">
