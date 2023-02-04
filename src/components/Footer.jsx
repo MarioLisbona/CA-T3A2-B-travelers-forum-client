@@ -10,7 +10,7 @@ const Footer = () => {
 			<hr className="border border-dark"></hr>
 				<div className="row m-1">
 					<div className="col-md-6">
-							<p>Copyright © 2023 Traveler's Forum</p>
+							<p>Copyright © 2023 Traveller's Forum</p>
 					</div>
 					<div className="col-md-6 text-md-end">
 							<Link to="/terms" className="text-dark">
