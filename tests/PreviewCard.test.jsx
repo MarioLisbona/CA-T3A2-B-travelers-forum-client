@@ -1,9 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
-import userEvent from '@testing-library/user-event'
 import { BrowserRouter, Link } from "react-router-dom"
-import App from "../src/App"
-import LandingPage from "../src/components/LandingPage"
 import { expect } from "vitest"
 import PreviewCard from '../src/components/PreviewCard'
 import React from "react";
@@ -45,14 +42,14 @@ import moment from 'moment/moment'
       , container
       )
     })
-  });
+  })
 
   afterEach(() => {
     // cleanup on exiting
-    unmountComponentAtNode(container);
+    unmountComponentAtNode(container)
     container.remove()
     container = null
-  });
+  })
 
   describe('Preview card renders with post information', () => {
     it("render the post title", () => {
@@ -77,6 +74,9 @@ import moment from 'moment/moment'
 
     it("render the post preview", () => {
       expect(screen.getByText('This is a test post......')).toBeDefined()
+    })
+    it("render a button to read more", () => {
+      expect(screen.getByText('Read more')).toBeDefined()
     })
   })
 

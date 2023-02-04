@@ -2,19 +2,15 @@ import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
 import userEvent from '@testing-library/user-event'
 import { BrowserRouter, Link } from "react-router-dom"
-import App from "../src/App"
-import LandingPage from "../src/components/LandingPage"
 import { expect } from "vitest"
 import PreviewCard from '../src/components/PreviewCard'
 import React from "react";
 import { unmountComponentAtNode } from "react-dom"
 import { act } from "react-dom/test-utils"
-import moment from 'moment/moment'
 import NavBar from '../src/components/NavBar'
 import MemberNavBar from '../src/components/MemberNavBar'
 import CreateAPost from '../src/components/CreateAPost'
 import ViewAll from '../src/components/ViewAll'
-import Header from '../src/components/Header'
 
 describe('Navbar renders correct links for guest', () => {
   let forumMember = true
