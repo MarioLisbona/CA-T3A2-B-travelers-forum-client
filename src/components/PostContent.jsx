@@ -20,6 +20,9 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
     div.innerText = ''
 
     switch(rating) {
+      case '0':
+        div.innerText = ''
+        break
       case '1':
         div.innerText = '★'
         break
