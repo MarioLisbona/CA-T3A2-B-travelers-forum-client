@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
 import SearchingForPost from './components/SearchingForPost'
 
-import { fetchPosts } from './functions'
+import { fetchMember, fetchPosts } from './functions'
 import ModalJwtExpired from './components/ModalJwtExpired'
 
 
@@ -33,6 +33,11 @@ const App = () => {
 
   // navigate to pages from within a function
   const nav = useNavigate()
+
+  // state variable for memberHasRated
+  const [memberHasRated, setMemberHasRated] = useState([])
+
+  console.log('top app, member has rated these posts', memberHasRated)
 
   // state variable to track and store all posts
   const [posts, setPosts] = useState([])
@@ -245,13 +250,14 @@ const App = () => {
           token: returnedObject.token
         })
 
+        fetchMember(setMemberHasRated, returnedObject.id)
+
         // call redirect function to redirect to login page after successful user registration
         loginRedirect(sessionStorage)
 
       // login details are incorrect
       // need to render a modal here with error message
       } else {
-        console.log(returnedObject)
         // used for conditional logic in modal
         setLoginMessage(`Login failed - ${returnedObject.error}`)
         setLoginSuccess(false)

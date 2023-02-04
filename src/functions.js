@@ -4,6 +4,12 @@ async function fetchPosts(setPosts, URI='') {
   setPosts(data)
 }
 
-export { fetchPosts } 
+async function fetchMember(setMemberHasRated, MemberId) {
+  const result = await fetch(`https://indigo-stocking-production.up.railway.app/members/${MemberId}`)
+  const data = await result.json()
+  setMemberHasRated(data.has_rated)
+}
+
+export { fetchPosts, fetchMember } 
 
   
