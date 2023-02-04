@@ -4,7 +4,7 @@ import PostContent from './PostContent'
 import CommentContent from './CommentContent'
 import CommentForm from './CommentForm'
 
-const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPost, deletePost, deleteComment, editComment }) => {
+const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPost, deletePost, deleteComment, editComment, ratePost, memberHasRated }) => {
 
   // map over post to pull comments from the nested array and create a new comments object to be used
   // when rendering CommentContent component
@@ -31,8 +31,8 @@ const FullPagePost = ({ forumMember, post, submitComment, loggedInMember, editPo
     <>
       <div className="container min-vh-100" style={{ marginTop: "100px"}}>
         {loggedInMember.id == post[0].author._id
-          ? <PostContent post={post} postOwner deletePost={deletePost} editPost={editPost} />
-          : <PostContent post={post} />
+          ? <PostContent post={post} postOwner deletePost={deletePost} editPost={editPost} loggedInMember={loggedInMember} />
+          : <PostContent post={post} forumMember={forumMember} loggedInMember={loggedInMember} ratePost={ratePost} memberHasRated={memberHasRated} />
         }
         {comments.length > 0 ? <h3 className="ps-5 my-3">Comments</h3> : ''}
         {/* if there are comments map over them and render CommentContent component for each comment */}

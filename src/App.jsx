@@ -25,7 +25,7 @@ import PageNotFound from './components/PageNotFound'
 import MemberNavBar from './components/MemberNavBar'
 import SearchingForPost from './components/SearchingForPost'
 
-import { fetchPosts } from './functions'
+import { fetchMember, fetchPosts } from './functions'
 import ModalJwtExpired from './components/ModalJwtExpired'
 
 
@@ -33,6 +33,9 @@ const App = () => {
 
   // navigate to pages from within a function
   const nav = useNavigate()
+
+  // state variable for memberHasRated - stores the id's of posts that a user has already rated
+  const [memberHasRated, setMemberHasRated] = useState([])
 
   // state variable to track and store all posts
   const [posts, setPosts] = useState([])
@@ -105,6 +108,8 @@ const App = () => {
     }
   }
 
+
+
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
   // set logged in member to currentUser object
   // set forumMember to true for conditional rendering
@@ -141,7 +146,9 @@ const App = () => {
           deletePost={deletePost} 
           submitComment={submitComment} 
           editComment={editComment}
-          deleteComment={deleteComment} 
+          deleteComment={deleteComment}
+          ratePost={ratePost}
+          memberHasRated={memberHasRated}
         />
   }
 
@@ -242,13 +249,14 @@ const App = () => {
           token: returnedObject.token
         })
 
+        fetchMember(setMemberHasRated, returnedObject.id)
+
         // call redirect function to redirect to login page after successful user registration
         loginRedirect(sessionStorage)
 
       // login details are incorrect
       // need to render a modal here with error message
       } else {
-        console.log(returnedObject)
         // used for conditional logic in modal
         setLoginMessage(`Login failed - ${returnedObject.error}`)
         setLoginSuccess(false)
@@ -314,11 +322,10 @@ const App = () => {
         },
         'body': JSON.stringify(newPost)
       })
-      
-      console.log(returnedPost.status)
+    
       // creating JSON object with returned object from the fetch request
       const returnedObject = await returnedPost.json()
-      console.log(returnedObject)
+
       // If JWT lost after login but before form submit
       if (returnedPost.status === 403) {  
         logoutMember()
@@ -375,26 +382,82 @@ const editPost =  async (post, title, continent, postContent) => {
       logoutMember()
       nav('/jwt-expired')
     } else {
-    // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
-    const targetPostId = post[0]._id
-    // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
-    const postIndex = posts.findIndex(post => targetPostId == post._id)
+      // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+      const targetPostId = post[0]._id
+      // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
+      const postIndex = posts.findIndex(post => targetPostId == post._id)
 
-    // replace the post with the updated one
-    posts.splice(postIndex, 1, returnedObject)
+      // replace the post with the updated one
+      posts.splice(postIndex, 1, returnedObject)
 
-    // updating the state of the posts array with the updated post
-    setPosts(posts)
+      // updating the state of the posts array with the updated post
+      setPosts(posts)
 
-    // navigate to the updated full page post
-    window.scrollTo(0, 0)
-    nav(`/posts/${targetPostId}`)
+      // navigate to the updated full page post
+      window.scrollTo(0, 0)
+      nav(`/posts/${targetPostId}`)
     }
   }
   catch (err){
     console.log(err.message)
   }
 
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////         ratePost function       ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// async function - is called when a users rates a post
+const ratePost =  async (post, rating) => {
+
+  try {
+    // create a rating object that will be the json body for rating a post
+    const userRatingObject = {
+      "userRating": rating
+    }
+
+    // PATCH the new rating attribute to the API and assign the return object to returnedPost
+    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}/rating`, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.token
+      },
+      'body': JSON.stringify(userRatingObject)
+    })
+
+    
+    // creating JSON object with returned object from the fetch request
+    const returnedObject = await returnedPost.json()  
+
+    // add the id of the post that just been rated to the memberHadsRated array
+    setMemberHasRated([...memberHasRated, returnedObject._id])
+
+    if (returnedPost.status != 200) {  
+      logoutMember()
+      nav('/jwt-expired')
+    } else {
+      // assigning id of current post to targetPostId - this wont work with post[0]._id inside the findIndex() method
+      const targetPostId = post[0]._id
+      // using targetPostId to find the post that has just been edited in the array of posts fetched from the server
+      const postIndex = posts.findIndex(post => targetPostId == post._id)
+
+      // replace the post with the updated one
+      posts.splice(postIndex, 1, returnedObject)
+
+      // updating the state of the posts array with the updated post
+      setPosts(posts)
+
+      // navigate to the updated full page post
+      window.scrollTo(0, 0)
+      nav(`/posts/${targetPostId}`)
+    }
+  }
+  catch (err){
+    console.log(err.message)
+  }
 }
 
 
