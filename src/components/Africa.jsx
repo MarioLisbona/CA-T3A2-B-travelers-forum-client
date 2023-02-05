@@ -18,7 +18,7 @@ const Africa = ({ forumMember, posts, setPosts, URI }) => {
   return (
     <>
       {/* Heroimage */}
-      <HeroImage heroClass={'acirfa'}/>
+      <HeroImage heroClass={'africa'}/>
       {/* container for main body of the page */}
       <div className="container">
         <Header 

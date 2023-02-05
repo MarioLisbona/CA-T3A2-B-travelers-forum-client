@@ -12,6 +12,7 @@ import MemberNavBar from '../src/components/MemberNavBar'
 import CreateAPost from '../src/components/CreateAPost'
 import ViewAll from '../src/components/ViewAll'
 
+// Testing nav bar renders a Register and Login link for guests or members not logged in
 describe('Navbar renders correct links for guest', () => {
   let forumMember = true
 
@@ -47,6 +48,8 @@ describe('Navbar renders correct links for guest', () => {
     })
 })
 
+// Testing nav bar renders a link with the username when user has logged in
+// tests for two different usernames
 describe('Navbar renders correct links for member 1', () => {
   let forumMember = true
   let loggedInMember =  {

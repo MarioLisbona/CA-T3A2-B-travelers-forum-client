@@ -11,7 +11,8 @@ import TermsOfUse from '../src/components/TermsOfUse'
 import Privacy from '../src/components/Privacy'
 import Contact from '../src/components/Contact'
 
-describe('Footer Component has correct link and route for terms of service', () => {
+// testing Terms of Use link is displayed and routes to the correct component
+describe('Footer Component has correct link and route for terms of Use', () => {
   let container = null
     beforeEach(() => {
       // setup a DOM element as a render target
@@ -44,8 +45,9 @@ describe('Footer Component has correct link and route for terms of service', () 
       await userEvent.click(screen.getByText('Terms of Use'))
       expect(screen.getByText('Terms of use and Conditions'))
     })
-  })
+})
 
+  // testing Privacy Policy link is displayed and routes to the correct component
   describe('Footer Component has correct link and route for Privacy Policy', () => {
     let container = null
       beforeEach(() => {
@@ -79,8 +81,9 @@ describe('Footer Component has correct link and route for terms of service', () 
         await userEvent.click(screen.getByText('Privacy Policy'))
         expect(screen.getByText('View our privacy policies'))
       })
-    })
+  })
 
+    // testing Contact us link is displayed and routes to the correct component
     describe('Footer Component has correct link and route for Contact us', () => {
       let container = null
         beforeEach(() => {

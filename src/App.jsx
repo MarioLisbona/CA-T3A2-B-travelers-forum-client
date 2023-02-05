@@ -108,8 +108,6 @@ const App = () => {
     }
   }
 
-
-
   // on mount and tracking setForumMember changes - if the there is session storage data stored on the current user
   // set logged in member to currentUser object
   // set forumMember to true for conditional rendering
@@ -120,7 +118,6 @@ const App = () => {
     }
   }, [setForumMember])
  
-
   // fetch all the posts from the API on component on mount only and assign to posts with sePosts()
   // may need to change this to trigger and track the posts state
   useEffect(() => {
@@ -249,6 +246,9 @@ const App = () => {
           token: returnedObject.token
         })
 
+        // fetch the member data from the api, using the returned object from login POST
+        // this will fetch an array of posts that the user has already rated
+        // conditional rendering is then used to remove the rating button if the user has already rated the post
         fetchMember(setMemberHasRated, returnedObject.id)
 
         // call redirect function to redirect to login page after successful user registration
@@ -290,9 +290,6 @@ const App = () => {
     // setting the state when user logs out
     setLoginMessage('')
     setLoginSuccess(false)
-    
-    // navigate to the home page
-    // nav('/')
   }
 
 
@@ -344,8 +341,6 @@ const App = () => {
     catch (err){
       console.log(err.message)
     }
-
-
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -401,7 +396,6 @@ const editPost =  async (post, title, continent, postContent) => {
   catch (err){
     console.log(err.message)
   }
-
 }
 
 
@@ -628,13 +622,6 @@ const editComment =  async (comment, editedComment, post) => {
       'body': JSON.stringify(editedCommentObject)
     })
 
-////////////////////////////////////////////////////
-// not used
-
-
-    // creating JSON object with returned object from the fetch request
-    const returnedObject = await returnedEditedComment.json()
-
     // If JWT lost after login but before form submit
     if (returnedEditedComment.status === 403) {  
       logoutMember()
@@ -653,18 +640,9 @@ const editComment =  async (comment, editedComment, post) => {
 
 }
 
-
-    // filtering the posts array returned by the fetch into separate arrays for each category
-    // const europePosts = posts.filter(post => post.category == 'Europe')
-    // const australiaPosts = posts.filter(post => post.category == 'Australia')
-    // const asiaPosts = posts.filter(post => post.category == 'Asia')
-    // const africaPosts = posts.filter(post => post.category == 'Africa')
-    // const nthAmericaPosts = posts.filter(post => post.category == 'North America')
-    // const sthAmericaPosts = posts.filter(post => post.category == 'South America')
-    // const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
-
   return (
     <>
+    {/* condiotionally render a guest or mamber nav bar */}
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
         {/* Browser router paths */}
         <Routes>
