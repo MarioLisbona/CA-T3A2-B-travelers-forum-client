@@ -7,7 +7,7 @@ A MERN Application built by Callum Rowstan and Mario Lisbona
 <br>
 <img src="./docs/icons8-github-30.png" height="20"> [Mario Lisbona](https://github.com/MarioLisbona)
 
-Traveller's Forum is online forum where users can share travel stories and information on their favorite parts of the world. Our goal is to create a sense of community through shared experiences and a love for adventure and exploring new cultures. Guests can read stories from various parts of the world. Guests can register to become members to be able to contribute by posting their own stories, commenting on other member's travel stories and rate each story.
+Traveller's Forum is an online forum where members can share travel stories and information on their favorite parts of the world. Our goal is to create a sense of community among global travellers through shared experiences, adventures and cultures. Guests can browse and view posts to the forum. Guests can also register as a member and contribute to the forum with their own posts. Members can comment on other posts and give them a star rating. 
 
 Traveller's Forum is deployed on Netlify and Railway. It was developed using the MERN stack.
 
@@ -64,13 +64,13 @@ The API can now be accessed using Postman and `localhost:4001/`
   - `npm install --legacy-peer-deps`
 - run the server with the following command:
   - `npm run dev`
-- By dfault the server will run at `http://localhost:5173/`
+- By default the server will run at `http://localhost:5173/`
   - However if this port is already in use another port will be provided
 - You will also be provided a link in the terminal to the port where the client server is running:
 
   ![server port](docs/vite-localhost.png)
 
-You will now be able to view all the posts on the App. To create your own posts, rate posts by others, comment on posts and much more register and login.
+You will now be able to view all the posts on the App. To create your own posts, rate posts by others, comment on posts and register and login.
 
 ## API Endpoints
 
@@ -108,19 +108,19 @@ API Endpoint documentation can be found [here](docs/apiendpoints.md)
 
 ### Client Libraries
 
-`react: ^18.2.0` - React is a Javascript library that provides a declarative, efficient and flexible way to build user interfaces for an application. It allows developer to use multiple small, isolated pieces of code, called 'components' to create complex and interactive UI's.
+`react: ^18.2.0` - React is a Javascript library that provides a declarative, efficient and flexible way to build user interfaces for an application. It allows developers to use multiple small, isolated pieces of code, called 'components' to create complex and interactive UI's.
 
-`react-dom: ^18.2.0` - React-dom is a package that provides a Virtual DOM which is a copy of the actual DOM structure that is used to track changes that are made by the user. Those changes are eventually reflected in the browser's DOM structure. The package provides developed with methods to maniupalte the virual dom, inlcuding `.render()` and `.findDOMNode`
+`react-dom: ^18.2.0` - React-dom is a package that provides a Virtual DOM which is a copy of the actual DOM structure that is used to track changes that are made by the user. Those changes are eventually reflected in the browser's DOM structure. The package provides developers with methods to maniupalte the virual dom, inlcuding `.render()` and `.findDOMNode`
 
 `react-router-dom: ^6.7.0` - React Router is used to create an SPA (Single Page Application). It provides a library that lets developers take advantage of client-side rendering routing. This means that different components can be rendered within the app for each URL without having to fetch a new page each time.
 
 `@fortawesome/fontawesome-svg-core: ^6.2.1`
 
-`fortawesome/free-solid-svg-icons: ^6.2.1`
+`@fortawesome/free-solid-svg-icons: ^6.2.1`
 
 `@fortawesome/react-fontawesome: ^0.2.0`
 
-The font awesome libraries are used to add the icons for the juser registration form. The registration form has front-end input validation and the icons are used to inform the user if they have not entered valid input.
+The Font Awesome libraries are used to add the icons for the user registration form. The registration form has front-end input validation and the icons are used to inform the user if they have not entered a valid input.
 
 `moment: ^2.29.4` -  Moment is used to format the dates on each post when viewed as a full page. It is also used to provide information on the preview cards about how long ago each post was made.
 
@@ -167,9 +167,9 @@ They need to be installed with the flag `--legacy-peer-deps` appended to CLI com
 
 ![Register with valid input](./docs/register-correct-input.png)
 
-**View Post not when not logged in**
+**View Post when not logged in**
 
-![View Post not when not logged in](./docs/view-post-not-logged-in.png)
+![View Post when not logged in](./docs/view-post-not-logged-in.png)
 
 **User logged in with comment box and rate post button disabled**
 
@@ -215,7 +215,7 @@ They need to be installed with the flag `--legacy-peer-deps` appended to CLI com
 
 ## Testing
 
-Extensive testing has been carried out in both Chrome and Firefox running on Windows and MacOS and various devices and screen sizes. Automated testing has been developed using Vitest and Jest. Manual testing was carried out using Postman and running the application locally and via deployment.
+Extensive testing has been carried out in both Chrome and Firefox running on Windows and MacOS and various mobile devices and screen sizes. Automated testing has been developed using Vitest and Jest. Manual testing was carried out using Postman and running the application locally and via deployment.
 
 Manual Testing During Development, Staging and Production: [Click Here](https://docs.google.com/spreadsheets/d/1ZN6NrLZgrfrI0-DRtoB7dR9KK781k1nl1RJyCdUfHI8/edit#gid=0)
 
