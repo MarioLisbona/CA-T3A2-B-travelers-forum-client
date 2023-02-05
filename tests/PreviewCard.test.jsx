@@ -9,6 +9,7 @@ import { act } from "react-dom/test-utils"
 import moment from 'moment/moment'
 
 
+// testing that the preview card renders the proper data based on the testPost provided
   let testPost = {
     "_id": "63de2945e7cdc5329d0101d3",
     "title": "Test post 1",

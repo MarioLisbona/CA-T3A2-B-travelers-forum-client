@@ -1,7 +1,7 @@
 /* CSS for changing the hero image */
 
 .landing-page, .view-all, .asia, .australia,
-.n-am, .s-am, .acirfa, .europe, .antarctica, .about,
+.n-am, .s-am, .africa, .europe, .antarctica, .about,
 .contact, .register, .login, .create {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@
     background: url(../src/assets/hero-img-sth-america.jpg) no-repeat center -100px;
 }
 
-.acirfa {
+.africa {
     background: url(../src/assets/hero-img-africa.jpg) no-repeat center -360px ;
 }
 
