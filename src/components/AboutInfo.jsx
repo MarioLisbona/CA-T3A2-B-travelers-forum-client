@@ -5,7 +5,7 @@ const AboutInfo = () => {
   return (
     <>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, et consequuntur nostrum a repellendus ipsa illum libero harum maxime necessitatibus, at ea maiores mollitia adipisci!</p>
-      <h5>post to cantegories</h5>
+      <h5>post to categories</h5>
       <ul>
         <li>Africa</li>
         <li>Asia</li>

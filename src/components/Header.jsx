@@ -6,7 +6,7 @@ const Header = ({ headingText, bodyText, btn1Text, showBtn1, btn1ToPage, btn2Tex
 	// display header with heading/body text and conditionally rendered CTA buttons
 	return (
 		<div className="p-5 py-3 my-4 bg-light rounded-3 border border-success">
-				<h1>{headingText}</h1>
+				<h1 data-testid="heading-text">{headingText}</h1>
 				<p className="lead">{bodyText}</p>
 					{showBtn1
 						? <CtaButton

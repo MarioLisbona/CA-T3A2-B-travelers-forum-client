@@ -37,8 +37,6 @@ const App = () => {
   // state variable for memberHasRated - stores the id's of posts that a user has already rated
   const [memberHasRated, setMemberHasRated] = useState([])
 
-  console.log('top of app, member has rated these posts', memberHasRated)
-
   // state variable to track and store all posts
   const [posts, setPosts] = useState([])
   // tracking the state of posts in each category

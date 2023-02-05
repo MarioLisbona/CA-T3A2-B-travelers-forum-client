@@ -10,7 +10,7 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
     // display navbar for members
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient fixed-top">
           <div className="container-fluid">
               <Link className="navbar-brand ms-0 ps-0" to="/">
                 <img src={logo} width="200" height="40" alt=""></img>
@@ -21,7 +21,7 @@ const MemberNavBar = ({ logoutMember, loggedInMember }) => {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav mr-auto">
                       <li className="nav-item">
-                          <Link className="nav-link text-white" to="../view/all">
+                          <Link data-testid="browse-all" className="nav-link text-white" to="../view/all">
                               Browse all Destinations
                           </Link>
                       </li>

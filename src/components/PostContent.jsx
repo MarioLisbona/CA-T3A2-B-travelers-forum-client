@@ -135,6 +135,8 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
           ? 
           <div class="btn-group">
             <div className="me-3 mt-3">Rate This Post</div>
+              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-2 me-1 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
               <button 
                 type="button" 
                 // disable button until a star rating is chosen
@@ -142,8 +144,6 @@ const PostContent = ({ post, postOwner, deletePost, editPost, forumMember, rateP
                 onClick={ratePostButton} 
                 class="btn btn-success my-2 rounded me-1">
                   Submit
-              </button>
-              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-2 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               </button>
               <div class="dropdown-menu  bg-light rounded-3 border border-success">
                 <a class="dropdown-item">

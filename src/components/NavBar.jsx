@@ -6,7 +6,7 @@ const NavBar = () => {
     // guest navbar
 	return (
 		<>
-		<nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient fixed-top">
             <div className="container-fluid">
                 <Link className="navbar-brand ms-0 ps-0" to="/">
                     <img src={logo} width="200" height="40" alt=""></img>
