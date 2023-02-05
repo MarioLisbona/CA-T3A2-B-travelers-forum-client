@@ -622,10 +622,6 @@ const editComment =  async (comment, editedComment, post) => {
       'body': JSON.stringify(editedCommentObject)
     })
 
-    
-    // creating JSON object with returned object from the fetch request
-    const returnedObject = await returnedEditedComment.json()
-
     // If JWT lost after login but before form submit
     if (returnedEditedComment.status === 403) {  
       logoutMember()
@@ -644,18 +640,9 @@ const editComment =  async (comment, editedComment, post) => {
 
 }
 
-
-    // filtering the posts array returned by the fetch into separate arrays for each category
-    // const europePosts = posts.filter(post => post.category == 'Europe')
-    // const australiaPosts = posts.filter(post => post.category == 'Australia')
-    // const asiaPosts = posts.filter(post => post.category == 'Asia')
-    // const africaPosts = posts.filter(post => post.category == 'Africa')
-    // const nthAmericaPosts = posts.filter(post => post.category == 'North America')
-    // const sthAmericaPosts = posts.filter(post => post.category == 'South America')
-    // const antarcticaPosts = posts.filter(post => post.category == 'Antarctica')
-
   return (
     <>
+    {/* condiotionally render a guest or mamber nav bar */}
       {forumMember ? <MemberNavBar logoutMember={logoutMember} loggedInMember={loggedInMember}  /> : <NavBar />}
         {/* Browser router paths */}
         <Routes>
