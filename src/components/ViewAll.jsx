@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import NavBar from './NavBar'
 import HeroImage from './HeroImage'
 import Header from './Header'
 import PreviewCard from './PreviewCard'
