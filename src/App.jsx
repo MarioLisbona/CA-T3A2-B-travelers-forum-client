@@ -164,7 +164,7 @@ const App = () => {
       }
       
       // post the new member to the API and assign the return object to returnedMember
-      const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/register', {
+      const returnedMember = await fetch('https://travellers-forum.up.railway.app/auth/register', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -210,7 +210,7 @@ const App = () => {
       }
       
       // post the new memberToLogin object to the API and assign the return object to returnedMember
-      const returnedMember = await fetch('https://indigo-stocking-production.up.railway.app/auth/login', {
+      const returnedMember = await fetch('https://travellers-forum.up.railway.app/auth/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -310,7 +310,7 @@ const App = () => {
       }
 
       // post the new newPost object to the API and assign the return object to returnedPost
-      const returnedPost = await fetch('https://indigo-stocking-production.up.railway.app/posts/new', {
+      const returnedPost = await fetch('https://travellers-forum.up.railway.app/posts/new', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -360,7 +360,7 @@ const editPost =  async (post, title, continent, postContent) => {
     }
 
     // PUT the new editPost object to the API and assign the return object to returnedPost
-    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+    const returnedPost = await fetch(`https://travellers-forum.up.railway.app/posts/${post[0]._id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -412,7 +412,7 @@ const ratePost =  async (post, rating) => {
     }
 
     // PATCH the new rating attribute to the API and assign the return object to returnedPost
-    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}/rating`, {
+    const returnedPost = await fetch(`https://travellers-forum.up.railway.app/posts/${post[0]._id}/rating`, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -464,7 +464,7 @@ const deletePost =  async (post) => {
   try {
 
     // Delete request to the server with post id interpolated to url
-    const returnedPost = await fetch(`https://indigo-stocking-production.up.railway.app/posts/${post[0]._id}`, {
+    const returnedPost = await fetch(`https://travellers-forum.up.railway.app/posts/${post[0]._id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -518,7 +518,7 @@ const deletePost =  async (post) => {
       }
       
       // post the newComment object to the API and assign the return object to returnedComment
-      const returnedComment = await fetch('https://indigo-stocking-production.up.railway.app/comments/new', {
+      const returnedComment = await fetch('https://travellers-forum.up.railway.app/comments/new', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -566,7 +566,7 @@ const deleteComment =  async (comment, post) => {
 
   try {
      // Delete request to the server with comment id interpolated to url
-    const returnComment = await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+    const returnComment = await fetch(`https://travellers-forum.up.railway.app/comments/${comment.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -612,7 +612,7 @@ const editComment =  async (comment, editedComment, post) => {
     }
 
     // PUT the new editPost object to the API and assign the return object to returnedPost
-    const returnedEditedComment = await fetch(`https://indigo-stocking-production.up.railway.app/comments/${comment.id}`, {
+    const returnedEditedComment = await fetch(`https://travellers-forum.up.railway.app/comments/${comment.id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
