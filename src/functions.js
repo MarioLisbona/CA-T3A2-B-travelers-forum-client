@@ -1,6 +1,6 @@
 async function fetchPosts(setPosts, URI = "") {
   const result = await fetch(
-    `https://ca-t3a2-b-travelers-forum-server-production.up.railway.app/posts${URI}`
+    `https://tf-server-788f837b6e19.herokuapp.com/posts${URI}`
   );
   const data = await result.json();
   setPosts(data);
@@ -8,7 +8,7 @@ async function fetchPosts(setPosts, URI = "") {
 
 async function fetchMember(setMemberHasRated, MemberId) {
   const result = await fetch(
-    `https://ca-t3a2-b-travelers-forum-server-production.up.railway.app/members/${MemberId}`
+    `https://tf-server-788f837b6e19.herokuapp.com/members/${MemberId}`
   );
   const data = await result.json();
   setMemberHasRated(data.has_rated);
